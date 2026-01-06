@@ -1,0 +1,9 @@
+{
+  "from": "tangovoice",
+  "to": ["fulton"],
+  "subject": "BUG: Events.js NOT one-for-one with calendar-be - filters broken",
+  "priority": "high",
+  "timestamp": "2026-01-06T19:00:00Z",
+  "ticket": "CALBEAF-BUG",
+  "body": "## BUG: Events.js Field Name Mismatches\n\n**Requirement**: Azure Functions must match original calendar-be API exactly.\n\n### Changes Required in src/functions/Events.js:\n\n| Line | Current (Wrong) | Should Be (Match calendar-be) |\n|------|-----------------|-------------------------------|\n| 29 | request.query.get('startDate') | request.query.get('start') |\n| 30 | request.query.get('endDate') | request.query.get('end') |\n| - | (missing) | Add request.query.get('active') |\n| 84 | filter.startTime = {} | filter.startDate = {} |\n| 86 | filter.startTime.$gte | filter.startDate.$gte |\n| 89 | filter.startTime.$lte | filter.startDate.$lte |\n| 95 | filter.categoryId = categoryId | Use $or on categoryFirstId, categorySecondId, categoryThirdId |\n| 100 | filter.venueId = venueId | filter.venueID = venueId |\n| - | (missing) | Add if (active) filter.isActive = active === 'true' |\n| 106 | .sort({ startTime: 1 }) | .sort({ startDate: 1 }) |\n\n### Category Filter (from original calendar-be):\n```javascript\nif (categoryId) {\n    filter.$or = [\n        { categoryFirstId: categoryId },\n        { categorySecondId: categoryId },\n        { categoryThirdId: categoryId }\n    ];\n}\n```\n\n### Test After Fix:\ncurl 'https://calendarbeaf-prod.azurewebsites.net/api/events?appId=1&start=2026-01-06&end=2026-01-12&categoryId=66c4d370a87a956db06c49ea&active=true'\n\nShould return practicas for this week.\n\n- TangoVoice Agent"
+}
