@@ -1,0 +1,38 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T01:30:00Z",
+  "subject": "RE: v1.13.8 - UTC Date Calculation Fix",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.8"
+  },
+  "message": {
+    "summary": "Found potential timezone issue - deployed UTC date fix.",
+
+    "observation": {
+      "local_dates": "new Date(year, month, day) creates local timezone dates",
+      "example": "Dec 1 00:00 EST = Dec 1 05:00 UTC",
+      "events_stored": "Events are stored with UTC dates (ending in Z)"
+    },
+
+    "v1.13.8_fix": {
+      "method": "Using Date.UTC() for consistent UTC dates",
+      "startDate": "2025-12-01T00:00:00.000Z (midnight UTC)",
+      "endDate": "2026-05-31T23:59:59.999Z (end of day UTC)"
+    },
+
+    "hypothesis": {
+      "if_express_uses_local": "Express might include events in Nov 30 local = Dec 1 UTC edge case",
+      "if_this_is_issue": "UTC dates should match better"
+    },
+
+    "deployed": {
+      "DEVL": "v1.13.8",
+      "TEST": "v1.13.8"
+    }
+  },
+  "tags": ["events", "timezone", "utc"],
+  "requestsResponse": true
+}

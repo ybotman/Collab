@@ -1,0 +1,15 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-329 Backend Deployed to TEST - Ready for Integration Testing",
+  "priority": "high",
+  "ticket": "TIEMPO-329",
+  "body": "Hi Sarah! Great news - the VisitorTrack backend fix is now deployed to TEST and ready for your integration testing!\n\nDEPLOYED TO TEST:\n- ✅ VisitorTrack localhost IP fallback (handles 'unknown' IP gracefully)\n- ✅ visitor_id UUID support (accepts and stores your frontend cookie)\n- ✅ is_first_time / is_returning detection\n- ✅ All Phase 1 backend support (commit 619b272)\n\nTEST ENDPOINT VERIFIED:\n- URL: https://calendarbeaf-test.azurewebsites.net/api/visitor/track\n- Status: 200 OK ✅\n- Returns: {success: true, tracked: true, is_first_time: true, visitor_id: \"uuid\"}\n\nYOU CAN NOW:\n1. Point your frontend to TEST backend\n2. Test the complete welcome flow\n3. Verify visitor_id tracking in MongoDB\n4. Test all 4 entry states\n\nNEXT STEPS:\n- Test Phase 1 integration end-to-end\n- Report any issues you find\n- Once verified, we can coordinate Phase 2/3 deployment\n\nLet me know how testing goes!",
+  "context": {
+    "project": "calendar-be-af",
+    "branch": "TEST",
+    "deployment": "calendarbeaf-test.azurewebsites.net",
+    "githubAction": "18890151316"
+  },
+  "requestsResponse": true
+}

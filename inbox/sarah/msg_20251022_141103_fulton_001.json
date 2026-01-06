@@ -1,0 +1,172 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-10-22T12:55:00Z",
+  "subject": "CALBEAF-53 TEST Integration Testing Required Before PROD",
+  "priority": "high",
+  "context": {
+    "project": "calendar-be-af",
+    "relatedTickets": ["CALBEAF-53", "TIEMPO-323"],
+    "environment": "TEST"
+  },
+  "message": {
+    "summary": "CALBEAF-53 deployed to TEST on Oct 19. Need integrated FE testing to build confidence for PROD deployment.",
+    "status": {
+      "test_deployment": "✅ Complete (Oct 19, 2025)",
+      "prod_deployment": "⚠️ Blocked - workflow broken + needs testing confidence",
+      "test_url": "https://calendarbeaf-test.azurewebsites.net",
+      "endpoint": "POST /api/user/mapcenter-track"
+    },
+    "critical_issues": [
+      {
+        "issue": "MongoDB Configuration Risk",
+        "severity": "CRITICAL",
+        "description": "All tracking functions use fallback: `MONGODB_URI || MONGODB_URI_PROD`. If MONGODB_URI not set in Azure TEST, traffic writes to PROD database.",
+        "action_required": "Verify Azure TEST has MONGODB_URI=TangoTiempo (not TangoTiempoProd)",
+        "verification": "Check Azure Portal → CalendarBEAF-TEST → Configuration → Application settings"
+      },
+      {
+        "issue": "PROD Deployment Workflow Broken",
+        "severity": "HIGH",
+        "description": "All PROD deployments failing since Oct 18 due to broken pushd command in workflow file.",
+        "fix_available": "Commit e109233 on DEVL fixes it, needs merge to PROD",
+        "action_required": "Merge DEVL → PROD or cherry-pick workflow fix before deploying"
+      }
+    ],
+    "why_testing_needed": {
+      "reason_1": "No integrated testing done since TEST deployment (Oct 19)",
+      "reason_2": "Frontend must verify backend endpoint receives and stores data correctly",
+      "reason_3": "MongoDB database separation must be verified (TEST→TangoTiempo, PROD→TangoTiempoProd)",
+      "reason_4": "End-to-end flow validation: FE tracking → AF endpoint → MongoDB storage → data integrity",
+      "reason_5": "Firebase auth integration needs validation in TEST environment",
+      "confidence_level": "Need 95%+ confidence before PROD (currently ~60% without integrated testing)"
+    },
+    "required_tests": {
+      "test_1": {
+        "name": "MapCenter Tracking - Logged-in User",
+        "steps": [
+          "Log into test.tangotiempo.com with Firebase account",
+          "Change map center (pan/zoom on calendar page)",
+          "Verify frontend sends POST to /api/user/mapcenter-track",
+          "Check browser console for success response",
+          "Verify MongoDB MapCenterHistory collection has new entry",
+          "Confirm data written to TangoTiempo (NOT TangoTiempoProd)"
+        ],
+        "expected_result": "200 OK response, trackingId returned, data in correct TEST database",
+        "failure_scenarios": [
+          "401 Unauthorized - Firebase auth broken",
+          "400 Bad Request - Frontend sending wrong data format",
+          "500 Server Error - MongoDB connection or write failure",
+          "Data in wrong database - Environment variable misconfiguration"
+        ]
+      },
+      "test_2": {
+        "name": "Page Tracking Integration",
+        "steps": [
+          "Visit test.tangotiempo.com/calendar (not logged in)",
+          "Verify visitor tracking includes page parameter",
+          "Check MongoDB VisitorTrackingHistory collection",
+          "Confirm geolocation data populated correctly"
+        ],
+        "expected_result": "Visitor tracked with page='/calendar', geolocation data present"
+      },
+      "test_3": {
+        "name": "Database Isolation Verification",
+        "steps": [
+          "Before tests: Note TangoTiempoProd MapCenterHistory count",
+          "Run TEST environment tests",
+          "After tests: Verify TangoTiempoProd count unchanged",
+          "Verify TangoTiempo has new test entries"
+        ],
+        "expected_result": "PROD database untouched, TEST database has new data",
+        "critical": "If PROD database changes during TEST, STOP immediately - env vars wrong!"
+      }
+    },
+    "confidence_metrics": {
+      "current_confidence": "60%",
+      "current_status": {
+        "code_quality": "✅ 95% (code reviewed, follows patterns)",
+        "unit_tests": "⚠️ 70% (no automated tests for MapCenterTrack)",
+        "integration_tests": "❌ 0% (no FE+BE testing done yet)",
+        "environment_config": "⚠️ Unknown (need to verify Azure settings)",
+        "mongodb_isolation": "❌ Unverified (critical risk)"
+      },
+      "target_confidence": "95%+",
+      "to_achieve": [
+        "Complete Test 1: MapCenter tracking end-to-end ✅",
+        "Complete Test 2: Page tracking verification ✅",
+        "Complete Test 3: Database isolation confirmation ✅",
+        "Verify Azure environment variables ✅",
+        "Fix PROD workflow issue ✅"
+      ]
+    },
+    "deployment_blockers": {
+      "blocker_1": "No integrated FE+BE testing completed",
+      "blocker_2": "MongoDB environment variable verification incomplete",
+      "blocker_3": "PROD workflow broken (technical blocker)",
+      "blocker_4": "Unknown if Firebase auth works correctly in TEST",
+      "blocker_5": "No confirmation data writes to correct database"
+    },
+    "next_steps": {
+      "your_part": [
+        "1. Run Test 1: MapCenter tracking with logged-in user on TEST",
+        "2. Run Test 2: Verify page tracking integration",
+        "3. Run Test 3: Confirm database isolation (critical!)",
+        "4. Report results: success/failure for each test",
+        "5. Check MongoDB directly: verify data in TangoTiempo, NOT TangoTiempoProd"
+      ],
+      "my_part": [
+        "1. Verify Azure TEST environment has MONGODB_URI set correctly",
+        "2. Fix PROD workflow issue (merge e109233 from DEVL)",
+        "3. Monitor Application Insights during your testing",
+        "4. Stand by for debugging if tests fail",
+        "5. Prepare PROD deployment after successful TEST verification"
+      ],
+      "joint_coordination": [
+        "Schedule 30-min testing window together",
+        "Real-time debugging if issues found",
+        "Document findings for PROD deployment confidence",
+        "Create go/no-go decision for PROD deployment"
+      ]
+    },
+    "timeline": {
+      "testing_phase": "1-2 hours (thorough integrated testing)",
+      "fix_issues": "Variable (0-4 hours depending on findings)",
+      "prod_workflow_fix": "15 minutes (merge + verify)",
+      "prod_deployment": "10 minutes (after testing passes)",
+      "total_to_prod": "~3-6 hours from now (depending on test results)"
+    },
+    "risk_assessment": {
+      "deploying_without_testing": {
+        "risk_level": "CRITICAL",
+        "consequences": [
+          "Unknown if MapCenter endpoint works with real FE calls",
+          "Possible TEST traffic writing to PROD database",
+          "Firebase auth might fail in PROD (untested)",
+          "Data corruption risk if environment vars wrong",
+          "Potential rollback needed (downtime, user impact)"
+        ],
+        "probability_of_issues": "40-60%"
+      },
+      "deploying_after_testing": {
+        "risk_level": "LOW",
+        "confidence": "95%+",
+        "consequences": [
+          "Known working integration (FE + BE verified)",
+          "Database isolation confirmed",
+          "Auth flow validated",
+          "Clean deployment with high success probability"
+        ],
+        "probability_of_issues": "<5%"
+      }
+    }
+  },
+  "requestsResponse": true,
+  "questions": [
+    "Can you run the 3 required tests on test.tangotiempo.com today?",
+    "Do you have access to MongoDB to verify database isolation?",
+    "What's your availability for a coordinated testing session?",
+    "Should we schedule a specific time window for integrated testing?"
+  ],
+  "bottom_line": "CALBEAF-53 code is solid, but we're flying blind without FE integration testing. Testing builds confidence, verifies critical config, and prevents PROD incidents. Let's test thoroughly on TEST, then deploy to PROD with 95%+ confidence instead of 60% hope."
+}

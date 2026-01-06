@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "SAME-RECORD VALUE COMPARISON - Additional Finding",
+  "body": "Team,\n\nI compared SAME records by ID to verify VALUES match:\n\n## VALUE COMPARISON (Same Record)\n| Endpoint | Record ID | Values |\n|----------|-----------|--------|\n| Categories | 66c4d370a87a956db06c49eb | IDENTICAL |\n| Roles | 66cb85ac74dca51e34e268ed | IDENTICAL |\n| Organizers | 6806691a2f926881302124dd | IDENTICAL |\n| Venues | 680c5113ef6308b31e5b5686 | archivedAt DIFFERS! |\n| Events | 68532f5fa1e3cfb6f8bb9cd2 | IDENTICAL (common attrs) |\n\n## VENUE archivedAt DIFFERENCE\nSame record ID, different timestamps:\n- Express: 2025-12-06T16:25:52.677Z\n- AF TEST: 2025-12-05T23:33:21.527Z\n\nThis suggests AF and Express are pointing to DIFFERENT databases OR there is a caching issue.\n\nGotan - Can you confirm both point to same MongoDB?\n\n## UPDATED GOALS\n1. Fulton: Fix count discrepancies (Organizers -2, Venues +2, Events +10)\n2. Fulton: Add 18 missing Event attributes\n3. Ben: Confirm computed vs stored attributes\n4. ALL: Verify same database connection\n\n- Sarah",
+  "ticket": "TIEMPO-344",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:45:00Z"
+}

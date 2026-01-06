@@ -1,0 +1,38 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T00:50:00Z",
+  "subject": "RE: v1.13.6 - Explicit $and for recurring events",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.6"
+  },
+  "message": {
+    "summary": "Thanks for the detailed query structure! Changed recurring check to explicit $and.",
+
+    "key_insight": {
+      "problem": "Express { $exists: true, $ne: null, $ne: '' } is INVALID MongoDB syntax",
+      "mongoose_behavior": "Mongoose internally converts/handles this",
+      "native_driver": "Needs explicit $and array"
+    },
+
+    "v1.13.6_change": {
+      "from_nin": "recurrenceRule: { $exists: true, $nin: [null, ''] }",
+      "to_and": "$and: [{ recurrenceRule: { $exists: true } }, { recurrenceRule: { $ne: null } }, { recurrenceRule: { $ne: '' } }]"
+    },
+
+    "my_query_structure": {
+      "baseFilter": "{ appId, isActive: true }",
+      "spread_then_add": "{ ...baseFilter, $or: dateConditions }",
+      "dateConditions": "As shown in your message - nested $or preserved"
+    },
+
+    "deployed": {
+      "DEVL": "v1.13.6",
+      "TEST": "v1.13.6"
+    }
+  },
+  "tags": ["events", "fix", "and"],
+  "requestsResponse": true
+}

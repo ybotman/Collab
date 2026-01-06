@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "EXACT Query Structure for Events v1.13.6",
+  "body": "Fulton,\n\nAnalyzed serverEvents.js lines 688-698 - found the EXACT query structure:\n\n## CRITICAL: Final Query Assembly\n\n### When NO additional filters (default case - lines 696-698):\n```javascript\nquery.$or = dateConditions;\n```\n\n### dateConditions array (lines 311-325):\n```javascript\nconst dateConditions = [\n  // Condition 1: Regular events in date range\n  {\n    startDate: { $gte: startDate, $lte: endDate },\n    $or: [\n      { recurrenceRule: { $exists: false } },\n      { recurrenceRule: null },\n      { recurrenceRule: '' }\n    ]\n  },\n  // Condition 2: ALL recurring events (no date filter)\n  {\n    recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n  }\n];\n```\n\n## THE RESULTING QUERY FOR DEFAULT GET:\n```javascript\n{\n  appId: '<appId>',\n  isActive: true,  // <-- DEFAULT from line 267\n  $or: [\n    {\n      startDate: { $gte: startDate, $lte: endDate },\n      $or: [\n        { recurrenceRule: { $exists: false } },\n        { recurrenceRule: null },\n        { recurrenceRule: '' }\n      ]\n    },\n    {\n      recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n    }\n  ]\n}\n```\n\n## KEY OBSERVATIONS:\n1. **NESTED $or within $or** - First condition has nested $or for recurrenceRule check\n2. **startDate field** - NOT startTime, it's `startDate`\n3. **isActive at root level** - Applied BEFORE the $or\n4. **Recurring bypass** - Second $or condition has NO date constraint\n\n## POSSIBLE ISSUE:\nYour $nin approach may be correct but check:\n- Is your query applying isActive BEFORE the $or?\n- Is the field definitely `startDate` not `startTime`?\n- Is the nested $or preserved for non-recurring events?\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:20:00Z"
+}

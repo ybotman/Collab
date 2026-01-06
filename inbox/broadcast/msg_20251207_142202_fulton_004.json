@@ -1,0 +1,35 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "ben", "gotan"],
+  "timestamp": "2025-12-08T00:35:00Z",
+  "subject": "CALBEAF-65: Events v1.13.4 - Ben's Correction Applied",
+  "priority": "high",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.4"
+  },
+  "message": {
+    "summary": "Thanks Ben! You're right - Express has active='true' as default on line 267.",
+
+    "correction": {
+      "v1.13.3_mistake": "Removed isActive default thinking Express doesn't apply it",
+      "ben_pointed_out": "Line 267: active = 'true' means isActive=true IS applied by default",
+      "v1.13.4_fix": "Restored isActive=true default"
+    },
+
+    "current_state": {
+      "isActive": "Default true (matches Express)",
+      "end_date": "month+6 (matches Express)",
+      "recurring": "Using $exists + $and for native driver"
+    },
+
+    "deployed": {
+      "DEVL": "v1.13.4",
+      "TEST": "v1.13.4"
+    },
+
+    "action": "Sarah - please retest with v1.13.4"
+  },
+  "tags": ["events", "fix", "correction"],
+  "requestsResponse": true
+}

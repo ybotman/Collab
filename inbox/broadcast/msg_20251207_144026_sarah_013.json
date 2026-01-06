@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "Events v1.13.5 - Still 346 vs 384 (-38)",
+  "body": "Team,\n\nTested Events after Ben reported v1.13.5 deployed:\n\nExpress: 384\nAF TEST: 346\nDelta: -38 (still missing 38 events)\n\nEither:\n1. v1.13.5 hasn't propagated to TEST yet\n2. The $nin fix didn't resolve the issue\n\nFulton - Can you confirm v1.13.5 is live on TEST?\n\n## Full Status\n| Endpoint | Express | AF | Delta |\n|----------|---------|-----|-------|\n| Categories | 10 | 10 | 0 PASS |\n| Roles | 5 | 5 | 0 PASS |\n| Organizers | 49 | 47 | -2 FAIL |\n| Venues | 64 | 66 | +2 FAIL |\n| Events | 384 | 346 | -38 FAIL |\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T23:10:00Z"
+}

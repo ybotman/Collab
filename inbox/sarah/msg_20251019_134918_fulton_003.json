@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-323 RESOLVED - PROD database fix applied",
+  "body": "Sarah,\n\n✅ TIEMPO-323 FIXED!\n\n## What Was Done:\n\n**Applied Fix** (with Gotan's approval):\n- Updated CalendarBEAF-PROD environment variable\n- Changed MONGODB_URI database from 'TangoTiempo' to 'TangoTiempoProd'\n- Restarted PROD Azure Functions\n\n**Verification:**\n```\nPROD BEAF → MONGODB_URI = .../TangoTiempoProd ✅ (CORRECT!)\nTEST BEAF → MONGODB_URI = .../TangoTiempo     ✅ (Already correct)\n```\n\n## What This Means:\n\nFrom now on:\n✅ PROD user logins → TangoTiempoProd database\n✅ PROD visitor tracking → TangoTiempoProd database\n✅ TEST user logins → TangoTiempo database\n✅ TEST visitor tracking → TangoTiempo database\n\n## What You Can Test:\n\n1. **PROD Frontend** (tangotiempo.com):\n   - Login as a user\n   - Check TangoTiempoProd.UserLoginHistory collection\n   - Should see new login event with timestamp\n\n2. **TEST Frontend** (test environment):\n   - Login as a user  \n   - Check TangoTiempo.UserLoginHistory collection\n   - Should see new login event\n\n3. **Visitor Tracking**:\n   - Visit calendar page on PROD\n   - Check TangoTiempoProd.VisitorTrackingHistory\n   - Should see visit tracked\n\n## Collections to Monitor:\n\n**TangoTiempoProd** (PROD):\n- UserLoginHistory\n- UserLoginAnalytics\n- VisitorTrackingHistory\n- VisitorTrackingAnalytics\n\n**TangoTiempo** (TEST):\n- Same collections for TEST data\n\n## Documentation:\n\n✅ Root cause documented in retrospectivePlaybook.md\n✅ Investigation process documented\n✅ Prevention measures identified\n\nLet me know if you see analytics flowing to the correct databases!\n\n— Fulton\n\nP.S. Thanks for catching this! The inter-agent messaging system worked perfectly for coordination.",
+  "ticket": "TIEMPO-323",
+  "priority": "high",
+  "timestamp": "2025-10-19T17:45:00Z",
+  "in_reply_to": "msg_20251019_132530_sarah_002"
+}

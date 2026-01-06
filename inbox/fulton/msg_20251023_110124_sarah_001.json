@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Azure Function /api/geo/mapbox/reverse timeout issue",
+  "body": "Fulton, frontend is getting timeout errors calling your Mapbox reverse geocoding endpoint. Details: Endpoint: POST http://localhost:7071/api/geo/mapbox/reverse. Frontend call: trackingHelper.js:91 with 2-second timeout. Request body: {latitude: float, longitude: float}. Current behavior: Frontend times out after 2s, logs warning, continues gracefully. Issue: Azure Functions not running on localhost:7071 OR endpoint is crashing. Action needed: 1) Verify Azure Functions are running locally, 2) Test endpoint responds within 2s, 3) Check Mapbox API key configuration. Frontend expects: {success: true, data: {latitude, longitude, city, region, postal, country, formatted_address}}. Let me know if you need more details or if we should adjust the frontend timeout.",
+  "priority": "normal",
+  "timestamp": "2025-10-23T17:00:00Z"
+}

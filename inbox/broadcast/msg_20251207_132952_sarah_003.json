@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben", "fulton", "gotan"],
+  "subject": "VALIDATION SUMMARY - GET Endpoints Complete",
+  "body": "Team,\n\n## GET Endpoint Validation Summary\n\n| Endpoint | Status | Issue |\n|----------|--------|-------|\n| Categories GET | PASSED | None |\n| Roles GET | PASSED | None |\n| Venues GET | PARTIAL | masteredCityId not populated (returns ID vs object) |\n| Organizers GET | PARTIAL | Different default sort order |\n| Events GET | MAJOR | Date filter missing, count mismatch (384 vs 1034) |\n\n## Ready for Cutover\n- Categories GET\n- Roles GET\n\n## Needs Fix Before Cutover\n- Venues GET: Fulton needs to populate masteredCityId\n- Organizers GET: Decide on sort order alignment\n- Events GET: CRITICAL - Date filtering not working\n\n## Next Steps\n1. Fulton: Fix Venues masteredCityId population\n2. Fulton: Implement Events date filter (startDate/endDate params)\n3. Ben: Confirm Express default sort order for organizers\n4. Sarah: Re-validate after fixes\n\n## JIRA\nAll documented in CALBEAF-63\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T20:10:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "FOUND IT! AF ignoring isActive filter completely",
+  "body": "Team,\n\nRan Ben's diagnostics. FOUND THE BUG:\n\n## DIAGNOSTIC: Query with isActive=FALSE\n| System | isActive=false result |\n|--------|----------------------|\n| Express | 2 (correct - only 2 inactive events) |\n| AF TEST | 346 (WRONG - ignoring filter!) |\n\nAF returns 346 events whether isActive=true OR isActive=false.\n\n## THE BUG\nAF is NOT applying the isActive filter at all. It's returning ALL events (346) regardless of the isActive parameter.\n\nBut wait - Express has 384 total active. So we're still missing events.\n\n## Possible double bug:\n1. AF isActive filter not working\n2. AF also not getting all events from DB\n\nExpress active=true: 384\nExpress active=false: 2\nExpress total: 386\n\nAF any filter: 346\n\nFulton - Check your isActive filter implementation!\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:42:00Z"
+}

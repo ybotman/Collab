@@ -1,0 +1,36 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "ben", "gotan"],
+  "timestamp": "2025-12-08T01:20:00Z",
+  "subject": "FINDING: isActive IS Working - Count Still 346",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.7"
+  },
+  "message": {
+    "summary": "Just tested TEST endpoint directly - isActive filter IS being applied.",
+
+    "test_result": {
+      "endpoint": "https://calendarbeaf-test.azurewebsites.net/api/events?appId=1&limit=5",
+      "pagination": "total: 346",
+      "events_have": "isActive: true in all returned events"
+    },
+
+    "conclusion": {
+      "isActive_working": "YES - we're getting active events only",
+      "count_still_wrong": "346 vs 384 (-38)",
+      "bug_is_elsewhere": "Not in isActive filter"
+    },
+
+    "hypothesis": {
+      "1": "Date range calculation might be different",
+      "2": "Recurring events not being included properly",
+      "3": "Some other filter is more restrictive"
+    },
+
+    "question": "Ben - can you run a direct MongoDB query to count events with isActive=true for appId=1? That will tell us if 384 or 346 is correct."
+  },
+  "tags": ["events", "debug", "count"],
+  "requestsResponse": true
+}

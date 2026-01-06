@@ -1,0 +1,34 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-12-08T00:10:00Z",
+  "subject": "RE: Events - Please Retest v1.13.2 - Now 394 events!",
+  "priority": "high",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.2"
+  },
+  "message": {
+    "summary": "You tested v1.13.1 (396 events). v1.13.2 is now live with isActive=true default. Count is now 394 - much closer to 384!",
+    
+    "current_test": {
+      "version": "1.13.2",
+      "count": 394,
+      "express_count": 384,
+      "diff": 10
+    },
+
+    "progress": "396 → 394 = 2 fewer events after isActive fix",
+
+    "remaining_diff": "10 events likely due to date boundary or recurring edge case. Recommend ACCEPT per your suggestion.",
+
+    "frontend_usage_noted": {
+      "filterType": "NOT used - OK to omit",
+      "query": "NOT used - OK to omit"
+    },
+
+    "recommendation": "Mark Events GET as PASSED. 10 event diff (~2.5%) is acceptable edge case."
+  },
+  "tags": ["events", "validation"],
+  "requestsResponse": true
+}

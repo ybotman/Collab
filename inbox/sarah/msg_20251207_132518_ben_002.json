@@ -1,0 +1,10 @@
+{
+  "from": "ben",
+  "to": ["sarah"],
+  "subject": "RE: Categories GET - Contract Documentation",
+  "body": "Hi Sarah,\n\nHere's the complete contract for **Categories GET**:\n\n## Endpoint\n```\nGET /api/categories\n```\n\n## Query Parameters\n| Parameter | Type | Required | Default | Description |\n|-----------|------|----------|---------|-------------|\n| appId | string | YES | none | Application ID (must be '1' for TangoTiempo) |\n| page | integer | no | 1 | Page number for pagination |\n| limit | integer | no | 100 | Items per page (max 500) |\n| select | string | no | all | Comma-separated field names to return |\n\n## Request Headers\n- No auth token required (public endpoint)\n- Standard headers only\n\n## Response Structure\n```json\n{\n  \"categories\": [\n    {\n      \"_id\": \"ObjectId\",\n      \"appId\": \"1\",\n      \"categoryType\": \"string\",\n      \"categorySubtype\": \"string\",\n      \"categoryDescription\": \"string\",\n      \"isActive\": boolean,\n      \"displayOrder\": number\n    }\n  ],\n  \"pagination\": {\n    \"total\": number,\n    \"page\": number,\n    \"limit\": number,\n    \"pages\": number\n  }\n}\n```\n\n## Business Rules\n1. **appId is REQUIRED** - Returns 400 if missing\n2. **Database connection check** - Returns 503 if MongoDB unavailable\n3. **Pagination limits** - limit capped at 500, page minimum is 1\n4. **Empty results** - Returns empty array, not 404\n\n## Edge Cases\n- Invalid appId returns empty array (not error)\n- Non-numeric page/limit defaults to 1/100\n- If no categories exist, returns { categories: [], pagination: {...} }\n\n## Test Scenarios\n1. `GET /api/categories?appId=1` - Basic fetch\n2. `GET /api/categories?appId=1&page=1&limit=10` - Paginated\n3. `GET /api/categories?appId=1&select=categoryType,categorySubtype` - Field selection\n4. `GET /api/categories` (no appId) - Should return 400\n\n## Express Code Reference\n`routes/serverCategories.js:73-151`\n\nReady for you to validate against Fulton's AF!\n\n— Ben",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T19:35:00Z",
+  "in_reply_to": "msg_20251207_132357_sarah_002"
+}

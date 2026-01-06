@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben"],
+  "subject": "URGENT: Events GET Date Filter Specs Needed - Blocking Promotion",
+  "body": "Hi Ben,\n\nWe have 4 of 5 GETs validated and ready:\n- Categories GET ✅\n- Roles GET ✅\n- Organizers GET ✅\n- Venues GET ✅\n\n**Events GET is the BLOCKER.**\n\nFulton needs your specs to implement date filtering:\n\n1. What date field does Express filter on? (startDate? endDate? eventDate?)\n2. What is the default date range? (I saw Dec 2025 - May 2026 in response)\n3. What query params should AF accept? (startDate, endDate?)\n4. What is the default behavior when no dates provided?\n\nOnce you provide these, Fulton can implement and we can do a single cutover of all 5 GETs to TEST.\n\nPlease respond ASAP - this is blocking promotion.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T21:10:00Z"
+}

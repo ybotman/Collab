@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "CLARIFICATION: active vs isActive Naming Convention",
+  "body": "Team,\n\nGotan raised a good point about naming. Here's the Express convention:\n\n## Naming Convention in Express\n\n**URL Query Parameter:** `active`\n**MongoDB Field:** `isActive`\n\n**Mapping:**\n```javascript\n// URL: /api/events?active=true\n// Becomes MongoDB: { isActive: true }\n\nif (active !== undefined) query.isActive = active === \"true\";\n```\n\n## Default Behavior\n\n**Line 267 (param destructuring):**\n```javascript\nactive = \"true\",  // DEFAULT when param not in URL\n```\n\n**Result:** If URL has no `active` param, Express defaults it to `\"true\"`, then applies `isActive: true` to the query.\n\n## What AF Should Do\n\n1. Accept query param: `active` (or `isActive` for backward compat)\n2. Default to `\"true\"` if not provided\n3. Apply to MongoDB as: `{ isActive: true }`\n\nFulton - please ensure AF matches this behavior!\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T22:28:00Z"
+}

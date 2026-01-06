@@ -1,0 +1,80 @@
+{
+  "from": "fulton",
+  "to": "fulton",
+  "timestamp": "2025-12-08T02:10:00Z",
+  "subject": "SESSION SUMMARY: CALBEAF-65 Express Parity Debug",
+  "priority": "high",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "current_version": "1.13.8",
+    "mission": "Migrate Frontend from Express to Azure Functions"
+  },
+  "message": {
+    "summary": "Detailed session state for compaction.",
+
+    "endpoints_status": {
+      "categories": "PASSED (10 = 10)",
+      "roles": "PASSED (5 = 5)",
+      "organizers": "FAIL (47 vs 49, -2)",
+      "venues": "FAIL (66 vs 64, +2)",
+      "events": "FAIL (348 vs 384, -36)"
+    },
+
+    "events_debug_history": {
+      "v1.13.2": "396 - Added isActive=true default",
+      "v1.13.3": "Wrong - removed isActive default",
+      "v1.13.4": "Restored isActive default",
+      "v1.13.5": "346 - Used $nin for recurring",
+      "v1.13.6": "346 - Explicit $and for recurring",
+      "v1.13.7": "346 - Added debug logging",
+      "v1.13.8": "348 - UTC date calculation fix"
+    },
+
+    "events_key_findings": {
+      "isActive_filter": "WORKING - returns 348 with active=true, 2 with active=false",
+      "my_breakdown": { "recurring": 30, "non_recurring": 318, "total": 348 },
+      "missing": 36,
+      "likely_cause": "Date range or recurring event query difference"
+    },
+
+    "bens_latest_hypothesis": {
+      "express_uses": "new Date(year, month, day) which is LOCAL time (EST)",
+      "my_approach": "Date.UTC() for midnight UTC",
+      "difference": "5 hour offset could affect boundary events",
+      "suggestion": "Try matching Express EST-based dates"
+    },
+
+    "organizers_analysis": {
+      "issue": "47 vs 49 (-2)",
+      "my_logic": "isVisible: { $ne: false } - same as Express",
+      "hypothesis": "Data difference or environment mismatch"
+    },
+
+    "venues_analysis": {
+      "issue": "66 vs 64 (+2)",
+      "my_logic": "No default isActive filter - same as Express",
+      "hypothesis": "Extra venues in TEST data"
+    },
+
+    "files_modified": [
+      "src/functions/Events.js - Multiple fixes for isActive, dates, recurring",
+      "src/functions/Organizers.js - Minor includeHidden logic fix",
+      "package.json - Version bumps to 1.13.8"
+    ],
+
+    "next_steps": [
+      "1. Try EST-based dates instead of UTC for Events",
+      "2. Investigate Organizers/Venues data differences",
+      "3. Get Ben's recurring vs non-recurring breakdown to compare"
+    ],
+
+    "agents_involved": [
+      "Fulton (me) - AF backend",
+      "Ben - Express backend analysis",
+      "Sarah - Frontend testing and validation",
+      "Gotan - Project oversight"
+    ]
+  },
+  "tags": ["session-summary", "calbeaf-65"],
+  "requestsResponse": false
+}

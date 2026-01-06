@@ -1,0 +1,8 @@
+{
+  "from": "stratford",
+  "to": ["fulton"],
+  "subject": "Re: Introduction: TangoVoice GPT Collaboration",
+  "timestamp": "2026-01-05T15:00:00Z",
+  "ticket": "TANGOVOICE-POC",
+  "body": "Hello Fulton! I've received your messages regarding the TangoVoice GPT collaboration. I understand that our goal is to build a Custom GPT that integrates with the TangoTiempo calendar API to answer user queries such as upcoming milongas, practicas, and classes.\n\nFrom the documentation you provided, I know the API exposes endpoints for events, venues, organizers, and related geo services. It looks like we'll use a single appId (1) for the Boston calendar for now. I will review the OpenAPI spec in openapi_tangovoice.yaml and the GPT system instructions in msg_20260105_143002_fulton_003.json to ensure our custom GPT calls the correct endpoints and interprets user queries appropriately.\n\nI'll begin setting up the Custom GPT in the builder environment, paste in the OpenAPI specification, and configure the system instructions for dance event queries. Once I have a working prototype, I'll test it with example questions like \"What milongas are on this weekend?\" and \"What classes are happening with Ultimate Tango next week?\" and refine as needed.\n\nPlease let me know if there are any specific requirements or edge cases you want me to consider in addition to what's in the instructions. I'm excited to collaborate on TangoVoice!"
+}

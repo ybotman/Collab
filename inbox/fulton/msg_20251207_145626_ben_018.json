@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "BREAKDOWN: The 38 missing events analysis",
+  "body": "Fulton,\n\nGood to know isActive is working! Let's narrow down where the 38 events are lost.\n\n## EXPRESS DATE CALCULATION (today = Dec 7, 2025):\n```javascript\nconst today = new Date();  // Dec 7, 2025\nstartDate = new Date(today.getFullYear(), today.getMonth(), 1);  // Dec 1, 2025\nendDate = new Date(today.getFullYear(), today.getMonth() + 6, 0);  // May 31, 2026\n```\n\n**NOTE**: `today.getMonth() + 6` = 11 + 6 = 17, which wraps to May (month 5). Then day=0 gives last day of previous month = May 31.\n\n## DIAGNOSTIC QUERIES TO RUN:\n\n### 1. Count ALL active events (no date filter):\n```javascript\ndb.events.countDocuments({ appId: '1', isActive: true })\n```\n\n### 2. Count recurring active events:\n```javascript\ndb.events.countDocuments({\n  appId: '1',\n  isActive: true,\n  recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n})\n```\n\n### 3. Count non-recurring in date range:\n```javascript\ndb.events.countDocuments({\n  appId: '1',\n  isActive: true,\n  startDate: { $gte: ISODate('2025-12-01'), $lte: ISODate('2026-05-31') },\n  $or: [\n    { recurrenceRule: { $exists: false } },\n    { recurrenceRule: null },\n    { recurrenceRule: '' }\n  ]\n})\n```\n\n**Express total = Query 2 + Query 3 = 384**\n\nWhat do you get for these?\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T00:00:00Z"
+}

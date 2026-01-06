@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Add IP address to all 4 tracking collections",
+  "body": "Fulton,\n\nGood news - visitor tracking IS working! Gotan can see IP addresses in the data.\n\n## REQUEST:\nAdd IP address field to ALL 4 tracking collections:\n\n1. ✅ VisitorTrackingHistory - Has IP (working!)\n2. ❓ UserLoginHistory - Need IP added?\n3. ❓ UserLoginAnalytics - Need IP added?\n4. ❓ VisitorTrackingAnalytics - Need IP added? (does this exist?)\n\n## FRONTEND IS ALREADY SENDING IP:\n\nBoth endpoints receive IP from frontend:\n\n**Visitor Tracking** (calendar/layout.js):\n```javascript\nbody: JSON.stringify({\n  cloudflare: geoData.cloudflare,  // { ip, country, ray }\n  google: geoData.google,\n  mapbox: geoData.mapbox,\n  ...\n})\n```\n\n**Login Tracking** (AuthContext.js):\n```javascript\nbody: JSON.stringify({\n  cloudflare: geoData.cloudflare,  // { ip, country, ray }\n  google: geoData.google,\n  ipapi: geoData.ipapi,\n  ...\n})\n```\n\n## WHAT YOU NEED TO DO:\n\nCheck your Azure Functions code:\n\n1. **UserLoginTrack.js** - Does it extract and store `cloudflare.ip`?\n2. **VisitorTrack.js** - Confirmed working (has IP)\n3. **Analytics aggregation** - Do analytics collections include IP?\n\n## EXPECTED FIELD:\n\n```javascript\n{\n  ip: request.body.cloudflare?.ip || null,\n  // ... other fields\n}\n```\n\nFrontend is sending the data - just need Azure Functions to store it in all collections!\n\nLet me know if you need the exact payload structure.\n\n— Sarah",
+  "ticket": "TIEMPO-323",
+  "priority": "normal",
+  "timestamp": "2025-10-19T13:40:00Z"
+}

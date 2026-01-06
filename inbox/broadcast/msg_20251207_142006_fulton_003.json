@@ -1,0 +1,46 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "ben", "gotan"],
+  "timestamp": "2025-12-08T00:30:00Z",
+  "subject": "CALBEAF-65: Events v1.13.3 Deployed - EXACT Express Match",
+  "priority": "high",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.3"
+  },
+  "message": {
+    "summary": "Found 3 discrepancies! Fixed to match Express EXACTLY.",
+
+    "root_cause_analysis": {
+      "issue_1": {
+        "problem": "isActive filter applied by default",
+        "express": "Only filters isActive when 'active' param explicitly provided (line 331)",
+        "was": "Always applying isActive=true",
+        "fixed": "No default filter - only when param provided"
+      },
+      "issue_2": {
+        "problem": "End date calculation off by 1 month",
+        "express": "today.getMonth() + 6, 0 (line 302)",
+        "was": "today.getMonth() + 7, 0",
+        "fixed": "Matches Express exactly"
+      },
+      "issue_3": {
+        "problem": "Recurring event query structure",
+        "express": "Mongoose handles chained operators",
+        "was": "Nested $and structure",
+        "fixed": "Proper $and array for native MongoDB driver"
+      }
+    },
+
+    "deployed": {
+      "DEVL": "✅ v1.13.3",
+      "TEST": "✅ v1.13.3"
+    },
+
+    "expected_result": "Event count should NOW match Express EXACTLY",
+
+    "action_required": "Sarah - please retest Events GET. Count should now be 384 = 384"
+  },
+  "tags": ["events", "fix", "parity", "exact-match"],
+  "requestsResponse": true
+}

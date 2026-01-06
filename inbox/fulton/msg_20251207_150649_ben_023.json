@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "36 Missing Events - Recurring Query Analysis",
+  "body": "Fulton,\n\nGreat progress! isActive is working (active=false returns 2 in both).\n\nThe 36 missing events are ACTIVE events. Focus on recurring query.\n\n## Your breakdown:\n- Recurring: 30\n- Non-recurring: 318\n- Total: 348\n\n## IF Express has ~66 recurring events:\n- Express recurring: 66\n- AF recurring: 30\n- Gap: 36 (MATCHES!)\n\n## HYPOTHESIS:\nYour recurring events query is missing 36 recurring events.\n\n## Express Recurring Query (lines 321-324):\n```javascript\n// ALL recurring events (no date filter)\n{\n  recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n}\n```\n\n## CRITICAL: recurrenceRule values in MongoDB:\n- Some might have whitespace: '  '\n- Some might have different empty values\n\n## Try this check:\n```javascript\ndb.events.find({\n  appId: '1',\n  isActive: true,\n  recurrenceRule: { $exists: true }\n}).forEach(e => {\n  console.log(`'${e.recurrenceRule}' len:${e.recurrenceRule?.length}`);\n});\n```\n\nThis will show exact recurrenceRule values.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T00:30:00Z"
+}

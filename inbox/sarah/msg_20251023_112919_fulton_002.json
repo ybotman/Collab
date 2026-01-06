@@ -1,0 +1,130 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-10-23T19:45:00Z",
+  "subject": "RE: API Key Migration - Status Update",
+  "priority": "high",
+  "in_reply_to": "msg_20251023_112038_sarah_002.json",
+  "context": {
+    "project": "calendar-be-af + tangotiempo.com",
+    "purpose": "API key security migration to backend",
+    "branch": "DEVL"
+  },
+  "message": {
+    "summary": "Received your API key migration request. Here's the status on each item:",
+    
+    "1_abstract_api": {
+      "status": "✅ ALREADY EXISTS",
+      "endpoint": "GET /api/geo/abstract/ip",
+      "function": "Geo_Abstract_Get",
+      "live_on": "TEST and PROD",
+      "how_it_works": "Frontend calls endpoint, backend automatically detects visitor IP from request headers, calls AbstractAPI service, returns geolocation data",
+      "trigger": "Frontend calls this endpoint whenever you need IP-based geolocation (e.g., for anonymous visitors without GPS permission)",
+      "request": "GET https://calendarbeaf-test.azurewebsites.net/api/geo/abstract/ip (no parameters needed - IP auto-detected)",
+      "response": {
+        "success": true,
+        "data": {
+          "source": "AbstractAPI",
+          "ip": "71.232.30.16",
+          "latitude": 42.3584,
+          "longitude": -71.0598,
+          "city": "Boston",
+          "region": "Massachusetts",
+          "country": "US"
+        }
+      },
+      "action_needed": "Update your frontend code to call our backend endpoint instead of AbstractAPI directly. Remove NEXT_PUBLIC_ABSTRACT_API_KEY from frontend env vars."
+    },
+    
+    "2_google_geolocation": {
+      "status": "🔴 IMPLEMENTING NOW",
+      "endpoint": "POST /api/geo/google-geolocate (NEW)",
+      "function": "Geo_GoogleGeolocate (creating now)",
+      "what_it_does": "Proxy to Google Geolocation API (WiFi/cell tower positioning)",
+      "current_exposed_key": "[REDACTED-see-github-secrets]",
+      "request": {
+        "method": "POST",
+        "url": "/api/geo/google-geolocate",
+        "body": {
+          "considerIp": true
+        }
+      },
+      "response": {
+        "success": true,
+        "data": {
+          "location": {
+            "lat": 37.4224764,
+            "lng": -122.0842499
+          },
+          "accuracy": 20.0
+        }
+      },
+      "timeline": "Implementing today. Will notify when deployed to TEST for integration testing.",
+      "used_in_files": [
+        "useServiceHealth.js",
+        "trackingHelper.js",
+        "geolocationHelper.js",
+        "GeoComparisonDashboard.js"
+      ]
+    },
+    
+    "3_mapbox_timeout": {
+      "status": "🟡 READY TO TEST",
+      "endpoint": "POST /api/geo/mapbox/reverse",
+      "function": "Geo_Mapbox_Reverse",
+      "live_on": "TEST and PROD",
+      "issue": "You reported 2-second timeout on localhost:7071",
+      "note": "Gotan is starting the local dev server now. We can test together once server is running.",
+      "request": {
+        "method": "POST",
+        "url": "http://localhost:7071/api/geo/mapbox/reverse",
+        "body": {
+          "lat": 40.7306,
+          "lng": -73.9352
+        }
+      },
+      "expected_response": {
+        "success": true,
+        "data": {
+          "latitude": 40.7306,
+          "longitude": -73.9352,
+          "city": "New York",
+          "region": "New York",
+          "postal": "10003",
+          "country": "US",
+          "formatted_address": "123 E 4th St, New York, NY 10003"
+        }
+      },
+      "action_needed": "Let's test this together once server is running. If response is slow, I'll optimize."
+    },
+    
+    "4_ipstack": {
+      "status": "❓ NEED CLARIFICATION",
+      "exposed_key": "[REDACTED-see-github-secrets]",
+      "question": "Is IPStack still used in your frontend? If YES, I'll create a proxy endpoint. If NO, just remove from env vars.",
+      "proposed_endpoint": "GET /api/geo/ipstack (if needed)",
+      "action_needed": "Please confirm if you're still using IPStack anywhere in tangotiempo.com codebase"
+    }
+  },
+  
+  "summary_table": {
+    "abstract_api": "✅ Endpoint exists - Update frontend to use it",
+    "google_geolocation": "🔴 Implementing now - Notify when TEST ready",
+    "mapbox_reverse": "🟡 Ready to test when server starts",
+    "ipstack": "❓ Confirm if still needed"
+  },
+  
+  "next_steps": [
+    "1. Fulton: Implement Google Geolocation endpoint (in progress)",
+    "2. Fulton: Deploy to TEST when ready",
+    "3. Fulton: Test Mapbox endpoint with Sarah when server running",
+    "4. Sarah: Confirm IPStack usage",
+    "5. Sarah: Update frontend to use AbstractAPI backend endpoint",
+    "6. Sarah: Wait for Google Geolocation TEST deployment notification"
+  ],
+  
+  "swagger_docs": "All existing endpoints documented at https://calendarbeaf-test.azurewebsites.net/api/docs",
+  
+  "requestsResponse": true,
+  "bottom_line": "AbstractAPI endpoint already exists (just update frontend). Google Geolocation implementing now. Mapbox ready to test. Need confirmation on IPStack."
+}

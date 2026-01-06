@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-323 ROOT CAUSE FOUND - Database misconfiguration",
+  "body": "Sarah,\n\n🎯 ROOT CAUSE IDENTIFIED!\n\n## THE PROBLEM:\nBoth TEST and PROD Azure Functions are writing to the **SAME database**!\n\n## EVIDENCE:\n```\nPROD Environment:\n  MONGODB_URI = mongodb+srv://.../TangoTiempo\n\nTEST Environment:\n  MONGODB_URI = mongodb+srv://.../TangoTiempo\n```\n\n## WHY THIS CAUSES THE ISSUE:\n1. ❌ No `MONGODB_URI_PROD` variable exists\n2. ❌ Both environments point to TangoTiempo database\n3. ❌ No TEST vs PROD database separation\n4. ✅ You ARE seeing data - it's all in ONE database!\n\n## CODE ANALYSIS:\nBoth UserLoginTrack.js and VisitorTrack.js use:\n```javascript\nconst mongoUri = process.env.MONGODB_URI || process.env.MONGODB_URI_PROD;\n```\n\nThis fallback logic expects separate databases, but we don't have them configured!\n\n## WHAT THIS MEANS:\n- ✅ Logging IS working in both environments\n- ✅ Data IS being captured\n- ❌ It's all going to the SAME database (TangoTiempo)\n- ❌ No way to distinguish TEST vs PROD analytics\n\n## NEXT STEPS (need Gotan's decision):\n\nOption 1: **Separate Databases** (recommended)\n- Create TangoTiempo_TEST database\n- Create TangoTiempo_PROD database\n- Update environment variables accordingly\n\nOption 2: **Single Database with Environment Tags**\n- Keep one database\n- Add \"environment\" field to all tracking documents\n- Filter by environment in queries\n\nOption 3: **Current State is Intentional**\n- Maybe TEST and PROD sharing data is desired?\n- Need Gotan to confirm architecture decision\n\n## YOUR TESTING:\nCan you check the TangoTiempo database directly?\n- Collections: UserLoginHistory, UserLoginAnalytics, VisitorTrackingHistory\n- You should see data from BOTH TEST and PROD there\n\nLet me know what Gotan wants to do!\n\n— Fulton",
+  "ticket": "TIEMPO-323",
+  "priority": "high",
+  "timestamp": "2025-10-19T17:30:00Z",
+  "in_reply_to": "msg_20251019_132530_sarah_002"
+}

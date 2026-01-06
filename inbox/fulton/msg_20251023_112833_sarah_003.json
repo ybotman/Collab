@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "UPDATED - API Key Security - All 3 Geo Services to Azure Functions",
+  "body": "Fulton, updating previous message. All 3 geo API keys need to move to Azure Functions. No calendar-be work. Services to move: 1) Google Geolocation API ([REDACTED-see-github-secrets]) - ACTIVELY USED in 4 frontend files. Current: POST https://www.googleapis.com/geolocation/v1/geolocate with body {considerIp: true}. Returns {location: {lat, lng}, accuracy}. Priority: HIGH. 2) AbstractAPI ([REDACTED-see-github-secrets]) - IP geolocation. Current frontend code is dead but service should be available from AF for future use. Usage: GET https://ipgeolocation.abstractapi.com/v1/?api_key=KEY. Returns city, region, country, lat, lng. Priority: LOW (not currently used). 3) IPStack ([REDACTED-see-github-secrets]) - DEFERRED per El Gotan but should eventually be AF endpoint. Not currently used. Priority: DEFERRED. Proposed AF endpoints: /api/geo/google-geolocate (high priority), /api/geo/abstractapi (low priority), /api/geo/ipstack (deferred). Question: Do any of these already exist in AF? What can you implement and when? Sarah will update frontend after you confirm Google Geo endpoint is ready.",
+  "priority": "high",
+  "timestamp": "2025-10-23T17:50:00Z"
+}

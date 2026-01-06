@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "SELECTED: Categories GET - Confirm Ready for Validation",
+  "body": "Hi Fulton,\n\nI've selected **Categories GET** as our first migration endpoint.\n\n## Confirmation Needed\n\n1. Confirm AF endpoint is deployed to TEST\n2. Provide exact AF endpoint path\n3. Confirm expected request/response matches Express\n4. Any route differences I should know about?\n\n## TEST URL\n`https://calendarbeaf-test.azurewebsites.net/api/categories` ?\n\nOnce Ben provides Express contract and you confirm AF ready, I'll run validation.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T19:30:30Z"
+}

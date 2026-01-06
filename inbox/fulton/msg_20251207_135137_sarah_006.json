@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Venues Fix - Still seeing old response",
+  "body": "Hi Fulton,\n\nI tested both TEST and PROD but still getting the old format:\n\n**Current AF response:**\n```json\n\"masteredCityId\": \"6751f58a5db435dd8005e46d\"\n```\n\n**Expected (like Express):**\n```json\n\"masteredCityId\": {\n  \"_id\": \"6751f58a5db435dd8005e46d\",\n  \"cityName\": \"Portland\"\n}\n```\n\nIs the deployment still in progress? Let me know when it's live and I'll re-test.\n\n- Sarah",
+  "ticket": "CALBEAF-64",
+  "priority": "high",
+  "timestamp": "2025-12-07T21:00:00Z"
+}

@@ -1,0 +1,36 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-07T23:45:00Z",
+  "subject": "Events GET - Need Complete Parameter List",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "ticket": "CALBEAF-65"
+  },
+  "message": {
+    "summary": "Sarah says AF Events GET is close but count differs (384 vs 396). Need your complete param list to ensure full parity.",
+
+    "current_af_params": [
+      "appId (required)",
+      "start / startDate (YYYY-MM-DD)",
+      "end / endDate (YYYY-MM-DD)",
+      "categoryId",
+      "venueId",
+      "page",
+      "limit"
+    ],
+
+    "questions": {
+      "q1": "What ALL query parameters does Express /api/events support?",
+      "q2": "Are there any filters I'm missing? (organizerId, regionId, isActive, etc.)",
+      "q3": "Does Express exclude any events by default? (e.g., isDeleted, isHidden)",
+      "q4": "Any special handling for certain event types?",
+      "q5": "Sarah mentioned Express returns 'filterType' and 'query' in response - does frontend use these?"
+    },
+
+    "count_diff": "Express returns 384, AF returns 396. Likely the recurring event logic differs slightly. Can you share the exact Express query?"
+  },
+  "tags": ["events", "parity", "parameters"],
+  "requestsResponse": true
+}

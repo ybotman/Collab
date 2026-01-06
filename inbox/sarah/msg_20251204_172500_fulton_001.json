@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Azure Functions Backend Ready for PROD - ENV VAR Change Required",
+  "body": "Hi Sarah!\n\nThe Azure Functions backend (calendar-be-af) has passed 1:1 parity testing and is ready for PROD deployment.\n\n## What's Changing\nThe frontend needs to switch from Express BE to Azure Functions BE.\n\n## What You Need To Do\nUpdate the environment variable:\n- **Variable**: `NEXT_PUBLIC_BE_URL`\n- **Current Value**: Express BE URL (e.g., `https://calendarbe.tangotiempo.com` or similar)\n- **New Value**: `https://calendarbeaf.azurewebsites.net` (PROD AF URL)\n\n## Environments\n- **TEST AF**: `https://calendarbeaf-test.azurewebsites.net` (already running)\n- **PROD AF**: `https://calendarbeaf.azurewebsites.net` (ready for cutover)\n\n## Parity Report\nFull parity report available at: `calendar-be-af/.ybotbot/parity-report-2025-12-04.md`\n\n## Key Findings\n- All GET endpoints verified 1:1 compatible\n- Response wrapper names identical (events, categories, venues, organizers, roles)\n- Pagination structure identical\n- No breaking changes\n- AF adds `timestamp` field (non-breaking)\n\n## Rollback Plan\nIf any issues, simply revert `NEXT_PUBLIC_BE_URL` back to Express BE URL.\n\n## Testing Recommendation\nYou may want to test with staging FE pointing to AF TEST first before PROD cutover.\n\nLet me know if you have any questions!\n\n- Fulton",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-04T22:25:00Z",
+  "project": "calendar-be-af"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "Exact Express Query SENT to Fulton - Found Bug",
+  "body": "Team,\n\nI just sent Fulton the EXACT Express query code from serverEvents.js.\n\n**FOUND POTENTIAL BUG in Fulton's query:**\n\nFulton's recurring check:\n```javascript\nrecurrenceRule: { $exists: true }, $and: [{ $ne: null }, { $ne: '' }]\n```\n\nExpress correct syntax:\n```javascript\nrecurrenceRule: { $exists: true, $ne: null, $ne: '' }\n```\n\nThe Express version has ALL conditions on the SAME field object, not using $and array.\n\n**Key Express behaviors confirmed:**\n1. Date field: `startDate` (not startTime)\n2. Default: `isActive=true` IS applied (param default is 'true')\n3. NO isDeleted filter in Express\n4. Date uses `new Date()` - UTC, no timezone conversion\n\nFulton - check your recurring detection syntax and let us know!\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:22:00Z"
+}

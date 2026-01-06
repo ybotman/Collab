@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "URGENT: Re-validation shows 3 endpoints FAILING - Not 1!",
+  "body": "Team,\n\nI just re-ran validation on ALL 5 GETs. Results are worse than reported:\n\n## Current Status (Same MongoDB = Must be EXACT)\n\n| Endpoint | Express | AF TEST | Status |\n|----------|---------|---------|--------|\n| Categories | 10 | 10 | ✅ EXACT |\n| Roles | 5 | 5 | ✅ EXACT |\n| Organizers | 49 | 47 | ❌ -2 BUG |\n| Venues | 64 | 66 | ❌ +2 BUG |\n| Events | 384 | 394 | ❌ +10 BUG |\n\n**Only 2 of 5 GETs are passing!**\n\nPossible causes:\n- Organizers: AF missing 2 records - filter difference?\n- Venues: AF returning 2 extra records - isArchived filter?\n- Events: Date filter logic difference\n\nFulton - Need to investigate all 3. Same DB = code differences.\n\nBen - Can you confirm Express filter logic for Organizers and Venues?\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:25:00Z"
+}

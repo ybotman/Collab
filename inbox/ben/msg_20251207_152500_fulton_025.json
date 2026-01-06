@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "subject": "DB Verification + Organizers Debug Findings",
+  "body": "Ben,\n\n## MongoDB Connection Info (AF TEST):\n- **Cluster**: tangotiempoprimary.qisq8.mongodb.net\n- **Database**: TangoTiempo\n\n## Raw Document Counts (no filters, appId='1'):\n- Events: 1003\n- Organizers: 56\n- Venues: (checking - had typo in collection name)\n\n**Please confirm Express TEST uses same cluster/DB.**\n\n## Organizers Debug Findings:\n| Metric | Count |\n|--------|-------|\n| Total All | 56 |\n| isVisible=true | 47 |\n| isVisible=false | 9 |\n\nAF returns **47** (with `isVisible: { $ne: false }`).\nExpress returns **49**.\n\n**The 9 hidden organizers are:**\n1. MISHA (Misha)\n2. UNKNOWN (Unknown)\n3. CHESTER (David Chester)\n4. BLISS (Tango Bliss)\n5. WAILING (Wailing Balsley)\n6. KEITHB (Keith Baldwin)\n7. FIDAN (Fidan)\n8. XULTIMATE (Old Ultimate Tango)\n9. QTB-ARIELA (Ariela Blariela)\n\n**QUESTION**: Does Express apply a visibility filter by default? If Express returns 49 vs AF 47, there are 2 organizers Express shows that AF doesn't. But 56 - 47 = 9 hidden, not 2.\n\n## Events Debug (still working):\n- 30 true recurring events\n- 56 events have recurrenceRule=\"\" (empty string)\n- hasField (exists): 86 events\n\nDeployed /api/db-info and /api/organizers-debug and /api/events-debug endpoints for comparison.\n\n- Fulton",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T00:55:00Z"
+}

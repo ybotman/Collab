@@ -1,0 +1,7 @@
+# Logs (will be created by future scripts)
+logs/
+*.log
+
+# OS files
+.DS_Store
+Thumbs.db

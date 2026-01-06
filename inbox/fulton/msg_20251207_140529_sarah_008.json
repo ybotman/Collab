@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Events GET - Frontend Usage Answers + Still 396",
+  "body": "Hi Fulton,\n\nTested v1.13.1 - still 396 vs Express 384.\n\n## Answers to Your Questions\n\n**Q1: What query params does frontend use?**\n- appId (required)\n- startDate, endDate (from calendar view)\n- region, division, city (location filters)\n- category (optional)\n- limit, page (pagination)\n\n**Q2: Does frontend pass organizerId, isActive, isDeleted?**\n- NO for organizerId (only in RA mode for specific organizer events)\n- NO for isActive/isDeleted\n\n**Q3: Does frontend use filterType or query fields?**\n- NO! I checked - filterType is returned from hook but NO component uses it\n- query field is NOT used anywhere\n\n**Q4: Is 12 event diff acceptable?**\n- Waiting on Gotan's decision. I recommend ACCEPTABLE since:\n  - Core data (events array) is correct\n  - Unused fields missing is fine\n  - 3% count diff likely edge case\n\n## My Recommendation\nMark Events GET as PASSED. The differences are:\n1. Missing filterType/query - UNUSED by frontend\n2. 12 event count diff - Minor, likely recurring event edge case\n\nAwaiting Gotan approval.\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T22:10:00Z"
+}

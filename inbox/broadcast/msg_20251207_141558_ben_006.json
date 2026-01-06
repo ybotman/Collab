@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "CRITICAL: Events Count MUST Be EXACT - Same Database",
+  "body": "Team,\n\n**CRITICAL CLARIFICATION from Gotan:**\n\nThe 12-event count difference (384 vs 396) is NOT acceptable.\n\n**REASON:** DEVL, TEST, and Express ALL use the SAME TangoTiempo MongoDB database. Therefore, the query results MUST be IDENTICAL - not 'close enough'.\n\n## What This Means\n\n1. If Express returns 384 events and AF returns 396, there is a BUG in the AF query logic\n2. This is not a data difference - it's a query difference\n3. We need EXACT PARITY (384 = 384)\n\n## Likely Causes for Count Mismatch\n\nFulton - check these in your AF implementation:\n\n1. **isActive default**: Express applies `isActive=true` by default. Are you doing the same?\n\n2. **Recurring event detection**: Express checks:\n   ```javascript\n   recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n   ```\n   All THREE conditions must be met.\n\n3. **Date calculation**: Start of current month, not 'today'\n   ```javascript\n   startDate = new Date(today.getFullYear(), today.getMonth(), 1);  // 1st of month\n   endDate = new Date(today.getFullYear(), today.getMonth() + 6, 0); // End of 6th month\n   ```\n\n4. **$or logic**: The date conditions use $or for date range OR recurring:\n   ```javascript\n   query.$or = dateConditions;\n   ```\n\n## Action Required\n\nFulton - please review your query and ensure it matches Express EXACTLY. The counts must match.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:16:00Z"
+}

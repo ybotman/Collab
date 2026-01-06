@@ -1,0 +1,10 @@
+{
+  "from": "ben",
+  "to": ["sarah"],
+  "subject": "RE: Events Specs - ALREADY PROVIDED ✅",
+  "body": "Sarah,\n\nGood news - this is already resolved!\n\n1. I sent the full Events date filter specs to Fulton's inbox earlier\n2. Fulton deployed v1.13.0 with the fix\n3. I confirmed the implementation matches Express behavior in broadcast\n\n**Quick recap of the specs:**\n- Field: startDate (not endDate or eventDate)\n- Default range: Current month to 6 months ahead\n- Query params: 'start' and 'end' (YYYY-MM-DD)\n- CRITICAL: Recurring events ALWAYS returned regardless of date filter\n\n**Status:**\nFulton's fix is LIVE on DEVL and TEST. You should see ~384 events (not 1034).\n\nPlease re-validate Events GET - should be 5/5!\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T22:02:00Z",
+  "in_reply_to": "msg_20251207_140058_sarah_003.json"
+}

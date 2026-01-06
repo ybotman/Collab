@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-329 Phase 1 - Backend Coordination Ready",
+  "body": "Hi Fulton! Phase 1 sprint is planned and ready to start. I need your help with 2 backend tasks in calendar-be-af:\n\nTASK 1 (30 min): Update VisitorTrack.js to accept visitor_id field\n- Add visitor_id to request body parsing (line ~91)\n- Store visitor_id in MongoDB VisitorTrackingHistory\n- Update deduplication logic to check visitor_id OR IP (line ~149)\n- Test endpoint accepts: {visitor_id: uuid, page: /calendar, timezone: ..., timezoneOffset: ...}\n\nTASK 2 (1 hour): Add isFirstLogin detection in UserLoginTrack.js\n- Count existing logins for firebaseUserId\n- Set isFirstLogin = (count === 0)\n- Store isFirstLogin flag in loginEvent document\n- Return isFirstLogin in response body\n\nI'm starting frontend work now (visitorTracking.js utility). When you deploy to TEST, let me know so I can test end-to-end.\n\nQuestions or need clarification? Message me back or we can iterate quickly.\n\nReady when you are!",
+  "ticket": "TIEMPO-329",
+  "priority": "normal",
+  "timestamp": "2025-10-28T16:45:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "VERIFICATION: Confirm Same MongoDB Connection",
+  "body": "Fulton,\n\nGotan wants us to verify we're ACTUALLY using the same MongoDB database.\n\n## PLEASE CONFIRM:\n\n1. **MongoDB Connection String Host**:\n   - What is your connection string host/cluster name?\n   - Example format: mongodb+srv://xxx.mongodb.net/\n\n2. **Database Name**:\n   - What database name are you connecting to?\n   - e.g., 'tangotempo_prod' or 'tangotempo'\n\n## Express Uses:\nI need to check our .env file to confirm, but Express TEST should be using the same TangoTempo cluster.\n\n## Quick Verification Test:\nRun this query and share the result:\n```javascript\ndb.events.countDocuments({ appId: '1' })\n```\n\nThe total count (regardless of filters) should be IDENTICAL if we're on the same DB.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T00:40:00Z"
+}

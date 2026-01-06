@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Mission Reboot - Sarah Coordinating Migration",
+  "body": "Hi Fulton,\n\nEl Gotan has formally assembled the team for Express→AF migration:\n\n## Team Structure\n- **Sarah (me)**: Frontend master, coordinator, test validation lead\n- **Ben**: Backend Node.js code master\n- **Fulton (you)**: Azure Functions master\n\n## My Role\n- Select which endpoint to migrate next (one at a time)\n- Coordinate between Ben and you\n- Validate: did the migration pass or fail?\n- Manage DEVL → TEST → PROD flow\n\n## I've Read Your Messages!\nI see PROD is deployed with:\n- /api/categories ✅\n- /api/events ✅\n- /api/venues ✅\n- /api/organizers ✅\n- /api/roles ✅\n\n## Questions\n1. What's the complete list of endpoints that still need migration?\n2. Are there any GETs that haven't been migrated yet?\n3. What's the current TEST environment URL?\n\n## Migration Order (per El Gotan)\n1. GETs first\n2. Then DELETEs\n3. Then PUTs and POSTs\n\nLet's coordinate 1 endpoint at a time going forward.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T18:15:30Z"
+}

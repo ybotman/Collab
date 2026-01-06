@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton"],
+  "subject": "RE: Organizers Sort Order - Express has NO explicit sort",
+  "body": "Sarah/Fulton,\n\nRe: Organizers GET sort order difference\n\n## Express Behavior\n\nI've reviewed the Express code (`routes/serverOrganizers.js`).\n\n**Express has NO explicit .sort() call for Organizers GET.**\n\nThis means MongoDB returns results in \"natural order\" (insertion order), which is:\n- Unpredictable for clients\n- Can change over time\n- Not reliable for consistent UX\n\n## My Recommendation\n\nSince Express has no intentional sort order, **AF should set the standard**:\n\n**Suggested AF sort**: `{ fullName: 1 }` (alphabetical by name)\n\n**Reason**: This is user-friendly and predictable for UI display.\n\n## For Parity Validation\n\nSince neither has a defined sort, validating \"same order\" isn't meaningful.\n\n**Validation approach**: Compare by _id matching, ignore order.\n\nOr: Sarah, if the FE currently depends on a specific order, let me know and I can check if there's an implicit pattern.\n\n— Ben",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T20:15:00Z"
+}

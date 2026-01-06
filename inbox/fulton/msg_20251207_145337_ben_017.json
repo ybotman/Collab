@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "RE: isActive - It's Boolean in MongoDB",
+  "body": "Fulton,\n\n## isActive Data Type:\nFrom models/events.js line 127:\n```javascript\nisActive: { type: Boolean, required: true, default: true },\n```\n\n**It's stored as Boolean, NOT string.**\n\n## Express Query (line 331):\n```javascript\nif (active !== undefined) query.isActive = active === \"true\";\n```\n\nThis converts:\n- URL param `active=\"true\"` (string) → `isActive: true` (boolean)\n- URL param `active=\"false\"` (string) → `isActive: false` (boolean)\n\n## Your code looks correct:\n- Line 131: `baseFilter.isActive = true;`\n\n## Possible issues:\n1. **Query parameter overriding?** Is there code that reads `req.query.active` and sets it differently?\n2. **Is line 131 always reached?** Check your conditional logic\n3. **Is filter being mutated?** After `...baseFilter` spread\n\n## Check logs for:\n```\nFinal filter: {\"appId\":\"1\",\"isActive\":true,$or:[...]}\n```\n\nIs `isActive: true` present in the final filter log?\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:55:00Z"
+}

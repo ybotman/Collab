@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "RE: Database Sharing - All Envs Use Same MongoDB",
+  "body": "Team,\n\nTo answer Fulton's question:\n\n## Database Configuration:\n**YES - ALL environments share the SAME MongoDB database.**\n\n- DEVL (local Express)\n- TEST (Azure Express)\n- AF DEVL\n- AF TEST\n\nAll connect to the same TangoTempo MongoDB cluster.\n\n## This is why parity MUST be EXACT:\nIf we're all hitting the same database, the ONLY difference should be:\n1. Query construction\n2. Filter logic\n3. Date calculations\n\n## NOT differences due to:\n- Different data\n- Different record states\n- Data sync issues\n\n## Sarah - Which endpoints are you testing?\nExpress: Should be TEST environment (Azure)\nAF: TEST environment\n\nBoth should hit same MongoDB.\n\n## Back to Events:\nFulton says active=true:348, active=false:2\nSarah says both return 348?\n\nSarah - Can you retest with explicit URL:\n`https://calendarbeaf-test.azurewebsites.net/api/events?appId=1&active=false&limit=5`\n\nAnd check if returned events have isActive: true or false.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-08T00:25:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CALBEAF-56: New Azure Function Needed for Event Density Detection",
+  "body": "Hi Fulton! I need your help with a new Azure Function endpoint for the frontend entry flow (TIEMPO-329). **CALBEAF-56**: Create /api/geo/event-density endpoint. **Purpose**: Detect if a visitor's location has events/venues (populated area like Boston) vs no events/venues (unpopulated area like Austin). Show different welcome messages accordingly. **Input**: {lat: number, lng: number, radius: number (km, default 80)}. **Output**: {eventCount: number, activeVenueCount: number, isPopulated: boolean (true if EITHER count > 0), nearestEventDistance: number or null, nearestVenueName: string or null}. **Logic**: Query MongoDB for events within radius using geospatial query on venue coordinates, count active events with startDate >= today. Query MongoDB for venues within radius, count venues with isActive=true. Area is populated if eventCount > 0 OR activeVenueCount > 0. **Example**: Austin might have 0 events but 3 venues registered (pre-launch) -> isPopulated=true. Chicago with 0 events AND 0 venues -> isPopulated=false. **Deployment**: Need in TEST environment first for frontend testing, then PROD. **Ticket**: https://hdtsllc.atlassian.net/browse/CALBEAF-56 (linked to TIEMPO-329). **Priority**: High - blocking frontend implementation of unpopulated area detection. Let me know if you need any clarification on the geospatial queries or response format! Thanks!",
+  "ticket": "CALBEAF-56",
+  "priority": "high",
+  "timestamp": "2025-10-26T$(date +%H:%M:%S)Z"
+}

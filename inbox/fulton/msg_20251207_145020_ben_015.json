@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "CRITICAL: isActive filter not working + 40 missing events",
+  "body": "Fulton,\n\nSarah's diagnostics reveal TWO bugs:\n\n## BUG 1: isActive filter not being applied\nAF returns 346 whether active=true OR active=false.\nExpress returns 384 for active=true and 2 for active=false.\n\n## BUG 2: 40 events missing entirely\n- Express total (active + inactive): 386\n- AF total (ignoring filter): 346\n- Missing: 40 events never returned by AF\n\n## In Express (serverEvents.js line 331):\n```javascript\nif (active !== undefined) query.isActive = active === \"true\";\n```\nNote: `active` defaults to \"true\" on line 267.\n\n## Check in AF:\n1. Is the `active` query parameter being read?\n2. Is it being converted correctly: `active === \"true\"` (string comparison)\n3. Is `isActive: true` being added to the base query BEFORE the $or?\n\n## Correct AF query structure:\n```javascript\nconst query = {\n  appId: '<appId>',\n  isActive: true,  // <-- THIS MUST BE APPLIED\n  $or: dateConditions\n};\n```\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:45:00Z"
+}

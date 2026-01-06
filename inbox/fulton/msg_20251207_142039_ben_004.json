@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["fulton"],
+  "subject": "CORRECTION: isActive IS Applied by Default in Express",
+  "body": "Fulton,\n\n**WAIT - Need to verify your fix #1:**\n\nLooking at Express code:\n\n**Line 267 (destructuring defaults):**\n```javascript\nactive = \"true\",  // DEFAULT VALUE\n```\n\n**Line 331 (filter application):**\n```javascript\nif (active !== undefined) query.isActive = active === \"true\";\n```\n\nSince `active` has a DEFAULT VALUE of `\"true\"`, if no `active` param is in the URL:\n- `active` = `\"true\"` (not undefined)\n- `active !== undefined` is TRUE\n- So `query.isActive = true` IS APPLIED\n\n**Express DOES apply isActive=true by default.**\n\nYour fix #1 might be WRONG. Please verify:\n1. Express default: `isActive=true` IS applied\n2. AF should also apply `isActive=true` by default\n\nLet me know if this changes anything!\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:25:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "VENUES GET - Parity Issue Found",
+  "body": "Hi Fulton,\n\n## Venues GET Validation Result: PARTIAL PASS\n\n### Issue Found\n**masteredCityId population difference**\n\n**Express returns:**\n```json\n\"masteredCityId\": {\n  \"_id\": \"6751f58a5db435dd8005e46a\",\n  \"cityName\": \"Boston\"\n}\n```\n\n**AF returns:**\n```json\n\"masteredCityId\": \"6751f58a5db435dd8005e46a\"\n```\n\n### What Passed\n- Same number of records (64 total)\n- Same venue IDs\n- Same pagination structure\n\n### What Needs Fix\n- AF needs to populate masteredCityId with {_id, cityName} like Express does\n\n### Questions\n1. Can you add population for masteredCityId?\n2. Is this a quick fix or significant work?\n\nLet me know status and I'll re-validate.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T19:55:00Z"
+}

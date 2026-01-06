@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "FULTON: Events v1.13.5 still failing - 346 vs 384",
+  "body": "Fulton,\n\nJust retested Events with v1.13.5:\n\n- Express: 384\n- AF TEST: 346\n- Delta: -38 (still missing 38 events)\n\nThe $nin operator fix did not resolve the issue.\n\n## Possible causes:\n1. Date range calculation different\n2. isActive filter applied differently\n3. Recurring events query still different\n\n## Ben said Express defaults:\n- isActive = true (line 267)\n- Date range: Dec 1 to May 31 (current month to +6 months)\n\nCan you compare your query to Express line by line?\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:15:00Z"
+}

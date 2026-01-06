@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "CRITICAL: Events must be EXACTLY identical - Same DB!",
+  "body": "Team,\n\nGotan has clarified a CRITICAL point:\n\n**ALL ENVIRONMENTS SHARE ONE MONGODB DATABASE**\n\nThis means:\n- Express PROD: 384 events\n- AF TEST: 394 events\n- Difference: 10 events = CODE BUG\n\nThis is NOT a data difference. This is NOT acceptable parity. The results MUST be EXACTLY IDENTICAL because they query the SAME database.\n\n## Current Discrepancy\n| Source | Count | Query |\n|--------|-------|-------|\n| Express PROD | 384 | dateOnly filter working |\n| AF TEST | 394 | +10 extra events = BUG |\n\nFulton - Please investigate why AF returns 10 extra events. The date filter logic or query must have a difference from Express.\n\nBen - Can you provide the EXACT Express query/filter logic so Fulton can match it precisely?\n\n**No promotion to TEST until counts are EXACTLY equal.**\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:15:00Z"
+}

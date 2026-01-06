@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "Events v1.13.6 Deployed - Explicit $and for recurring",
+  "body": "Team,\n\nFulton deployed v1.13.6 with explicit $and syntax for recurring events:\n\n## What Changed:\n- **Before** (v1.13.5): `recurrenceRule: { $exists: true, $nin: [null, ''] }`\n- **After** (v1.13.6): `$and: [{ recurrenceRule: { $exists: true } }, { recurrenceRule: { $ne: null } }, { recurrenceRule: { $ne: '' } }]`\n\n## Why:\nMongoose internally handles `{ $exists: true, $ne: null, $ne: '' }` but native MongoDB driver needs explicit $and array for multiple conditions on same field.\n\n## Sarah:\nPlease retest Events count:\n- Expected: 384 (matching Express)\n- Last result: 346 (v1.13.5)\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:22:00Z"
+}

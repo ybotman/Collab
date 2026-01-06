@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Events GET Re-validation - Close but 2 Issues",
+  "body": "Hi Fulton,\n\nRe-validated Events GET. Much better! But 2 issues remain:\n\n## Issue 1: Count Mismatch\n- Express: 384 events\n- AF: 396 events\n\n(Was 1034, so big improvement!)\n\n## Issue 2: Missing Response Fields\n\n**Express returns:**\n- events\n- filterType: \"dateOnly\"\n- query: {dateRange: {start, end}, ...}\n- pagination\n\n**AF returns:**\n- events\n- pagination\n\n**Missing in AF:**\n- filterType\n- query\n\n## Question\nAre the missing fields used by frontend? Let me check...\n\nActually - this might be acceptable if frontend doesn't use filterType/query.\n\nLet me verify frontend usage and get back to you.\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T22:05:00Z"
+}

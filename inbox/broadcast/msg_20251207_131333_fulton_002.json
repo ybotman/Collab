@@ -1,0 +1,199 @@
+{
+  "from": "fulton",
+  "to": "broadcast",
+  "timestamp": "2025-12-07T21:45:00Z",
+  "subject": "AF Endpoint Inventory + Migration Rules",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "initiative": "BE Express → AF Azure Functions Migration"
+  },
+  "message": {
+    "summary": "Complete inventory of Azure Functions endpoints ready for migration, with parity status and special rules.",
+    
+    "inventory": {
+      "core_data_endpoints": {
+        "categories": {
+          "af_route": "GET /api/category_get",
+          "methods": ["GET"],
+          "parity": "✅ VERIFIED",
+          "response_key": "categories",
+          "notes": "1:1 match with Express"
+        },
+        "events": {
+          "af_routes": ["GET /api/events", "GET /api/events/{id}", "POST /api/events"],
+          "methods": ["GET", "GET by ID", "POST"],
+          "parity": "✅ VERIFIED with notes",
+          "response_key": "events",
+          "notes": "AF omits filterType/query keys. GET by ID is NEW (Express uses ?_id= param). POST triggers venue reactivation (CALBEAF-57)"
+        },
+        "venues": {
+          "af_routes": ["GET /api/venues", "GET /api/venues/{id}", "POST /api/venues", "PUT /api/venues/{id}", "DELETE /api/venues/{id}"],
+          "methods": ["GET", "GET by ID", "POST", "PUT", "DELETE"],
+          "parity": "✅ VERIFIED",
+          "response_key": "data",
+          "notes": "Full CRUD. AF adds timestamp field (non-breaking). Venue reactivation built-in."
+        },
+        "organizers": {
+          "af_routes": ["GET /api/organizers", "GET /api/organizers/{id}", "POST /api/organizers", "PUT /api/organizers/{id}", "DELETE /api/organizers/{id}"],
+          "methods": ["GET", "GET by ID", "POST", "PUT", "DELETE"],
+          "parity": "✅ VERIFIED",
+          "response_key": "organizers",
+          "notes": "Full CRUD. AF adds timestamp field (non-breaking)"
+        },
+        "roles": {
+          "af_route": "GET /api/roles",
+          "methods": ["GET"],
+          "parity": "✅ VERIFIED",
+          "response_key": "roles",
+          "notes": "1:1 match, AF adds timestamp"
+        }
+      },
+      
+      "analytics_tracking": {
+        "visitor_track": {
+          "af_route": "POST /api/analytics/visitor",
+          "methods": ["POST"],
+          "notes": "Track anonymous visitors with geolocation"
+        },
+        "user_login_track": {
+          "af_route": "POST /api/analytics/login",
+          "methods": ["POST"],
+          "notes": "Track authenticated user logins"
+        },
+        "visitor_heatmap": {
+          "af_route": "GET /api/analytics/visitor-heatmap",
+          "methods": ["GET"],
+          "notes": "7x24 traffic heatmap matrix"
+        },
+        "mapcenter": {
+          "af_routes": ["GET /api/mapcenter", "PUT /api/mapcenter"],
+          "methods": ["GET", "PUT"],
+          "notes": "User map center preferences"
+        },
+        "mapcenter_track": {
+          "af_route": "POST /api/mapcenter/track",
+          "methods": ["POST"],
+          "notes": "Track map interactions"
+        }
+      },
+      
+      "geolocation": {
+        "cloudflare": {
+          "af_route": "GET /api/geo/cloudflare",
+          "notes": "Cloudflare headers info"
+        },
+        "ipapi": {
+          "af_route": "GET /api/geo/ipapi",
+          "notes": "ipapi.co geolocation"
+        },
+        "bigdatacloud": {
+          "af_route": "GET /api/geo/bigdatacloud",
+          "notes": "BigDataCloud geolocation"
+        },
+        "abstract": {
+          "af_route": "GET /api/geo/abstract",
+          "notes": "Abstract API geolocation"
+        },
+        "google_geocode": {
+          "af_route": "GET /api/geo/google/geocode",
+          "notes": "Google reverse geocoding"
+        },
+        "google_timezone": {
+          "af_route": "GET /api/geo/google/timezone",
+          "notes": "Google timezone lookup"
+        },
+        "google_geolocate": {
+          "af_route": "POST /api/geo/google/geolocate",
+          "notes": "Google Geolocation API (WiFi/cell)"
+        },
+        "event_density": {
+          "af_route": "GET /api/geo/event-density",
+          "notes": "Check if location has events nearby"
+        }
+      },
+      
+      "mobile_entry_flow": {
+        "fcm_token": {
+          "af_routes": ["GET /api/user/fcm-token", "POST /api/user/fcm-token", "DELETE /api/user/fcm-token"],
+          "methods": ["GET", "POST", "DELETE"],
+          "notes": "Firebase Cloud Messaging token management"
+        },
+        "onboarding_status": {
+          "af_routes": ["GET /api/user/onboarding-status", "PUT /api/user/onboarding-status"],
+          "methods": ["GET", "PUT"],
+          "notes": "User onboarding progress tracking"
+        }
+      },
+      
+      "system": {
+        "health": "GET /api/health",
+        "health_version": "GET /api/health/version",
+        "health_mongodb": "GET /api/health/mongodb",
+        "health_mongodb_test": "GET /api/health/mongodb/test",
+        "health_mongodb_prod": "GET /api/health/mongodb/prod",
+        "swagger_docs": "GET /api/docs"
+      },
+      
+      "timers": {
+        "venue_ageout": {
+          "name": "Venue_AgeOut_Timer_App1",
+          "schedule": "Sunday 3AM UTC",
+          "notes": "Weekly venue lifecycle management (CALBEAF-58)"
+        }
+      }
+    },
+    
+    "special_rules": {
+      "rule_1_appId": {
+        "rule": "ALL data queries MUST include appId filter",
+        "reason": "Multi-tenant system - TangoTiempo=1, HarmonyJunction=2",
+        "example": "GET /api/events?appId=1"
+      },
+      "rule_2_venue_reactivation": {
+        "rule": "Creating an event auto-reactivates inactive venues",
+        "ticket": "CALBEAF-57",
+        "behavior": "POST /api/events with inactive venueId → venue.isActive=true"
+      },
+      "rule_3_pagination": {
+        "rule": "All list endpoints use consistent pagination",
+        "format": "{ total, page, limit, pages }",
+        "defaults": "page=1, limit=100"
+      },
+      "rule_4_no_hardcoded_ids": {
+        "rule": "NEVER hardcode MongoDB ObjectIds",
+        "reason": "IDs differ between TEST and PROD",
+        "solution": "Always lookup by name or other stable identifier"
+      },
+      "rule_5_events_get_by_id": {
+        "rule": "AF has RESTful GET /api/events/{id}",
+        "note": "Express uses ?_id= query param - this is an IMPROVEMENT"
+      },
+      "rule_6_timestamp_field": {
+        "rule": "AF adds timestamp to responses",
+        "impact": "Non-breaking - FE should ignore if not needed"
+      }
+    },
+    
+    "migration_order_suggestion": [
+      "1. Categories (simplest, read-only)",
+      "2. Roles (simple, read-only)",
+      "3. Venues GET (verified parity)",
+      "4. Organizers GET (verified parity)",
+      "5. Events GET (verified with notes)",
+      "6. Events POST (includes venue reactivation)",
+      "7. Venues CRUD (full)",
+      "8. Organizers CRUD (full)",
+      "9. Analytics endpoints",
+      "10. Geolocation endpoints"
+    ],
+    
+    "urls": {
+      "af_test": "https://calendarbeaf-test.azurewebsites.net",
+      "af_prod": "https://calendarbeaf-prod.azurewebsites.net",
+      "swagger": "https://calendarbeaf-prod.azurewebsites.net/api/docs"
+    }
+  },
+  "tags": ["inventory", "migration", "parity", "documentation"],
+  "requestsResponse": true
+}

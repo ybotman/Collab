@@ -1,0 +1,341 @@
+openapi: 3.1.0
+info:
+  title: TangoVoice - Dance Event Calendar API
+  description: API for querying tango and dance events, venues, and organizers
+  version: 1.0.0
+servers:
+  - url: https://calendar-be-af.azurewebsites.net/api
+    description: Production Azure Functions API
+
+paths:
+  /events:
+    get:
+      operationId: getEvents
+      summary: Search and list dance events
+      description: Returns a list of dance events filtered by date range, category, venue, organizer, or location. Use this to answer questions like "What milongas are happening this week?" or "Is Tango Spark tonight?"
+      parameters:
+        - name: startDate
+          in: query
+          description: Filter events starting from this date (ISO 8601 format, e.g., 2026-01-05)
+          schema:
+            type: string
+            format: date
+        - name: endDate
+          in: query
+          description: Filter events ending before this date (ISO 8601 format)
+          schema:
+            type: string
+            format: date
+        - name: categoryId
+          in: query
+          description: Filter by event category ID
+          schema:
+            type: string
+        - name: venueId
+          in: query
+          description: Filter by venue ID
+          schema:
+            type: string
+        - name: organizerId
+          in: query
+          description: Filter by organizer ID
+          schema:
+            type: string
+        - name: masteredRegionId
+          in: query
+          description: Filter by region ID (e.g., Northeast US)
+          schema:
+            type: string
+        - name: masteredCityId
+          in: query
+          description: Filter by city ID (e.g., Boston)
+          schema:
+            type: string
+        - name: search
+          in: query
+          description: Text search in event title and description
+          schema:
+            type: string
+        - name: isActive
+          in: query
+          description: Filter by active status
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: List of events matching the criteria
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Event'
+
+  /events/{eventId}:
+    get:
+      operationId: getEventById
+      summary: Get a single event by ID
+      description: Returns detailed information about a specific event
+      parameters:
+        - name: eventId
+          in: path
+          required: true
+          description: The unique event ID
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Event details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Event'
+        '404':
+          description: Event not found
+
+  /venues:
+    get:
+      operationId: getVenues
+      summary: List all venues
+      description: Returns a list of dance venues with location information
+      parameters:
+        - name: masteredCityId
+          in: query
+          description: Filter by city
+          schema:
+            type: string
+        - name: masteredRegionId
+          in: query
+          description: Filter by region
+          schema:
+            type: string
+        - name: isActive
+          in: query
+          description: Filter by active status
+          schema:
+            type: boolean
+            default: true
+      responses:
+        '200':
+          description: List of venues
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Venue'
+
+  /venues/{id}:
+    get:
+      operationId: getVenueById
+      summary: Get a single venue by ID
+      description: Returns detailed venue information including address and timezone
+      parameters:
+        - name: id
+          in: path
+          required: true
+          schema:
+            type: string
+      responses:
+        '200':
+          description: Venue details
+          content:
+            application/json:
+              schema:
+                $ref: '#/components/schemas/Venue'
+
+  /organizers:
+    get:
+      operationId: getOrganizers
+      summary: List all organizers
+      description: Returns a list of event organizers (teachers, DJs, event hosts)
+      parameters:
+        - name: masteredRegionId
+          in: query
+          description: Filter by region
+          schema:
+            type: string
+        - name: masteredCityId
+          in: query
+          description: Filter by city
+          schema:
+            type: string
+      responses:
+        '200':
+          description: List of organizers
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Organizer'
+
+  /categories:
+    get:
+      operationId: getCategories
+      summary: List all event categories
+      description: Returns all event categories (Milonga, Practica, Class, Workshop, Festival, etc.)
+      responses:
+        '200':
+          description: List of categories
+          content:
+            application/json:
+              schema:
+                type: array
+                items:
+                  $ref: '#/components/schemas/Category'
+
+  /geo/reverse:
+    get:
+      operationId: reverseGeocode
+      summary: Reverse geocode coordinates
+      description: Convert latitude/longitude to address information
+      parameters:
+        - name: lat
+          in: query
+          required: true
+          description: Latitude
+          schema:
+            type: number
+        - name: lng
+          in: query
+          required: true
+          description: Longitude
+          schema:
+            type: number
+      responses:
+        '200':
+          description: Address information
+          content:
+            application/json:
+              schema:
+                type: object
+
+components:
+  schemas:
+    Event:
+      type: object
+      properties:
+        _id:
+          type: string
+          description: Unique event ID
+        title:
+          type: string
+          description: Event name (e.g., "Tango Spark", "Friday Night Milonga")
+        description:
+          type: string
+          description: Event description
+        startTime:
+          type: string
+          format: date-time
+          description: Event start time (ISO 8601)
+        endTime:
+          type: string
+          format: date-time
+          description: Event end time (ISO 8601)
+        venueId:
+          type: string
+          description: ID of the venue
+        venueName:
+          type: string
+          description: Name of the venue
+        venueAddress:
+          type: string
+          description: Full address of the venue
+        venueTZ:
+          type: string
+          description: Venue timezone (e.g., "America/New_York")
+        venueStartDisplay:
+          type: string
+          description: Start time formatted in venue's local timezone
+        venueEndDisplay:
+          type: string
+          description: End time formatted in venue's local timezone
+        categoryId:
+          type: string
+          description: Category ID
+        categoryName:
+          type: string
+          description: Category name (Milonga, Practica, Class, etc.)
+        organizerId:
+          type: string
+          description: Organizer ID
+        organizerName:
+          type: string
+          description: Organizer name
+        isCanceled:
+          type: boolean
+          description: Whether the event is canceled
+        isActive:
+          type: boolean
+          description: Whether the event is active
+        isFeatured:
+          type: boolean
+          description: Whether the event is featured
+        isRepeating:
+          type: boolean
+          description: Whether this is a recurring event
+        recurrenceRule:
+          type: string
+          description: RRULE for recurring events (RFC 5545)
+        masteredRegionName:
+          type: string
+          description: Region name (e.g., "Northeast US")
+        masteredCityName:
+          type: string
+          description: City name (e.g., "Boston")
+
+    Venue:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+          description: Venue name
+        address:
+          type: string
+        city:
+          type: string
+        state:
+          type: string
+        country:
+          type: string
+        latitude:
+          type: number
+        longitude:
+          type: number
+        timezone:
+          type: string
+          description: IANA timezone (e.g., "America/New_York")
+        isActive:
+          type: boolean
+
+    Organizer:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+          description: Organizer name
+        shortName:
+          type: string
+        email:
+          type: string
+        phone:
+          type: string
+        website:
+          type: string
+
+    Category:
+      type: object
+      properties:
+        _id:
+          type: string
+        name:
+          type: string
+          description: Category name (Milonga, Practica, Class, Workshop, Festival)
+        description:
+          type: string

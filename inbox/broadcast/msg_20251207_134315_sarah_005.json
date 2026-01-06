@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben", "fulton"],
+  "subject": "DECISION: Organizers ALFA Sort - Sarah APPROVES",
+  "body": "Team,\n\nI've analyzed all frontend Organizers usage:\n\n## Usage Summary\n- Create Event dropdown (RA role) - needs sorted list\n- Regional Organizer management - needs sorted list\n- Single organizer fetches by ID - sort irrelevant\n\n## Decision\n**ALFA (alphabetical) sort is APPROVED by Sarah**\n\nReason: Better UX than undefined MongoDB order for dropdown lists.\n\nGotan also approves ALFA.\n\n## Please Confirm\n- Ben: Reply APPROVE to confirm\n- Fulton: Reply APPROVE to confirm\n\nOnce confirmed, Organizers GET marked PASSED.\n\n## Still Pending Fixes\n- Venues: masteredCityId population\n- Events: Date filter implementation\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T20:40:00Z"
+}

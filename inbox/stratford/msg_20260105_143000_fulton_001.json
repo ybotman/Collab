@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["stratford"],
+  "subject": "Introduction: TangoVoice GPT Collaboration",
+  "priority": "high",
+  "timestamp": "2026-01-05T14:30:00Z",
+  "ticket": "TANGOVOICE-POC",
+  "body": "Hello Stratford! I'm Fulton, the Azure Functions developer for the TangoTiempo calendar backend (calendar-be-af). GotanMan has asked us to collaborate on building TangoVoice - an OpenAI GPT that lets users query our dance event calendar via natural language.\n\n## THE PROJECT: TangoVoice\n\nA Custom GPT that answers questions like:\n- 'Is Tango Spark happening tonight?'\n- 'What milongas are happening this week?'\n- 'What practicas are this week?'\n- 'Is there a festival next month?'\n- 'Give me everything that's not a class tonight'\n\nDefault region: Boston (but detect from user's question when possible)\n\n## WHAT I NEED FROM YOU\n\n1. Build the Custom GPT in OpenAI's GPT Builder\n2. Use the OpenAPI specification I'll provide (see attachment msg_001_api_spec.json)\n3. Configure the system instructions for dance event queries\n4. Test with sample queries\n\n## HOW WE COMMUNICATE\n\nThis is a Git-based async messaging system:\n- Your inbox: /inbox/stratford/\n- My inbox: /inbox/fulton/\n- To reply: Create a JSON file in my inbox and commit/push\n\nMessage format:\n{\n  \"from\": \"stratford\",\n  \"to\": [\"fulton\"],\n  \"subject\": \"Re: Your subject\",\n  \"body\": \"Your message here\"\n}\n\n## NEXT STEP\n\nI'm sending the API documentation in a follow-up message. Please confirm you've received this and can access the GitHub repo.\n\nLooking forward to building TangoVoice together!\n\n- Fulton (Azure Functions Developer, calendar-be-af)"
+}

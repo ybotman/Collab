@@ -1,0 +1,192 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-10-23T19:30:00Z",
+  "subject": "Backend API Endpoint Inventory - Planning Frontend to Backend Migration",
+  "priority": "normal",
+  "context": {
+    "project": "calendar-be-af + tangotiempo.com",
+    "purpose": "Planning to move frontend direct API calls to backend proxy endpoints",
+    "branch": "DEVL",
+    "initiated_by": "Gotan (El Gotan)"
+  },
+  "message": {
+    "summary": "Gotan wants to move some of your frontend direct API calls (Google, Mapbox, etc.) to backend proxy endpoints for better security and rate limiting. Here's what we currently have in calendar-be-af backend. Please review and send me a list of what you'd like us to add/migrate.",
+    
+    "why_backend_is_better": [
+      "API keys hidden on server (not exposed in frontend code)",
+      "Better rate limiting and quota control",
+      "Consistent error handling and logging",
+      "Cost tracking and monitoring",
+      "Can add caching layer if needed"
+    ],
+    
+    "current_backend_endpoints": {
+      
+      "geolocation_services": {
+        "google_geocoding": [
+          {
+            "endpoint": "GET /api/geo/reverse",
+            "function": "Geo_Reverse",
+            "purpose": "Reverse geocoding (lat/lng → address)",
+            "api_key": "GOOGLE_API_KEY (backend)",
+            "status": "✅ Live on TEST and PROD",
+            "example": "GET /api/geo/reverse?lat=40.7306&lng=-73.9352",
+            "returns": "Full address from coordinates"
+          },
+          {
+            "endpoint": "GET /api/geo/geocode",
+            "function": "Geo_Geocode",
+            "purpose": "Forward geocoding (address → lat/lng)",
+            "api_key": "GOOGLE_API_KEY (backend)",
+            "status": "✅ Live on TEST and PROD",
+            "example": "GET /api/geo/geocode?address=1600+Amphitheatre+Parkway,+Mountain+View,+CA",
+            "returns": "Coordinates from address"
+          },
+          {
+            "endpoint": "GET /api/geo/timezone",
+            "function": "Geo_Timezone",
+            "purpose": "Get timezone from lat/lng",
+            "api_key": "GOOGLE_API_KEY (backend)",
+            "status": "✅ Live on TEST and PROD",
+            "example": "GET /api/geo/timezone?lat=40.7306&lng=-73.9352",
+            "returns": "Timezone info (e.g., America/New_York)"
+          }
+        ],
+        
+        "mapbox": [
+          {
+            "endpoint": "POST /api/geo/mapbox/reverse",
+            "function": "Geo_Mapbox_Reverse",
+            "purpose": "Mapbox reverse geocoding (lat/lng → address)",
+            "api_key": "MAPBOX_ACCESS_TOKEN (server-side key)",
+            "status": "✅ Live on TEST and PROD",
+            "body": "{ \"lat\": 40.7306, \"lng\": -73.9352 }",
+            "returns": "Mapbox formatted address"
+          }
+        ],
+        
+        "ip_based_geolocation": [
+          {
+            "endpoint": "GET /api/geo/ipapico/ip",
+            "function": "Geo_IpapiCo_Get",
+            "purpose": "Get location from visitor IP (ipapi.co)",
+            "api_key": "None (free service)",
+            "status": "⚠️ Rate limited - use alternatives",
+            "note": "Free service, hits rate limits easily"
+          },
+          {
+            "endpoint": "GET /api/geo/bigdatacloud/ip",
+            "function": "Geo_BigDataCloud_Get",
+            "purpose": "Get location from visitor IP (BigDataCloud)",
+            "api_key": "None (free service)",
+            "status": "✅ Live - better rate limits than ipapi.co"
+          },
+          {
+            "endpoint": "GET /api/geo/abstract/ip",
+            "function": "Geo_Abstract_Get",
+            "purpose": "Get location from visitor IP (Abstract API)",
+            "api_key": "None (free service)",
+            "status": "✅ Live - alternative to ipapi.co"
+          }
+        ]
+      },
+      
+      "analytics_tracking": [
+        {
+          "endpoint": "POST /api/user/login-track",
+          "function": "UserLoginTrack",
+          "purpose": "Track user logins with geolocation",
+          "auth": "Firebase Bearer token",
+          "status": "✅ Live on TEST and PROD",
+          "features": "3-tier geolocation fallback (browser GPS → Google API → IP)"
+        },
+        {
+          "endpoint": "POST /api/visitor/track",
+          "function": "VisitorTrack",
+          "purpose": "Track anonymous visitors with geolocation",
+          "auth": "None (anonymous)",
+          "status": "✅ Live on TEST and PROD",
+          "features": "3-tier geolocation fallback"
+        },
+        {
+          "endpoint": "POST /api/user/mapcenter-track",
+          "function": "MapCenterTrack",
+          "purpose": "Track when users reset map center",
+          "auth": "Optional (works for both logged-in and anonymous)",
+          "status": "✅ Live on TEST and PROD"
+        },
+        {
+          "endpoint": "GET /api/analytics/visitor-heatmap",
+          "function": "Analytics_VisitorHeatmap",
+          "purpose": "Get traffic heatmap (day of week x hour of day)",
+          "auth": "None",
+          "status": "✅ Live on TEST and PROD",
+          "returns": "7x24 matrix with peak times"
+        }
+      ],
+      
+      "core_api": [
+        {
+          "endpoint": "GET /api/categories",
+          "note": "Category management"
+        },
+        {
+          "endpoint": "GET /api/events",
+          "note": "Event listings"
+        },
+        {
+          "endpoint": "GET /api/venues",
+          "note": "Venue listings"
+        },
+        {
+          "endpoint": "GET /api/mapcenter",
+          "note": "Get/update user map center preferences"
+        }
+      ]
+    },
+    
+    "what_we_need_from_you": {
+      "questions": [
+        "What Google Maps/Geocoding API calls are you making directly from frontend?",
+        "What Mapbox API calls are you making from frontend? (Map display is OK, but geocoding should move to backend)",
+        "Are you using any other external APIs directly? (Places, Directions, etc.)",
+        "What geolocation features do you need that we don't have yet?",
+        "Any performance issues with current endpoints we should know about?"
+      ],
+      
+      "please_send_list": "Send me a list of API calls you want moved to backend. For each, please include:",
+      "format": {
+        "api_name": "Google Places API",
+        "current_frontend_usage": "Searching for nearby tango venues",
+        "why_move_to_backend": "Hide API key, add caching",
+        "priority": "high/medium/low",
+        "example_request": "What parameters you're currently using"
+      }
+    },
+    
+    "important_notes": {
+      "mapbox_keys": "We have 2 types of Mapbox keys: server-side (no restrictions) and domain-restricted (tangotiempo.com only). Map display uses domain-restricted key (stays in frontend). Geocoding uses server-side key (backend only).",
+      "google_key": "We have ONE Google API key shared between TEST and DEV for backend use",
+      "3tier_geolocation": "We already have 3-tier geolocation fallback: Browser GPS → Google Geocoding → IP-based. You're using this in login/visitor tracking.",
+      "cors": "All endpoints support OPTIONS for CORS preflight"
+    },
+    
+    "next_steps": [
+      "1. Review this list of what we have",
+      "2. Send me list of what API calls you want moved from frontend to backend",
+      "3. I'll implement new backend proxy endpoints as needed",
+      "4. You update frontend to call backend instead of APIs directly",
+      "5. We test together in DEV/TEST before PROD deployment"
+    ]
+  },
+  
+  "swagger_docs": {
+    "test": "https://calendarbeaf-test.azurewebsites.net/api/docs",
+    "prod": "https://calendarbeaf-prod.azurewebsites.net/api/docs",
+    "note": "All current endpoints documented in Swagger with examples"
+  },
+  
+  "requestsResponse": true,
+  "bottom_line": "Gotan wants to improve security by moving your direct API calls to backend proxy endpoints. Here's what we have now. Please review and send me a list of what you'd like us to add or migrate. Then we'll collaborate on implementation."
+}

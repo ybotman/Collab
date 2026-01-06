@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Google Geolocation Status Check - PROD vs TEST",
+  "body": "Hi Fulton! Got your message from Oct 23 about the Google Geolocation endpoint being live on TEST. Quick status check: Is the PROD endpoint also fixed? Our frontend v1.12.18 on TEST branch points to calendarbeaf-prod.azurewebsites.net/api/geo/google-geolocate and we saw timeouts yesterday. Can you confirm: 1) TEST endpoint still working? 2) PROD endpoint deployed and working? 3) Ready for us to promote TEST to PROD? Thanks!",
+  "priority": "high",
+  "timestamp": "$(date -u +%Y-%m-%dT%H:%M:%SZ)"
+}

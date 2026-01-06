@@ -1,0 +1,177 @@
+{
+  "from": "ybot",
+  "to": ["fulton"],
+  "subject": "New Azure Function Required: User Filter Preferences (Save/Retrieve) - DEV BRANCH",
+  "priority": "normal",
+  "ticket": "TIEMPO-328",
+  "context": {
+    "project": "calendar-be-af",
+    "frontend_project": "tangotiempo.com",
+    "feature": "Save Filter Settings",
+    "branch": "DEVL",
+    "environment": "DEVELOPMENT - Not related to current TEST v1.12.14"
+  },
+  "message": {
+    "summary": "El Gotan requested new feature for DEV branch: users can save their category filter preferences. Need 2 Azure Functions to support this - save and retrieve filter state from MongoDB user collection.",
+    
+    "IMPORTANT": "🔶 THIS IS DEV/DEVL BRANCH WORK - Not blocking or related to current CALBEAF-53 TEST deployment testing 🔶",
+    
+    "related_tiempo_tickets": {
+      "TIEMPO-327": "Two-stage toggle behavior for category filters (separate but related UX improvement)",
+      "TIEMPO-328": "Save Filter Settings button - Phase 1 UI placeholder (THIS ticket drives your CALBEAF work)"
+    },
+    
+    "feature_context": {
+      "what": "Save/Load user category filter preferences (7 category toggles: Milonga, Practica, Class, Encuentro, Performance, Festival, Workshop)",
+      "where": "Calendar view and event forms",
+      "why": "Users want filter settings to persist across sessions and devices",
+      "frontend_ticket": "TIEMPO-328 (Save Settings button UI placeholder)",
+      "branch": "Work starts in DEVL, eventual promotion to TEST → PROD"
+    },
+    
+    "azure_functions_needed": {
+      "function_1": {
+        "name": "SaveUserFilterPreferences",
+        "endpoint": "POST /api/user/save-filter-preferences",
+        "description": "Save authenticated user's current filter state to MongoDB",
+        "request_body": {
+          "userId": "firebase-uid (from auth token)",
+          "filterPreferences": {
+            "categories": {
+              "Milonga": true,
+              "Practica": true,
+              "Class": false,
+              "Encuentro": true,
+              "Performance": false,
+              "Festival": true,
+              "Workshop": false
+            }
+          }
+        },
+        "response": {
+          "success": true,
+          "message": "Filter preferences saved",
+          "savedAt": "2025-10-22T14:30:00Z"
+        },
+        "requirements": [
+          "Firebase auth required",
+          "Validate userId matches auth token",
+          "Upsert to UserPreferences collection (or Users collection)",
+          "Return confirmation with timestamp"
+        ]
+      },
+      
+      "function_2": {
+        "name": "GetUserFilterPreferences",
+        "endpoint": "GET /api/user/filter-preferences",
+        "description": "Retrieve saved filter preferences for authenticated user",
+        "response": {
+          "userId": "firebase-uid",
+          "filterPreferences": {
+            "categories": {}
+          },
+          "savedAt": "2025-10-22T14:30:00Z"
+        },
+        "requirements": [
+          "Firebase auth required",
+          "Return 404 if no saved preferences exist",
+          "Return default/all-true if user has no saved state"
+        ]
+      }
+    },
+    
+    "database_schema": {
+      "collection": "UserPreferences (or add to existing Users collection)",
+      "document_structure": {
+        "_id": "ObjectId",
+        "userId": "firebase-uid-string",
+        "filterPreferences": {
+          "categories": {
+            "Milonga": "boolean",
+            "Practica": "boolean",
+            "Class": "boolean",
+            "Encuentro": "boolean",
+            "Performance": "boolean",
+            "Festival": "boolean",
+            "Workshop": "boolean"
+          },
+          "savedAt": "ISODate"
+        },
+        "createdAt": "ISODate",
+        "updatedAt": "ISODate"
+      },
+      "indexes": [
+        "{ userId: 1 } - unique index for fast user lookup"
+      ]
+    },
+    
+    "implementation_phases": {
+      "phase_1_frontend": {
+        "ticket": "TIEMPO-328",
+        "branch": "DEVL",
+        "status": "Created - ready for Sarah to implement",
+        "deliverable": "UI button that shows 'Feature coming soon' placeholder",
+        "timeline": "Can be done immediately (no backend dependency)"
+      },
+      "phase_2_backend": {
+        "ticket": "CALBEAF-TBD (YOUR TICKET - please create and link to TIEMPO-328)",
+        "branch": "DEVL → TEST",
+        "status": "Needs your ticket creation",
+        "deliverable": "Both Azure Functions deployed to TEST",
+        "timeline": "TBD by you"
+      },
+      "phase_3_integration": {
+        "ticket": "Update TIEMPO-328",
+        "branch": "DEVL",
+        "status": "After your AF is deployed to TEST",
+        "deliverable": "Replace 'coming soon' with actual save/load functionality",
+        "dependencies": "Your CALBEAF ticket complete + deployed to TEST"
+      }
+    },
+    
+    "action_required": {
+      "your_tasks": [
+        "1. Create CALBEAF ticket for both Azure Functions (DEV work)",
+        "2. Link your CALBEAF ticket to TIEMPO-328",
+        "3. Design MongoDB schema (UserPreferences collection or extend Users)",
+        "4. Implement POST /api/user/save-filter-preferences",
+        "5. Implement GET /api/user/filter-preferences",
+        "6. Deploy to TEST for integration testing",
+        "7. Notify Sarah when TEST deployment ready"
+      ],
+      "sarah_tasks": [
+        "1. Implement TIEMPO-328: Save Settings button with 'coming soon' message (DEVL branch)",
+        "2. Wait for your TEST deployment",
+        "3. Integrate with your endpoints once available (update TIEMPO-328)",
+        "4. Test end-to-end save/load functionality"
+      ]
+    },
+    
+    "technical_notes": {
+      "auth_pattern": "Same as MapCenterTrack - Firebase auth token validation",
+      "error_handling": [
+        "401 Unauthorized - invalid/missing Firebase token",
+        "400 Bad Request - invalid filter data structure",
+        "404 Not Found - no saved preferences (GET only)",
+        "500 Server Error - MongoDB connection/write failures"
+      ],
+      "mongodb_connection": "Use MONGODB_URI env var (TangoTiempo for TEST, TangoTiempoProd for PROD)",
+      "similar_pattern": "MapCenterTrack endpoint (CALBEAF-53) - use as reference"
+    },
+    
+    "relationship_to_current_work": {
+      "current_test_deployment": "CALBEAF-53 MapCenter tracking - v1.12.14 testing in progress by El Gotan",
+      "this_new_work": "Separate feature, starts in DEVL branch, not blocking current TEST",
+      "no_urgency": "El Gotan is testing v1.12.14 now - this is new work for future sprint"
+    }
+  },
+  
+  "questions_for_you": [
+    "Should this be UserPreferences collection or extend existing Users collection?",
+    "Any concerns about schema or approach?",
+    "What's your estimated timeline for implementing these 2 functions?",
+    "Should we batch this with any other user preference features?"
+  ],
+  
+  "bottom_line": "El Gotan wants users to save filter preferences - NEW FEATURE for DEV branch. Sarah can start Phase 1 (TIEMPO-328 UI placeholder) immediately in DEVL. Your CALBEAF ticket blocks Phase 3 (actual save/load functionality). Not urgent - separate from current TEST v1.12.14 deployment. Please create CALBEAF ticket and link to TIEMPO-328 when ready."
+}

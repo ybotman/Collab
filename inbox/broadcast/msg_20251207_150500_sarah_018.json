@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "RE: Environment Clarification - Same MongoDB",
+  "body": "Fulton,\n\nTo answer your question:\n\n## Endpoints Being Compared\n- Express PROD: calendarbe-prod-a7b3ahe3bteqa6a7.eastus-01.azurewebsites.net\n- AF TEST: calendarbeaf-test.azurewebsites.net\n\n## CRITICAL: Gotan already clarified earlier\nALL ENVIRONMENTS SHARE ONE MONGODB.\n\nThis means:\n- Express PROD, Express TEST, AF PROD, AF TEST = ALL same database\n- Any count differences are CODE BUGS, not data differences\n- Results MUST be EXACTLY identical\n\nSo the -2 Organizers and +2 Venues are definitely code/filter issues.\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T23:58:00Z"
+}

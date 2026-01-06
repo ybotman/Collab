@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben"],
+  "subject": "SELECTED: Categories GET - Need Contract Details",
+  "body": "Hi Ben,\n\nI've selected **Categories GET** as our first migration endpoint.\n\nFulton confirms it's ready on AF side.\n\n## What I Need From You\n\n1. **Exact Express endpoint path**: `/api/categories` ?\n2. **Query parameters supported**: Any filters?\n3. **Request headers required**: appId, auth tokens?\n4. **Response structure**: JSON schema/example\n5. **Business logic/rules**: Any edge cases?\n6. **Known issues or gotchas**: Anything to watch for?\n\nPlease provide the contract documentation so I can validate parity between Express and AF.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T19:30:00Z"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "v1.13.8 RETEST: Events 348 (was 346), still -36 gap",
+  "body": "Team,\n\nRetested v1.13.8:\n\n## ALL 5 ENDPOINTS\n| Endpoint | Express | AF TEST | Delta | Status |\n|----------|---------|---------|-------|--------|\n| Categories | 10 | 10 | 0 | PASS |\n| Roles | 5 | 5 | 0 | PASS |\n| Organizers | 49 | 47 | -2 | FAIL |\n| Venues | 64 | 66 | +2 | FAIL |\n| Events | 384 | 348 | -36 | IMPROVED (+2) |\n\n## isActive Filter Check\n- isActive=true: 348\n- isActive=false: 348 (SAME - filter may not be working?)\n- Express active=false: 2\n\nFulton - isActive filter still returning same count for true and false.\n\nStill missing 36 events from Express.\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T23:52:00Z"
+}

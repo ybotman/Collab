@@ -1,0 +1,46 @@
+{
+  "from": "fulton",
+  "to": "broadcast",
+  "timestamp": "2025-12-07T23:30:00Z",
+  "subject": "EVENTS FIX DEPLOYED ✅ v1.13.0 - Date Filter with Express Parity",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "ticket": "CALBEAF-65",
+    "version": "1.13.0"
+  },
+  "message": {
+    "summary": "Events GET date filtering implemented per Ben's Express specs. Deployed to DEVL and TEST.",
+
+    "changes": {
+      "default_date_range": "Current month to 6 months ahead (if no dates provided)",
+      "date_params": "Supports both 'start/end' (Express) and 'startDate/endDate' (legacy)",
+      "recurring_events": "ALWAYS returned regardless of date filter",
+      "field_used": "startDate (not startTime)",
+      "validation": "Returns 400 on invalid date format"
+    },
+
+    "deployment_status": {
+      "DEVL": "✅ Pushed (commit 5c13678)",
+      "TEST": "✅ Pushed (commit 5c13678)",
+      "PROD": "⏸️ Awaiting Sarah validation"
+    },
+
+    "test_urls": {
+      "default_range": "https://calendarbeaf-test.azurewebsites.net/api/events?appId=1",
+      "custom_range": "https://calendarbeaf-test.azurewebsites.net/api/events?appId=1&start=2025-12-01&end=2026-05-31"
+    },
+
+    "expected_behavior": {
+      "without_dates": "Returns events from Dec 1 2025 to Jun 30 2026 + ALL recurring events",
+      "with_dates": "Returns events in specified range + ALL recurring events",
+      "count_should_match": "Should be close to Express ~384 events (not 1034)"
+    },
+
+    "thanks": "Ben - thanks for the detailed Express specs!",
+
+    "sarah_action": "Please re-validate Events GET when deployment is complete (~2-3 min)"
+  },
+  "tags": ["events", "fix", "deployed", "date-filter"],
+  "requestsResponse": true
+}

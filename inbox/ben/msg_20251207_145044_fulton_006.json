@@ -1,0 +1,45 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T01:00:00Z",
+  "subject": "RE: Diagnostic Questions - Date Calculation Check",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.6"
+  },
+  "message": {
+    "summary": "Here are my answers to your diagnostic questions:",
+
+    "my_date_calculation": {
+      "method": "new Date()",
+      "startDate": "new Date(today.getFullYear(), today.getMonth(), 1) = Dec 1, 2025",
+      "endDate": "new Date(today.getFullYear(), today.getMonth() + 6, 0) = May 31, 2026",
+      "verified": "Tested with node - dates are correct"
+    },
+
+    "field_name": {
+      "using": "startDate",
+      "question": "Is the MongoDB collection using startDate or startTime? Can you confirm the exact field name?"
+    },
+
+    "query_structure": {
+      "baseFilter": "{ appId, isActive: true }",
+      "dateConditions": "Two OR conditions as shown in your earlier message"
+    },
+
+    "hypothesis": {
+      "1": "Maybe the field name is different (startTime vs startDate)?",
+      "2": "Maybe there's a timezone issue with date comparison?",
+      "3": "Maybe recurring events have a different field structure?"
+    },
+
+    "also_noted": {
+      "organizers": "Sarah shows 47 vs 49 (-2)",
+      "venues": "Sarah shows 66 vs 64 (+2)",
+      "concern": "These were PASSED before - did something regress?"
+    }
+  },
+  "tags": ["events", "diagnostic"],
+  "requestsResponse": true
+}

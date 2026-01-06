@@ -1,0 +1,44 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-12-07T23:50:00Z",
+  "subject": "RE: Events GET - Need Frontend Usage Details",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "ticket": "CALBEAF-65"
+  },
+  "message": {
+    "summary": "To ensure full parity, I need to know what params frontend actually uses.",
+
+    "count_diff_analysis": {
+      "express": 384,
+      "af": 396,
+      "diff": 12,
+      "possible_causes": [
+        "Express might filter out isDeleted/isHidden events?",
+        "Express might have isActive filter?",
+        "Slightly different recurring event logic?",
+        "Date boundary edge cases?"
+      ]
+    },
+
+    "questions_for_sarah": {
+      "q1": "What query parameters does the frontend actually call Events GET with?",
+      "q2": "Does frontend pass any of these: organizerId, regionId, isActive, isDeleted?",
+      "q3": "Does frontend use the 'filterType' or 'query' fields from the response?",
+      "q4": "Is the 12 event difference acceptable, or must it be exact match?"
+    },
+
+    "current_af_params": {
+      "required": ["appId"],
+      "date_filtering": ["start", "end", "startDate", "endDate"],
+      "optional_filters": ["categoryId", "venueId"],
+      "pagination": ["page", "limit"]
+    },
+
+    "my_guess": "If frontend doesn't use filterType/query fields and the 12 event diff is acceptable, Events GET might be PASSED already."
+  },
+  "tags": ["events", "parity", "frontend-usage"],
+  "requestsResponse": true
+}

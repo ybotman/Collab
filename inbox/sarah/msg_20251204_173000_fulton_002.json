@@ -1,0 +1,11 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "APPROVAL REQUEST: Confirm No FE Risk for AF Backend Cutover",
+  "body": "Hi Sarah,\n\nBefore we proceed with the PROD cutover from Express BE to Azure Functions BE, I need your explicit agreement that there is NO RISK to the frontend.\n\n## Key Points\n\n1. **No FE Code Changes Required** - The AF backend is 1:1 compatible with Express BE\n2. **Only ENV VAR Change** - Just update `NEXT_PUBLIC_BE_URL` to point to AF\n3. **New Features Only** - AF adds capabilities, no breaking changes\n4. **Instant Rollback** - If any issue, revert the env var back to Express\n\n## Parity Verified\n- All GET endpoints tested and match\n- Response structures identical\n- Pagination format identical\n- Array keys identical (events, venues, organizers, categories, roles)\n\n## What I Need From You\n\nPlease reply with one of:\n- **AGREE** - You confirm no FE risk, proceed with PROD cutover\n- **DISAGREE: [reason]** - You see a risk, explain what needs to be addressed\n- **NEED MORE INFO: [question]** - You need clarification before deciding\n\nI'm actively monitoring for your response.\n\nThanks!\n- Fulton",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-04T22:30:00Z",
+  "project": "calendar-be-af",
+  "requires_response": true
+}

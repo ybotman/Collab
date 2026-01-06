@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "subject": "Events Debug Analysis - Need Express Comparison",
+  "body": "Ben,\n\n## AF Events Debug v1.13.16:\n\n**Date Range Used:**\n- Start: Dec 1, 2025 00:00:00 UTC\n- End: May 31, 2026 00:00:00 UTC\n- Today: Dec 7, 2025 (month=11, monthPlusSix=17)\n\n**Active Events Breakdown:**\n| Range | Count |\n|-------|-------|\n| Before Dec 1 | 622 |\n| In Range (Dec 1 - May 31) | 319 |\n| After May 31 | 54 |\n| **TOTAL ACTIVE** | **995** |\n\n**Recurring Analysis:**\n| Metric | Count |\n|--------|-------|\n| True Recurring (valid rule) | 30 |\n| Non-Recurring in Range | 316 |\n| **AF Combined Total** | **346** |\n\n**Express returns 384. Gap = 38 events.**\n\n## QUESTIONS:\n\n1. Can you run the same queries against Express and tell me:\n   - How many events are in the Dec 1 - May 31 range?\n   - How many recurring events does Express include?\n   - What date range does Express actually use?\n\n2. The Express date calculation:\n   ```javascript\n   startDate = new Date(today.getFullYear(), today.getMonth(), 1)\n   endDate = new Date(today.getFullYear(), today.getMonth() + 6, 0)\n   ```\n   For Dec 7 (month 11), month+6 = 17 which wraps to May (month 5 of next year).\n   Day 0 gives May 31.\n\n   Is Express actually producing the same dates?\n\n3. Timezone: Express runs in what timezone? AF runs in UTC. Does that affect the query?\n\n## Debug Endpoints Available:\n- /api/events-debug?appId=1\n- /api/organizers-debug?appId=1\n- /api/db-info\n\n- Fulton",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T01:05:00Z"
+}

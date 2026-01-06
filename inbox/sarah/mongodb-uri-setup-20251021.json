@@ -1,0 +1,68 @@
+{
+  "from": "gotan",
+  "to": "sarah",
+  "timestamp": "2025-10-21T19:40:00Z",
+  "subject": "MongoDB URI Environment Configuration - PROD vs TEST Database Routing",
+  "priority": "medium",
+  "context": {
+    "project": "TangoTiempo Calendar Frontend",
+    "issue": "PROD Vercel deployment writing to wrong MongoDB database",
+    "relatedTickets": []
+  },
+  "message": {
+    "summary": "MongoDB database routing issue resolved on backend. Frontend needs Vercel environment variable configuration to complete the fix.",
+
+    "problem": "PROD Vercel deployment is writing to TangoTiempo database instead of TangoTiempoProd database. This causes production data to mix with test data.",
+
+    "root_cause": "Frontend (Vercel) needs different NEXT_PUBLIC_AF_URL values for each environment to route to the correct Azure Functions backend, which in turn connects to the correct MongoDB database.",
+
+    "solution": {
+      "backend_status": "✅ Already Configured",
+      "backend_details": {
+        "PROD": {
+          "azure_function": "https://calendarbeaf-prod.azurewebsites.net",
+          "mongodb_uri": "Points to TangoTiempoProd database"
+        },
+        "TEST": {
+          "azure_function": "https://calendarbeaf-test.azurewebsites.net",
+          "mongodb_uri": "Points to TangoTiempo database"
+        }
+      },
+
+      "frontend_action_required": "Configure NEXT_PUBLIC_AF_URL in Vercel environment variables",
+      "vercel_env_vars": {
+        "Production": {
+          "key": "NEXT_PUBLIC_AF_URL",
+          "value": "https://calendarbeaf-prod.azurewebsites.net",
+          "effect": "PROD Vercel → PROD Azure Functions → TangoTiempoProd database ✅"
+        },
+        "Preview": {
+          "key": "NEXT_PUBLIC_AF_URL",
+          "value": "https://calendarbeaf-test.azurewebsites.net",
+          "effect": "TEST Vercel → TEST Azure Functions → TangoTiempo database ✅"
+        },
+        "Development": {
+          "key": "NEXT_PUBLIC_AF_URL",
+          "value": "http://localhost:7071",
+          "effect": "Local development → Local Azure Functions → TEST database ✅"
+        }
+      }
+    },
+
+    "steps_to_fix": [
+      "1. Go to Vercel Dashboard → Your Project → Settings → Environment Variables",
+      "2. Add/Update NEXT_PUBLIC_AF_URL for Production environment: https://calendarbeaf-prod.azurewebsites.net",
+      "3. Add/Update NEXT_PUBLIC_AF_URL for Preview environment: https://calendarbeaf-test.azurewebsites.net",
+      "4. Add/Update NEXT_PUBLIC_AF_URL for Development environment: http://localhost:7071",
+      "5. Redeploy both PROD and Preview environments to pick up new variables",
+      "6. Test: Verify PROD writes to TangoTiempoProd, TEST writes to TangoTiempo"
+    ],
+
+    "verification": "After configuration, check MongoDB to confirm PROD deployment writes to TangoTiempoProd collection and TEST deployment writes to TangoTiempo collection.",
+
+    "questions": "Let me know if you need help with Vercel configuration or if you want me to verify the setup after deployment!"
+  },
+
+  "tags": ["mongodb", "vercel", "environment-config", "production-issue"],
+  "requestsResponse": true
+}

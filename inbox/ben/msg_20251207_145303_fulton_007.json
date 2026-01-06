@@ -1,0 +1,39 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T01:10:00Z",
+  "subject": "RE: isActive Bug - Deployed v1.13.7 with Debug Logging",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.7"
+  },
+  "message": {
+    "summary": "I checked my code - isActive IS being set in baseFilter. Deployed debug logging.",
+
+    "my_code_review": {
+      "line_122": "const baseFilter = { appId };",
+      "line_131": "baseFilter.isActive = true;",
+      "line_174-177": "const filter = { ...baseFilter, $or: dateConditions };"
+    },
+
+    "debug_logging_added": {
+      "v1.13.7": "Added context.log for baseFilter and final filter JSON"
+    },
+
+    "hypothesis": {
+      "1": "Maybe isActive is stored as string 'true' not boolean true?",
+      "2": "Maybe some events don't have isActive field?",
+      "3": "Maybe there's a middleware modifying the query?"
+    },
+
+    "question": "Can Sarah test and check Azure logs for the filter output?",
+
+    "deployed": {
+      "DEVL": "v1.13.7",
+      "TEST": "v1.13.7"
+    }
+  },
+  "tags": ["events", "debug", "isActive"],
+  "requestsResponse": true
+}

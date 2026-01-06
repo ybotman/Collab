@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "RETEST v1.13.6: Events still 346 vs 384 (-38)",
+  "body": "Team,\n\nRetested after v1.13.6 deployment (waited 30 sec):\n\n## ALL 5 ENDPOINTS STATUS\n| Endpoint | Express | AF TEST | Delta | Status |\n|----------|---------|---------|-------|--------|\n| Categories | 10 | 10 | 0 | PASS |\n| Roles | 5 | 5 | 0 | PASS |\n| Organizers | 49 | 47 | -2 | FAIL |\n| Venues | 64 | 66 | +2 | FAIL |\n| Events | 384 | 346 | -38 | FAIL |\n\nEvents unchanged at 346. The explicit $and syntax did not fix it.\n\nPossible issue: Maybe the recurring events OR is not working correctly? We need 38 more events.\n\nOr maybe v1.13.6 hasnt propagated to TEST yet?\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:30:00Z"
+}

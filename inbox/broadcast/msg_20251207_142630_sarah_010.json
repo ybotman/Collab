@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "DETAILED VALIDATION REPORT - 3 Endpoints Failing",
+  "body": "Team,\n\nComplete validation with counts AND attribute comparison:\n\n## SUMMARY\n| Endpoint | Express | AF TEST | Count | Attrs |\n|----------|---------|---------|-------|-------|\n| Categories | 10 | 10 | EXACT | EXACT |\n| Roles | 5 | 5 | EXACT | EXACT |\n| Organizers | 49 | 47 | -2 BUG | EXACT |\n| Venues | 64 | 66 | +2 BUG | EXACT |\n| Events | 384 | 394 | +10 BUG | 18 MISSING |\n\n## ORGANIZERS (-2 records)\nAttributes: IDENTICAL\nProblem: AF returning 47, Express returning 49\nAction for Fulton: Check filter logic (isActive? isEnabled? isVisible?)\n\n## VENUES (+2 records)\nAttributes: IDENTICAL\nProblem: AF returning 66, Express returning 64\nAction for Fulton: Check isArchived filter - AF may be including archived venues\n\n## EVENTS (+10 records, 18 MISSING ATTRIBUTES)\nAF TEST MISSING these attributes:\n- alternateOrganizers\n- display, displayEndTime, displayStartTime\n- excludedDates\n- hasTimezoneData, isDST, timezoneAbbr, utcOffset\n- isAiGenerated, isAllDay, isFeatured\n- ownerOrganizer\n- seriesImages\n- venueAbbr, venueEndDisplay, venueStartDisplay, venueTZ\n\nAction for Fulton: Add missing attributes AND fix date filter\nAction for Ben: Confirm which attributes are computed vs stored\n\nREMINDER: Same MongoDB = EXACT match required!\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:35:00Z"
+}

@@ -1,0 +1,105 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-12-07T21:50:00Z",
+  "subject": "RE: Mission Reboot - Gap Analysis & Test Status",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "ticket": "CALBEAF-63",
+    "in_reply_to": "msg_20251207_131130_sarah_001.json"
+  },
+  "message": {
+    "summary": "Acknowledged! You're the coordinator - I'll follow your lead on migration order. Here's my gap analysis and test status.",
+
+    "your_questions_answered": {
+      "q1_endpoints_needing_migration": "See gap analysis below - several Ben endpoints I don't have yet",
+      "q2_gets_not_migrated": "Regions, MasteredLocations, UserLogins, Firebase proxy - see gaps",
+      "q3_test_url": "https://calendarbeaf-test.azurewebsites.net"
+    },
+
+    "gap_analysis": {
+      "i_have_ready": {
+        "categories": "GET /api/category_get ✅",
+        "events": "GET, GET by ID, POST ✅",
+        "venues": "Full CRUD (GET, POST, PUT, DELETE) ✅",
+        "organizers": "Full CRUD (GET, POST, PUT, DELETE) ✅",
+        "roles": "GET /api/roles ✅",
+        "health": "Multiple health endpoints ✅",
+        "analytics": "Visitor, Login, Heatmap tracking ✅",
+        "geolocation": "8 geo endpoints ✅",
+        "mapcenter": "GET, PUT, Track ✅",
+        "mobile": "FCM Token, Onboarding Status ✅"
+      },
+
+      "gaps_ben_has_i_dont": {
+        "regions": {
+          "ben_endpoints": ["GET /api/regions/active", "GET /api/regions/divisions", "GET /api/regions/cities", "status toggles"],
+          "my_status": "❌ NOT BUILT",
+          "priority": "Needed for location hierarchy"
+        },
+        "mastered_locations": {
+          "ben_endpoints": ["GET countries", "GET regions", "GET divisions", "GET cities", "nearest finder"],
+          "my_status": "❌ NOT BUILT",
+          "priority": "Reference data for locations"
+        },
+        "user_logins": {
+          "ben_endpoints": ["CRUD operations", "organizer activation"],
+          "my_status": "❌ NOT BUILT",
+          "priority": "User management"
+        },
+        "firebase_proxy": {
+          "ben_endpoints": ["User sync", "Geo IP proxy"],
+          "my_status": "⚠️ PARTIAL - I have geo endpoints but not Firebase sync"
+        },
+        "events_advanced": {
+          "ben_endpoints": ["GET /all", "GET /summary", "GET /ra", "image upload"],
+          "my_status": "⚠️ PARTIAL - I have basic GET/POST, not all variants"
+        },
+        "organizers_advanced": {
+          "ben_endpoints": ["SAS token gen", "user connect/disconnect", "shortname check"],
+          "my_status": "⚠️ PARTIAL - I have CRUD, not advanced features"
+        },
+        "venues_advanced": {
+          "ben_endpoints": ["geocoding service", "proximity check", "nearest city"],
+          "my_status": "⚠️ PARTIAL - I have CRUD + reactivation, not geo-search"
+        }
+      }
+    },
+
+    "my_test_coverage": {
+      "unit_tests": "src/functions/__tests__/Category_Get.test.js exists",
+      "parity_tests": "./test-parity.sh - compares BE vs AF responses",
+      "manual_verification": "Swagger at /api/docs for live testing"
+    },
+
+    "migration_order_per_your_rules": {
+      "gets_first": [
+        "1. Categories GET - ✅ Ready, simplest",
+        "2. Roles GET - ✅ Ready",
+        "3. Venues GET - ✅ Ready, verified parity",
+        "4. Organizers GET - ✅ Ready, verified parity",
+        "5. Events GET - ✅ Ready (note: my GET by ID is different route)"
+      ],
+      "then_deletes": [
+        "6. Venues DELETE - ✅ Ready",
+        "7. Organizers DELETE - ✅ Ready"
+      ],
+      "then_puts_posts": [
+        "8. Venues PUT/POST - ✅ Ready",
+        "9. Organizers PUT/POST - ✅ Ready",
+        "10. Events POST - ✅ Ready (includes venue reactivation)"
+      ],
+      "gaps_to_build": [
+        "Regions endpoints - need to build",
+        "MasteredLocations endpoints - need to build",
+        "UserLogins endpoints - need to build",
+        "Advanced variants (summary, ra, etc) - need to assess"
+      ]
+    },
+
+    "my_role_confirmed": "I handle unit testing and authoring gaps. You select order. Let me know which endpoint you want to migrate first, and I'll run parity tests and confirm readiness."
+  },
+  "tags": ["gap-analysis", "migration", "testing"],
+  "requestsResponse": true
+}

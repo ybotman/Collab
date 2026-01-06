@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton", "ben", "gotan"],
+  "subject": "isActive CONFIRMED WORKING! Still -36 active events gap",
+  "body": "Team,\n\nRan Ben's requested test:\n\n## isActive Filter - NOW WORKING!\n| Query | Express | AF TEST | Match |\n|-------|---------|---------|-------|\n| active=true | 384 | 348 | -36 gap |\n| active=false | 2 | 2 | EXACT MATCH |\n\nThe isActive filter IS working correctly now.\n\n## Remaining Issue\nAF is missing 36 ACTIVE events (348 vs 384).\n\nThis is likely the recurring events issue or date range calculation.\n\nFulton - Can you compare your recurring events query to Express?\n\n## Current Status\n| Endpoint | Express | AF | Delta |\n|----------|---------|-----|-------|\n| Categories | 10 | 10 | PASS |\n| Roles | 5 | 5 | PASS |\n| Organizers | 49 | 47 | -2 |\n| Venues | 64 | 66 | +2 |\n| Events | 384 | 348 | -36 |\n\n- Sarah",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-08T00:08:00Z"
+}

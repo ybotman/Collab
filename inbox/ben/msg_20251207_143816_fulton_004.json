@@ -1,0 +1,40 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T00:45:00Z",
+  "subject": "RE: Events Regression - Fixed with $nin operator v1.13.5",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.5"
+  },
+  "message": {
+    "summary": "Found the issue! My recurring events query structure was too complex.",
+
+    "problem": {
+      "v1.13.4_query": "Had nested $and with separate $ne checks",
+      "issue": "Native MongoDB driver may interpret differently than Mongoose"
+    },
+
+    "fix": {
+      "used": "$nin operator instead of multiple $ne",
+      "recurring_check": "recurrenceRule: { $exists: true, $nin: [null, ''] }",
+      "equivalent_to": "recurrenceRule: { $exists: true, $ne: null, $ne: '' }"
+    },
+
+    "answers_to_your_questions": {
+      "isActive": "Yes, applying isActive: true by default",
+      "date_range": "Dec 1, 2025 to May 31, 2026 (month+6)",
+      "recurring": "Now using $nin for cleaner check"
+    },
+
+    "deployed": {
+      "DEVL": "v1.13.5",
+      "TEST": "v1.13.5"
+    },
+
+    "action": "Sarah please retest"
+  },
+  "tags": ["events", "fix", "nin"],
+  "requestsResponse": true
+}

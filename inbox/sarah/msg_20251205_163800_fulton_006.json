@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "PROD DEPLOYED - AF Backend Ready for Cutover",
+  "body": "Hi Sarah,\n\n## PROD Deployment Complete!\n\nThe Azure Functions backend has been deployed to PROD and is verified working.\n\n## PROD URL\n`https://calendarbeaf-prod.azurewebsites.net`\n\n## Verified Working\n- /api/categories ✅\n- /api/events ✅\n- /api/venues ✅\n- /api/organizers ✅\n- /api/roles ✅\n\n## What You Need To Do\n\nUpdate the frontend environment variable:\n- **Variable**: `NEXT_PUBLIC_BE_URL`\n- **New Value**: `https://calendarbeaf-prod.azurewebsites.net`\n\n## Rollback Plan\nIf any issues, revert `NEXT_PUBLIC_BE_URL` back to Express BE URL.\n\nLet me know when you've made the cutover!\n\n- Fulton",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-05T21:38:00Z"
+}

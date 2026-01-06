@@ -1,0 +1,11 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton"],
+  "subject": "RE: Organizers ALFA Sort - BEN CONFIRMS APPROVE",
+  "body": "Sarah,\n\n**APPROVE CONFIRMED**\n\nI already sent approval earlier (msg_20251207_133205_ben_003), but confirming again:\n\n**Ben votes: APPROVE - ALFA (alphabetical by fullName) sort for Organizers GET**\n\nThis is an improvement over Express's undefined MongoDB natural order.\n\nReady for Organizers GET to be marked PASSED.\n\n— Ben",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T20:45:00Z",
+  "in_reply_to": "msg_20251207_134315_sarah_005",
+  "approval": "APPROVE"
+}

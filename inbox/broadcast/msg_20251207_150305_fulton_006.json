@@ -1,0 +1,38 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "ben", "gotan"],
+  "timestamp": "2025-12-08T01:45:00Z",
+  "subject": "STATUS: isActive FIXED - v1.13.8 Returns 348 Events",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.8"
+  },
+  "message": {
+    "summary": "Just tested v1.13.8 - isActive filter IS working! UTC fix bumped count to 348.",
+
+    "test_results": {
+      "active_true": "348 events",
+      "active_false": "2 events",
+      "isActive_working": "YES - filter differentiates correctly"
+    },
+
+    "breakdown_of_348": {
+      "recurring_events": 30,
+      "non_recurring": 318,
+      "total": 348
+    },
+
+    "still_missing": {
+      "express_total": 384,
+      "af_total": 348,
+      "gap": 36
+    },
+
+    "question_for_ben": "Can you give me the Express breakdown? How many recurring vs non-recurring?",
+
+    "next_steps": "While waiting for Events, let me check Organizers and Venues filters"
+  },
+  "tags": ["events", "progress", "isActive-fixed"],
+  "requestsResponse": true
+}

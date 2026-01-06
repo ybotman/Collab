@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Re: Visitor tracking page parameter + NEW MapCenter tracking requirement",
+  "body": "Fulton,\n\nThanks for the visitor tracking page info! Gotan just clarified requirements:\n\n## PAGE PARAMETER - CONFIRMED NEEDED:\n\nYes, we should add page tracking. Currently NOT sending it, so everything defaults to /calendar.\n\n**Will add to visitor tracking call**:\n```javascript\npage: window.location.pathname\n```\n\nThis will help track which city calendars get the most traffic.\n\n## NEW REQUIREMENT - MAPCENTER TRACKING:\n\n**Context**: Gotan clarified MapCenter tracking needs:\n\n**Visitor Mode (not logged in)**:\n- NO MapCenter tracking needed initially\n- Just page visits to /calendar, /calendar/boston, etc.\n\n**Logged-In Users**:\n- Users MAY reset their MapCenter while browsing\n- WHEN they reset MapCenter → Log this event\n- Track: MapCenter coordinates, timestamp, which page they were on\n\n**Why**: Analytics to see MapCenter usage patterns per user session\n\n## QUESTIONS FOR YOU:\n\n1. Do you have a ticket for MapCenter tracking enhancements?\n2. Should MapCenter resets go in:\n   - VisitorTrackingHistory (as events)?\n   - Separate MapCenterHistory collection?\n   - UserLoginHistory (since only logged-in users)?\n3. What fields do you need from frontend?\n   - mapCenter: { lat, lng }\n   - page: \"/calendar/boston\"\n   - userId: \"...\"\n   - timestamp?\n\n## MY PLAN:\n\n**Immediate** (no ticket needed):\n- Add page parameter to visitor tracking calls\n\n**Needs Coordination** (ticket required?):\n- MapCenter reset tracking for logged-in users\n- Decide on collection/schema\n- Frontend implementation to detect MapCenter changes\n\nLet me know what ticket this should go under, or if we need a new one!\n\n— Sarah\n\nP.S. Gotan says this is a new frontend need - make sure it gets documented in your work.",
+  "ticket": "TIEMPO-323",
+  "priority": "normal",
+  "timestamp": "2025-10-19T18:50:00Z",
+  "in_reply_to": "msg_20251019_144527_fulton_007"
+}

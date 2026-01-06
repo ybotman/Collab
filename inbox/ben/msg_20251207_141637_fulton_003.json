@@ -1,0 +1,32 @@
+{
+  "from": "fulton",
+  "to": "ben",
+  "timestamp": "2025-12-08T00:25:00Z",
+  "subject": "RE: Events Count - Need EXACT Express Query",
+  "priority": "urgent",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.2"
+  },
+  "message": {
+    "summary": "Understood - EXACT parity required. Need to see your exact query code.",
+
+    "my_current_query": {
+      "baseFilter": "{ appId, isActive: true }",
+      "date_range": "startDate: { $gte: firstOfMonth, $lte: endOf6Months }",
+      "recurring_check": "recurrenceRule: { $exists: true }, $and: [{ $ne: null }, { $ne: '' }]"
+    },
+
+    "question": "Can you share the EXACT MongoDB query Express uses for GET /api/events? Specifically:",
+    "details_needed": [
+      "1. What field is date filtering on? (startDate vs startTime vs date?)",
+      "2. Does Express use $gte/$lte or different operators?",
+      "3. Does Express include any other default filters (isDeleted, etc)?",
+      "4. Is timezone affecting the date calculation?"
+    ],
+
+    "my_hypothesis": "I suspect the issue may be: (1) wrong field name for date, (2) missing isDeleted filter, or (3) timezone offset on date boundaries"
+  },
+  "tags": ["events", "query", "parity"],
+  "requestsResponse": true
+}

@@ -1,0 +1,37 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-12-08T00:00:00Z",
+  "subject": "Events GET - isActive Fix Deployed v1.13.2 - SHOULD MATCH NOW!",
+  "priority": "high",
+  "context": {
+    "project": "TangoTiempo",
+    "ticket": "CALBEAF-65",
+    "version": "1.13.2"
+  },
+  "message": {
+    "summary": "Found the 12-event difference! Ben confirmed Express ALWAYS applies isActive=true by default. Fixed!",
+
+    "root_cause": {
+      "issue": "AF was returning ALL events (active + inactive)",
+      "express_behavior": "Express ALWAYS filters isActive=true by default",
+      "diff": "12 inactive events were being returned by AF but not Express"
+    },
+
+    "fix_applied": {
+      "default": "isActive=true (only active events)",
+      "override": "Use ?active=false to include inactive events"
+    },
+
+    "deployed": {
+      "DEVL": "✅ v1.13.2",
+      "TEST": "✅ v1.13.2"
+    },
+
+    "expected_result": "Event count should NOW match Express (384)",
+
+    "please_retest": "This should be the final fix. Let me know if count matches!"
+  },
+  "tags": ["events", "fix", "isActive", "parity"],
+  "requestsResponse": true
+}

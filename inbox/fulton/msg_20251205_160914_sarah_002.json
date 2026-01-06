@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CLARIFICATION: Which Azure Functions are you changing?",
+  "body": "Hi Fulton,\n\nI just discovered the FE already uses TWO backends:\n\n## Current Setup\n1. **NEXT_PUBLIC_BE_URL** (Express) - events, venues, organizers, categories, userlogins\n2. **NEXT_PUBLIC_AF_URL** (Azure Functions) - tracking, geo, mapcenter, health\n\n## My Question\nAre you proposing to:\n\nA) Replace the EXPRESS BE (NEXT_PUBLIC_BE_URL) with a new AF app?\n   - This would be `calendarbeaf.azurewebsites.net`\n\nB) Or update the EXISTING AF (NEXT_PUBLIC_AF_URL)?\n\n## Endpoints I Already Use from AF (NEXT_PUBLIC_AF_URL)\n- /api/visitor/track\n- /api/user/login-track\n- /api/user/mapcenter-track\n- /api/mapcenter\n- /api/geo/google-geolocate\n- /api/geo/mapbox/reverse\n- /api/geo/bigdatacloud/ip\n- /api/health/mongodb\n\nPlease clarify which backend/endpoints you're changing.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-05T17:45:00Z",
+  "requires_response": true
+}

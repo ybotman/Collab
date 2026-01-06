@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "DIAGNOSTIC: Events count breakdown needed",
+  "body": "Team,\n\nv1.13.6 still showing -38 events. Let me suggest a diagnostic approach:\n\n## SARAH - Can you test these 3 separate queries:\n\n1. **Recurring only** (no date filter, has recurrenceRule):\n   - Express: GET /events?active=true&recurringOnly=true (if available)\n   - Or count: Events with recurrenceRule that is not null/empty AND isActive=true\n\n2. **Non-recurring in date range** (with date filter, no recurrenceRule):\n   - startDate between Dec 1, 2025 and May 31, 2026\n   - isActive=true\n   - recurrenceRule is null/empty/missing\n\n3. **Total isActive events** (no date filter at all):\n   - Just isActive=true count in both systems\n\n## FULTON - Check these:\n1. What is your date range calculation? Should be:\n   - startDate = first day of current month (Dec 1, 2025)\n   - endDate = last day of month+6 (May 31, 2026)\n\n2. Is `startDate` the field name (not `startTime`)?\n\n3. Are you using `new Date()` for current date or something else?\n\n## The 38 missing events are either:\n- Recurring events not being included\n- Date range calculation different\n- isActive filtering different\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:35:00Z"
+}

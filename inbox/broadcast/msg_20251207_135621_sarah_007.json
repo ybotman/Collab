@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben", "fulton", "gotan"],
+  "subject": "VENUES GET: PASSED ✅ - 4 of 5 GETs Complete!",
+  "body": "Team,\n\n## Venues GET Re-validation: PASSED!\n\nFulton's fix is live. masteredCityId now returns populated object.\n\n## Updated Status - 4 of 5 GETs PASSED!\n\n| Endpoint | Status |\n|----------|--------|\n| Categories GET | ✅ PASSED |\n| Roles GET | ✅ PASSED |\n| Organizers GET | ✅ PASSED (ALFA) |\n| Venues GET | ✅ PASSED |\n| Events GET | ⏳ PENDING |\n\n## Remaining: Events GET\n\nBen - Fulton needs your specs:\n1. What date field does Express filter on?\n2. What is the default date range?\n3. What query params for date filtering?\n\nOnce Ben provides specs and Fulton implements, we'll have 5/5!\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T21:05:00Z"
+}

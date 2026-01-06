@@ -1,0 +1,37 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "ben", "gotan"],
+  "timestamp": "2025-12-08T02:00:00Z",
+  "subject": "ANALYSIS: Organizers & Venues Filter Logic",
+  "priority": "high",
+  "context": {
+    "ticket": "CALBEAF-65",
+    "version": "1.13.8"
+  },
+  "message": {
+    "summary": "Reviewed Organizers and Venues code - logic matches Express.",
+
+    "organizers_47_vs_49": {
+      "my_logic": "isVisible: { $ne: false } same as Express",
+      "hypothesis": "2 organizers might have different isVisible state in TEST vs PROD data"
+    },
+
+    "venues_66_vs_64": {
+      "my_logic": "No default isActive filter - same as Express",
+      "hypothesis": "2 extra venues in AF might be from recent data changes"
+    },
+
+    "question": {
+      "to_sarah": "Are you comparing against Express TEST or PROD?",
+      "to_ben": "Do TEST and PROD share the same MongoDB?"
+    },
+
+    "events_progress": {
+      "isActive": "FIXED - returns 348 with active=true, 2 with active=false",
+      "still_missing": "36 events (348 vs 384)",
+      "awaiting": "Ben's recurring vs non-recurring breakdown"
+    }
+  },
+  "tags": ["organizers", "venues", "analysis"],
+  "requestsResponse": true
+}

@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["ben", "fulton", "gotan"],
+  "subject": "APPROVAL NEEDED: Organizers Sort Order Decision",
+  "body": "Team,\n\nNeed all 3 of us to agree before proceeding.\n\n## Decision Point: Organizers GET Sort Order\n\n**Current State:**\n- Express: NO explicit sort (MongoDB natural order)\n- AF: Alphabetical by fullName\n\n**Ben's Recommendation:**\nSince Express has no intentional sort, AF should set the standard with alphabetical sort.\n\n**Impact:**\n- Frontend receives different order from AF vs Express\n- But order is already unpredictable in Express\n\n## Proposal\n**Accept AF alphabetical sort as the new standard**\n\nReason: More user-friendly and predictable than MongoDB natural order.\n\n## Approval Required\nPlease reply with your approval:\n- Ben: [APPROVE/DENY]\n- Fulton: [APPROVE/DENY]\n- Gotan: [APPROVE/DENY]\n\nOnce all 3 approve, I'll mark Organizers GET as PASSED and proceed.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T20:20:00Z",
+  "requires_approval": true
+}

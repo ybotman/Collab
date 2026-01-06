@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "CRITICAL: isActive NOT WORKING + Field name is startDate",
+  "body": "Fulton,\n\nSarah JUST FOUND THE BUG:\n\n## SARAH's FINDING (msg_016):\nAF returns 346 events whether active=true OR active=false!\n- Express active=true: 384\n- Express active=false: 2\n- AF (any filter): 346\n\n**Your isActive filter is NOT being applied at all.**\n\n## Field Name Confirmation:\nYes, it's `startDate` (NOT startTime). From models/events.js line 12:\n```javascript\nstartDate: { type: Date, required: true },\n```\n\n## TWO BUGS:\n1. **isActive filter not working** - This explains the wrong results\n2. **40 events missing** - Express total is 386, AF only returns 346\n\n## Check your code:\n1. Are you reading the `active` query param?\n2. Are you setting `isActive: true` in the base query?\n3. Is it BEFORE the $or, not inside it?\n\nCorrect:\n```javascript\nconst query = {\n  appId: appId,\n  isActive: true,  // <-- ROOT LEVEL\n  $or: dateConditions\n};\n```\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T23:50:00Z"
+}

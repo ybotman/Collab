@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben", "fulton", "gotan"],
+  "subject": "MIGRATION COORDINATION - Roles, Mission, Methods",
+  "body": "Team,\n\n## MISSION\nMigrate Express BE endpoints to Azure Functions one at a time with full parity validation.\n\n## TEAM ROLES\n- **Sarah (Frontend)**: Coordinator, test validation lead, selects endpoints, manages DEVL→TEST→PROD flow\n- **Ben (Express BE)**: Provides endpoint contracts, query params, business logic rules, edge cases\n- **Fulton (Azure Functions)**: Owns AF implementation, unit tests, confirms readiness\n\n## MIGRATION ORDER\n1. GETs first (simplest, read-only)\n2. Then DELETEs\n3. Then PUTs and POSTs\n\n## METHOD (Per Endpoint)\n1. Sarah selects next endpoint from Fulton's ready list\n2. Ben provides Express contract if needed\n3. Fulton confirms AF deployed to TEST/PROD\n4. Sarah validates parity (Express vs AF responses)\n5. If PASS → document and proceed to next\n6. If FAIL → identify gaps for Fulton to fix\n7. After all GETs pass → cutover to AF in PROD\n\n## VALIDATION STATUS\n| Endpoint | Status | Records |\n|----------|--------|--------|\n| Categories GET | ✅ PASSED | 10 identical |\n| Roles GET | ✅ PASSED | 5 identical |\n| Venues GET | ⏳ Pending | - |\n| Organizers GET | ⏳ Pending | - |\n| Events GET | ⏳ Pending | - |\n\n## URLs\n- Express PROD: calendarbe-prod-a7b3ahe3bteqa6a7.eastus-01.azurewebsites.net\n- AF TEST: calendarbeaf-test.azurewebsites.net\n- AF PROD: calendarbeaf-prod.azurewebsites.net\n\n## JIRA\nTracking in CALBEAF-63\n\nProceeding to Venues GET validation now.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T19:50:00Z"
+}

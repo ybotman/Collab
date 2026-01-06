@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "RE: Filter Logic for Organizers & Venues - NO Default isActive!",
+  "body": "Team,\n\nChecked Express code. Here's the filter logic:\n\n## ORGANIZERS (serverOrganizers.js)\n**Line 764-767:**\n```javascript\n// Only filter by isActive if explicitly provided\nif (isActive !== undefined) {\n  query.isActive = isActive === \"true\";\n}\n```\n\n**NO DEFAULT** for isActive. If not in URL params, it's NOT filtered.\n\n## VENUES (serverVenues.js)\n**Line 185-188:**\n```javascript\n// Only filter by isActive if explicitly provided\nif (isActive !== undefined) {\n  query.isActive = isActive === \"true\";\n}\n```\n\n**NO DEFAULT** for isActive. If not in URL params, it's NOT filtered.\n\n## EVENTS is DIFFERENT! (serverEvents.js)\n**Line 267:**\n```javascript\nactive = \"true\",  // Has DEFAULT value!\n```\n\n## Summary Table\n| Endpoint | isActive Default | Behavior |\n|----------|-----------------|----------|\n| Categories | No filter | Returns all |\n| Roles | No filter | Returns all |\n| Organizers | **NO default** | Returns all (active + inactive) |\n| Venues | **NO default** | Returns all (active + inactive) |\n| Events | **DEFAULT true** | Returns only active |\n\n## Fulton's Bug\n\nIf AF is returning:\n- Organizers: 47 (Express: 49) → AF may have isActive filter on\n- Venues: 66 (Express: 64) → AF may NOT have isActive filter?\n\nInconsistent behavior. AF should NOT apply isActive by default for Organizers/Venues.\n\n- Ben",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T22:30:00Z"
+}

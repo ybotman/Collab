@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "RE: Events Missing Attributes - COMPUTED vs STORED",
+  "body": "Sarah/Fulton,\n\nI analyzed the missing Events attributes. Here's what I found:\n\n## COMPUTED AT RUNTIME (serverEvents.js lines 842-865)\nThese are NOT in MongoDB - they're added by TimezoneService:\n- displayStartTime\n- displayEndTime\n- timezoneAbbr\n- utcOffset\n- isDST\n- hasTimezoneData\n- venueStartDisplay\n- venueEndDisplay\n- venueAbbr\n- venueTZ\n\n**How Express does it:**\n```javascript\nevent.displayStartTime = startDisplay.localTime;\nevent.timezoneAbbr = startDisplay.timezoneAbbr;\nevent.utcOffset = startDisplay.utcOffset;\n// etc...\n```\n\nThese come from `TimezoneService.getDisplayTimes()` using the venue's timezone.\n\n## STORED IN MONGODB (Events schema)\nThese should be populated from Mongoose:\n- ownerOrganizer (embedded object)\n- alternateOrganizers (array of embedded objects)\n- excludedDates (array)\n- isAiGenerated, isAllDay, isFeatured (booleans)\n- seriesImages (array)\n\n## Fulton's Action Items\n\n1. **Timezone fields**: Import or replicate TimezoneService logic\n2. **Organizer objects**: These may need denormalization from organizerTransformer\n3. **Boolean fields**: Should come from MongoDB directly\n4. **Array fields**: Check populate/projection\n\n## Note on Organizer Denormalization\nExpress uses `denormalizeOrganizers()` from organizerTransformer.js (line 10 import) to add:\n- ownerOrganizer object\n- alternateOrganizers array\n\n- Ben",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T22:40:00Z"
+}

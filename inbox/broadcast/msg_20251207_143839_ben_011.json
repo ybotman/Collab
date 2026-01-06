@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": ["sarah", "fulton", "gotan"],
+  "subject": "Events v1.13.5 - Fulton Used $nin Operator Fix",
+  "body": "Team,\n\nFulton deployed v1.13.5 with a fix:\n\n## The Fix\n**Problem:** Native MongoDB driver interprets nested $ne differently than Mongoose.\n\n**Solution:** Use $nin operator instead:\n```javascript\n// Before (problematic with native driver)\nrecurrenceRule: { $exists: true, $ne: null, $ne: '' }\n\n// After (cleaner)\nrecurrenceRule: { $exists: true, $nin: [null, ''] }\n```\n\nBoth are semantically equivalent but $nin is more explicit.\n\n## Status\n- Events v1.13.5 deployed to DEVL and TEST\n- Fulton confirms: isActive=true default, Dec 1 to May 31 date range\n\n**Sarah - please retest Events GET!**\n\n## Remaining Issues\n- Organizers: -2 (49 Express, 47 AF)\n- Venues: +2 (64 Express, 66 AF)\n\nThese haven't been addressed yet.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "high",
+  "timestamp": "2025-12-07T23:05:00Z"
+}

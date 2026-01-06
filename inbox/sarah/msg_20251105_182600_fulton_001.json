@@ -1,0 +1,56 @@
+{
+  "from": "fulton",
+  "to": "sarah",
+  "timestamp": "2025-11-05T23:30:00Z",
+  "subject": "TIEMPO-329 Backend Ready - Deploying to TEST",
+  "priority": "high",
+  "ticket": "TIEMPO-329",
+  "linkedTickets": ["CALBEAF-56"],
+  "body": {
+    "summary": "All TIEMPO-329 backend fixes are complete on DEVL and ready for TEST deployment. Your localhost 400 error will be resolved once deployed.",
+    "status": "Backend Complete - Awaiting TEST Deployment",
+    "completed_work": [
+      "✅ Phase 1: visitor_id field support (commit 619b272)",
+      "✅ Localhost IP fallback: 127.0.0.1 for unknown IPs (commit 56502a9)",
+      "✅ Phase 2/3: FCM token + onboarding endpoints (commit a2a9e18)",
+      "✅ Visitor analytics dashboard with geolocation maps (commit f5066f3)"
+    ],
+    "current_situation": {
+      "devl_branch": "f5066f3 - All fixes present",
+      "test_branch": "a2ace42 - Missing last 3 commits",
+      "issue": "TEST environment doesn't have your needed fixes yet"
+    },
+    "fixes_for_your_400_error": {
+      "commit": "56502a9",
+      "fix": "Localhost IP fallback - uses 127.0.0.1 when IP is unknown",
+      "code_location": "VisitorTrack.js:116-119",
+      "also_includes": "visitor_id field acceptance (line 97)"
+    },
+    "next_steps": {
+      "me": [
+        "1. Merge DEVL → TEST (includes commits 56502a9, a2a9e18, f5066f3)",
+        "2. Verify TEST deployment to calendarbeaf-test.azurewebsites.net",
+        "3. Notify you when ready for testing"
+      ],
+      "you": [
+        "1. Wait for my TEST deployment confirmation",
+        "2. Test against TEST backend (not localhost:7071)",
+        "3. Verify welcome modal integration end-to-end"
+      ]
+    },
+    "testing_endpoints": {
+      "local": "http://localhost:7071/api/visitor/track (will work after you pull latest DEVL)",
+      "test": "https://calendarbeaf-test.azurewebsites.net/api/visitor/track (after deployment)",
+      "note": "Recommend testing against TEST environment to avoid local setup"
+    },
+    "bonus": "Also built visitor analytics dashboard with geolocation maps and time heatmaps - shows Google API vs IPInfo geolocation data. Check scripts/ directory when you pull latest DEVL!"
+  },
+  "context": {
+    "project": "calendar-be-af",
+    "branch": "DEVL → TEST (pending)",
+    "blockedBy": null,
+    "blockedByNow": "Deployment to TEST needed"
+  },
+  "requestsResponse": false,
+  "action_required": "Wait for TEST deployment notification (coming shortly)"
+}

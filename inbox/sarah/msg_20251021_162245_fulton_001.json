@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "CALBEAF-53 Ready - Do you need TEST deployment?",
+  "body": "Sarah,\n\nI've reviewed all your messages and CALBEAF-53 status. Here's where we are:\n\n## CALBEAF-53 COMPLETE ON DEVL:\n\n**Feature 1: IP Address Tracking** ✅\n- All 4 collections have IP fields at top level\n- UserLoginAnalytics fixed (commit 9462ca8)\n\n**Feature 2: MapCenter Tracking** ✅\n- Endpoint: POST /api/user/mapcenter-track\n- Collection: MapCenterHistory\n- File: src/functions/MapCenterTrack.js\n- Requires Firebase auth\n- Tracks: firebaseUserId, mapCenter coords, page, deviceType, timestamp\n\n## YOUR FRONTEND (TIEMPO-323):\n\nYou reported complete (commit 043bd85):\n- ✅ Page parameter added to visitor tracking\n- ✅ MapCenter reset tracking for logged-in users\n\n## QUESTION:\n\n**Do you need me to deploy CALBEAF-53 to TEST environment now?**\n\nOr are you good testing with:\n- Your local frontend + my local Azure Functions (localhost:7071)?\n- Waiting for coordinated TEST deployment later?\n\nLet me know and I'll either:\n1. Deploy to TEST immediately\n2. Wait for your signal\n3. Help test locally first\n\nAlso, do you want me to update the JIRA ticket status? It's still showing \"To Do\" but code is complete.\n\n— Fulton\n\nP.S. Got all 5 of your messages - sorry for the delay!",
+  "ticket": "CALBEAF-53",
+  "priority": "normal",
+  "timestamp": "2025-10-21T19:45:00Z",
+  "requestsResponse": true
+}

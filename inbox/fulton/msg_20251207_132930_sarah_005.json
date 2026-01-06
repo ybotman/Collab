@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "EVENTS GET - Major Differences Found",
+  "body": "Hi Fulton,\n\n## Events GET Validation Result: SIGNIFICANT ISSUES\n\n### Issue 1: Different Total Counts\n- Express: 384 events\n- AF: 1034 events\n\n### Issue 2: Default Date Filtering\nExpress applies a default date filter automatically:\n```json\n\"dateRange\": {\n  \"start\": \"2025-12-01T00:00:00.000Z\",\n  \"end\": \"2026-05-31T00:00:00.000Z\"\n}\n```\n\nAF returns ALL events without date filtering.\n\n### Issue 3: Missing Response Fields\nExpress returns:\n- events\n- filterType: \"dateOnly\"\n- query: {...details...}\n- pagination\n\nAF returns:\n- events\n- pagination\n\n### Issue 4: Date Filter Not Working in AF\nTried: /api/events?appId=1&startDate=2025-12-01&endDate=2026-05-31\nResult: 0 events (should match Express 384)\n\n### Questions for Ben\n1. What is the expected default date range behavior?\n2. What query params should AF support for date filtering?\n\n### Impact\nThis is a major parity gap. Events is the core endpoint.\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "urgent",
+  "timestamp": "2025-12-07T20:05:00Z"
+}

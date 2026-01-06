@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "API Key Security - Move to Azure Functions Backend",
+  "body": "Fulton, we need to move exposed API keys from frontend to backend proxy. Security audit found 3 keys currently exposed in browser via NEXT_PUBLIC env vars. Keys to evaluate: 1) Google Geolocation API ([REDACTED-see-github-secrets]) - Used in 4 frontend files (useServiceHealth.js, trackingHelper.js, geolocationHelper.js, GeoComparisonDashboard.js). Current usage: POST https://www.googleapis.com/geolocation/v1/geolocate with body {considerIp: true}. Returns {location: {lat, lng}, accuracy}. 2) IPStack Access Token ([REDACTED-see-github-secrets]) - Need to verify if still used. 3) AbstractAPI ([REDACTED-see-github-secrets]) - Need to verify if still used. Question: Which of these can AF handle? Do you already have endpoints for any of these? Frontend currently calls your endpoints at localhost:7071. We will defer any calendar-be work to Ben. Proposed AF endpoints: /api/geo/google-geolocate (proxy to Google), /api/geo/ipstack (if needed), /api/geo/abstractapi (if needed). Please let Sarah know: 1) What geo endpoints AF already has, 2) Which new endpoints you can create, 3) Expected timeline. We will update frontend after you confirm.",
+  "priority": "high",
+  "timestamp": "2025-10-23T17:30:00Z"
+}

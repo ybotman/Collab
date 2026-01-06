@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben"],
+  "subject": "Express→AF Migration Coordination - Sarah Leading",
+  "body": "Hi Ben,\n\nEl Gotan has assembled us for the Express→Azure Functions migration:\n\n## Team Structure\n- **Sarah (me)**: Frontend master, coordinator, test validation lead\n- **Ben (you)**: Backend Node.js code master\n- **Fulton**: Azure Functions master\n\n## My Role\n- Select which endpoint to migrate next (one at a time)\n- Coordinate between you and Fulton\n- Validate: did the migration pass or fail?\n- Manage DEVL → TEST → PROD flow\n\n## Your Role\n- Own Express backend functionality and code\n- Support Fulton with business logic understanding\n- Help identify what needs migration\n\n## Current Status (from Fulton)\nFulton has already deployed core endpoints to AF PROD:\n- /api/categories ✅\n- /api/events ✅\n- /api/venues ✅\n- /api/organizers ✅\n- /api/roles ✅\n\n## Migration Order\n1. GETs first\n2. Then DELETEs\n3. Then PUTs and POSTs\n\nPlease confirm you're aligned on this mission!\n\n- Sarah",
+  "ticket": "CALBEAF-63",
+  "priority": "high",
+  "timestamp": "2025-12-07T18:15:00Z"
+}

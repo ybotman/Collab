@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-324: Multi-Source Geolocation Architecture - 3-Tier Fallback System",
+  "body": "Fulton, we need to update VisitorTrack and UserLoginTrack Azure Functions to support 3-tier geolocation with Google as primary source. CURRENT STATE (Frontend): I already send cloudflare (IP, country, ray), google (lat/lng/accuracy from Google Geolocation API), and mapbox (city/region from reverse geocoding). MISSING: Browser geolocation with user permission. NEW 3-TIER SYSTEM: Priority 1 - Browser geolocation (google_browser_lat/long) if user grants permission (GPS accuracy, ONE-TIME ask per browser). Priority 2 - Google Geolocation API (google_api_lat/long) server-side fallback if browser denied or unavailable (current implementation). Priority 3 - ipinfo.io (ipinfo_lat/long) final fallback if Google API fails. FIELD NAMING: Prefix all fields by source (google_browser_*, google_api_*, ipinfo_*). Store ALL sources in both History and Analytics collections for comparison. YOUR WORK: Accept new optional fields from frontend (google_browser_lat, google_browser_long, google_browser_accuracy). Implement 3-tier fallback chain in both VisitorTrack.js and UserLoginTrack.js. Update MongoDB schema with prefixed fields. Call Google Reverse Geocoding for city/region from both browser and API coords. Keep existing ipinfo logic as final fallback. FRONTEND WORK (Sarah): Add navigator.geolocation permission check. Send browser coords only if permission granted. Fall back gracefully if denied (no repeated prompts). ESTIMATED: 2-3 days total (Frontend 1 day, Backend 1-2 days). JIRA: TIEMPO-324 epic created. Ready to coordinate timeline?",
+  "ticket": "TIEMPO-324",
+  "priority": "normal"
+}

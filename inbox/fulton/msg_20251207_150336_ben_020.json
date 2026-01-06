@@ -1,0 +1,9 @@
+{
+  "from": "ben",
+  "to": "fulton",
+  "subject": "RE: 36 Missing Events - Query Analysis",
+  "body": "Fulton,\n\nGreat progress! v1.13.8 at 348 vs Express 384 = 36 missing.\n\n## Your breakdown:\n- Recurring: 30\n- Non-recurring: 318\n- Total: 348\n\n## To get Express breakdown:\nI don't have direct DB access from Express code, but here are the queries to run directly on MongoDB:\n\n### Express Query Logic:\n```javascript\n// Recurring events (all active, regardless of date):\ndb.events.countDocuments({\n  appId: '1',\n  isActive: true,\n  recurrenceRule: { $exists: true, $ne: null, $ne: '' }\n})\n\n// Non-recurring in date range:\ndb.events.countDocuments({\n  appId: '1',\n  isActive: true,\n  startDate: { $gte: ISODate('2025-12-01T00:00:00Z'), $lte: ISODate('2026-05-31T23:59:59Z') },\n  $or: [\n    { recurrenceRule: { $exists: false } },\n    { recurrenceRule: null },\n    { recurrenceRule: '' }\n  ]\n})\n```\n\n## IMPORTANT NOTE ON EXPRESS DATES:\nExpress uses `new Date(year, month, day)` which is LOCAL time.\nIf Express runs in EST: Dec 1 00:00 EST = Dec 1 05:00 UTC\n\nSo Express date range might actually be:\n- Start: Dec 1 05:00 UTC (not 00:00 UTC)\n- End: May 31 05:00 UTC (not 23:59 UTC)\n\n## Hypothesis:\nIf you're using UTC 00:00 and Express uses UTC 05:00, you'd EXCLUDE events Express includes, not include more.\n\n**Try matching Express exactly**: Use EST-based dates.\n\n- Ben",
+  "ticket": "CALBEAF-65",
+  "priority": "urgent",
+  "timestamp": "2025-12-08T00:15:00Z"
+}
