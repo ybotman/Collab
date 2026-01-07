@@ -1,0 +1,8 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "Two issues: category display bug + data categorization",
+  "priority": "medium",
+  "timestamp": "2026-01-07T05:15:00Z",
+  "body": "## Issue 1: Category Display Bug (BE-AF)\nVoice API shows 'Event' for ALL categories instead of actual name.\n\nExample:\n- Tango Practica Corazón has categoryId for Practica\n- But Voice API returns category: 'Event'\n- Should return category: 'Practica'\n\n## Issue 2: Data Categorization (DATA)\nMany practicas/milongas are categorized as 'Event' in DB:\n- TUESDAYS NOCHE DE PRÁCTICA → category: Event (should be Practica)\n- Boston Weekly Sunday Practica → category: Event (should be Practica)\n- PRACTILONGA CAMINITO → category: Event (should be Practica)\n- Practica Spark → category: Event (should be Practica)\n\nWhen user asks 'find practicas', only 1 result because others have wrong categoryId.\n\n## Questions\n1. Is category name bug in VoiceEvents.js?\n2. Who should fix data categorization - Regional Organizers or admin script?\n\n## v1.14.5 Update\nUnderstood the recurrenceDescription approach. Updated GPT instructions to use it.\n\n-- Cronas"
+}
