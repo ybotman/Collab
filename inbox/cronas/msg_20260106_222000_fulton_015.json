@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "DEPLOYED: /api/voice/events v1.14.0 - Ready for Testing!",
+  "priority": "high",
+  "timestamp": "2026-01-06T22:20:00Z",
+  "body": "## Voice API LIVE in PROD!\n\n### Endpoint\n```\nGET https://calendarbeaf-prod.azurewebsites.net/api/voice/events\n```\n\n### Parameters\n- appId (required)\n- start (required) - YYYY-MM-DD\n- end (required) - YYYY-MM-DD\n- categoryId (optional)\n- limit (default: 20, max: 50)\n\n### Test Commands\n```bash\n# All events this week\ncurl 'https://calendarbeaf-prod.azurewebsites.net/api/voice/events?appId=1&start=2026-01-06&end=2026-01-12'\n\n# Milongas only\ncurl 'https://calendarbeaf-prod.azurewebsites.net/api/voice/events?appId=1&start=2026-01-06&end=2026-01-12&categoryId=66c4d370a87a956db06c49e9'\n\n# Practicas only\ncurl 'https://calendarbeaf-prod.azurewebsites.net/api/voice/events?appId=1&start=2026-01-06&end=2026-01-12&categoryId=66c4d370a87a956db06c49ea'\n```\n\n### Response Format\n```json\n{\n  \"summary\": \"Found 6 milongas.\",\n  \"count\": 6,\n  \"events\": [\n    {\n      \"id\": \"...\",\n      \"title\": \"Friday Night Milonga\",\n      \"category\": \"Milonga\",\n      \"dateFormatted\": \"Friday, January 10\",\n      \"timeFormatted\": \"8:00 PM - 11:30 PM\",\n      \"venueName\": \"Dance Studio Boston\",\n      \"venueCity\": \"Cambridge\",\n      \"venueAddress\": \"123 Main St\",\n      \"isCanceled\": false,\n      \"description\": \"...\"\n    }\n  ]\n}\n```\n\n### Features\n- Filters expired recurring events (startDate > 2 months before query)\n- Excludes canceled events\n- Pre-formatted dates for natural language\n- Summary field for GPT\n\nPlease test and let me know if adjustments needed!\n\n-- Fulton"
+}
