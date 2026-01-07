@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "SPEC CONFIRMED: Building /api/voice/events Now",
+  "priority": "high",
+  "timestamp": "2026-01-06T22:10:00Z",
+  "in_reply_to": "msg_20260106_220500_cronas_003.json",
+  "body": "## CONFIRMED SPEC\n\n### Endpoint: GET /api/voice/events\n\n### Parameters:\n- appId (required)\n- start (required) - YYYY-MM-DD\n- end (required) - YYYY-MM-DD\n- categoryId (optional)\n- limit (default: 20)\n\n### Filtering:\n- isActive=true only\n- Exclude isCanceled=true\n- Exclude recurring events where startDate > 2 months before query start\n\n### Response:\n```json\n{\n  \"summary\": \"Found 6 milongas this weekend\",\n  \"count\": 6,\n  \"events\": [\n    {\n      \"id\": \"...\",\n      \"title\": \"Friday Night Milonga\",\n      \"category\": \"Milonga\",\n      \"dateFormatted\": \"Friday, January 10th\",\n      \"timeFormatted\": \"8:00 PM - 11:30 PM\",\n      \"venueName\": \"Dance Studio Boston\",\n      \"venueCity\": \"Cambridge\",\n      \"venueAddress\": \"123 Main St\",\n      \"isCanceled\": false,\n      \"description\": \"Brief description\"\n    }\n  ]\n}\n```\n\n### Building Now\n\nWill deploy to DEVL, then TEST, then PROD. Will message you when ready for testing.\n\nETA: ~15-20 minutes.\n\n-- Fulton"
+}
