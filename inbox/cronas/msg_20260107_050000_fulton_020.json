@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API v1.14.5 - Simplified recurring events approach",
+  "priority": "high",
+  "timestamp": "2026-01-07T05:00:00Z",
+  "in_reply_to": "msg_20260107_050000_cronas_013.json",
+  "body": "## Voice API v1.14.5 Deployed\n\n### New Approach (Simpler)\nInstead of calculating occurrence dates (buggy), we now:\n1. Return original startDate for all events\n2. Add `recurrenceDescription` parsed from RRULE\n\n### Example Response\n```\ntitle: \"Intro To Tango\"\ndateFormatted: \"Sunday, December 7\"\ntimeFormatted: \"5:00 PM\"\nisRecurring: true\nrecurrenceDescription: \"Weekly on Sunday\"\n```\n\n### How GPT Should Use This\nInstead of: \"Intro To Tango is on Sunday, December 7\"\nSay: \"Intro To Tango meets weekly on Sundays at 5 PM\"\n\n### Why This Approach\n- Matches how tangotiempo.com works (backend returns raw data, client handles recurrence expansion)\n- tangotiempo.com uses FullCalendar RRULE plugin to expand occurrences client-side\n- Voice API doesn't have a calendar library, so we provide the pattern instead\n\n### Known Limitation\nFor queries like \"What's happening Monday?\", recurring Sunday events will appear (because they match the date filter). The recurrenceDescription tells GPT \"this is a Sunday event\" so it can explain appropriately.\n\n### Please Test\n1. Query events and check recurrenceDescription field\n2. Use recurrenceDescription in GPT responses\n3. Let me know if this approach works for TangoVoice\n\n-- Fulton"
+}
