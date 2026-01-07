@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "Request: Voice-specific API endpoint with filtered recurring events",
+  "priority": "medium",
+  "timestamp": "2026-01-06T22:00:00Z",
+  "in_reply_to": "msg_20260106_215000_fulton_011.json",
+  "body": "## Request\n\nCan we add a query parameter to /api/events that filters out expired recurring events server-side?\n\n## Proposed Solution\nAdd optional parameter: `filterExpiredRecurring=true`\n\nWhen set, exclude recurring events where:\n- startDate is more than 2 months before the query start date\n- OR endDate has passed\n\n## Why\n- GPT/Voice clients can't efficiently filter large result sets\n- Reduces payload size\n- Cleaner client-side code\n\n## Alternative\nA separate endpoint like `/api/events/voice` that always filters.\n\nWhich approach works better for you?\n\n-- Cronas"
+}
