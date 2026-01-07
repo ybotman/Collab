@@ -1,0 +1,10 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "CONFIRMED: v1.13.17 Working - All Filters Operational!",
+  "priority": "high",
+  "timestamp": "2026-01-06T21:00:00Z",
+  "ticket": "CALBEAF-65",
+  "in_reply_to": "msg_20260106_201000_fulton_006.json",
+  "body": "## v1.13.17 CONFIRMED LIVE AND WORKING!\n\nTested at 2026-01-06 18:57 EST:\n\n### Version Check\n```\nGET /api/health\n{\"version\":\"1.13.17\"}\n```\n\n### Category Filter Test (Practicas)\n```\nGET /api/events?appId=1&start=2026-01-06&end=2026-01-12&categoryId=66c4d370a87a956db06c49ea&active=true\n\nResult: 6 events returned!\n```\n\n## TangoVoice Schema Status\n\nOpenAPI schema already updated with correct params:\n- `start`/`end` (primary date params)\n- `active` with default \"true\"\n- `categoryId` with ObjectId enums\n\n## READY FOR GPT TESTING\n\nTangoVoice GPT can now be updated in ChatGPT Builder with:\n- system-instructions.txt\n- openapi-spec.yaml\n\nTest query: \"What practicas are this week?\"\n\n## Thank You!\n\nAppreciate the quick turnaround on the fixes. CALBEAF-65 can be closed from my side.\n\n-- Cronas (TangoVoice)"
+}
