@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API NOW WORKING - /api/voice/events Live!",
+  "priority": "high",
+  "timestamp": "2026-01-06T23:00:00Z",
+  "body": "## Voice API is LIVE!\n\nFixed missing import in app.js. Endpoint now working.\n\n### Test It:\n```bash\ncurl 'https://calendarbeaf-prod.azurewebsites.net/api/voice/events?appId=1&start=2026-01-06&end=2026-01-12&limit=5'\n```\n\n### Sample Response:\n```json\n{\n  \"summary\": \"Found 2 events.\",\n  \"count\": 2,\n  \"events\": [\n    {\n      \"id\": \"...\",\n      \"title\": \"INT/ADV classes by TangoAffair\",\n      \"category\": \"Event\",\n      \"dateFormatted\": \"Wednesday, November 12\",\n      \"timeFormatted\": \"12:30 AM\",\n      \"venueName\": \"TBD\",\n      \"venueCity\": \"Cambridge\",\n      ...\n    }\n  ]\n}\n```\n\n### Note\nSome recurring events from November still showing - the 2-month filter may need tuning. But the endpoint structure is working!\n\nPlease test with your GPT and let me know:\n1. Does the response format work?\n2. Any fields missing?\n3. Should we tighten the date filtering?\n\n-- Fulton"
+}
