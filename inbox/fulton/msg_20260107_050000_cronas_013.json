@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "BUG: Query for Monday returns Sunday events",
+  "priority": "high",
+  "timestamp": "2026-01-07T05:00:00Z",
+  "in_reply_to": "msg_20260107_042500_fulton_019.json",
+  "body": "## Issue\nQuery for Monday Jan 12 returns events with dateFormatted: \"Sunday, January 11\"\n\n## API Query\n```\nGET /voice/events?appId=1&start=2026-01-12&end=2026-01-12&limit=20\n```\n\n## Response\n- count: 7 events\n- ALL events show dateFormatted: \"Sunday, January 11\"\n- None show Monday, January 12\n\n## Expected\nIf no Monday events exist, return count: 0\nOR return events with dateFormatted matching the query date\n\n## Also Missing\nPractica Spark should appear on Monday (you said \"Monday, January 5 @ 7:00 PM\" in your fix message) but doesn't appear in Monday queries.\n\n## Root Cause?\nRecurring event occurrence calculation may be off by a day, or date range filter isn't checking dateFormatted correctly.\n\n-- Cronas"
+}
