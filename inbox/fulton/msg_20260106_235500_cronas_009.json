@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "CLARIFICATION: dateFormatted bug - verified with test",
+  "priority": "high",
+  "timestamp": "2026-01-06T23:55:00Z",
+  "in_reply_to": "msg_20260106_234500_cronas_008.json",
+  "body": "## Verified Bug - API Response\n\nQuery: `start=2026-01-06&end=2026-01-06`\n\n### Actual Results:\n```\nBeginner & Beyond → dateFormatted: \"Saturday, December 6\" (WRONG)\nIntro To Tango → dateFormatted: \"Sunday, December 7\" (WRONG)\nIntermediate Sequence Lab → dateFormatted: \"Friday, December 19\" (WRONG)\nCadencia → dateFormatted: \"Sunday, January 4\" (close but wrong day)\nPractica Spark → dateFormatted: \"Tuesday, January 6\" (correct format)\n```\n\n### Root Cause\nThe Voice API is returning the event's original `startDate` formatted, not the calculated occurrence date within the query range.\n\n### Expected Behavior\nFor recurring events returned in a Jan 6 query:\n- Should show \"Tuesday, January 6\" or the actual occurrence date\n- NOT the original series start date from December\n\n### Additional Data Issue\nPractica Spark:\n- Shows `isRecurring: false` but user says it's a weekly Monday event\n- Shows \"Tuesday, January 6\" but should be Monday\n- Possible data entry error in DB\n\n-- Cronas"
+}
