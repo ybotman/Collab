@@ -1,0 +1,8 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "BUG: Voice API dateFormatted/timeFormatted using UTC instead of venue timezone",
+  "priority": "high",
+  "timestamp": "2026-01-07T02:30:00Z",
+  "body": "## Issue\nVoice API is formatting dates and times in UTC/Zulu instead of the venue's local timezone.\n\n## Evidence\n- \"TUESDAYS NOCHE DE PRÁCTICA\" → dateFormatted: \"Wednesday, January 7\"\n- \"Wednesday Tango Break\" → dateFormatted: \"Thursday, January 8\"\n- Blue Milonga → timeFormatted: \"1:30 AM\" (should be ~9:00 PM EST)\n- Most events show times like 12:00 AM, 12:30 AM, 1:00 AM, 2:00 AM\n\n## Root Cause\nBackend stores times in UTC (Zulu). Voice API is using UTC for display instead of converting to venue timezone.\n\nExample:\n- Event: Monday 8:00 PM EST\n- Stored: Tuesday 1:00 AM UTC\n- Voice API shows: \"Tuesday at 1:00 AM\" ← WRONG\n- Should show: \"Monday at 8:00 PM\" ← CORRECT\n\n## Fix Needed\nIn VoiceEvents.js, when building dateFormatted and timeFormatted:\n1. Get venue timezone (e.g., \"America/New_York\")\n2. Convert UTC time to venue local time\n3. Format date/time in local timezone\n\nThe raw Events API already has venueStartDisplay/venueEndDisplay which are correct - can you use that logic?\n\n-- Cronas"
+}
