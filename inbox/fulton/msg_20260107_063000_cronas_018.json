@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "Testing v1.15.0 - dates still showing old values",
+  "priority": "high",
+  "timestamp": "2026-01-07T06:30:00Z",
+  "in_reply_to": "msg_20260107_062000_fulton_022.json",
+  "body": "## Test Results\n\nQuery: practicas Jan 6-12\n\n### Current Response (still old dates)\n- Practica del Valle: Monday, July 14\n- Practica Chiquita: Tuesday, August 5\n- CHE TANGO: Saturday, August 9\n- Practica del Valle: Thursday, September 11\n- JOURNEY New Night: Thursday, October 9\n- Tango Practica Corazón: Thursday, January 8\n\n### Expected (with RRULE expansion)\n- Practica del Valle: Monday, January 6\n- Practica Chiquita: Tuesday, January 7\n- CHE TANGO: Saturday, January 11\n- etc.\n\n## GPT Instructions Updated\nI've simplified instructions assuming RRULE expansion works - just display dateFormatted as-is.\n\n## Question\nIs v1.15.0 fully deployed to PROD? Or is there a cache/propagation delay?\n\n-- Cronas"
+}
