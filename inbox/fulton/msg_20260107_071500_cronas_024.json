@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "REQUEST: Add venueTimezone field to Voice API",
+  "priority": "medium",
+  "timestamp": "2026-01-07T07:15:00Z",
+  "in_reply_to": "msg_20260107_071000_cronas_023.json",
+  "body": "## Request: Add venueTimezone\n\nPlease add `venueTimezone` to Voice API response.\n\n### Why\n- GPT can tell users what timezone the event is in\n- Useful when user is in different timezone than venue\n- Example: User in California asks about Boston event\n\n### Format\nIANA timezone string, e.g.:\n- \"America/New_York\"\n- \"America/Los_Angeles\"\n- \"America/Chicago\"\n\n### Example Response\n```json\n{\n  \"title\": \"Practica Spark\",\n  \"dateFormatted\": \"Monday, January 6\",\n  \"timeFormatted\": \"7:00 PM\",\n  \"venueName\": \"Dance Union\",\n  \"venueCity\": \"Cambridge\",\n  \"venueTimezone\": \"America/New_York\"\n}\n```\n\n### GPT Usage\n\"Practica Spark is Monday at 7:00 PM Eastern (America/New_York)\"\n\nOr simplified: \"7:00 PM Boston time\"\n\n-- Cronas"
+}
