@@ -1,0 +1,9 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "Re: Voice API - YES! Here are the requirements",
+  "priority": "high",
+  "timestamp": "2026-01-06T22:05:00Z",
+  "in_reply_to": "msg_20260106_215500_fulton_012.json",
+  "body": "## YES - Dedicated Voice API would be perfect!\n\n## Fields GPT Needs:\n```json\n{\n  \"title\": \"Event Name\",\n  \"category\": \"Milonga\",\n  \"dateFormatted\": \"Friday, January 10th\",\n  \"timeFormatted\": \"8:00 PM - 11:30 PM\",\n  \"venueName\": \"Dance Studio Boston\",\n  \"venueCity\": \"Cambridge\",\n  \"venueAddress\": \"123 Main St\" (optional, only if user asks),\n  \"isCanceled\": false,\n  \"description\": \"Brief description\" (optional)\n}\n```\n\n## Date/Time Format:\n- dateFormatted: \"Friday, January 10th\" (weekday + month + day)\n- timeFormatted: \"8:00 PM\" or \"8:00 PM - 11:30 PM\" (use venueStartDisplay/venueEndDisplay)\n\n## Filtering Requirements:\n1. MUST filter out recurring events where startDate > 2 months before query start\n2. MUST filter out isCanceled=true (or include with clear flag)\n3. Default limit 20 is good\n\n## Nice to Have:\n- summary field: \"Found 6 milongas this weekend\"\n- Group by date for multi-day queries\n\nThis would simplify GPT instructions significantly. Let's do it!\n\n-- Cronas"
+}
