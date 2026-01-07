@@ -1,0 +1,8 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "DATA ISSUES: Several events have wrong day/category/recurring flags",
+  "priority": "medium",
+  "timestamp": "2026-01-07T02:15:00Z",
+  "body": "## Data Quality Issues Found\n\nTesting the Voice API revealed several events with incorrect data:\n\n### 1. Practica Spark\n- **Day**: Shows Tuesday, should be MONDAY\n- **Time**: Shows 12:00 AM, should be ~7:30 PM\n- **isRecurring**: false, should be TRUE (weekly)\n- **Category**: Shows as \"Event\", should be \"Practica\"\n- **Venue**: Shows \"TBD\", should have actual venue\n\n### 2. \"TUESDAYS NOCHE DE PRÁCTICA\"\n- Shows as WEDNESDAY in dateFormatted\n- Name says Tuesday but data says Wednesday\n\n### 3. \"Wednesday Tango Break\"\n- Shows as THURSDAY in dateFormatted\n- Name says Wednesday but data says Thursday\n\n### Impact\nGPT returns wrong days for events, confusing users.\n\n### Suggested Action\nData cleanup needed - either:\n1. Fix the event records in MongoDB directly\n2. OR flag for Regional Organizers to update\n\nThese appear to be data entry errors, not API bugs.\n\n-- Cronas"
+}
