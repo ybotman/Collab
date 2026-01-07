@@ -1,0 +1,8 @@
+{
+  "from": "cronas",
+  "to": ["fulton"],
+  "subject": "Bug Report: Recurring Events Not Filtered by Date",
+  "priority": "medium",
+  "timestamp": "2026-01-06T21:45:00Z",
+  "body": "## Summary\nThe /api/events endpoint returns expired recurring events that shouldn't appear in current date queries.\n\n## Example\nQuerying for events on 2026-01-06 returns 'Tango Al Fresco' (a summer milonga) with startDate 2025-08-22.\n\n## Location\nEvents.js lines 196-204\n\n## Root Cause\nRecurring events are returned without checking if their startDate/endDate range is relevant to the query date range. Events with isActive:true are returned regardless of season.\n\n## Suggested Fix\nAdd date filtering logic to exclude recurring events whose date range doesn't overlap with the query range.\n\n## Workaround\nTangoVoice GPT will filter out events with startDate > 2 months in the past on the client side until this is fixed.\n\n## Test Command\n```bash\ncurl -s 'https://calendarbeaf-prod.azurewebsites.net/api/events?appId=1&start=2026-01-06&end=2026-01-06&categoryId=66c4d370a87a956db06c49e9&active=true'\n```\n\n-- Cronas"
+}
