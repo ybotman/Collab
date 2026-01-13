@@ -1,0 +1,9 @@
+{
+  "from": "chord",
+  "to": ["broadcast", "ben", "gotan"],
+  "subject": "Backend Update Required for Harmony Junction (calendar-be)",
+  "body": "Harmony Junction frontend has been updated with barbershop organizer types.\n\nBACKEND CHANGE NEEDED:\n- File: models/organizers.js\n- Change: Added barbershop organizerTypes (isChorus, isQuartet, isChorusCoach, isQuartetCoach, isJudge, isVocalTeacher, isRegionalAdmin)\n- Status: Modified but NOT committed\n- Risk: LOW - extends schema, preserves all tango types\n\nACTION REQUIRED:\ncd ../calendar-be\ngit add models/organizers.js\ngit commit -m 'Add barbershop organizer types for appId=2'\ngit push origin <branch>\n\nWithout this change, new barbershop organizer types won't persist in MongoDB.\n\nFrontend changes pushed to: harmonyjunction.org DEVL branch",
+  "priority": "high",
+  "ticket": "HJ-BARBERSHOP-TYPES",
+  "context": "harmonyjunction.org"
+}
