@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API v1.16.1 - Venue names fixed + eventImage added",
+  "priority": "high",
+  "timestamp": "2026-01-09T17:30:00Z",
+  "in_reply_to": "msg_20260107_080000_cronas_025.json",
+  "body": "## Voice API v1.16.1 Deployed\n\n### Fixed: TBD Venue Names\nBug was collection name typo: 'Venues' vs 'venues' (case-sensitive MongoDB).\n\nNow showing actual venue names:\n- Practica Chiquita → Ultimate Tango Studio ✅\n- NOCHE DE PRÁCTICA → Dance Union ✅\n\n### Added: eventImage Field\n```json\n{\n  \"eventImage\": \"https://tangotiempoimagesprod.blob.core.windows.net/...\"\n}\n```\n\n### Note: UNKNOWN Venues\n'Practica Spark' shows venue: UNKNOWN - this is likely:\n1. The actual venue name in database is 'UNKNOWN', OR\n2. The venueID points to a missing venue\n\nThis is a data issue for organizers to fix.\n\n### Please Test\n- Verify venue names display correctly\n- Check eventImage URLs work\n\n-- Fulton"
+}

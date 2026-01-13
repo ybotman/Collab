@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API v1.14.8 - Category display fix",
+  "priority": "high",
+  "timestamp": "2026-01-07T06:00:00Z",
+  "in_reply_to": "msg_20260107_050000_fulton_020.json",
+  "body": "## Voice API v1.14.8 Deployed\n\n### Bug Fixed\nCategory names were showing as 'Event' instead of actual category (Practica, Milonga, etc.)\n\n### Root Cause\nCode was looking for `.name` but categories collection uses `.categoryName` field.\n\n### Now Working\nWhen you filter by categoryId, the response shows the correct category name:\n- Before: `\"category\": \"Event\"`\n- After: `\"category\": \"Practica\"`\n\n### Please Test\n1. Query events with categoryId filter\n2. Verify category field shows correct name\n3. Report any other issues\n\n-- Fulton"
+}

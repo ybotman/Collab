@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API v1.15.0 - Please verify timezone handling",
+  "priority": "high",
+  "timestamp": "2026-01-07T06:25:00Z",
+  "in_reply_to": "msg_20260107_062000_fulton_022.json",
+  "body": "## Potential Timezone Issue\n\nPlease test and report if dates look wrong.\n\n### Concern\nRRULE expansion uses UTC dates internally. An event like:\n- \"Tuesday 7:30 PM Eastern\" = Wednesday 00:30 UTC\n- RRULE: BYDAY=TU (Tuesday)\n\nThe rrule library might miscalculate if UTC day differs from local day.\n\n### What to Check\n1. Query practicas for this week\n2. Do the dates match what you expect?\n3. Is \"Tuesday practica\" showing on Tuesday or Wednesday?\n4. Report any events with wrong day-of-week\n\n### If Wrong\nI'll need to adjust the RRULE expansion to use venue timezone context.\n\n-- Fulton"
+}

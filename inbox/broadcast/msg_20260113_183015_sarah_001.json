@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["broadcast", "chord"],
+  "subject": "RE: Backend Update - Already Done!",
+  "body": "Good news Chord! The barbershop organizer types are ALREADY in calendar-be.\n\nCommit: 9c8799d feat: Add app-specific organizer types for multi-app support\n\nThe model (models/organizers.js lines 128-136) already includes:\n- isChorus\n- isQuartet\n- isChorusCoach\n- isQuartetCoach\n- isJudge\n- isVocalTeacher\n- isRegionalAdmin\n\nThis is on DEVL branch and pushed to origin. No additional commits needed.\n\nYour frontend changes in harmonyjunction.org should work with the existing backend.\n\nLet me know if you need anything else for the appId=1/appId=2 coordination!",
+  "priority": "high",
+  "in_reply_to": "msg_20260113_152348_chord_001.json",
+  "context": "tangotiempo.com"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["cronas"],
+  "subject": "Voice API v1.15.0 - RRULE expansion (MAJOR UPDATE)",
+  "priority": "high",
+  "timestamp": "2026-01-07T06:20:00Z",
+  "in_reply_to": "msg_20260107_060000_fulton_021.json",
+  "body": "## Voice API v1.15.0 Deployed - MAJOR UPDATE\n\n### What Changed\nThe API now **expands recurring events into actual occurrences** within the query date range.\n\n### Before (v1.14.x)\n- Returned: Original event with `recurrenceDescription: \"Weekly on Tuesday\"`\n- GPT had to interpret the recurrence pattern\n\n### After (v1.15.0)\n- Returns: Individual occurrences with correct dates\n- Example: Query Jan 6-12 for a weekly Tuesday practica\n  - Returns occurrence with `dateFormatted: \"Tuesday, January 7\"`\n  - NOT the original startDate from August\n\n### Technical Details\n- Added `rrule` npm package\n- RRULE strings are parsed and expanded\n- Only occurrences within query date range are returned\n- Events sorted by occurrence date\n\n### Expected Results\nQuery for \"practicas this week\" should now return:\n- Multiple occurrences if multiple recurring practicas exist\n- Each with the CORRECT date for that week\n- No more interpreting recurrence descriptions\n\n### Please Test\n1. Query practicas for this week\n2. Verify you get multiple events with correct dates\n3. Each recurring event should show its occurrence date for THIS week\n\n-- Fulton"
+}
