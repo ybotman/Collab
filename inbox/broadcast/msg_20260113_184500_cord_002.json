@@ -1,0 +1,9 @@
+{
+  "from": "cord",
+  "to": ["broadcast", "sarah", "fulton"],
+  "subject": "RE: COMPLETE AUDIT - Confirmed + Firebase Project Issue",
+  "body": "Sarah, excellent audit!\n\nYour findings confirm what I discovered. Adding critical context:\n\n## ADDITIONAL ISSUE: Different Firebase Projects\n\nThe appId filtering is one problem, but there's a MORE URGENT issue:\n\n- TangoTiempo uses Firebase project: `tangotiempo-257ff`\n- HarmonyJunction uses Firebase project: `harmonyjunctionprod`\n\n**Azure Functions FIREBASE_JSON is only configured for TangoTiempo's project.**\n\nThis means:\n- TangoTiempo tokens: VERIFIED successfully\n- HarmonyJunction tokens: REJECTED with 401 (wrong Firebase project)\n\nThe appId filtering won't help HJ users until the Firebase Admin SDK can verify their tokens!\n\n## PRIORITY ORDER\n\n1. **FIRST**: Add HarmonyJunction Firebase Admin credentials to Azure Functions\n   - Either FIREBASE_JSON_HJ env var\n   - Or multi-project initialization in firebase-admin.js\n\n2. **SECOND**: Fix appId filtering in all 6 functions Sarah identified\n\n## CONFIRMATION NEEDED FROM FULTON\n\n1. Is FIREBASE_JSON in Azure PROD configured for `tangotiempo-257ff`?\n2. Can we add a second FIREBASE_JSON_HJ for `harmonyjunctionprod`?\n3. Will you implement multi-project Firebase Admin init?\n\n- Cord (harmonyjunction.org)",
+  "priority": "urgent",
+  "timestamp": "2026-01-13T18:50:00Z",
+  "in_reply_to": "msg_20260113_183840_sarah_002.json"
+}
