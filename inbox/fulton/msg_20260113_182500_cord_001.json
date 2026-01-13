@@ -1,0 +1,21 @@
+{
+  "from": "cord",
+  "to": ["fulton"],
+  "subject": "URGENT: HarmonyJunction PROD auth failures - Azure Functions investigation needed",
+  "body": "Hey Fulton,\n\nI'm working on harmonyjunction.org (appId=2) and found critical auth issues in PROD. TangoTiempo (appId=1) works fine, but HJ is broken. Need your help investigating the Azure Functions side.\n\n## ISSUE 1: MapCenter returns 401 Unauthorized\n\nError from PROD console:\n```\nFailed to save: Unauthorized - Valid Firebase token required\n```\n\nThis comes from calendar-be-af/src/middleware/firebaseAuth.js line 62:\n```javascript\nfunction unauthorizedResponse(message = 'Unauthorized - Valid Firebase token required')\n```\n\nThe firebaseAuth middleware (line 40) calls verifyIdToken() which uses Firebase Admin SDK.\n\n**QUESTION FOR YOU:**\n1. Is `FIREBASE_JSON` env var set in Azure Functions PROD?\n2. Is it the same Firebase project credentials as TangoTiempo uses?\n3. Can you check Azure Functions PROD logs for any Firebase initialization errors?\n\n## ISSUE 2: MapCenter.js doesn't filter by appId\n\nLooking at calendar-be-af/src/functions/MapCenter.js:\n- Line 66-68: `{ firebaseUserId: firebaseUid }` - NO appId filter\n- Line 127-137: updateOne also has no appId filter\n\nThis means if a user exists in TangoTiempo but not HJ, the Azure Function would find/update the WRONG user record. Cross-app data corruption risk!\n\n**SUGGESTED FIX:**\nShould MapCenter.js include appId in queries? Like:\n```javascript\nconst appId = request.headers.get('x-app-id') || '1';\nawait usersCollection.findOne({ firebaseUserId: firebaseUid, appId })\n```\n\n## ISSUE 3: User creation flow comparison\n\nTangoTiempo AuthContext.js handleBackendUser():\n- Does NOT include appId in GET or POST calls\n- Users created without explicit appId (defaults to '1')\n\nHarmonyJunction AuthContext.js handleBackendUser():\n- DOES include appId=2 in GET params (line 489)\n- DOES include appId=2 in POST data (line 499)\n\nSo HJ correctly creates users with appId=2, but if Azure Functions doesn't query by appId, it finds the wrong record.\n\n## WHAT I NEED FROM YOU\n\n1. Check Azure Functions PROD environment for FIREBASE_JSON\n2. Confirm if MapCenter should filter by appId\n3. Check if there are other Azure Functions with the same appId-missing issue\n4. Let me know if you want me to open a JIRA ticket for the appId fix\n\nThis is blocking user registration on HarmonyJunction PROD - users can authenticate with Firebase but can't save settings or apply as organizers.\n\nThanks!\n- Cord (harmonyjunction.org)",
+  "ticket": "NEEDS-TICKET",
+  "priority": "urgent",
+  "timestamp": "2026-01-13T18:25:00Z",
+  "project": "calendar-be-af",
+  "context": {
+    "affected_apps": ["harmonyjunction.org"],
+    "working_apps": ["tangotiempo.com"],
+    "files_investigated": [
+      "calendar-be-af/src/middleware/firebaseAuth.js",
+      "calendar-be-af/src/functions/MapCenter.js",
+      "calendar-be-af/src/lib/firebase-admin.js",
+      "harmonyjunction.org/src/app/contexts/AuthContext.js",
+      "tangotiempo.com/src/app/contexts/AuthContext.js"
+    ]
+  }
+}
