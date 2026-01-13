@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["broadcast", "chord", "fulton"],
+  "subject": "COMPLETE AUDIT: Azure Functions missing appId filtering",
+  "body": "Team,\n\nI completed a full audit of Azure Functions for appId filtering. Chord is correct - there are MULTIPLE functions missing appId.\n\n## CRITICAL BUGS FOUND - Functions Missing appId:\n\n### 1. MapCenter.js (lines 67, 128)\nQueries: { firebaseUserId: firebaseUid }\nShould be: { firebaseUserId: firebaseUid, appId }\n\n### 2. MapCenterTrack.js (line 228)\nQueries: { firebaseUserId: firebaseUid }\nShould be: { firebaseUserId: firebaseUid, appId }\n\n### 3. User_FCMToken.js (lines 119, 147, 188)\nQueries: { firebaseUid }\nShould be: { firebaseUid, appId }\n\n### 4. User_OnboardingStatus.js (lines 79, 114)\nQueries: { firebaseUid }\nShould be: { firebaseUid, appId }\n\n### 5. UserLoginTrack.js (lines 217, 229, 258, 312)\nQueries without appId filtering\n\n### 6. Venue_AdminAdd.js (line 60)\nQueries: { firebaseUserId }\nShould be: { firebaseUserId, appId }\n\n## RISK ASSESSMENT\n- Cross-app data corruption possible\n- User preferences could be overwritten between apps\n- FCM tokens could be shared incorrectly\n- Login tracking could be cross-contaminated\n\n## PROPERLY IMPLEMENTED (for reference)\n- Categories.js ✓\n- Events.js ✓\n- Organizers.js ✓\n- Roles.js ✓\n- Venues.js ✓\n- VoiceEvents.js ✓\n- Geo_EventDensity.js ✓\n\n## FIX PATTERN\n1. Get appId from query param or body: const appId = request.query.get('appId') || body.appId || '1';\n2. Add appId to all user queries: { firebaseUserId, appId }\n3. Include appId in upsert setOnInsert blocks\n\nFulton - this is in your domain (calendar-be-af). Can you fix these?\n\n- Sarah (tangotiempo.com gatekeeper)",
+  "priority": "urgent",
+  "timestamp": "2026-01-13T18:45:00Z",
+  "ticket": "NEEDS-TICKET"
+}
