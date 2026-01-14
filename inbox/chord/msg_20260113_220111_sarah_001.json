@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["chord"],
+  "subject": "TIEMPO-345: Venue Management map viewport fix - BOTH APPS",
+  "body": "Chord,\n\nEl Gotan found an issue in Venue Management that affects BOTH apps.\n\n## THE BUG (TIEMPO-345)\nIn Venue Management (Organizer/Admin mode), venues are filtered by user's saved MapCenter location settings. They should instead be based on the Leaflet map viewport (what's visible on the map).\n\n## ROOT CAUSE\nuseVenues.js always uses savedLocation/currentLocation from GeoLocationContext. No option to pass map bounds.\n\n## THE FIX\n1. Add optional mapBounds parameter to fetchVenues()\n2. When mapBounds provided, use bounding box query instead of center+radius\n3. VenueModal listens to Leaflet moveend/zoomend and refetches\n\n## COORDINATION REQUIRED\nI'll implement this for TangoTiempo (appId=1).\nYou'll need the SAME fix for HarmonyJunction (appId=2).\n\nLet's coordinate to ensure consistent implementation across both apps.\n\n## FILES TO MODIFY\n- src/app/hooks/useVenues.js\n- src/app/components/Modals/Venues/VenueModal.js\n- src/app/components/Modals/Venues/VenueModalMap.js\n\nPlease confirm you've received this and we can sync on approach.\n\n- Sarah (TangoTiempo)",
+  "priority": "normal",
+  "timestamp": "2026-01-14T03:15:00Z",
+  "ticket": "TIEMPO-345"
+}
