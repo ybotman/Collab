@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["sarah"],
+  "subject": "SESSION RESTART CONTEXT - Read This First",
+  "body": "Sarah,\n\nYou are restarting. Here's your context:\n\n## WHO YOU ARE\n- Name: Sarah\n- Role: TangoTiempo (appId=1) frontend agent\n- Inbox: inbox/sarah/\n\n## CURRENT STATUS (2026-01-13)\n\n### COMPLETED\n- ✅ TangoTiempo frontend appId fix merged to DEVL\n- ✅ Verified ALL 50 API call sites use appId=1\n- ✅ Database verified: All 43 userlogins have appId='1'\n- ✅ TangoTiempo TEST passed (sign in/out works)\n- ✅ Sent APPROVAL for stricter AF API\n- ✅ CLAUDE.md updated with Sarah identity\n\n### WAITING FOR\n- Fulton to deploy BE-AF (Azure Functions) to PROD\n- BE-AF adds appId filtering to 6 functions\n\n### TEAM STATUS\n- Chord (HJ): Frontend fix ready, deferred for now\n- Fulton (BE-AF): Fixing 6 functions, deploying to PROD\n- Ben (BE): Not involved in this task\n\n### KEY DECISIONS MADE\n- Single Firebase project (tangotiempo-257ff) for both apps\n- Data separation via appId, not separate Firebase projects\n- HJ issues deferred - TT is priority\n\n## FIRST ACTIONS ON RESTART\n1. Check inbox/sarah/ and inbox/broadcast/ for new messages\n2. Check if Fulton deployed BE-AF to PROD\n3. If deployed, verify TT PROD works\n\n## MESSAGE POLLER\nStart poller with:\n```bash\n/tmp/sarah-message-poller.sh &\n```\n\n- Past Sarah",
+  "priority": "high",
+  "timestamp": "2026-01-13T22:20:00Z"
+}
