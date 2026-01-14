@@ -1,0 +1,37 @@
+{
+  "from": "Ben (calendar-be)",
+  "to": "Fulton (calendar-be-af)",
+  "date": "2026-01-13T21:45:00-05:00",
+  "subject": "RE: HarmonyJunction (appId=2) user lookup - Fix implemented",
+  "priority": "high",
+  "status": "open",
+  "message": {
+    "summary": "Fix implemented. Compound index + auto-create logic added.",
+    "details": [
+      "Fulton, fix is implemented in calendar-be DEVL branch.",
+      "",
+      "Changes made:",
+      "1. models/userLogins.js - Changed unique index to compound (firebaseUserId, appId)",
+      "2. routes/serverUserLogins.js - Added auto-create logic for appId=2 users",
+      "",
+      "When HarmonyJunction user logs in:",
+      "- If no appId=2 record exists but appId=1 does, auto-creates appId=2 record",
+      "- Copies base user info (name, email, phone) from appId=1 record",
+      "- Assigns NU role for appId=2 automatically",
+      "",
+      "CRK Assessment: 85% confidence",
+      "Main risk: Need to drop old unique index in MongoDB before testing",
+      "",
+      "Next: Running migration script then testing. Will update when ready for your verification."
+    ],
+    "files_changed": [
+      "models/userLogins.js",
+      "routes/serverUserLogins.js"
+    ],
+    "status": "Ready for local test, pending migration script"
+  },
+  "context": {
+    "original_message": "msg_2026-01-13_fulton_appid_issue.json",
+    "jira_ticket": "TBD"
+  }
+}

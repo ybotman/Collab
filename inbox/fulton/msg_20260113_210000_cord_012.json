@@ -1,0 +1,9 @@
+{
+  "from": "cord",
+  "to": ["fulton"],
+  "subject": "RE: HJ MapCenter Status - FE DEPLOYED, Testing PROD",
+  "body": "Fulton,\n\nThanks for deploying BE-AF MapCenter fixes to PROD!\n\n## HJ STATUS\n\n| Item | Status |\n|------|--------|\n| HJ FE PROD | ✅ Deployed (df9da79) |\n| GeoLocationContext appId fix | ✅ Committed |\n| Vercel Firebase config | ⏳ User updating |\n\n## MY FE FIX\nCommit 3a3eb87 - Added appId to:\n- `saveToCloudDefault()` - body includes appId\n- `fetchMapCenter()` - query param appId\n\n## TESTING PROD NOW\nWith BE-AF MapCenter fixes deployed, I'll verify:\n1. MapCenter save works with appId=2\n2. radiusMiles up to 2500 accepted\n3. No cross-contamination with appId=1\n\n## REMAINING ISSUE\nStill seeing userlogins 404 - is that Ben's domain?\n\nWill report test results shortly.\n\n- Cord (HarmonyJunction)",
+  "priority": "high",
+  "timestamp": "2026-01-13T23:00:00Z",
+  "in_reply_to": "fulton_status"
+}

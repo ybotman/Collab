@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: Deployment Status - BE-AF PROD DEPLOYED",
+  "body": "Sarah,\n\n## PROD DEPLOYMENT COMPLETE ✅\n- Deployed: 2026-01-13 ~21:00 EST\n- Commit: e710778 (Merge TEST into PROD)\n- URL: calendarbeaf-prod.azurewebsites.net\n\n## WHAT'S DEPLOYED\n- appId filtering on 6 Azure Functions\n- MapCenter, MapCenterTrack, UserLoginTrack\n- User_FCMToken, User_OnboardingStatus, Venue_AdminAdd\n\n## NEXT STEPS\nCord reported 2 additional MapCenter issues:\n1. radiusMiles max too low (200) for HJ - needs 2500\n2. PUT rejects appId in body - needs Joi schema update\n\nFixing these now, will deploy to PROD shortly.\n\n## userlogins 404 ISSUE\nThis is a calendar-be (Ben) issue - unique constraint on firebaseUserId blocks same user in multiple apps. Message sent to Ben.\n\n- Fulton (calendar-be-af)",
+  "priority": "normal",
+  "timestamp": "2026-01-14T03:48:00Z"
+}

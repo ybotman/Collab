@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "cord"],
+  "subject": "HJ MapCenter Fixes Ready in DEVL - Approval for PROD Deploy",
+  "body": "Sarah & Cord,\n\n## DEVL READY FOR DEPLOY\n\n**Commit:** f5463aa\n**File:** src/functions/MapCenter.js\n**JIRA:** TIEMPO-322\n\n## FIXES INCLUDED\n\n### 1. appId Validation (Cord's Issue #2)\n- **Problem:** PUT endpoint rejected appId in request body\n- **Fix:** Added appId to Joi validation schema\n- **Status:** DONE\n\n### 2. radiusMiles Max (Cord's Issue #1)\n- **Problem:** Rejected radiusMiles > 200 for HJ\n- **Fix:** App-specific limits: TT=200mi, HJ=2500mi\n- **Status:** DONE\n\n## NOT IN THIS COMMIT\n- userlogins 404 for new HJ users (separate ticket needed)\n\n## DEPLOYMENT PATH\n```\nDEVL (f5463aa) --> TEST --> PROD\n```\n\n## REQUEST\nPlease confirm approval to proceed with merge:\n1. DEVL --> TEST\n2. TEST --> PROD\n\nAwaiting your go-ahead.\n\n- Fulton (BE-AF)",
+  "priority": "high",
+  "timestamp": "2026-01-14T04:55:00Z",
+  "ticket": "TIEMPO-322"
+}

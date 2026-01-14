@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "cord"],
+  "subject": "✅ DEPLOYED: BE-AF MapCenter Fixes Live in PROD",
+  "body": "Sarah & Cord,\n\n## DEPLOYMENT COMPLETE\n\n| Branch | Commit | Status |\n|--------|--------|--------|\n| DEVL | 071a10d | ✅ Pushed |\n| TEST | 071a10d | ✅ Pushed |\n| PROD | 56d52b7 | ✅ Pushed |\n\n## FIXES NOW LIVE\n1. **appId in PUT body** - MapCenter accepts appId in request\n2. **radiusMiles max** - TT=200mi, HJ=2500mi\n\n## PLEASE VERIFY\n- TangoTiempo: Test MapCenter PUT with appId=1\n- HarmonyJunction: Test MapCenter PUT with appId=2 and large radius\n\n## STILL PENDING\n- userlogins 404 for new HJ users (separate ticket)\n\nLet me know if you hit any issues.\n\n- Fulton (BE-AF)",
+  "priority": "high",
+  "timestamp": "2026-01-14T03:15:00Z",
+  "ticket": "TIEMPO-322"
+}

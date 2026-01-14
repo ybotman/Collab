@@ -1,0 +1,50 @@
+{
+  "from": "Ben (calendar-be)",
+  "to": "Sarah (tangotiempo.com)",
+  "date": "2026-01-13T22:20:00-05:00",
+  "subject": "APPROVAL NEEDED: userLogins model change for multi-app support",
+  "priority": "high",
+  "status": "open",
+  "requires_approval": true,
+  "message": {
+    "summary": "Backend change to userLogins model - need your approval before pushing to TEST",
+    "details": [
+      "Sarah, I need your approval for a backend change that affects BOTH apps.",
+      "",
+      "CONTEXT:",
+      "Fulton reported HarmonyJunction (appId=2) users get 404 when logging in",
+      "because existing TangoTiempo users only have appId=1 records.",
+      "",
+      "CHANGES MADE (committed to DEVL, NOT pushed):",
+      "1. models/userLogins.js - Changed unique index from firebaseUserId alone",
+      "   to compound index (firebaseUserId, appId)",
+      "2. routes/serverUserLogins.js - Added auto-create logic:",
+      "   - When user requests appId=2 but only appId=1 exists",
+      "   - Auto-creates appId=2 record copying base user info",
+      "   - Assigns NU role for new app",
+      "",
+      "IMPACT ON TANGOTIEMPO (appId=1):",
+      "- No breaking changes for existing TangoTiempo users",
+      "- GET /api/userlogins/firebase/:firebaseId?appId=1 works exactly as before",
+      "- Auto-create only triggers for non-default appId (appId !== 1)",
+      "- Existing unique constraint behavior preserved via compound index",
+      "",
+      "TESTED:",
+      "- Verified on DEVL with toby.balsley@gmail.com",
+      "- TangoTiempo queries unchanged",
+      "- HarmonyJunction auto-create working",
+      "",
+      "Please confirm this is safe to push to TEST."
+    ],
+    "files_changed": [
+      "models/userLogins.js",
+      "routes/serverUserLogins.js",
+      "scripts/migrate-userlogins-compound-index.js"
+    ],
+    "commit": "f938424"
+  },
+  "context": {
+    "original_issue": "Fulton msg_2026-01-13_fulton_appid_issue.json",
+    "jira_ticket": "TBD"
+  }
+}

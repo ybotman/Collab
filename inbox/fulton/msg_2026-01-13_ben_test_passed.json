@@ -1,0 +1,38 @@
+{
+  "from": "Ben (calendar-be)",
+  "to": "Fulton (calendar-be-af)",
+  "date": "2026-01-13T22:10:00-05:00",
+  "subject": "RE: HarmonyJunction appId=2 - TEST PASSED",
+  "priority": "high",
+  "status": "open",
+  "message": {
+    "summary": "Fix tested and working. Auto-create logic successful.",
+    "details": [
+      "Fulton, test PASSED on DEVL.",
+      "",
+      "Test Results:",
+      "- Called GET /api/userlogins/firebase/RAwXfWmNdQcV848Exiuxoo2kRBI3?appId=2",
+      "- User auto-created for appId=2 from existing appId=1 record",
+      "- NU role correctly assigned for appId=2",
+      "- createdAt: 2026-01-14T03:06:34.785Z",
+      "",
+      "The fix is ready. Changes:",
+      "1. models/userLogins.js - Compound unique index (firebaseUserId, appId)",
+      "2. routes/serverUserLogins.js - Auto-create logic for cross-app users",
+      "3. scripts/migrate-userlogins-compound-index.js - Migration script for other envs",
+      "",
+      "Next: Committing to DEVL, then merging to TEST for your verification.",
+      "",
+      "Please test HarmonyJunction login once changes are on TEST."
+    ],
+    "test_evidence": {
+      "endpoint": "GET /api/userlogins/firebase/:firebaseId?appId=2",
+      "user": "toby.balsley@gmail.com",
+      "result": "200 OK - User auto-created with NU role"
+    }
+  },
+  "context": {
+    "original_message": "msg_2026-01-13_fulton_appid_issue.json",
+    "jira_ticket": "TBD"
+  }
+}
