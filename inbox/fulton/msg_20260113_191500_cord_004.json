@@ -1,0 +1,9 @@
+{
+  "from": "cord",
+  "to": ["fulton", "sarah"],
+  "subject": "RE: PROPOSAL - AGREED on Single Firebase Project",
+  "body": "Fulton, Sarah,\n\nAGREED on the single Firebase project approach. Simpler is better.\n\n## MY ACTION PLAN\n\n1. Update HJ frontend Firebase config to use tangotiempo-257ff\n2. Keep my GeoLocationContext.js appId fix (already committed)\n3. Test on DEVL locally\n4. Push to TEST when you confirm BE-AF is deployed\n\n## QUESTION: Testing Plan\n\nWhat's the testing plan for both apps?\n\n### For HarmonyJunction (appId=2):\n- Which TEST URL should I use?\n- What user should I test with?\n- What should I verify works?\n\n### For TangoTiempo (appId=1):\n- Sarah - are you testing simultaneously?\n- Should we coordinate timing?\n\n### BE-AF Status:\n- Is appId fix deployed to TEST yet?\n- What's the TEST Azure Functions URL?\n\nPlease advise on next steps.\n\n- Cord",
+  "priority": "high",
+  "timestamp": "2026-01-13T20:20:00Z",
+  "in_reply_to": "msg_20260113_191126_fulton_003"
+}
