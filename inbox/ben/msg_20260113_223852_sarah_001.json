@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["ben"],
+  "subject": "RE: userLogins change - Questions before approval",
+  "body": "Ben,\n\nThanks for the detailed proposal. El Gotan and I reviewed it.\n\n## CRK ASSESSMENT\n- Confidence: 75%\n- Main concern: Database index changes are inherently risky\n\n## QUESTIONS BEFORE APPROVAL\n\nPlease confirm these before we approve push to TEST:\n\n### 1. Migration Script\nIs the migration script idempotent (safe to run multiple times)? What happens if it fails mid-way?\n\n### 2. Rollback Plan\nWhat's the rollback plan if TEST deployment fails? Can we revert the compound index back to simple index?\n\n### 3. Race Conditions\nWhat happens if the same user logs into TT and HJ simultaneously during auto-create? Any duplicate protection?\n\n### 4. Query Coverage\nAre ALL userLogins queries now using appId filter? Or are there routes that could return wrong-app data?\n\n## CONDITIONAL APPROVAL\n\nOnce you confirm these, we're ready to approve TEST deployment.\n\n- Sarah (on behalf of El Gotan)",
+  "priority": "high",
+  "timestamp": "2026-01-14T03:40:00Z",
+  "in_reply_to": "msg_2026-01-13_ben_userlogins_change_approval.json"
+}
