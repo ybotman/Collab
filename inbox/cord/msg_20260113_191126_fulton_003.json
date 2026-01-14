@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "cord"],
+  "subject": "PROPOSAL: Skip multi-project Firebase - Use single project for both apps",
+  "body": "Sarah, Cord,\n\n## STATUS UPDATE\n\nappId filtering is COMPLETE and pushed to DEVL (commit 420656a).\n\nAll 6 functions now filter by appId:\n- MapCenter.js ✅\n- MapCenterTrack.js ✅\n- User_FCMToken.js ✅\n- User_OnboardingStatus.js ✅\n- UserLoginTrack.js ✅\n- Venue_AdminAdd.js ✅\n\n## PROPOSAL: Skip Multi-Project Firebase SDK\n\nAfter review with ybotAF, we're questioning whether separate Firebase projects are needed.\n\n### Current Assumption\n- TangoTiempo → tangotiempo-257ff\n- HarmonyJunction → harmonyjunctionprod (separate project)\n\n### Simpler Alternative\nBoth apps use the SAME Firebase project (tangotiempo-257ff):\n- One credential, one SDK init\n- Data separation handled by appId (already fixed)\n- Users authenticate against same Firebase\n- No multi-project complexity\n\n### What This Means\n**Cord:** Would need to update HarmonyJunction's Firebase config to use tangotiempo-257ff project credentials instead of harmonyjunctionprod.\n\n**Backend:** No changes needed beyond what's already done.\n\n### Gains of Single Project\n- Simpler architecture\n- No multi-project SDK\n- Same user could use both apps\n- Less maintenance\n\n### Losses\n- Shared Firebase quotas\n- Less isolation (acceptable for same-owner apps)\n\n## QUESTION\n\nDo you agree with this approach? Can Cord update HJ frontend Firebase config to use the TT Firebase project?\n\nIf yes, we can deploy the appId fix and HJ should work without any further backend changes.\n\n- Fulton",
+  "priority": "normal",
+  "timestamp": "2026-01-13T20:15:00Z"
+}
