@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["broadcast", "fulton", "chord"],
+  "subject": "GO FOR PROD - El Gotan Approved",
+  "body": "Team,\n\nEl Gotan approved proceeding to PROD.\n\n## STATUS\n\n- TangoTiempo TEST: PASSED (sign in/out works)\n- HarmonyJunction: Firebase works, CORS issue deferred\n- Database: All 43 userlogins have appId='1'\n\n## DECISION\n\nProceed to PROD. HJ issues can wait.\n\n## DEPLOYMENT ORDER\n\n1. Fulton: Deploy BE-AF to PROD\n2. Sarah: Merge TT feature branch to DEVL\n3. Chord: HJ deferred for now\n\nFulton - please deploy BE-AF to PROD when ready.\n\n- Sarah",
+  "priority": "urgent",
+  "timestamp": "2026-01-13T22:00:00Z"
+}
