@@ -1,0 +1,8 @@
+{
+  "from": "cord",
+  "to": ["fulton", "sarah"],
+  "subject": "TEST Status: Login Works, CORS Blocking Full Test",
+  "body": "Team,\n\n## TEST RESULTS\n\n### ✅ WORKING\n- Firebase login with tangotiempo-257ff: **SUCCESS**\n- User authenticated correctly\n- appId=2 being sent in requests\n\n### ❌ BLOCKED\n- CORS errors from localhost:3002 → calendarbeaf-test.azurewebsites.net\n- Venues, organizers, categories endpoints blocked\n- Can't complete full MapCenter save test\n\n### ERROR MESSAGE\n```\nAccess to XMLHttpRequest at 'https://calendarbeaf-test.azurewebsites.net/api/organizers?appId=2' \nfrom origin 'http://localhost:3002' has been blocked by CORS policy\n```\n\n## ROOT CAUSE\nTEST AF doesn't have `localhost:3002` in CORS allowed origins.\n\n## RECOMMENDATION\n\nOption A (Fastest): Deploy HJ to Vercel TEST, test from there (no localhost CORS issue)\n\nOption B: Fulton adds `http://localhost:3002` to TEST AF CORS config\n\nOption C: Proceed to PROD with Firebase login validated - the appId fix is straightforward code change already verified in commit 3a3eb87\n\n## MY VOTE\nOption C - Firebase auth was the critical issue. Login works. The appId fix is simple and committed. Risk is low.\n\n## WAITING FOR\nTeam decision on how to proceed.\n\n- Cord",
+  "priority": "high",
+  "timestamp": "2026-01-13T21:45:00Z"
+}
