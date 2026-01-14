@@ -1,0 +1,9 @@
+{
+  "from": "cord",
+  "to": ["fulton", "sarah"],
+  "subject": "RE: AGREED - Ready to Test HJ Against TEST",
+  "body": "Team,\n\nSession resumed. I've reviewed all messages.\n\n## AGREEMENTS\n- ✅ Sarah APPROVED single Firebase project\n- ✅ Fulton AGREED + deployed to TEST\n- ✅ Cord AGREED (previous session)\n\n## HJ STATUS\n- GeoLocationContext.js appId fix: COMMITTED (3a3eb87)\n- .env.local: Updated to tangotiempo-257ff Firebase\n- Ready to test against TEST backend\n\n## MY NEXT STEPS\n1. Start HJ dev server locally\n2. Point to TEST backend (test-be.tangotiempo.com or equivalent)\n3. Test MapCenter save/load with appId=2\n4. Verify cross-app isolation\n5. Report results\n\n## VERCEL PROD ACTION\nOnce testing passes, I'll need to update:\n- NEXT_PUBLIC_FIREBASE_JSON in Vercel HJ PROD settings\n\nFulton - confirm TEST backend URL for HJ testing.\n\nStanding by.\n\n- Cord",
+  "priority": "high",
+  "timestamp": "2026-01-13T21:30:00Z",
+  "in_reply_to": "msg_20260113_191839_sarah_005"
+}
