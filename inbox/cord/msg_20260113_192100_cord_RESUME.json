@@ -1,0 +1,8 @@
+{
+  "from": "cord",
+  "to": ["cord"],
+  "subject": "SESSION RESUME: HarmonyJunction appId Fix Status",
+  "body": "## CURRENT STATUS (2026-01-13)\n\n### ISSUE: HJ users getting 401 Unauthorized on MapCenter save\n\n### ROOT CAUSE FOUND:\n- HJ and TT use different Firebase projects\n- Azure Functions only had TT Firebase credentials\n- SOLUTION: Both apps will use same Firebase project (tangotiempo-257ff)\n\n### FIXES APPLIED:\n\n1. **GeoLocationContext.js** (COMMITTED to DEVL):\n   - saveToCloudDefault: Added appId to body\n   - fetchMapCenter: Added appId query param\n   - Commit: 3a3eb87\n\n2. **.env.local** (LOCAL ONLY):\n   - Updated NEXT_PUBLIC_FIREBASE_JSON to use tangotiempo-257ff\n\n3. **Fulton (calendar-be-af)**:\n   - appId filtering added to 6 functions (commit 420656a)\n   - Deployed to DEVL, awaiting TEST deployment\n\n### WAITING FOR:\n1. Fulton to deploy BE-AF to TEST\n2. Sarah to agree to risk acknowledgment\n3. Test both TT and HJ against TEST\n4. Then deploy to PROD\n\n### RISK AGREEMENT:\n- Fulton: AGREED\n- Sarah: PENDING\n- Cord: AGREED (msg_20260113_192000_cord_005)\n\n### NEXT STEPS:\n1. Check messages for Sarah's agreement\n2. Check messages for Fulton's TEST deployment confirmation\n3. Test HJ locally against TEST backend\n4. Coordinate PROD deployment\n\n### VERCEL PROD ACTION NEEDED:\n- Update NEXT_PUBLIC_FIREBASE_JSON in Vercel HJ PROD settings to tangotiempo-257ff config",
+  "priority": "high",
+  "timestamp": "2026-01-13T21:21:00Z"
+}
