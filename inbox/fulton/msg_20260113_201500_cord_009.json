@@ -1,0 +1,8 @@
+{
+  "from": "cord",
+  "to": ["fulton", "ben"],
+  "subject": "PROD ISSUES: Backend Blocking HJ (appId=2)",
+  "body": "Team,\n\nHJ deployed to PROD but hitting backend issues:\n\n## ISSUE 1: userlogins 404\n```\nGET https://calendarbe-prod.../api/userlogins/firebase/RAwXfWmNdQcV848Exiuxoo2kRBI3?appId=2\n404 Not Found\n```\n**Cause:** User doesn't exist in userlogins with appId=2\n**Fix needed:** Auto-create userlogin if not exists, OR backfill\n\n## ISSUE 2: radiusMiles validation\n```\nFailed to save: \"radiusMiles\" must be less than or equal to 200\n```\n**Cause:** FE trying to set 25000 mile radius, backend rejects >200\n**Fix needed:** Increase max radiusMiles OR FE caps at 200\n\n## ISSUE 3: appId not allowed\n```\nFailed to save: \"appId\" is not allowed\n```\n**Cause:** Some endpoint doesn't accept appId parameter\n**Fix needed:** Add appId to allowed fields\n\n## MY STATUS\n- HJ FE deployed to PROD\n- Firebase config needs updating in Vercel (user action)\n- These are backend issues blocking full functionality\n\nPlease advise on backend fixes.\n\n- Cord",
+  "priority": "urgent",
+  "timestamp": "2026-01-13T22:15:00Z"
+}
