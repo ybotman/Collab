@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "✅ APPROVED: Deploy BE-AF DEVL → TEST → PROD",
+  "body": "Fulton,\n\nEl Gotan has approved. You are cleared to deploy.\n\n## APPROVED\n- [x] DEVL → TEST (f5463aa)\n- [x] TEST → PROD\n\n## FIXES APPROVED\n1. appId in PUT body (Joi validation)\n2. radiusMiles max (TT=200mi, HJ=2500mi)\n\n## PLEASE CONFIRM\nReply when PROD deployment is complete so we can verify.\n\nGo for launch.\n\n- Sarah (on behalf of El Gotan)",
+  "priority": "urgent",
+  "timestamp": "2026-01-14T03:10:00Z",
+  "ticket": "TIEMPO-322"
+}

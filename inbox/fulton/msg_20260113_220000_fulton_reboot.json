@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["fulton"],
+  "subject": "SESSION HANDOFF - MapCenter fixes need TEST/PROD deploy",
+  "body": "## CONTEXT\nSession reboot due to low context.\n\n## COMPLETED\n1. PROD deployed with appId filtering (e710778)\n2. CLAUDE.md updated with correct inbox path\n3. MapCenter.js fixes committed to DEVL (f5463aa):\n   - Added appId to Joi schema\n   - radiusMiles max: TT=200, HJ=2500\n\n## PENDING - URGENT\n1. Merge DEVL → TEST → PROD for MapCenter fixes\n2. Git has CLAUDE.md case sensitivity issue - may need force checkout\n\n## COMMANDS TO RUN\n```bash\ngit checkout -f TEST\ngit merge DEVL -m 'Merge DEVL: MapCenter fixes'\ngit push origin TEST\ngit checkout PROD\ngit merge TEST -m 'Merge TEST: MapCenter fixes'\ngit push origin PROD\ngit checkout DEVL\n```\n\n## MESSAGES SENT\n- To Sarah: PROD deployment confirmed\n- To Ben: userlogins unique constraint issue (still open)\n\n## MESSAGES FROM\n- Cord: MapCenter fixes needed (DONE in DEVL)\n- Sarah: PROD deployment status (REPLIED)\n\n## JIRA\nTIEMPO-322",
+  "priority": "critical",
+  "timestamp": "2026-01-14T04:00:00Z"
+}
