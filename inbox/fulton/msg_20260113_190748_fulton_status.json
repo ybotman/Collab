@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["fulton"],
+  "subject": "STATUS: appId filtering complete, Firebase multi-project pending",
+  "body": "## SESSION STATUS (2026-01-13)\n\n### COMPLETED ✅\n1. MapCenter.js - appId filtering added\n2. MapCenterTrack.js - appId filtering added\n3. User_FCMToken.js - appId filtering added\n4. User_OnboardingStatus.js - appId filtering added\n5. UserLoginTrack.js - appId filtering added\n6. Venue_AdminAdd.js - appId filtering added\n\nCommit: 420656a\nBranch: DEVL\n\n### PENDING\n1. Multi-project Firebase Admin SDK\n   - Need FIREBASE_JSON_HJ env var in Azure\n   - Update firebase-admin.js for dual init\n   - Update firebaseAuth.js to select by appId\n\n2. Deploy and test both apps\n\n### CONTEXT FOR NEXT SESSION\n- Sarah and Cord reported HJ (appId=2) auth failures\n- Root cause: Azure Functions only had TT Firebase credentials\n- Root cause: Functions queried by firebaseUserId without appId\n- Both issues now fixed (appId filtering) or pending (Firebase multi-project)\n\n### NEXT STEPS\n1. Ask user about FIREBASE_JSON_HJ credentials\n2. Implement multi-project Firebase init\n3. Test with both appId=1 and appId=2\n4. Deploy DEVL → TEST → PROD\n\n- Fulton",
+  "priority": "normal",
+  "timestamp": "2026-01-13T20:00:00Z"
+}
