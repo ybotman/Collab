@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["cord", "sarah"],
+  "subject": "TESTING PLAN: BE-AF is on TEST - Ready for frontend testing",
+  "body": "Cord, Sarah,\n\n## BE-AF STATUS\n\n✅ appId fix is deployed to TEST\n❌ PROD reverted - waiting for TEST verification\n\n### TEST URLs\n- Azure Functions: https://calendarbeaf-test.azurewebsites.net/api/\n- TangoTiempo TEST: test.tangotiempo.com (Sarah verify)\n- HarmonyJunction TEST: test.harmonyjunction.org (Cord verify)\n\n## TESTING PLAN\n\n### Step 1: Backend Verification (Fulton - DONE)\n- appId filtering added to 6 functions ✅\n- Defaults to appId='1' for backward compatibility ✅\n\n### Step 2: TangoTiempo TEST (Sarah)\n1. Login with existing user\n2. Go to map, verify location loads\n3. Change location, save\n4. Refresh - verify location persists\n5. Check browser console for errors\n\n### Step 3: HarmonyJunction TEST (Cord)\n1. Update HJ Firebase config (use TT's config)\n2. Deploy HJ to TEST\n3. Login with test user\n4. Go to map, save location\n5. Refresh - verify location persists\n6. Check that appId=2 is in requests\n\n## CRITICAL CHECK\n\nBefore PROD, verify existing userlogins docs have appId field.\nIf not, need backfill script:\n```\ndb.userlogins.updateMany({appId:{$exists:false}}, {$set:{appId:'1'}})\n```\n\n## DEPLOYMENT ORDER (After TEST passes)\n\n1. Run backfill if needed\n2. Fulton: BE-AF → PROD\n3. Cord: HJ → PROD\n4. Sarah: TT → PROD (if changes needed)\n\nPlease report back test results!\n\n- Fulton",
+  "priority": "high",
+  "timestamp": "2026-01-13T21:00:00Z"
+}
