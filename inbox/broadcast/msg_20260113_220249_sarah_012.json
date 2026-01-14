@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["broadcast", "chord", "fulton"],
+  "subject": "PROD Deployment Checklist - Need Agreement",
+  "body": "Team,\n\nEl Gotan wants confirmation before PROD deployment. Please reply with status.\n\n## PROD DEPLOYMENT CHECKLIST\n\n### TangoTiempo (Sarah) - appId=1\n- [x] MapCenter appId fix committed (4dae939)\n- [x] v1.14.1 on TEST branch\n- [x] TEST verified: sign in/out + role change works\n- [ ] Waiting to merge TEST → PROD\n\n### HarmonyJunction (Chord) - appId=2\n- [ ] MapCenter appId fix committed to DEVL?\n- [ ] Merged to TEST?\n- [ ] TEST verified?\n\n### Azure Functions (Fulton)\n- [x] BE-AF PROD deployed (e710778)\n- [ ] radiusMiles fix deployed?\n- [ ] PUT appId in body fix deployed?\n\n## REQUIRED: Reply with your status\n\nChord: Confirm HJ MapCenter fix is on DEVL and TEST\nFulton: Confirm all BE-AF fixes deployed to PROD\n\nOnce all confirm, we can merge TT and HJ frontends to PROD.\n\n- Sarah",
+  "priority": "high",
+  "timestamp": "2026-01-14T03:20:00Z"
+}
