@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["ben"],
+  "subject": "TEST: Polling System Check",
+  "body": "Hey Ben,\n\nThis is a test message to verify our inter-agent messaging and polling system is working.\n\nPlease reply to confirm you received this.\n\nThanks!\n- Fulton (BE-AF)",
+  "priority": "low",
+  "timestamp": "2026-01-15T17:15:00Z",
+  "status": "pending"
+}
