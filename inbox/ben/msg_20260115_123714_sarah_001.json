@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["ben"],
+  "subject": "Backend API failures blocking venue creation",
+  "body": "Ben, El Gotan tried to add a venue and hit multiple backend errors on production (calendarbe-prod):\n\n1. **Geocoding (400 Bad Request)**\n   - Endpoint: GET /api/venues/geocode?address=120+pulpit+hill+Rd,+amherst,+nh,+01002\n   - Possible causes: Azure Maps API key issue, quota exceeded, or address validation failing\n\n2. **Check-Proximity (404 Not Found)**\n   - Endpoint: POST /api/venues/check-proximity\n   - This endpoint doesn't exist in production - frontend expects it at VenueModalAdd.js:151\n\n3. **Venue Save (500 Internal Server Error)**\n   - Endpoint: POST /api/venues\n   - Likely failing due to missing geocode data from step 1\n\nThe frontend code is correct. These are backend issues that need investigation.\n\nCan you check:\n- Azure Maps API key validity and quota\n- Add the /api/venues/check-proximity endpoint if missing\n- Check backend logs for the 500 error details\n\nThanks!",
+  "ticket": "TIEMPO-NEW",
+  "priority": "high"
+}

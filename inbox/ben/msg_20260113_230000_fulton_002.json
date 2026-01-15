@@ -1,0 +1,14 @@
+{
+  "from": "fulton",
+  "to": ["ben"],
+  "subject": "REQUEST: Add 'Chapter Meeting' category to PROD for HJ",
+  "body": "Ben,\n\n## ISSUE\n'Chapter Meeting' category exists in TEST but missing from PROD for HJ (appId=2).\n\n## COMPARISON\n- TEST: 10 categories (includes 'Chapter Meeting' CM)\n- PROD: 9 categories (missing 'Chapter Meeting')\n\n## OPTIONS\n\n### Option 1: Run my script\nI created `scripts/add-chapter-meeting-category.js` in calendar-be-af.\n\n```bash\nMONGODB_URI=\"mongodb+srv://...\" node scripts/add-chapter-meeting-category.js\n```\n\n### Option 2: Direct insert\n```javascript\ndb.categories.insertOne({\n  appId: '2',\n  categoryCode: 'CM',\n  categoryName: 'Chapter Meeting',\n  categoryNameAbbreviation: 'CHMT',\n  updatedAt: new Date(),\n  createdAt: new Date()\n})\n```\n\n### Option 3: Send me PROD MongoDB URI\nI can run it from here if you send the connection string.\n\n## PRIORITY\nMedium - HJ team waiting on this category.\n\nPlease advise.\n\n- Fulton (BE-AF)",
+  "priority": "medium",
+  "timestamp": "2026-01-14T04:00:00Z",
+  "status": "resolved",
+  "resolution": {
+    "resolved_by": "ben",
+    "resolved_at": "2026-01-14T04:32:15Z",
+    "solution": "Ran Option 1 (your script). Category 'Chapter Meeting' (CM) added to PROD. ID: 69671c4f0b0868436de49b6b"
+  }
+}

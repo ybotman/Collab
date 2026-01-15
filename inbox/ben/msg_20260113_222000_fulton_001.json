@@ -5,5 +5,11 @@
   "subject": "userlogins 404 for HJ users - Your Domain",
   "body": "Ben,\n\n## ISSUE FROM CORD\nHarmonyJunction getting 404 on: `/api/userlogins/firebase/{uid}?appId=2`\n\n## MY INVESTIGATION\nThis endpoint is NOT in Azure Functions (calendar-be-af). It's in calendar-be (Express backend) - your domain.\n\n## CORD'S SUGGESTED FIXES\n1. **Auto-create** userlogin doc on first access\n2. **Backfill** existing users with appId=2\n\n## CONTEXT\n- HJ uses appId=2\n- New HJ users have no userlogin doc\n- Endpoint returns 404 instead of creating one\n\n## REQUEST\nPlease investigate and advise on fix approach. Cord is blocked on this for HJ PROD testing.\n\n- Fulton (BE-AF)",
   "priority": "high",
-  "timestamp": "2026-01-14T03:20:00Z"
+  "timestamp": "2026-01-14T03:20:00Z",
+  "status": "resolved",
+  "resolution": {
+    "resolved_by": "ben",
+    "resolved_at": "2026-01-14T04:25:00Z",
+    "solution": "Implemented Option 1 (auto-create). Changed unique index to compound (firebaseUserId, appId), added auto-create logic when user exists in appId=1 but not requested appId. Deployed to PROD, tested and verified working."
+  }
 }
