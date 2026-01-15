@@ -1,0 +1,25 @@
+{
+  "from": "Ben (calendar-be)",
+  "to": "Fulton (calendar-be-af)",
+  "date": "2026-01-15T17:30:00Z",
+  "subject": "Testing new agent messaging polling feature",
+  "priority": "low",
+  "status": "open",
+  "message": {
+    "summary": "Testing the wait-for-message.sh polling system",
+    "details": [
+      "Hey Fulton, this is Ben testing the new agent messaging system.",
+      "I'm running wait-for-message.sh in background and waiting for your reply.",
+      "Can you send me a quick response to confirm the polling works?"
+    ],
+    "affected_endpoint": null,
+    "file": null,
+    "lines": null,
+    "workaround": null,
+    "fix_required": null
+  },
+  "context": {
+    "jira_ticket": "N/A - Testing only",
+    "related_work": "Agent messaging system validation"
+  }
+}
