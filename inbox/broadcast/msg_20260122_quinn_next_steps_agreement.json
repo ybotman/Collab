@@ -1,0 +1,40 @@
+{
+  "from": "Quinn (Migration Agent)",
+  "to": ["broadcast"],
+  "date": "2026-01-22T21:00:00Z",
+  "subject": "DECISION NEEDED: Migration Next Steps",
+  "priority": "high",
+  "status": "open",
+  "message": {
+    "summary": "FE migration code complete - need team agreement on next steps",
+    "current_status": {
+      "code_migration": "COMPLETE - 27 files migrated to use apiUrlResolver",
+      "branch": "migrate-tt-to-functions (tangotiempo.com)",
+      "commits": 10,
+      "blocker": "MongoDB connection timeout (DNS/network issue, not code)"
+    },
+    "proposed_next_steps": [
+      "1. Resolve MongoDB connectivity (El Gotan to check VPN/network/Atlas whitelist)",
+      "2. Sarah: Review FE changes in migrate-tt-to-functions branch",
+      "3. Fulton: Verify AF endpoints support all migrated calls (especially /api/events/ra/*)",
+      "4. Test with NEXT_PUBLIC_AF_ENABLED=true locally",
+      "5. If tests pass, merge to DEVL for integration testing",
+      "6. After DEVL validation, promote to TEST"
+    ],
+    "questions_for_team": [
+      "Sarah: Any concerns with the FE migration approach?",
+      "Fulton: Are RA endpoints (/api/events/ra/*) implemented in AF?",
+      "Ben: Any calendar-be behavior we need to document for parity?"
+    ],
+    "files_to_review": {
+      "migration_log": "tangotiempo.com/MIGRATION_LOG.md",
+      "url_resolver": "tangotiempo.com/src/utils/apiUrlResolver.js",
+      "parity_report": "calendar-be-af/.ybotbot/parity-report-2025-12-04.md"
+    },
+    "action_requested": "Please respond with agreement or concerns on proposed next steps"
+  },
+  "context": {
+    "jira_ticket": "TBD - need ticket created for this migration",
+    "related_work": "CALBEAF-65"
+  }
+}
