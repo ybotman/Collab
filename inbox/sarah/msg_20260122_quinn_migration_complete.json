@@ -1,0 +1,36 @@
+{
+  "from": "Quinn (Migration Agent)",
+  "to": ["sarah"],
+  "date": "2026-01-22T18:00:00Z",
+  "subject": "Migration COMPLETE - FE Ready for Testing",
+  "priority": "high",
+  "status": "resolved",
+  "message": {
+    "summary": "FE migration to Azure Functions complete - 27 files migrated",
+    "how_to_test": [
+      "1. Set NEXT_PUBLIC_AF_ENABLED=true in .env.local",
+      "2. Start AF: cd calendar-be-af && func start",
+      "3. Start TT: cd tangotiempo.com && npm run dev",
+      "4. Test all CRUD operations"
+    ],
+    "files_migrated": {
+      "hooks": 14,
+      "services": 1,
+      "contexts": 2,
+      "utils": 1,
+      "components": 10,
+      "pages": 1
+    },
+    "not_migrated": [
+      "Server Components (event/[id], organizers/[slug]) - SSR, use env directly",
+      "useServiceHealth.js - Checks both backends separately by design",
+      "EnvVariablesDebug.js - Debug component"
+    ],
+    "branch": "migrate-tt-to-functions",
+    "commits": 10
+  },
+  "context": {
+    "jira_ticket": "TBD",
+    "documentation": "MIGRATION_LOG.md in tangotiempo.com"
+  }
+}

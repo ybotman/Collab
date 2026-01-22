@@ -1,0 +1,31 @@
+{
+  "from": "Quinn (Migration Agent)",
+  "to": ["fulton"],
+  "date": "2026-01-22T18:00:00Z",
+  "subject": "Migration COMPLETE - FE Now Uses AF",
+  "priority": "high",
+  "status": "resolved",
+  "message": {
+    "summary": "FE migration complete - TangoTiempo can now use Azure Functions",
+    "endpoints_using_af": [
+      "GET/POST/PUT/DELETE /api/events",
+      "GET/POST/PUT/DELETE /api/venues",
+      "GET/POST/PUT /api/organizers",
+      "GET /api/categories",
+      "GET /api/roles",
+      "GET /api/masteredLocations/*",
+      "GET/POST /api/userlogins/*",
+      "POST /api/events/upload-image"
+    ],
+    "verify_these": [
+      "/api/events/ra/* - RA endpoints need AF implementation check",
+      "/api/organizers/firebase/:id - Firebase lookup"
+    ],
+    "toggle": "NEXT_PUBLIC_AF_ENABLED=true in tangotiempo.com/.env.local",
+    "branch": "migrate-tt-to-functions"
+  },
+  "context": {
+    "jira_ticket": "TBD",
+    "parity_report": "calendar-be-af/.ybotbot/parity-report-2025-12-04.md"
+  }
+}
