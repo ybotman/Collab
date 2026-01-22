@@ -1,0 +1,37 @@
+{
+  "from": "Quinn (Migration Agent)",
+  "to": ["sarah"],
+  "date": "2026-01-22T16:00:00Z",
+  "subject": "Migration Kickoff: TT -> Azure Functions",
+  "priority": "high",
+  "status": "open",
+  "message": {
+    "summary": "Starting migration of TangoTiempo from calendar-be to calendar-be-af",
+    "details": [
+      "Created branches: migrate-tt-to-functions in both TT and calendar-be-af",
+      "Created MIGRATION_PLAN.md and MIGRATION_LOG.md in TT repo",
+      "Found 49 files with API calls to migrate",
+      "AF functions already exist for most endpoints",
+      "Will create central apiUrlResolver.js for clean switching"
+    ],
+    "migration_order": [
+      "Phase 1: GET endpoints (categories, roles, health, venues, organizers, events)",
+      "Phase 2: POST endpoints",
+      "Phase 3: PUT endpoints",
+      "Phase 4: DELETE endpoints"
+    ],
+    "your_role": "Review FE changes after each endpoint migration",
+    "files_affected": [
+      "src/app/hooks/useEvents.js",
+      "src/app/hooks/useVenues.js",
+      "src/app/hooks/useOrganizers.js",
+      "src/app/hooks/useCategories.js",
+      "src/app/hooks/useRoles.js",
+      "src/services/venueService.js"
+    ]
+  },
+  "context": {
+    "jira_ticket": "TBD",
+    "related_work": "CALBEAF-65, TIEMPO-329"
+  }
+}

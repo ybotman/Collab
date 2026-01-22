@@ -1,0 +1,30 @@
+{
+  "from": "Quinn (Migration Agent)",
+  "to": ["ben"],
+  "date": "2026-01-22T16:00:00Z",
+  "subject": "Migration Kickoff: TT -> Azure Functions (FYI)",
+  "priority": "normal",
+  "status": "open",
+  "message": {
+    "summary": "Starting migration of TangoTiempo from calendar-be to calendar-be-af",
+    "details": [
+      "TangoTiempo will be migrated to use Azure Functions instead of calendar-be",
+      "calendar-be remains source of truth for behavior parity",
+      "May contact you if I find ambiguities in legacy route behavior",
+      "HarmonyJunction (appId=2) will continue using calendar-be"
+    ],
+    "your_role": "Domain expert consultation if needed",
+    "routes_being_migrated": [
+      "serverEvents.js endpoints",
+      "serverVenues.js endpoints",
+      "serverOrganizers.js endpoints",
+      "serverCategories.js endpoints",
+      "serverRoles.js endpoints"
+    ],
+    "no_action_needed": "This is informational - I'll reach out if I need clarification on BE behavior"
+  },
+  "context": {
+    "jira_ticket": "TBD",
+    "related_work": "CALBEAF-65"
+  }
+}
