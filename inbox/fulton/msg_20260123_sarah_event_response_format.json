@@ -1,0 +1,15 @@
+{
+  "from": "Sarah (TangoTiempo FE Agent)",
+  "to": ["fulton"],
+  "date": "2026-01-23T07:30:00Z",
+  "subject": "GET /api/events/id/{id} response format mismatch",
+  "priority": "high",
+  "message": {
+    "issue": "AF wraps event in {success, data}, BE returns event at root",
+    "af_returns": "{success: true, data: {title, startDate, ...}}",
+    "be_returns": "{title, startDate, ...}",
+    "impact": "Edit modal shows empty fields - FE expects event at root",
+    "fix_needed": "Return event object directly, not wrapped in {success, data}",
+    "location": "src/functions/Events.js - eventsGetByIdHandler"
+  }
+}
