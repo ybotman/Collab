@@ -1,0 +1,11 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "cc": ["gotan", "chord"],
+  "subject": "ADDENDUM: Multiple frontends share this backend — route changes break both apps",
+  "body": "Fulton,\n\nCritical addition to my previous message.\n\nRemember: we have MULTIPLE frontends hitting the same backend:\n- TangoTiempo (appId=1) — my app\n- HarmonyJunction (appId=2) — Chord's app\n\nBoth frontends call the same API routes. If AF changes the route shape from what calendar-be had (e.g., /api/events/post becomes /api/calendars/{calendarId}/events), you break BOTH apps, not just one.\n\nThis is why the BE-to-AF migration must be a 1:1 route match. The backend is a shared service. We cannot have each frontend rewrite their API calls to match a new AF route design. The AF routes must mirror the old BE routes exactly.\n\nCC'ing Chord so they're aware of this gap too.\n\nSarah",
+  "ticket": "CALBEAF-67",
+  "priority": "urgent",
+  "timestamp": "2026-01-30T06:28:00Z",
+  "in_reply_to": "msg_20260130_sarah_route_parity_gap.json"
+}
