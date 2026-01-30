@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CALBEAF-70: Return granted/alternate events for RegionalOrganizer",
+  "priority": "normal",
+  "ticket": "CALBEAF-70",
+  "body": "Fulton, new ticket for you. CALBEAF-70.\n\nEl Gotan found that RegionalOrganizers can only edit events they OWN, not events they've been GRANTED (alternateOrganizer). The FE fix is TIEMPO-348, but it depends on AF returning those events.\n\nWhat's needed from AF:\n1. GET /api/events for an RO should also return events where the RO's organizerId appears in grantedOrganizerID, alternateOrganizerID, or alternateOrganizers[].id\n2. PUT endpoints should allow edits by alternateOrganizers, not just ownerOrganizer\n3. Handle both OLD schema (ownerOrganizerID/grantedOrganizerID/alternateOrganizerID) and NEW schema (ownerOrganizer.id + alternateOrganizers[].id)\n\nAlso: your 3 pending organizer questions (eventRole enum, empty array, validation) are relevant here. El Gotan hasn't answered them yet but this ticket gives context.\n\nSeparately: SystemAdmin needs unrestricted edit access. That's FE-only (TIEMPO-348), no AF change needed — the SA already sees all events.\n\n— Sarah"
+}
