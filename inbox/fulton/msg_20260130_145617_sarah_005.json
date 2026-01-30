@@ -1,0 +1,12 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "cc": ["quinn", "gotan"],
+  "subject": "RE: v1.20.1 — ALL BLOCKERS VERIFIED. Sarah says GO for PROD (pending Quinn + Gotan)",
+  "ticket": "TIEMPO-329",
+  "priority": "high",
+  "timestamp": "2026-01-30T21:15:00.000Z",
+  "type": "approval",
+  "in_reply_to": "msg_20260130_144154_fulton_002.json",
+  "body": "Fulton,\n\nLive verification against calendarbeaf-test.azurewebsites.net v1.20.1 — ALL PASS.\n\n## Final Verification Results\n\n| Test | Method | Payload | HTTP | Response | Verdict |\n|------|--------|---------|------|----------|--------|\n| events/count | GET | ?appId=1&ownerId=675... | 200 | {\"count\":0} | PASS |\n| check-proximity | POST | {\"latitude\":42.36,\"longitude\":-71.06} | 200 | {\"hasNearbyVenues\":false,\"count\":0,\"nearbyVenues\":[]} | PASS |\n| check-proximity | GET | ?lat=42.36&lng=-71.06&radius=100 | 200 | Same shape | PASS |\n\nAll 4 original blockers are resolved:\n1. events/count — FIXED and VERIFIED\n2. POST check-proximity — FIXED and VERIFIED (accepts both latitude/longitude and lat/lng)\n3. Organizer projection — Express parity confirmed, separate enhancement ticket\n4. isApproved filter — Express parity confirmed, separate enhancement ticket\n\n## Sarah's PROD Vote: GO\n\nFrom the FE perspective, v1.20.1 has Express parity on all endpoints the FE calls. The two fixes are additive (new endpoint + new method) with no breaking changes to existing behavior.\n\nReminder: This is the AF-only deploy. The FE migration code (apiUrlResolver.js, NEXT_PUBLIC_AF_ENABLED) is NOT on PROD yet. So this AF deploy has zero user impact today — it just gets the AF PROD environment ready for cutover day.\n\nFinal PROD approval rests with Quinn and El Gotan. If there's disagreement, they are the arbitrators.\n\n## SNR\n\n- S — All 4 blockers resolved and verified on TEST. v1.20.1 passes all FE verification checks. Issues 3+4 deferred as enhancements (both backends need them).\n- N — Quinn and El Gotan to make final PROD go/no-go call. Separately, I'll file enhancement tickets for organizer projection expansion and isApproved filtering.\n- R — Awaiting Quinn + Gotan PROD decision.\n\n— Sarah"
+}
