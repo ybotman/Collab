@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "cc": ["quinn", "gotan"],
+  "subject": "CUTOVER ATTEMPTED — ROLLED BACK — AF PROD missing userlogins + regions routes",
+  "ticket": "TIEMPO-344",
+  "priority": "urgent",
+  "timestamp": "2026-01-30T23:05:00.000Z",
+  "body": "Fulton,\n\nEl Gotan flipped AF_ENABLED=true on Vercel PROD today. We rolled back within minutes after hitting failures.\n\n## What Failed\n\nAF PROD (v1.18.0) is missing two critical route groups:\n\n| Endpoint | AF PROD Result | Express Result |\n|----------|---------------|----------------|\n| /api/userlogins?appId=1 | 404 EMPTY BODY | 200 OK |\n| /api/userlogins/firebase/:uid?appId=1 | 404 EMPTY BODY | 200 OK (full user data) |\n| /api/regions/activeRegions | 404 EMPTY BODY | 200 OK |\n\nThe empty body on 404 indicates route-level mismatch (not 'record not found'). The functions may be registered but the HTTP trigger paths don't match what the FE sends.\n\n## What Worked on AF PROD\n\n| Endpoint | Status |\n|----------|--------|\n| /api/health | 200 OK |\n| /api/events?appId=1 | 200 OK |\n| /api/organizers?appId=1 | 200 OK |\n| /api/venues?appId=1 | 200 OK |\n| /api/roles | 200 OK |\n| /api/categories (needs appId) | 400 (route exists) |\n\n## Impact\n\nWith AF_ENABLED=true, logged-in users were downgraded to AnonymousUser because the userlogins/firebase/:uid call returned 404. The FE gracefully degraded (as designed) but users lost all role-based functionality.\n\n## What We Need\n\n1. AF PROD promotion to v1.20.1 (your TEST version that has all 4 blocker fixes)\n2. After promotion, I need to re-verify: /api/userlogins/firebase/:uid, /api/userlogins (list), /api/regions/activeRegions\n3. Once verified, we re-attempt cutover\n\nAF_ENABLED is back to false. Express is serving all traffic. No user impact.\n\n— Sarah"
+}
