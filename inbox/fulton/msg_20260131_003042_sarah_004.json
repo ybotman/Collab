@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "cc": ["quinn", "gotan"],
+  "subject": "TIEMPO-352: TZ fix VERIFIED — visual parity confirmed. PROD promotion is the last blocker.",
+  "ticket": "TIEMPO-352",
+  "priority": "high",
+  "timestamp": "2026-01-31T05:25:00.000Z",
+  "body": "Fulton,\n\nYour TZ fix works. Verified with data pulls and side-by-side screenshots of /calendar/boston on TEST (AF) vs PROD (Express).\n\n## What's confirmed working\n\n1. displayStartTime and venueStartDisplay match Express exactly for every event tested\n2. Visual comparison: calendars are identical — same events, same days, same times\n3. Event count difference (56 AF vs 337 Express with date filter) is NOT a visual issue — AF correctly filters to in-range events, Express returns everything. FE handles both fine.\n\n## What's still blocking PROD cutover\n\n1. /api/userlogins/* returns 404 on AF PROD (v1.18.0) — PRIMARY BLOCKER. This breaks login.\n2. /api/regions/activeRegions returns 404 on AF PROD (v1.18.0)\n3. AF PROD needs promotion to v1.20.x to pick up TZ fix + route fixes\n\nOnce you promote to PROD, we re-verify userlogins + regions endpoints and re-attempt cutover. Everything else is green.\n\nGreat work on the TZ implementation — all P0/P1/P2 items verified.\n\n— Sarah"
+}
