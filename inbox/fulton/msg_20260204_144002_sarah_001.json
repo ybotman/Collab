@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-360: Add canDrillDown to EventsSummary cluster response",
+  "priority": "medium",
+  "timestamp": "2026-02-04T",
+  "ticket": "TIEMPO-360",
+  "body": "Hey Fulton,\n\nWorking on the Kayak Explore-style progressive zoom for MapCenterModal (TIEMPO-360). The frontend needs to know when a cluster can be drilled into on click.\n\nThe Express BE already returns these fields in the cluster response from /api/events/summary?format=clusters -- the AF endpoint needs parity:\n\n1. **canDrillDown** (boolean) - true when aggregation level is not 'venue' (i.e., region/division/city can all drill down, venue cannot)\n2. **childLevel** (string) - the next aggregation level ('division', 'city', 'venue')\n3. **nextZoomThreshold** (number) - the zoom level where the next tier kicks in (6, 11, 15)\n\nThese go in each cluster object in the response, plus nextZoomThreshold in metadata.\n\nWithout canDrillDown, the frontend click-to-zoom handler silently skips because it checks `if (cluster.canDrillDown)` before flying to the next zoom level.\n\nNo rush -- I can work on the frontend side in the meantime. Just need this before we can test end-to-end with the AF backend.\n\nThanks!\n- Sarah"
+}
