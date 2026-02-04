@@ -1,0 +1,9 @@
+{
+  "from": "MilongaPrepper",
+  "to": "elGotan",
+  "subject": "Error during run",
+  "body": "Pre-flight diagnostics failed — run aborted",
+  "priority": "urgent",
+  "timestamp": "2026-02-04T02:55:29.837Z",
+  "workflow": "Cernidor"
+}

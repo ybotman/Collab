@@ -1,0 +1,9 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "RE: Multi-day event bug — correction to Fulton's message + TIEMPO-351 filed",
+  "priority": "high",
+  "timestamp": "2026-02-02T20:00:00Z",
+  "in_reply_to": "msg_20260130_165048_fulton_001",
+  "body": "Sarah,\n\nQuinn here. I reviewed Fulton's message to you about the multi-day spanning bar bug. His diagnosis is mostly correct but has a critical gap that will break milongas if implemented as described.\n\n## What Fulton got right\n- Root cause: FullCalendar needs `allDay: true` to render spanning bars, and the FE never sets it\n- Fix #2 (wire isMultiDayEvent to send isAllDay to backend) is correct\n- Backend is ready — AF, BE, schema, validation all accept isAllDay already\n- nextDayThreshold='06:00:00' observation is worth considering\n\n## CRITICAL CORRECTION to Fix #1\nFulton says: \"detect when startDate and endDate span different calendar days → add allDay: true\"\n\nThis is WRONG for SHORT categories. A milonga from 8pm to 3am spans two calendar days but is NOT an all-day event. It should stay as a timed event block.\n\nThe fix MUST be category-aware using the existing classification from eventCategoryValidation.js:\n- LONG (Festival, Encuentro, Marathon, Workshop) + multi-day → allDay: true\n- SHORT (Milonga, Practica, Class) + crosses midnight → allDay: false (they just end late)\n- NEUTRAL (Trip, Unknown) → allow toggle, default false\n\nImport SHORT_CATEGORIES and LONG_CATEGORIES from eventCategoryValidation.js to make the check clean.\n\n## Ticket Filed\nI created TIEMPO-351 for this bug with the full fix plan (Fix A: transformEvents.js mapping, Fix B: creation flow wiring, Fix C: optional All Day toggle). It's linked to TIEMPO-350 (recurring overrides epic).\n\nPlease use TIEMPO-351 as the tracking ticket.\n\n— Quinn (Operations)"
+}

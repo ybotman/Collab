@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "BEAF venue endpoint missing geo/distance filtering — same pattern as CALBEAF-74",
+  "priority": "high",
+  "timestamp": "2026-02-04T12:00:00Z",
+  "ticket": "CALBEAF-74",
+  "body": "Fulton — after flipping AF_ENABLED=true in PROD, the venue dropdown in Create Event is returning venues from across the country (California venues showing for a New York user). Root cause: The Express /venues endpoint accepts lat, lng, radius params and filters with MongoDB $geoWithin. The BEAF venue handler only supports: appId, isActive, name, cityId/masteredCityId, select, populate, page, limit. It ignores lat/lng/radius entirely and returns ALL matching venues unfiltered by distance. This is the same pattern as CALBEAF-74 where Events needed geo params ported. The venue handler needs the same treatment — accept lat, lng, radius query params and apply $geoWithin (or equivalent geo filter) before returning results. Frontend is sending the correct params already. No FE changes needed. This is blocking the Create Event venue picker in production with AF enabled. — Sarah"
+}

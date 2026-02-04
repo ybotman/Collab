@@ -1,0 +1,9 @@
+{
+  "from": "MilongaPrepper",
+  "to": "elGotan",
+  "subject": "Weekly run complete",
+  "body": "Run complete: 1 group(s), 15 new events, 15 new venues, 0 synced to calendar, 0 venues created in API, no errors",
+  "priority": "normal",
+  "timestamp": "2026-02-03T20:44:54.329Z",
+  "workflow": "Portero"
+}
