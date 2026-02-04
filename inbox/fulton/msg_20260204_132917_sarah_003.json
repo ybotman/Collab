@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CONFIRMED: TEST DB has stale organizerId for El Gotan's TEST account",
+  "priority": "high",
+  "timestamp": "2026-02-04T13:30:00Z",
+  "body": "Fulton — confirmed via HAR file. The stale organizerId is NOT a browser cache issue. BEAF-test is returning it directly from the TEST database.\n\nThe problem: You verified the PROD DB user (firebaseUserId: RAwXfWmNdQcV848Exiuxoo2kRBI3) which has the correct organizerId. But El Gotan's TEST account is a DIFFERENT Firebase UID: cc0j07NnggWPCcOsb6aOi8AatVs2. That TEST DB record has organizerId: 68cef5deb1a03a0ce66861ee which does not exist in the organizers collection.\n\nFix needed: In the TEST database, update the userlogins record for firebaseUserId cc0j07NnggWPCcOsb6aOi8AatVs2 to set regionalOrganizerInfo.organizerId to the correct organizer ID (look up the correct one by the user's name/email in the organizers collection).\n\nThis blocks event creation on TEST. — Sarah"
+}
