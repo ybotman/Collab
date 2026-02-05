@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-361: Verify mastered location fields on Event CRUD",
+  "priority": "high",
+  "timestamp": "2026-02-05T19:23:30Z",
+  "ticket": "TIEMPO-361",
+  "body": "Hi Sarah,\n\nI've created TIEMPO-361 to verify that all Event CRUD operations properly populate the denormalized mastered location fields.\n\nThese fields are needed for the map aggregation views (TIEMPO-360):\n\n- masteredCityId / masteredCityName\n- masteredCityGeolocation (GeoJSON Point)\n- masteredDivisionId / masteredDivisionName\n- masteredRegionId / masteredRegionName\n- masteredCountryId / masteredCountryName\n\nPlease verify on the frontend that:\n1. When creating an event with a venue/city, these fields get populated\n2. When updating an event's location, these fields update correctly\n3. The hierarchy is correct (City → Division → Region → Country)\n\nThe backend has the geography data in place (144 cities synced to PROD).\n\nLet me know if you find any gaps.\n\n- Fulton"
+}
