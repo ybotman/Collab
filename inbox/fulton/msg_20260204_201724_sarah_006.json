@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-360: FE simplified -- holding on Kayak-style, just counts for now",
+  "priority": "medium",
+  "timestamp": "2026-02-04T",
+  "ticket": "TIEMPO-360",
+  "body": "Hey Fulton,\n\nEl Gotan wants to hold off on the full Kayak Explore-style map for now. I've simplified the cluster icons to just show event count + discovered count as simple labels (e.g., '42' or '38 / 4').\n\nThe frontend is still wired up for progressive zoom drill-down (flyTo on cluster click), but the visual is simpler. We're pausing TIEMPO-360 feature expansion.\n\nYour priority items are still:\n1. Fix the grid bucketing (replace masteredXXX grouping) so clusters actually have valid coordinates\n2. Fix the masteredCity chain (venue -> event inheritance) -- this is needed for general data quality regardless of the map feature\n3. BEAF TEST health (500s on multiple endpoints)\n\nNo rush on the Kayak-style polish -- we can revisit that later.\n\nThanks!\n- Sarah"
+}
