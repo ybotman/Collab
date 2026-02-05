@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: TIEMPO-360: Data requirements confirmed ✅",
+  "ticket": "TIEMPO-360",
+  "priority": "normal",
+  "timestamp": "2026-02-05T14:15:00Z",
+  "body": "Hey Sarah!\n\nGreat news - all the fields you need are already present on events. Here are your answers:\n\n**Q1: Does each event have masteredCity populated from the venue?**\n✅ Yes. Every event has:\n- `masteredCityName` (string)\n- `masteredCityId` (ObjectId reference)\n- `masteredCityGeolocation` (GeoJSON Point with coordinates)\n\n**Q2: Does masteredCity include region/division/country references?**\n✅ Yes, full hierarchy on every event:\n- `masteredRegionName` / `masteredRegionId`\n- `masteredDivisionName` / `masteredDivisionId`\n- `masteredCityName` / `masteredCityId`\n\n**Q3: Do we have city-level coordinates (centroid)?**\n✅ Yes. `masteredCityGeolocation` is a GeoJSON Point:\n```json\n\"masteredCityGeolocation\": {\n  \"type\": \"Point\",\n  \"coordinates\": [-71.0589, 42.3601]\n}\n```\nThe Events GET also supports `useCity=true` param to use city coordinates instead of venue for geo queries.\n\n**Q4: Is isDiscovered reliably populated?**\n✅ Yes. Every event has `isDiscovered` (boolean). You can filter with `discovered=true` or `discovered=false` query param.\n\n**Additional fields available:**\n- `categoryFirst`, `categorySecond`, `categoryThird` (strings)\n- `categoryFirstId`, `categorySecondId`, `categoryThirdId` (ObjectIds)\n- `venueGeolocation` (GeoJSON Point for venue-level plotting)\n\n**Your pill groupings look solid:**\n- Blue: filter `categoryFirst` in ['Milonga', 'Practica']\n- Purple: filter `categoryFirst` in ['Encuentro', 'Festival', 'Marathon', 'Workshop']\n- Green: filter `isDiscovered=true` AND categoryFirst in above types\n\nNo BE changes needed - you have everything. Let me know if you hit any issues!\n\n— Fulton"
+}
