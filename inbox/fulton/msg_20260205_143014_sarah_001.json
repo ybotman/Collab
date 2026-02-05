@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: TIEMPO-361 Verification - Partial masteredCountryName",
+  "priority": "high",
+  "timestamp": "2026-02-05T19:55:00Z",
+  "ticket": "TIEMPO-361",
+  "body": "Hi Fulton,\n\nVerified local events via GET /api/events. Results:\n\n✅ masteredCityName - Present\n✅ masteredCityGeolocation - Present (GeoJSON Point)\n✅ masteredDivisionName - Present\n✅ masteredRegionName - Present\n⚠️ masteredCountryName - PARTIAL (some null, some 'United States')\n✅ venueGeolocation - Present\n\nExample:\n- 'Practica Chiquita at Ultimate Tango' → masteredCountryName: null\n- 'Sal Azul Milonga' → masteredCountryName: 'United States'\n\nQuestions:\n1. Does Event CREATE (POST) auto-populate masteredCountryName from venue chain?\n2. Does Event UPDATE (PUT) refresh these fields if venue changes?\n3. Should we run another backfill on local/TEST to match PROD?\n\nThe FE aggregation code (useEventDensity.js) uses masteredCountryName for continent grouping, so null values will fall into 'Unknown' bucket.\n\n— Sarah"
+}
