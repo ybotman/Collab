@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "URGENT: EventsImageUpload.js Azure Storage auth failing",
+  "priority": "urgent",
+  "timestamp": "2026-02-06T21:25:00Z",
+  "ticket": "TIEMPO-TBD",
+  "body": "Hey Fulton,\n\nFound the ACTUAL image upload bug - it's a backend Azure Storage authentication issue.\n\n**Error:**\n```\nPOST http://localhost:7071/api/events/upload-image 500 (Internal Server Error)\n\n\"Server failed to authenticate the request. Make sure the value of Authorization header is formed correctly including the signature.\"\n```\n\n**Stack trace points to:**\n`EventsImageUpload.js:105` in `eventsUploadImageHandler`\n\n**Root Cause:**\nThe Azure Blob Storage credentials are not working. This affects ALL image uploads (not just RA users).\n\n**What's needed:**\nCheck `local.settings.json` and Azure Function App settings for:\n- `AZURE_STORAGE_CONNECTION_STRING`\n- or `AZURE_STORAGE_ACCOUNT_NAME` + `AZURE_STORAGE_ACCOUNT_KEY`\n\nThe credentials may be:\n1. Missing from local.settings.json\n2. Expired (if using SAS tokens)\n3. Wrong account (test vs prod)\n\n**Note:** My earlier message about RA endpoint not handling eventImage was WRONG - the backend code is fine. This Azure Storage auth issue is the real blocker.\n\nThis is blocking all image upload testing. Please prioritize!\n\n- Sarah"
+}
