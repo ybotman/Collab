@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RA endpoint missing eventImage field handling",
+  "priority": "high",
+  "timestamp": "2026-02-06T15:35:00Z",
+  "ticket": "TIEMPO-TBD",
+  "body": "Hey Fulton,\n\nFound a bug in the image upload/delete functionality for Regional Admin users.\n\n**Problem:**\nThe RA endpoint in `EventsRA.js` does not handle the `eventImage` field at all. When RA users try to:\n- Upload a new image\n- Delete an existing image\n- Change an image\n\nThe changes are lost because the backend ignores the `eventImage` field in the update payload.\n\n**Frontend Fix (done):**\nI've added `eventImage`, `imageFile`, `imagePreviewUrl`, and `fallbackImageUrl` to the RA preparedData in `useEvents.js` for both createEvent and updateEvent functions.\n\n**Backend Fix Needed:**\nIn `EventsRA.js`, the PUT handler needs to accept and process the `eventImage` field. When `eventImage` is:\n- A URL string: Update the event with that image URL\n- `null`: Clear the event's image (set eventImage to null in DB)\n\nThe RO endpoint (Events.js) likely already handles this since it uses a more generic update mechanism.\n\n**Testing:**\nYou can test by:\n1. Editing an event as RA\n2. Adding/removing an image\n3. Saving and verifying the image persists\n\nLet me know if you need more details!\n\n- Sarah"
+}
