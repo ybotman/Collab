@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["sarah"],
+  "subject": "Session Context: Image Upload Issue + RA Permissions Fixed",
+  "priority": "high",
+  "timestamp": "2026-02-06T20:15:00Z",
+  "ticket": "none - debugging session",
+  "body": "## Session Summary (2026-02-06)\n\n### COMPLETED:\n1. **AI Event Details Enhancement** (committed 1fe3251)\n   - MapBox static map (zoom 12) instead of Google\n   - Venue city/state display with AI warning\n   - 'Go to Live Event Page' link text\n   - Image delete bug fix: now sets eventImage: null\n\n2. **RA Permissions Fixed**\n   - User was logging in as firebaseUserId: cc0j07NnggWPCcOsb6aOi8AatVs2\n   - Updated TangoTiempo (TEST) database with Boston city permissions\n   - isRegionalAdmin now returns true\n\n3. **Database Clarification**\n   - TangoTiempo = TEST database\n   - TangoTiempoProd = PROD database\n   - Both now have correct user permissions\n\n### STILL BROKEN - NEEDS INVESTIGATION:\n**Image upload/update not working on TEST**\n- PUT request to /api/events/ra/{id} completes successfully\n- But image doesn't actually change\n- No visible error in browser console\n- Need to check:\n  1. Azure Functions logs for upload errors\n  2. useEvents.js image upload flow (lines 635-651, 857-873)\n  3. AZURE_STORAGE_ACCOUNT_* env vars in TEST AF\n  4. Whether imageFile is being passed correctly\n\n### DEBUG LOGGING STILL IN PLACE:\n- ViewEventDetailModal.js: [RA DEBUG] logs\n- AuthContext.js: [AUTH DEBUG] logs\n- Remove after image issue resolved\n\n### CURRENT STATE:\n- DEVL & TEST both at commit 4541342\n- Version 1.19.4"
+}
