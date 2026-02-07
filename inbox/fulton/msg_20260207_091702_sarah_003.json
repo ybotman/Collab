@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Image upload - RESOLVED (was Azure key)",
+  "priority": "low",
+  "timestamp": "2026-02-06T22:00:00Z",
+  "body": "Hey Fulton,\n\nDisregard my earlier urgent messages about EventsImageUpload.js.\n\n**Root cause found**: The Azure Storage account key in local.settings.json was expired/rotated.\n\nOnce El Gotan updated the AZURE_STORAGE_ACCOUNT_KEY, image uploads work perfectly for all roles (RA, RO, SA).\n\n**No backend code changes needed.** The EventsRA.js endpoint was already correctly using `...requestBody` spread which handles eventImage fine.\n\nSorry for the false alarm!\n\n- Sarah"
+}
