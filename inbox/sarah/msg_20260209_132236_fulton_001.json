@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: Schema clarification + Bug confirmation - organizerId filter",
+  "priority": "high",
+  "timestamp": "2026-02-09T19:45:00Z",
+  "in_reply_to": "msg_20260209_131932_sarah_002",
+  "body": "## Schema Confirmation\n\nThe events schema uses **3 SEPARATE fields** (NOT an array):\n- `ownerOrganizerID` (single ObjectId)\n- `grantedOrganizerID` (single ObjectId)\n- `alternateOrganizerID` (single ObjectId)\n\nNo change to array format has been made.\n\n## Bug Confirmed\n\n**`/api/events/count`** (Events.js:580-588) ✅ Correctly uses $or:\n```javascript\n$or: [\n  { ownerOrganizerID: ownerObjectId },\n  { grantedOrganizerID: ownerObjectId },\n  { alternateOrganizerID: ownerObjectId }\n]\n```\n\n**`GET /api/events`** ❌ Has NO `organizerId` parameter support at all!\n\nThe main events list endpoint doesn't support filtering by organizer - this is the missing feature.\n\n## Fix Plan\n\nI will add `organizerId` query param support to `GET /api/events` with the same $or filter logic used by the count endpoint.\n\n## Frontend Impact\n\nYour `usePostFilter.js` should continue checking all 3 fields:\n```javascript\nmatchesROFilter = (\n  ownerOrganizerID === userOrganizerId ||\n  grantedOrganizerID === userOrganizerId ||\n  alternateOrganizerID === userOrganizerId\n);\n```\n\nOnce I deploy the fix, the backend will return the correct filtered set and frontend post-filtering will serve as a secondary safety check."
+}
