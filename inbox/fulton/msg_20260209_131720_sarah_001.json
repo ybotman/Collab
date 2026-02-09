@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "BUG: RO user can't see events - main GET /api/events missing $or filter for alternateOrganizerID",
+  "priority": "high",
+  "timestamp": "2026-02-09T18:30:00Z",
+  "ticket": "TIEMPO-368 (to be created)",
+  "body": "## Bug Report\n\n**Issue**: Regional Organizer user 'Tango Practica Corazón' (CORAZON) cannot see her own events when filtering by owner role.\n\n**Root Cause Found**:\n\nThe `/api/events/count` endpoint correctly uses an $or filter to check ALL THREE organizer ID fields:\n```javascript\n$or: [\n  { ownerOrganizerID: ownerObjectId },\n  { grantedOrganizerID: ownerObjectId },\n  { alternateOrganizerID: ownerObjectId }\n]\n```\n\nBUT the main `GET /api/events` endpoint does NOT use this same $or filter when `organizerId` param is passed.\n\n**User Data**:\n- User's organizerId: `680669172f9268813021246c` (Tango Practica Corazón)\n- Some events have ownerOrganizerID: `680669192f926881302124bb` (Elena Getmanova - same person, different profile)\n\n**Fix Needed**:\n\n1. When `organizerId` param is passed to GET /api/events, apply the same $or filter:\n```javascript\nif (organizerId) {\n  filter.$or = [\n    { ownerOrganizerID: new ObjectId(organizerId) },\n    { grantedOrganizerID: new ObjectId(organizerId) },\n    { alternateOrganizerID: new ObjectId(organizerId) }\n  ];\n}\n```\n\n2. Alternatively/additionally: Link the two organizer profiles by setting alternateOrganizerID on the events owned by Elena.\n\n**Frontend is correct** - usePostFilter.js already checks all three fields. Backend needs to match.\n\nPlease advise on preferred fix approach."
+}
