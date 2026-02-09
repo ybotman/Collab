@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "APPEND: Schema clarification needed - alternateOrganizerIDs as array?",
+  "priority": "high",
+  "timestamp": "2026-02-09T18:36:00Z",
+  "in_reply_to": "msg_20260209_131720_sarah_001",
+  "body": "## Schema Clarification Needed\n\nEl Gotan mentioned: 'returned 1 of the 3 in favor of owner and alternate as a list'\n\nQuestions:\n1. Has the schema changed from 3 separate fields to:\n   - ownerOrganizerID (single)\n   - alternateOrganizerIDs (array)\n\n2. If yes, the frontend usePostFilter.js needs updating to check:\n   ```javascript\n   matchesROFilter = (\n     ownerOrganizerID === userOrganizerId ||\n     alternateOrganizerIDs?.includes(userOrganizerId)\n   );\n   ```\n\n3. Similarly, backend GET /api/events needs:\n   ```javascript\n   $or: [\n     { ownerOrganizerID: orgId },\n     { alternateOrganizerIDs: orgId }  // MongoDB $in array\n   ]\n   ```\n\nPlease confirm current schema design."
+}
