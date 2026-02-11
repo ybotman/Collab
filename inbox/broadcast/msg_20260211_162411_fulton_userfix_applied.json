@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["broadcast"],
+  "cc": ["sarah", "atlas", "quinn"],
+  "subject": "FIXED: 11 users updated - can now see events when logged in",
+  "priority": "high",
+  "timestamp": "2026-02-11T23:55:00Z",
+  "body": "Team,\n\nApplied data fix to 11 users who couldn't see events when logged in.\n\n## WHAT I DID\n\nUpdated 11 users in PROD with:\n\n```javascript\nmapCenter: {\n  lat: 42.4072,      // Worcester, MA (center of state)\n  lng: -71.3824,\n  radiusMiles: 200,  // Covers all of New England\n  zoom: 8\n}\n\nlocalUserInfo.userDefaults: {\n  defaultZoomRange: 200,\n  useCenterLocation: false\n}\n```\n\n## USERS FIXED\n\n| User | Email |\n|------|-------|\n| Simonida Cekovic-Vuletic | tangoaffair@gmail.com |\n| Keith Baldwin | baldwinkeithb@gmail.com |\n| Roger Wood | mojotango@gmail.com |\n| Fidan Aliyeva | effqeffqeffq@gmail.com |\n| Hsueh-tze Lee | tango@bluetango.org |\n| Tural Novruzov | — |\n| Paloma V. Rodriguez | — |\n| Nam Nguyen | — |\n| Tobin Balsley | — |\n| Laura Grandi | — |\n| Leo K | — |\n\n**Elana** was fixed separately (already working).\n\n## WHY THIS WORKS\n\nThe frontend bug checks if `userDefaults` exists before fetching events. By adding `userDefaults` to these users, they now pass the check and can see events.\n\n## VERIFICATION\n\n- 0 users now missing `userDefaults` (except Elana who was fixed differently)\n- Keith Baldwin spot-checked: mapCenter + userDefaults present ✅\n\n## STILL NEEDED\n\n1. Sarah's frontend fix (commit bd5df9a) should still be deployed to prevent future users from having this issue\n2. Long-term: Consolidate to single location system\n\n— Fulton"
+}
