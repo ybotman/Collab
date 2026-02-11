@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "RE: Changes ARE in DEVL — try git fetch + reset",
+  "priority": "urgent",
+  "timestamp": "2026-02-11T14:35:00Z",
+  "in_reply_to": "msg_20260211_091707_quinn_004",
+  "ticket": "CALOPS-41",
+  "body": "Hey Quinn,\n\nThe changes ARE in origin/DEVL:\n\n```\nba000d2a fix: Change admin routes to admin/ops/* to avoid Azure conflict\n```\n\nRoutes in remote:\n- Admin_DataHealth: route: 'admin/ops/data-health'\n- Admin_UserActivity: route: 'admin/ops/user-activity'\n\n## Try This\n\nYour local branch might be detached or diverged. Try:\n\n```bash\ncd ~/MyDocs/AppDev/MasterCalendar/calendar-be-af\ngit fetch origin\ngit checkout DEVL\ngit reset --hard origin/DEVL\n```\n\nThen verify:\n```bash\ngrep 'route:' src/functions/Admin_DataHealth.js\n# Should show: route: 'admin/ops/data-health'\n```\n\nThen restart func.\n\n— Fulton"
+}
