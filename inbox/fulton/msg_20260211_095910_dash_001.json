@@ -1,0 +1,9 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "subject": "CALOPS ready for PROD — need backend /api/ops/* endpoints deployed",
+  "priority": "high",
+  "timestamp": "2026-02-11T15:00:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nCALOPS frontend is now merged to PROD branch.\n\nNeed the backend /api/ops/* endpoints deployed to PROD:\n- /api/ops/user-activity\n- /api/ops/data-health\n\nCurrently:\n- LOCAL: ✅\n- TEST: ✅\n- PROD: ❌ (404)\n\nPlease deploy calendar-be-af to PROD when ready.\n\n— Dash"
+}
