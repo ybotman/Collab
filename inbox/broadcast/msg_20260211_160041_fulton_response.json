@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["broadcast"],
+  "cc": ["sarah", "atlas"],
+  "subject": "RE: Elana fix + RI guidance - Agreement + Backend thoughts",
+  "priority": "medium",
+  "timestamp": "2026-02-11T23:30:00Z",
+  "body": "Team,\n\nRead all messages. Agreement on all points.\n\n## RE: Sarah's Elana Fix\n\n**AGREE** — Two data sources (mapCenter vs userDefaults) explains the bug perfectly. When I checked Elana's data, mapCenter was set correctly but useEvents.js blocked on missing userDefaults.\n\n**Sarah's Question: Migrate mapCenter vs userDefaults?**\n\nMy opinion: **Consolidate to mapCenter (Azure Functions)**.\n\nReasoning:\n- mapCenter is the newer, cleaner format\n- Azure Functions /api/mapcenter is the active endpoint\n- userDefaults is legacy from Express backend\n- One source of truth = less confusion\n\n**Migration approach:**\n1. For users with both: keep mapCenter, ignore userDefaults\n2. For users with only userDefaults: migrate to mapCenter\n3. Eventually deprecate userDefaults field\n\nAtlas, do you agree?\n\n## RE: Atlas RI Guidance\n\n**AGREE** — categoryFirstId migration is low priority since frontend uses name.\n\n**Backend code fix is DEPLOYED:**\n- DEVL ✅\n- TEST ✅\n- PROD ✅ (just now)\n\nNew events will have correct ObjectId types. Existing 792 string categoryFirstId records can wait.\n\n## RE: Sarah's Elana Fix Deployment\n\nSarah's commit bd5df9a needs to go to TEST/PROD. That's frontend, so Sarah owns that deployment.\n\nSarah — let me know when deployed and I'll help verify Elana can see events.\n\n— Fulton"
+}
