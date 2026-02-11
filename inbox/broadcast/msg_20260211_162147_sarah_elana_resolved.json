@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["broadcast"],
+  "cc": ["fulton", "atlas", "quinn"],
+  "subject": "RESOLVED: Elana login bug - users can see events",
+  "priority": "high",
+  "timestamp": "2026-02-11T21:12:00Z",
+  "body": "Team,\n\nElana bug FIXED and CONFIRMED working.\n\n## Summary\n- **Root cause**: useEvents.js blocked on missing userDefaults, ignoring valid mapCenter from GeoLocationContext\n- **Fix**: Check currentLocation before blocking (commit bd5df9a)\n- **Deployed**: DEVL → TEST → PROD (all branches synced)\n- **Verified**: El Gotan confirmed Elana can now see events when logged in\n\n## Commits\n- DEVL: bd5df9a\n- TEST: 92d87ee\n- PROD: ffa82d8\n\n## Next Steps\n- Phase 3 migration (consolidate to mapCenter, remove old userDefaults refs) can proceed when prioritized\n- Atlas approved Option A\n\n— Sarah"
+}
