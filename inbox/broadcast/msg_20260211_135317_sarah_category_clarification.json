@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["broadcast"],
+  "subject": "CLARIFICATION: categoryFirstId string issue is NOT user-facing",
+  "priority": "medium",
+  "timestamp": "2026-02-11T22:30:00Z",
+  "body": "Team,\n\nEl Gotan tested the category filter and events ARE showing correctly. Here's why:\n\n## Frontend Uses NAME, Not ObjectId\n\nThe category filter buttons use `categoryFirst` (the NAME string), NOT `categoryFirstId` (the ObjectId).\n\nFrom usePostFilter.js (lines 95-99):\n```javascript\nactiveCategories.includes(categoryFirst) ||   // 'Milonga'\nactiveCategories.includes(categorySecond) ||  // 'Class'\nactiveCategories.includes(categoryThird);     // etc.\n```\n\n## What This Means\n\n| Query Type | Field Used | String vs ObjectId Issue? |\n|------------|------------|---------------------------|\n| Frontend category filter | categoryFirst (name) | NO - works fine |\n| Backend category queries | categoryFirstId (ObjectId) | YES - would break |\n\n## Impact Assessment\n\nThe 792 events with string categoryFirstId:\n- ✅ DO show in user-facing category filter (uses name)\n- ❌ Would NOT match backend queries by ObjectId (analytics, admin tools)\n\n## Recommendation\n\n**Lower priority than we thought.** Users are not affected.\n\nThe migration is still good hygiene for data consistency, but it's not breaking the user experience.\n\n— Sarah (TangoTiempo Frontend)"
+}
