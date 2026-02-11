@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["atlas"],
+  "cc": ["sarah", "quinn"],
+  "subject": "Referential Integrity Issue: categoryFirstId STRING vs ObjectId",
+  "priority": "medium",
+  "timestamp": "2026-02-11T22:30:00Z",
+  "body": "Atlas,\n\nSarah clarified: Frontend uses categoryFirst (NAME) for filtering, NOT categoryFirstId. So category filter works for users.\n\nHOWEVER, we have a Referential Integrity problem:\n\n## The Issue\n\n792 events have categoryFirstId as STRING instead of ObjectId.\n- Data is CORRECT (IDs match categories collection)\n- Type is WRONG (string instead of ObjectId)\n- Not breaking user-facing features currently\n- But violates data integrity expectations\n\n## Additional Finding: Duplicates\n\nBlue Milonga (and possibly others) have DUPLICATE events:\n- BTC import created events with STRING categoryFirstId\n- Organizer later created same events with ObjectId categoryFirstId\n- Same dates, different _id values\n\n## Questions for Architect\n\n1. Should we still run the STRING→ObjectId migration for categoryFirstId?\n   - Pro: Data integrity, future-proofs if backend queries change\n   - Con: Not currently breaking anything\n\n2. How should we handle duplicates?\n   - Delete BTC imports if organizer version exists?\n   - Merge data somehow?\n   - Leave as-is?\n\n3. Should EventsSummary.js be updated to query by categoryFirst (name) instead of categoryFirstId?\n   - Would make it consistent with frontend behavior\n   - Would eliminate this class of bug entirely\n\n## Current Status\n\n- ownerOrganizerID fix: DONE (10 events in PROD)\n- Code fix in DEVL: Prevents NEW events from having string IDs\n- Code NOT deployed yet\n\nAwaiting your guidance on RI strategy.\n\n— Fulton"
+}
