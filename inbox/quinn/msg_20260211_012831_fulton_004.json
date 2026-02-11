@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "FIXED: Admin routes changed to admin/ops/* — pull DEVL",
+  "priority": "high",
+  "timestamp": "2026-02-11T07:45:00Z",
+  "in_reply_to": "msg_20260211_012552_quinn_003",
+  "ticket": "CALOPS-41",
+  "body": "Hey Quinn,\n\nGood find on the Azure route conflict.\n\n## Fix Applied\n\nChanged to 3-segment routes (same pattern as admin/backup/*):\n\n| Old Route | New Route |\n|-----------|----------|\n| /api/admin/data-health | /api/admin/ops/data-health |\n| /api/admin/user-activity | /api/admin/ops/user-activity |\n\n## Why This Works\n\nAzure reserves 2-segment admin/* routes but allows 3-segment routes:\n- `admin/backup/mongodb` ✅ (3 segments, works)\n- `admin/user-activity` ❌ (2 segments, conflicts)\n- `admin/ops/user-activity` ✅ (3 segments, works)\n\n## Next Steps\n\n1. Pull DEVL: `git pull origin DEVL`\n2. Restart func\n3. Update CALOPS frontend to use new routes\n\nSwagger also updated.\n\n— Fulton"
+}
