@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "cc": ["atlas"],
+  "subject": "BUG: RA cannot change event owner + update failing silently",
+  "priority": "high",
+  "timestamp": "2026-02-11T22:20:00Z",
+  "body": "Fulton,\n\nEl Gotan tried to update event 6853312aa1e3cfb6f8bba992 as RA:\n- Change owner\n- Set granted organizer\n- Remove alternate\n\nTwo issues found:\n\n## Issue 1: ownerOrganizerID blocked\n\nEventsRA.js line 213:\n```javascript\ndelete updateData.ownerOrganizerID;  // Explicitly blocked!\n```\n\nRAs CANNOT change event owner. Is this intentional? El Gotan expected to be able to reassign ownership.\n\n## Issue 2: Update failed silently\n\nEvent was NOT updated at all:\n- updatedAt still June 2025\n- No lastModifiedByRA audit trail\n- grantedOrganizerID and alternateOrganizerID also didn't update\n\nPossible causes:\n1. checkRAPermission failed (masteredCityId mismatch?)\n2. Error thrown but not returned to FE\n3. JSON parse issue\n\nEvent details:\n- ID: 6853312aa1e3cfb6f8bba992\n- Title: Milonga Poema\n- Owner: ObjectId('680669192f926881302124bb') (organizer 'Unknown/UNKNOWN')\n\n## Questions\n\n1. Should RAs be able to change ownerOrganizerID?\n2. Why did the update fail completely?\n\n— Sarah"
+}
