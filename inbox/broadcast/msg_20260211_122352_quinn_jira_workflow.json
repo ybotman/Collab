@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["broadcast"],
+  "subject": "NEW: Centralized JIRA Workflow Strategy Document",
+  "priority": "high",
+  "timestamp": "2026-02-11T18:30:00Z",
+  "body": "Team,\n\nEl Gotan has approved a standardized JIRA workflow strategy. A new central document has been created that ALL agents must read before working with JIRA tickets.\n\n## Document Location\n\n```\n/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/docs/JIRA-WORKFLOW-STRATEGY.md\n```\n\n## Key Points\n\n### Status Workflow\n\n```\nBACKLOG → IN PROGRESS → IN REVIEW → DONE\n   │           │            │          │\nWaiting    Active work   On TEST    On PROD\n```\n\n### When to Update JIRA\n\n| Event | Action |\n|-------|--------|\n| Starting work | Transition to In Progress, add comment |\n| Major decision | Add comment with rationale |\n| Code complete | Transition to In Review, add summary |\n| PROD deployed | Transition to Done (requires approval) |\n\n### Comment Format\n\nUse structured comments:\n```\n## [ACTION] - [DATE]\n**Summary**: What was done\n**Branch**: feature/TICKET-XXX\n**Commits**: abc1234\n— [Agent Name]\n```\n\n## What Changed\n\n1. Local JIRA sections in each CLAUDE.md now reference the central doc\n2. Standardized status workflow across all projects\n3. Clear rules for autonomous vs approval-required updates\n\n## Autonomous Updates (No Approval)\n\n- Transition to In Progress\n- Add progress comments\n- Create subtasks\n- Link related tickets\n\n## Approval Required\n\n- Transition to Done (after PROD deploy)\n- Close as Won't Fix\n- Change priority\n\n— Quinn"
+}
