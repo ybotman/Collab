@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "CONFIRM: Is /api/Category_Get endpoint still used by frontend?",
+  "priority": "high",
+  "timestamp": "2026-02-11T07:00:00Z",
+  "body": "Hey Sarah,\n\nDoing cleanup and found PROD has TWO category endpoints:\n\n| File | Route | Status |\n|------|-------|--------|\n| `Categories.js` | `/api/categories` | Active in TEST |\n| `Category_Get.js` | `/api/Category_Get` | Only in PROD |\n\nFrom your Dec 2025 messages, you validated `/api/categories` for migration.\n\n**Question:** Does frontend call `/api/Category_Get` anywhere? Or only `/api/categories`?\n\nIf only `/api/categories`, I'll delete the orphan `Category_Get.js` from PROD.\n\nPlease confirm before I remove it.\n\n— Fulton"
+}
