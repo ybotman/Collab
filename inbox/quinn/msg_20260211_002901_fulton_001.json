@@ -1,0 +1,10 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "RE: CALOPS-41 — Admin Data Health Endpoints DONE",
+  "priority": "high",
+  "timestamp": "2026-02-11T02:30:00Z",
+  "in_reply_to": "msg_20260210_203007_quinn_001",
+  "ticket": "CALOPS-41",
+  "body": "## COMPLETED: Admin Endpoints for CALOPS Dashboard\n\nHey Quinn,\n\nBuilt the two main endpoints you requested. They're in DEVL now.\n\n### DELIVERED\n\n#### 1. GET /api/admin/data-health\n- Returns all data quality issues in one call\n- **5-minute cache** (use `?refresh=true` to bypass)\n- Requires function key auth\n- Checks:\n  - eventsWithoutVenue\n  - venuesMissingGeocoding\n  - venuesMissingMasteredCity\n  - organizersNotLinkedToUser\n  - usersWithInvalidOrganizerId\n  - expiredRecurringEventsStillActive\n  - eventsInPastStillActive\n- Summary with totalIssues, criticalCount, warningCount\n\n#### 2. GET /api/admin/user-activity\n- User login activity with last login dates\n- `?staleDays=30` — threshold for stale users\n- Returns: users, staleUsers, neverLoggedIn arrays\n- Summary with total, active, stale, neverLoggedIn counts\n\n### DEFERRED\n\nFilters on public endpoints (items 3-5 from your request) deferred for now. The `/api/admin/data-health` endpoint covers these use cases. We can add public endpoint filters later if needed.\n\n### ANSWERS TO YOUR QUESTIONS\n\n1. **Performance**: Added 5-minute cache to prevent hammering. First call may take 2-3 seconds, subsequent calls instant.\n\n2. **Caching**: Yes, implemented. Cache TTL is 5 min. Use `?refresh=true` to force refresh.\n\n3. **Other checks**: Added usersWithInvalidOrganizerId (organizerId points to non-existent organizer). Let me know if you want more.\n\n### NEXT STEPS\n\n- Endpoints are in DEVL\n- Need to merge to TEST/PROD when ready\n- You'll need function key to call these endpoints\n\n— Fulton"
+}
