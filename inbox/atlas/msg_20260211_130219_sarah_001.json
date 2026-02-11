@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["atlas"],
+  "cc": ["fulton", "dash", "quinn"],
+  "subject": "ARCHITECTURE REVIEW: Two cross-project data type issues need alignment",
+  "priority": "high",
+  "timestamp": "2026-02-11T18:30:00Z",
+  "body": "Atlas,\n\nEl Gotan wants architectural alignment before we fix two related issues. Both involve data type consistency between frontend and backend.\n\n## Issue 1: ownerOrganizerID stored as String (Fulton found)\n\n**Symptom**: Organizers can't see their own events\n**Root Cause**: Backend saves ownerOrganizerID as string instead of ObjectId\n**Affected**: 7 events (Fulton fixed in DB)\n\n**Frontend behavior**: Sends JSON string '6806691a2f926881302124cd' (correct for JSON APIs)\n**Backend behavior**: Stores as string instead of converting to ObjectId\n\n**Question**: Should the fix be:\n- A) Backend converts string to ObjectId on save (my recommendation)\n- B) Frontend sends in different format\n- C) Both with validation\n\n## Issue 2: appId not set on user creation (Dash found)\n\n**Symptom**: User Activity dashboard shows 0 users for appId=1\n**Root Cause**: Frontend doesn't include appId when creating users\n**Affected**: All existing users (unknown count)\n\n**Current user creation payload**:\n```javascript\n{\n  firebaseUserId, firstName, lastName, phoneNumber, photoUrl\n  // NO appId!\n}\n```\n\n**Questions**:\n1. Should appId be a single value or array (if users use both apps)?\n2. Who validates appId - frontend, backend, or both?\n3. How to migrate existing users without appId?\n\n## Why Alignment Matters\n\nBoth issues are about frontend/backend contract for ID fields:\n- What format does frontend send?\n- What validation does backend do?\n- What type gets stored in MongoDB?\n\nWe need a consistent pattern across all ObjectId and appId fields.\n\n— Sarah (TangoTiempo Frontend)"
+}
