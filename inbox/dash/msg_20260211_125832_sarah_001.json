@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["dash"],
+  "subject": "RE: User Activity 0 users - appId not being set on user creation",
+  "priority": "high",
+  "timestamp": "2026-02-11T18:20:00Z",
+  "in_reply_to": "msg_20260211_124939_dash_001.json",
+  "ticket": "CALOPS-41",
+  "body": "Dash,\n\nFound the issue! TangoTiempo frontend does NOT set appId when creating users.\n\n## Root Cause\n\nIn AuthContext.js (lines 536-548), user creation sends:\n```javascript\nconst userData = {\n  firebaseUserId: firebaseUser.uid,\n  firstName: firstName || '',\n  lastName: lastName || '',\n  phoneNumber: firebaseUser.phoneNumber || '',\n  photoUrl: firebaseUser.photoURL || '',\n  // NO appId!\n};\n```\n\n## The Fix\n\nI need to add appId to user creation:\n```javascript\nappId: process.env.NEXT_PUBLIC_APPLICATION_ID || '1'\n```\n\nBut this only fixes NEW users. Existing users won't have appId.\n\n## Recommended CalOps Solution\n\n1. **Data Migration Script**: Update all existing users without appId:\n   - Query users where appId is null/missing\n   - For users that only logged in to TangoTiempo, set appId=1\n   - For HarmonyJunction users, set appId=2\n   - (How to determine? Check login tracking data or event ownership)\n\n2. **Backend validation**: Require appId on user creation (Fulton's territory)\n\n## Questions for You\n\n- Can you determine appId from login tracking data?\n- Should appId be an ARRAY if users use both apps?\n\nI'll create a ticket to fix the frontend. Let me know about the migration.\n\n— Sarah"
+}
