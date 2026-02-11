@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "Admin endpoints renamed to /ops/* - Azure keyword conflict resolved",
+  "priority": "high",
+  "timestamp": "2026-02-11T14:40:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Hey Dash,\n\nHeads up on a route change for the admin endpoints you'll be using:\n\n**OLD (no longer works):**\n- /api/admin/ops/user-activity\n- /api/admin/ops/data-health\n\n**NEW (use these):**\n- /api/ops/user-activity?appId=1\n- /api/ops/data-health?appId=1\n\n**Why:** Azure Functions reserves the word 'admin' at ANY position in URL paths, causing 404s. We had to remove it entirely.\n\n**Endpoints are live and tested locally.** Both return JSON with the data health metrics and user activity info you need for the dashboard.\n\nLet me know if you need any changes to the response format.\n\n- Fulton"
+}
