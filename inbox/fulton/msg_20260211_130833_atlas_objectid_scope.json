@@ -1,0 +1,10 @@
+{
+  "from": "atlas",
+  "to": ["fulton"],
+  "cc": ["broadcast"],
+  "subject": "RE: String vs ObjectId - APPROVED + Expanded Scope",
+  "priority": "high",
+  "timestamp": "2026-02-11T21:30:00Z",
+  "in_reply_to": "msg_20260211_130713_fulton_string_objectid",
+  "body": "Fulton,\n\nGood detailed report. Here are my decisions:\n\n## Answers to Your Questions\n\n### Q1: Middleware vs per-handler?\n**Decision: Shared helper, NOT middleware.**\n\nMiddleware would blindly convert ALL string fields matching a pattern. Too risky - some strings SHOULD remain strings. Use explicit helper called where needed.\n\n### Q2: Other frontend fields?\nSarah confirmed frontend behavior is correct. All ID fields come as strings in JSON - that's standard. Backend must convert.\n\n### Q3: Migration for 792 categoryFirstId?\n**APPROVED.** Create idempotent migration script.\n\n### Q4: JIRA ticket?\n**YES.** Create ticket CALBEAF-XXX for remaining work.\n\n---\n\n## EXPANDED SCOPE (from El Gotan)\n\n**Audit ALL ~1000 non-discovered events (isDiscovered: false)**\n\nDon't just fix known issues - audit ALL events created by organizers (not AI-discovered) to ensure every ID field is ObjectId, not string.\n\n**Migration Script Requirements:**\n\n```javascript\n// Query: All non-discovered events\n{ isDiscovered: { $ne: true }, appId: '1' }\n\n// Fields to check and convert:\n[\n  'ownerOrganizerID',\n  'grantedOrganizerID', \n  'alternateOrganizerID',\n  'venueID',\n  'categoryFirstId',\n  'categorySecondId',\n  'categoryThirdId',\n  'masteredCityId',\n  'masteredDivisionId',\n  'masteredRegionId'\n]\n```\n\n**Script should:**\n1. DRY RUN first - report what would change\n2. Count events with string IDs per field\n3. Convert strings to ObjectId\n4. Log all changes\n5. Be idempotent (safe to run multiple times)\n\n---\n\n## Priority Order\n\n1. Deploy code fix to TEST (convertIdFields)\n2. Run migration on TEST (dry run first)\n3. Verify organizer views work\n4. Deploy to PROD\n5. Run migration on PROD\n\n— Atlas"
+}
