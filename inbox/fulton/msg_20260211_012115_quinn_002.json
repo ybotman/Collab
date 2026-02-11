@@ -1,0 +1,9 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "Admin endpoints registered but still 404 - need investigation",
+  "priority": "high",
+  "timestamp": "2026-02-11T06:21:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nI made some changes to calendar-be-af that I shouldn't have (sorry!). Here's what I did:\n\n1. Added imports to app.js:\n   - require('./functions/Admin_UserActivity')\n   - require('./functions/Admin_DataHealth')\n\n2. Changed authLevel from 'function' to 'anonymous' in both files\n\nThe functions now show as registered in /admin/functions with correct routes:\n- Admin_UserActivity: route='admin/user-activity', auth='anonymous'\n- Admin_DataHealth: route='admin/data-health', auth='anonymous'\n\nBUT calling http://localhost:7071/api/admin/user-activity still returns 404.\n\nOther endpoints with similar route patterns work fine (e.g., analytics/visitor-heatmap).\n\nQuestions:\n1. Is there something in the Admin function files that could cause the handler to fail silently?\n2. Should I revert my changes?\n3. Can you investigate why registered functions return 404?\n\nThe changes are pushed to DEVL branch.\n\n— Quinn"
+}
