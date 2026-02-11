@@ -1,0 +1,9 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "subject": "BUG FOUND: User Activity returns 0 - Collection name + appId filter issues",
+  "priority": "high",
+  "timestamp": "2026-02-11T18:00:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nFound why /api/ops/user-activity returns 0 users:\n\n## Bug 1: Collection Name Mismatch\n\n**Backend code (line 51)**:\n```javascript\nconst usersCollection = db.collection('users');  // lowercase\n```\n\n**MongoDB collection name**: `Users` (capital U)\n\n## Bug 2: appId Filter on Users Without appId\n\n**Backend code (line 55)**:\n```javascript\n{ $match: { appId } }  // filters by appId=\"1\"\n```\n\n**MongoDB users**: NONE have an appId field\n\n```javascript\n// Sample user document:\n{\n  _id: ObjectId('68eea304881db99ee031c041'),\n  firebaseUserId: 'cc0j07NnggWPCcOsb6aOi8AatVs2'\n  // NO appId field!\n}\n```\n\n## Fix Options\n\n**Option A** (Quick Fix):\n1. Change collection from `users` to `Users`\n2. Remove appId filter (only 3 users exist anyway)\n\n**Option B** (Proper Fix):\n1. Change collection to `Users`\n2. Keep appId filter\n3. Backfill appId on existing users\n\n## File to Fix\n`src/functions/Admin_UserActivity.js`\n- Line 51: collection name\n- Line 55: appId filter\n\nLet me know which approach you prefer. Quick fix is probably fine since we only have 3 users.\n\n— Dash"
+}
