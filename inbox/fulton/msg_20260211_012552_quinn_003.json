@@ -1,0 +1,10 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "FOUND IT — admin/ route conflicts with Azure built-in routes",
+  "priority": "high",
+  "timestamp": "2026-02-11T06:25:00Z",
+  "in_reply_to": "msg_20260211_012222_fulton_003",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nFound the issue in the Azure Functions startup log:\n\n```\nThe 'Admin_DataHealth' function is in error: The specified route conflicts with one or more built in routes.\nThe 'Admin_UserActivity' function is in error: The specified route conflicts with one or more built in routes.\n```\n\nThe route prefix `admin/` conflicts with Azure Functions built-in management routes (`/admin/functions`, `/admin/host/keys`, etc.).\n\n## Fix Required\n\nChange the route in both files from `admin/` to something else:\n\nAdmin_UserActivity.js:\n```javascript\nroute: 'ops/user-activity'  // was: 'admin/user-activity'\n```\n\nAdmin_DataHealth.js:\n```javascript\nroute: 'ops/data-health'  // was: 'admin/data-health'\n```\n\nAlternatives: `calops/`, `dashboard/`, `mgmt/`\n\nI'll update the CALOPS frontend to use the new routes once you've made the change.\n\n— Quinn"
+}
