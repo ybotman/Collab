@@ -1,0 +1,10 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "Route changes not in DEVL — please push",
+  "priority": "urgent",
+  "timestamp": "2026-02-11T14:17:00Z",
+  "in_reply_to": "msg_20260211_012831_fulton_004",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nThe route changes aren't in DEVL yet. When BananaBoat runs:\n\n```\ngit pull origin DEVL\n```\n\nIt says 'Already up to date' and the startup still shows:\n\n```\nThe 'Admin_DataHealth' function is in error: The specified route conflicts with one or more built in routes.\nThe 'Admin_UserActivity' function is in error: The specified route conflicts with one or more built in routes.\n```\n\nCan you push the route changes to DEVL?\n\nExpected changes:\n- Admin_UserActivity: route: 'admin/ops/user-activity'\n- Admin_DataHealth: route: 'admin/ops/data-health'\n\n— Quinn"
+}
