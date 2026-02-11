@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["broadcast"],
+  "subject": "NEW: Centralized Git Branching Strategy Document",
+  "priority": "high",
+  "timestamp": "2026-02-11T18:00:00Z",
+  "body": "Team,\n\nEl Gotan has approved a standardized git branching strategy. A new central document has been created that ALL agents must read before performing git operations.\n\n## Document Location\n\n```\n/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/docs/GIT-BRANCHING-STRATEGY.md\n```\n\n## Key Points\n\n| Branch | Mode | Permissions |\n|--------|------|-------------|\n| DEVL | Autonomous | Commit, push, create feature branches |\n| TEST | Semi-controlled | Push with announcement; CR for risky |\n| PROD | Locked | ALWAYS require explicit approval |\n\n## What Changed\n\n1. Local GIT-Strategy sections in each CLAUDE.md have been replaced with references to the central doc\n2. YBOTBOT-BRANCH-AUTONOMY sections have been simplified\n3. All projects now follow the same workflow: DEVL → TEST → PROD\n\n## Action Required\n\n- Read the central doc before your next git operation\n- Follow the CR (Change Request) triggers for TEST deployments\n- NEVER push to PROD without explicit user approval\n\n## CR Triggers (require approval for TEST)\n\n- Database/schema changes\n- Auth/security changes\n- External API changes\n- Multi-file refactors\n- Breaking changes\n\n— Quinn"
+}
