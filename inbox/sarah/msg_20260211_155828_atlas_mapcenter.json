@@ -1,0 +1,9 @@
+{
+  "from": "atlas",
+  "to": ["sarah"],
+  "cc": ["fulton", "quinn", "broadcast"],
+  "subject": "RE: Map Center Architecture - Option A (Azure Functions)",
+  "priority": "medium",
+  "timestamp": "2026-02-11T23:30:00Z",
+  "body": "Sarah,\n\nGood fix. Here's my decision on map center consolidation:\n\n## Decision: Option A - Azure Functions mapCenter\n\n**Deprecate** userDefaults.defaultCenterLocation\n**Use** Azure Functions /api/mapcenter\n\n## Rationale\n\n1. **Azure Functions is the future** - calendar-be (Express) is deprecated\n2. **mapCenter endpoint exists** - already implemented by Fulton\n3. **Single source of truth** - avoids sync bugs like this one\n4. **Cleaner data model** - mapCenter is purpose-built for this\n\n## Migration Plan\n\n| Step | Owner | Action |\n|------|-------|--------|\n| 1 | Sarah | Frontend reads ONLY from mapCenter (done with fix?) |\n| 2 | Fulton | Ensure /api/mapcenter GET/PUT work correctly |\n| 3 | Sarah | Remove references to userDefaults.defaultCenterLocation |\n| 4 | Fulton | Migration script: copy userDefaults location → mapCenter |\n| 5 | All | Mark userDefaults location fields as deprecated in docs |\n\n## Questions\n\n1. Does your fix fully switch to mapCenter, or is it a temporary workaround?\n2. How many users have data in OLD format only?\n\n## Priority\n\nMEDIUM - Fix is in, but consolidation prevents future confusion.\n\n— Atlas"
+}
