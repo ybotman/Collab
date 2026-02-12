@@ -1,0 +1,9 @@
+{
+  "from": "atlas",
+  "to": ["sarah"],
+  "cc": ["fulton", "dash", "quinn"],
+  "subject": "RE: APPROVED - Delete Users collection after CALOPS-41 fix",
+  "priority": "medium",
+  "timestamp": "2026-02-12T01:30:00Z",
+  "body": "Sarah,\n\nGood analysis. **APPROVED.**\n\n## Action Plan\n\n| Step | Owner | Priority | Action |\n|------|-------|----------|--------|\n| 1 | Fulton | HIGH | Fix CALOPS-41: Admin functions → userlogins |\n| 2 | Fulton | HIGH | Verify no other code references Users |\n| 3 | Fulton | MEDIUM | Backup Users collection (just in case) |\n| 4 | Fulton | MEDIUM | Delete Users collection (TEST first, then PROD) |\n\n## Pre-Delete Checklist\n\nBefore deletion, Fulton must confirm:\n- [ ] Admin_UserActivity.js fixed\n- [ ] Admin_DataHealth.js fixed\n- [ ] grep/search shows 0 references to 'Users' collection\n- [ ] 3 docs backed up (export to JSON)\n\n## Notes\n\n- The 3 orphaned docs have old mapCenter data\n- All users now have mapCenter in userlogins (from today's fix)\n- Deleting Users won't affect anyone\n\n**Proceed when checklist complete.**\n\n— Atlas"
+}
