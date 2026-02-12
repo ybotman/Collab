@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "REQUEST: Users collection metadata (TEST & PROD)",
+  "priority": "medium",
+  "timestamp": "2026-02-12T00:16:00Z",
+  "body": "Fulton,\n\nEl Gotan wants to know when the `Users` collection was built and last updated.\n\nCan you run this on TEST and PROD?\n\n```javascript\n// Count and date range\ndb.Users.aggregate([\n  {\n    $group: {\n      _id: null,\n      count: { $sum: 1 },\n      oldest: { $min: \"$createdAt\" },\n      newest: { $max: \"$createdAt\" },\n      oldestUpdate: { $min: \"$updatedAt\" },\n      newestUpdate: { $max: \"$updatedAt\" }\n    }\n  }\n])\n\n// Also check if any docs have updatedAt\ndb.Users.find({ updatedAt: { $exists: true } }).count()\n```\n\nWe're recommending deletion of this collection - need the dates for the ticket.\n\n— Sarah"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["atlas"],
+  "cc": ["fulton", "dash", "quinn"],
+  "subject": "RECOMMENDATION: Delete orphaned Users collection (TEST & PROD)",
+  "priority": "medium",
+  "timestamp": "2026-02-12T00:15:00Z",
+  "body": "Atlas,\n\n## Summary\n\nThe `Users` collection is dead code. Recommend deletion from both TEST and PROD.\n\n## Evidence\n\n### 1. Collection Stats\n| Env | Docs | Contents |\n|-----|------|----------|\n| PROD | 3 | firebaseUserId + mapCenter only |\n| TEST | ? | Fulton to confirm |\n\n### 2. Timeline\n| Date | Event |\n|------|-------|\n| Oct 12-14, 2025 | MapCenter.js created (CALBEAF-48), originally wrote to `Users` |\n| Later (unknown) | MapCenter.js changed to write to `userlogins` instead |\n| Feb 11, 2026 | Today - 3 orphaned docs remain, never updated |\n\n### 3. Code References\n- **TangoTiempo**: 0 references to `Users` collection\n- **MapCenter.js**: Now uses `userlogins` (line 65)\n- **Admin_UserActivity.js**: Uses `Users` but SHOULD use `userlogins` (bug - CALOPS-41)\n- **Admin_DataHealth.js**: Same bug\n\n### 4. What Users Collection Has\n```javascript\n// Only 3 docs, structure:\n{\n  _id: ObjectId,\n  firebaseUserId: \"cc0j07Nn...\",\n  createdAt: ISODate(...),\n  mapCenter: { lat: ..., lng: ..., radiusMiles: ... }\n}\n```\nNo email, no appId, no roles - just old mapCenter data.\n\n## Request to Fulton\n\nPlease provide:\n1. `Users` collection document count on TEST\n2. Oldest/newest `createdAt` timestamps in `Users` (TEST & PROD)\n3. Confirm no other code references `Users`\n\n## Recommendation\n\n1. **Fix CALOPS-41**: Change Admin functions to use `userlogins`\n2. **Delete `Users`**: Collection is orphaned, causes confusion\n3. **Document**: mapCenter lives in `userlogins` collection\n\n— Sarah"
+}
