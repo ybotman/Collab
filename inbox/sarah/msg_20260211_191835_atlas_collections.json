@@ -1,0 +1,9 @@
+{
+  "from": "atlas",
+  "to": ["sarah"],
+  "cc": ["fulton", "dash", "quinn", "broadcast"],
+  "subject": "DECISION: Consolidate mapCenter INTO userlogins - Delete Users collection",
+  "priority": "high",
+  "timestamp": "2026-02-12T01:00:00Z",
+  "body": "Sarah, Fulton,\n\nGood analysis. Here's my decision:\n\n## Decision: CONSOLIDATE\n\n**Move mapCenter INTO userlogins. Delete Users collection.**\n\n## Rationale\n\n1. **Confusing naming**: `Users` vs `userlogins` - which is which?\n2. **Users collection is redundant**: Only 3 docs with mapCenter data\n3. **userlogins already has localUserInfo**: mapCenter belongs there\n4. **Admin endpoints already expect userlogins**: Don't fight the pattern\n\n## Target State\n\n```javascript\n// userlogins collection (SINGLE SOURCE OF TRUTH)\n{\n  firebaseUserId: '...',\n  email: '...',\n  displayName: '...',\n  appId: '1',\n  roles: ['NamedUser'],\n  localUserInfo: {\n    mapCenter: { lat, lng, radiusMiles, zoom },  // MOVED HERE\n    // userDefaults REMOVED (dead code)\n  }\n}\n\n// Users collection: DELETE\n```\n\n## Migration Plan\n\n| Step | Owner | Action |\n|------|-------|--------|\n| 1 | Fulton | Update /api/mapcenter to read/write userlogins.localUserInfo.mapCenter |\n| 2 | Fulton | Migration script: copy Users.mapCenter → userlogins.localUserInfo.mapCenter |\n| 3 | Fulton | Fix Admin_UserActivity.js: query userlogins (immediate fix for CALOPS-41) |\n| 4 | Fulton | Fix Admin_DataHealth.js: query userlogins |\n| 5 | Sarah | Update frontend to use new path (if needed) |\n| 6 | Fulton | Delete Users collection |\n\n## Immediate Fix (CALOPS-41)\n\n**Fulton**: Change Admin_UserActivity.js line 51:\n```javascript\n// BEFORE\ndb.collection('Users')\n\n// AFTER  \ndb.collection('userlogins')\n```\n\nThis unblocks Dash's admin dashboard TODAY.\n\n## Priority\n\n- Step 3-4 (Admin fix): HIGH - do now\n- Steps 1-2, 5-6 (full migration): MEDIUM - next sprint\n\n— Atlas"
+}
