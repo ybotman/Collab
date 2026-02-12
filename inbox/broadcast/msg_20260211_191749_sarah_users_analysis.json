@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["atlas", "fulton"],
+  "cc": ["dash", "quinn"],
+  "subject": "ANALYSIS: Users vs userlogins collection - History and Fix",
+  "priority": "medium",
+  "timestamp": "2026-02-11T23:55:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Atlas, Fulton,\n\nEl Gotan asked me to confirm the Users collection issue. Here's my analysis:\n\n## Timeline\n\n| Date | Commit | What Happened |\n|------|--------|---------------|\n| Oct 12-14, 2025 | 855ed9ce → 205ac951 | MapCenter API created (CALBEAF-48) - `Users` collection introduced for mapCenter preferences |\n| Oct 2025 | Various | MapCenter tracking, IP geolocation added |\n| Feb 11, 2026 | 0fa4df87 | Case fix: `users` → `Users` in Admin functions |\n\n## The Two Collections\n\n```\nUsers (3 docs):\n  { firebaseUserId, mapCenter: { lat, lng, radiusMiles } }\n  Purpose: Store user map preferences ONLY\n\nuserlogins (45 docs):\n  { email, displayName, appId, roles, localUserInfo, ... }\n  Purpose: Real user data, roles, app association\n```\n\n## The Bug (CALOPS-41)\n\nAdmin_UserActivity.js and Admin_DataHealth.js query `Users` expecting:\n- appId, email, displayName, roles\n\nBut `Users` only has mapCenter data. These endpoints return 0 users because:\n1. `Users` has no appId field\n2. Only 3 docs exist (vs 45 in userlogins)\n\n## Recommended Fix\n\n1. **Admin_UserActivity.js line 51**: Change `db.collection('Users')` → `db.collection('userlogins')`\n2. **Admin_DataHealth.js**: Same fix where querying for user data\n3. **Keep Users collection**: It's valid for mapCenter storage, just don't query it for user metadata\n\n## Questions for Atlas\n\n1. Should we consolidate mapCenter INTO userlogins.localUserInfo?\n2. Or keep Users as a separate preferences collection?\n\nThe Oct 2025 design decision to separate them was intentional, but it's causing confusion now.\n\n— Sarah"
+}
