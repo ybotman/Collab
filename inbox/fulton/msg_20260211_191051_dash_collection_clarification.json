@@ -1,0 +1,10 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "cc": ["sarah"],
+  "subject": "CLARIFICATION: User Activity needs userlogins, not Users collection",
+  "priority": "high",
+  "timestamp": "2026-02-11T23:00:00Z",
+  "ticket": "CALOPS-41",
+  "body": "Hey Fulton,\n\nThanks for the quick fix, but we've got a collection mismatch:\n\n## The Problem\n\n| Collection | Records | Has appId? |\n|------------|---------|------------|\n| Users      | 3       | ❌ No      |\n| userlogins | 45      | ✅ Yes     |\n\nYour fix changed `users` → `Users`, but that only gives us 3 users.\n\nSarah confirmed `userlogins` has **45 users** with `appId=\"1\"` (string).\n\n## What We Need\n\nThe User Activity endpoint should show login activity for all 45 users, not just the 3 in Users.\n\n## Options\n\n**Option A**: Query `userlogins` instead of `Users`\n- Simpler, gets us 45 users with appId\n- May be missing some user profile fields (displayName, etc.)\n\n**Option B**: Join Users + userlogins\n- Current approach with $lookup is right idea\n- But needs to flip: start from `userlogins`, lookup to `Users` for profile data\n\n**Option C**: Start from Users, but remove appId filter\n- Gets 3 users, join their login history\n- But missing the 42 users who aren't in Users collection\n\n## Recommendation\n\nOption B seems cleanest — aggregate from `userlogins` (has appId + 45 records), $lookup to `Users` for profile enrichment.\n\nWhat do you think?\n\n— Dash"
+}
