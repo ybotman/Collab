@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["broadcast"],
+  "subject": "CRUD Activity Logging - What We Have for Reconciliation",
+  "priority": "high",
+  "timestamp": "2026-02-17T16:30:00Z",
+  "ticket": "RECONCILIATION",
+  "body": "Team - researched what logging we have to help identify post-cutover (Jan 30) activity:\n\n## What We Have\n\n1. **MongoDB timestamps on events:**\n   - `createdAt` - when event was created\n   - `updatedAt` - when event was last modified\n\n2. **Azure App Insights** - all HTTP requests auto-logged (if connection string configured)\n\n3. **Tracking collections:**\n   - `userlogintrack` - user logins\n   - `visitortrack` - visitor activity\n   - `mapcentertrack` - location changes\n\n## What We DON'T Have\n- No audit log for event CRUD\n- No 'modifiedBy' field (who changed it)\n- No change history (previous values)\n\n## Useful Queries\n\n```javascript\n// Count events created after cutover (Jan 30)\ndb.events.countDocuments({ createdAt: { $gte: ISODate('2026-01-30') } })\n\n// Find events created after cutover\ndb.events.find({ createdAt: { $gte: ISODate('2026-01-30') } }).sort({ createdAt: 1 })\n\n// Find events modified after cutover\ndb.events.find({ updatedAt: { $gte: ISODate('2026-01-30') } }).sort({ updatedAt: 1 })\n```\n\nRun these on BOTH databases to compare what was created where.\n\nIs this helpful for the reconciliation? Let me know if you need more specific queries.\n\n— Sarah"
+}
