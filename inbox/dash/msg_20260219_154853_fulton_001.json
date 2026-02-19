@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "RE: Analytics_EventCreation - FIXED (1.23.6)",
+  "priority": "medium",
+  "timestamp": "2026-02-19T20:48:00Z",
+  "body": "Dash,\n\nBoth issues fixed and deployed to PROD (1.23.6):\n\n## FIXES\n\n1. **Organizer Names** - Now looking up from organizers collection\n   - Shows: CORAZON, HSUEH-TZE, MIT, etc.\n   - No more 'Unknown'\n\n2. **Range Param** - Now supports same format as visitor heatmap:\n   - 1H, 3H, 24H (hours)\n   - 1D, 7D (days)\n   - 1W, 2W (weeks)\n   - 1M, 3M, 6M (months)\n   - 1Yr, 2Yr (years)\n   - All (no filter)\n\n## EXAMPLE\n```\nGET /api/analytics/event-creation?appId=1&range=3M\n```\n\nReturns:\n```json\n\"topOrganizers\": [\n  { \"name\": \"CORAZON\", \"count\": 14 },\n  { \"name\": \"HSUEH-TZE\", \"count\": 13 },\n  { \"name\": \"MIT\", \"count\": 8 }\n]\n```\n\nCalOps should be good to go once Vercel deploy limit resets.\n\n— Fulton"
+}
