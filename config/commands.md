@@ -3,12 +3,15 @@
 ## INBOX
 **Type:** Startup | **Tier:** Local
 
-Check local handoffs for session continuity.
+Check local handoffs + read lessons (cached).
 
 ```bash
-# Read latest handoff
+# 1. Read latest local handoff
 LATEST=$(ls -t ~/.claude/local/handoffs/{me}/*.md 2>/dev/null | head -1)
 [ -n "$LATEST" ] && cat "$LATEST"
+
+# 2. Read lessons (cached local copy)
+cat /Users/tobybalsley/MyDocs/Collab/lessons.md
 ```
 
 **When:** Start of session, same machine
@@ -18,20 +21,23 @@ LATEST=$(ls -t ~/.claude/local/handoffs/{me}/*.md 2>/dev/null | head -1)
 ## INBOX2
 **Type:** Startup | **Tier:** Local + Git
 
-Full sync: pull from Collab, check git handoffs and messages, then local.
+Full sync: pull from Collab, check handoffs, messages, lessons, then local.
 
 ```bash
 # 1. Pull latest
 cd /Users/tobybalsley/MyDocs/Collab && git pull
 
-# 2. Read Collab handoff
+# 2. Read lessons (fresh)
+cat /Users/tobybalsley/MyDocs/Collab/lessons.md
+
+# 3. Read Collab handoff
 LATEST=$(ls -t /Users/tobybalsley/MyDocs/Collab/handoffs/{me}/*.md 2>/dev/null | head -1)
 [ -n "$LATEST" ] && cat "$LATEST"
 
-# 3. Check Collab inbox
+# 4. Check Collab inbox
 ls -lt /Users/tobybalsley/MyDocs/Collab/inbox/{me}/*.json 2>/dev/null | head -5
 
-# 4. Then do INBOX (local)
+# 5. Then do INBOX (local)
 ```
 
 **When:** Start of session, switched machines or need full sync
@@ -129,4 +135,56 @@ git push origin main
 **When:** Need async communication with another persona
 
 ---
+
+## RETRO
+**Type:** Lesson capture | **Tier:** Git
+
+Document an error and its resolution for future sessions.
+
+```bash
+# Append to lessons.md
+cat >> /Users/tobybalsley/MyDocs/Collab/lessons.md <<'EOF'
+
+## {DATE} | {persona} | {topic}
+**Error**: {description}
+**Fix**: {resolution}
+**Applies to**: {who should know}
+EOF
+
+cd /Users/tobybalsley/MyDocs/Collab
+git add lessons.md
+git commit -m "RETRO: {persona} - {topic}"
+git push origin main
+```
+
+**When:** After resolving an error worth remembering
+
+---
+
+## CONSUME-RETRO
+**Type:** Lesson graduation | **Tier:** Git | **Who:** Gotan only
+
+Review lessons, graduate to CLAUDE.md files, clear lessons.md.
+
+```bash
+# 1. Read lessons.md
+cat /Users/tobybalsley/MyDocs/Collab/lessons.md
+
+# 2. For each lesson:
+#    - If broadly applicable → add to relevant CLAUDE.md files
+#    - If obsolete → just remove
+#    - If still needed but not config-level → keep in lessons.md
+
+# 3. Clear processed lessons from lessons.md
+
+# 4. Commit all changes
+git add -A
+git commit -m "CONSUME-RETRO: graduated X lessons"
+git push origin main
+```
+
+**When:** Monthly/quarterly, or when lessons.md gets long
+
+---
 *Created: 2026-02-22 by Gotan*
+*Updated: 2026-02-22 - Added RETRO, CONSUME-RETRO*
