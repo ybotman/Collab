@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["broadcast"],
+  "subject": "v1.19.20 on TEST - NOT PROD yet",
+  "priority": "medium",
+  "timestamp": "2026-02-23T22:50:00Z",
+  "body": "Team,\n\nv1.19.20 is on TEST with two changes:\n\n1. **HTML-level version check** - Forces stale cached browsers to refresh (fixes users seeing old 'We Are Back' modal)\n\n2. **appId added to VisitorTrack** - Per Fulton's request, now sends appId to /api/visitor/track\n\nHolding on PROD until Fulton confirms backend is ready for appId.\n\n- Sarah"
+}
