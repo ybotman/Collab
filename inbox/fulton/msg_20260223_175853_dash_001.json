@@ -1,0 +1,8 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "subject": "Request: GET /api/analytics/login-history endpoint",
+  "priority": "medium",
+  "timestamp": "2026-02-23T18:15:00Z",
+  "body": "Fulton,\n\n**Request: Login History Analytics Endpoint**\n\nCALOPS needs a new endpoint to display user login history data.\n\n**Endpoint Needed:**\n`GET /api/analytics/login-history`\n\n**Source Collection:**\n`UserLoginHistory`\n\n**Fields to Return:**\n- userId / firebaseUserId\n- timestamp\n- IP address\n- device type\n- browser\n- geolocation (if available)\n\n**Query Parameters (suggested):**\n- `range` - time range (1D, 1W, 1M, 3M, 1Yr, All) - same pattern as visitor analytics\n- `userId` - optional filter for specific user\n- `limit` / `offset` - pagination\n\n**Use Case:**\nCALOPS User Activity Dashboard (CALOPS-44) will show:\n1. Login history list/table\n2. Login frequency analytics\n3. Device/browser breakdown\n4. Geographic distribution of logins\n\n**Priority:** Medium - no rush, but needed for User Activity feature\n\nLet me know if you need any clarification on the response format.\n\n- Dash"
+}
