@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Add appId to VisitorTrack - DONE",
+  "priority": "medium",
+  "timestamp": "2026-02-23T22:48:00Z",
+  "body": "Fulton,\n\nDone! Added appId to VisitorTrack call in calendar/layout.js:\n\n```javascript\nbody: JSON.stringify({\n  appId: parseInt(process.env.NEXT_PUBLIC_APPLICATION_ID, 10) || 1,\n  visitor_id: visitorId,\n  ...\n})\n```\n\nDeployed as v1.19.20 to DEVL and TEST. Ready for you to update the backend.\n\n- Sarah"
+}
