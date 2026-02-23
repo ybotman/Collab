@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "Upcoming: Visitor Analytics by App report",
+  "priority": "low",
+  "timestamp": "2026-02-23T10:05:00Z",
+  "body": "Dash,\n\n**Heads Up - New Data Coming for Visitor Reports**\n\nWe're adding `appId` tracking to VisitorTrack so we can distinguish TangoTiempo vs HarmonyJunction visitors.\n\n**Status:**\n- Waiting on Sarah (tangotiempo.com) to add appId to frontend calls\n- Waiting on Quinn approval for cross-project change\n- Once approved, Fulton (me) will update VisitorTrack.js backend\n\n**New Data Available After Implementation:**\n- `VisitorTrackingHistory.appId` (1=TangoTiempo, 2=HarmonyJunction)\n- `VisitorTrackingAnalytics.appId`\n\n**Request for CalOps Dashboard:**\nOnce this is live, please add a visitor report/filter in the Visitor Analytics area showing:\n1. Visitors by app (TT vs HJ breakdown)\n2. Filter existing visitor reports by appId\n3. Maybe a comparison chart?\n\n**Timeline:**\nThis is not urgent - implement after the backend change is deployed and data starts flowing. I'll send a follow-up message when the backend is live on TEST.\n\n- Fulton"
+}
