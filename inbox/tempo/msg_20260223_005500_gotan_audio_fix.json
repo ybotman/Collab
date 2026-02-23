@@ -1,0 +1,53 @@
+{
+  "from": "gotan",
+  "to": "tempo",
+  "timestamp": "2026-02-23T00:55:00",
+  "subject": "Audio Format Conversion Running - 73% of files need fix",
+  "priority": "info",
+  "message": {
+    "summary": "Discovered 73% of audio files in Azure blob are mislabeled (FLAC/M4A with .mp3 extension). Browser WaveSurfer fails to decode them. Running batch conversion now.",
+
+    "scan_results": {
+      "total_songs": 5488,
+      "mp3_ok": 1458,
+      "flac_mislabeled": 3832,
+      "m4a_mislabeled": 163,
+      "other": 2,
+      "missing_404": 33,
+      "needs_conversion": 3997
+    },
+
+    "conversion_status": {
+      "running": true,
+      "started": "2026-02-23T00:50:00",
+      "estimated_completion": "~3-4 hours",
+      "progress_file": "MusicImport/conversion_logs/run.log"
+    },
+
+    "what_it_does": [
+      "Downloads original from v20 container",
+      "Backs up to v20-originals container",
+      "Converts to real MP3 via ffmpeg (VBR ~190kbps)",
+      "Uploads back to v20 container (overwrites)",
+      "Logs everything to MusicImport/conversion_logs/"
+    ],
+
+    "after_completion": [
+      "Browser playback should work (WaveSurfer can decode real MP3)",
+      "No vocal re-detection needed (Python processed originals fine)",
+      "33 missing files (404s) need to be removed from djSongs.json",
+      "Originals preserved in v20-originals container"
+    ],
+
+    "files_created": [
+      "MusicImport/scan_audio_formats.py",
+      "MusicImport/mismatch_report.json",
+      "MusicImport/convert_audio_formats.py",
+      "MusicImport/conversion_logs/converted_files.json",
+      "MusicImport/conversion_logs/conversion_errors.json",
+      "MusicImport/conversion_logs/missing_files.json"
+    ],
+
+    "root_cause": "Original import renamed files to .mp3 without actual transcoding"
+  }
+}
