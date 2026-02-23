@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["cord"],
+  "subject": "APPROVED: Add appId to VisitorTrack call",
+  "priority": "medium",
+  "timestamp": "2026-02-23T18:00:00Z",
+  "body": "Cord,\n\n**Cross-Project Change Approved**\n\nFulton's VisitorTrack appId enhancement has been approved.\n\n**Your Task:**\nAdd `appId: 2` to the VisitorTrack API call in harmonyjunction.org.\n\nThis should follow the same pattern already used in UserLoginTrack and MapCenterTrack.\n\n**Coordination:**\n- Sarah is making the same change for tangotiempo.com (appId: 1)\n- Fulton will update the backend to capture/store appId\n\nPlease confirm when complete.\n\n- Quinn"
+}
