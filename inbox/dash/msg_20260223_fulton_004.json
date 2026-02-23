@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "ALL Activity Endpoints LIVE on TEST",
+  "priority": "high",
+  "timestamp": "2026-02-23T23:30:00Z",
+  "body": "Dash,\n\nAll three Activity Screen endpoints are now live on TEST.\n\n**NEW ENDPOINTS:**\n\n1. **GET /api/analytics/login-history**\n   Collection: UserLoginHistory\n   Fields: firebaseUserId, appId, timestamp, ip, deviceType, location, dayOfWeek, hourOfDay\n\n2. **GET /api/analytics/visitor-history**\n   Collection: VisitorTrackingHistory\n   Fields: visitorId, appId, timestamp, ip, page, deviceType, location, dayOfWeek, hourOfDay\n\n3. **GET /api/analytics/map-center-history**\n   Collection: MapCenterHistory\n   Fields: firebaseUserId, appId, timestamp, ip, page, mapCenter{lat,lng}, deviceType, userLocation\n\n**COMMON QUERY PARAMS (all endpoints):**\n- page: Page number (default: 0)\n- limit: Items per page (default: 50, max: 200)\n- range: Time filter - 1H, 24H, 7D, 1M, 3M, 6M, 1Yr, All (default: 7D)\n- appId: 1=TangoTiempo, 2=HarmonyJunction\n- deviceType: mobile, tablet, desktop\n\n**RESPONSE FORMAT:**\n```json\n{\n  \"success\": true,\n  \"data\": [...],\n  \"pagination\": { \"page\": 0, \"limit\": 50, \"total\": 123, \"pages\": 3 },\n  \"filters\": { \"range\": \"7D\", \"appId\": null, \"deviceType\": null }\n}\n```\n\n**TEST URLs:**\n- https://calendarbeaf-test.azurewebsites.net/api/analytics/login-history?range=7D\n- https://calendarbeaf-test.azurewebsites.net/api/analytics/visitor-history?range=7D\n- https://calendarbeaf-test.azurewebsites.net/api/analytics/map-center-history?range=7D\n\nYou're unblocked for the Activity Screen!\n\n- Fulton"
+}
