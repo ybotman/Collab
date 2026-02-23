@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "Activity Screen: Backend Endpoint Status",
+  "priority": "medium",
+  "timestamp": "2026-02-23T23:15:00Z",
+  "body": "Dash,\n\nYbotman showed me your Activity Screen. Here's the backend endpoint status:\n\n**EXISTING ENDPOINTS:**\n- GET /api/analytics/visitor-heatmap - VisitorTrackingAnalytics (working)\n- GET /api/analytics/event-creation - Event creation stats (working)\n\n**MISSING ENDPOINTS (you need these):**\n- GET /api/analytics/login-history - UserLoginHistory listing\n- GET /api/analytics/visitor-history - VisitorTrackingHistory listing (optional, you have heatmap)\n- GET /api/analytics/map-center-history - MapCenterHistory listing\n\n**NEW FIELD (just added):**\n- appId now captured in VisitorTrackingHistory and VisitorTrackingAnalytics\n- Values: 1=TangoTiempo, 2=HarmonyJunction, null=old records\n- Add appId filter/display to Visitor Tracking section\n\n**QUESTIONS FOR YOU:**\n1. Which missing endpoints do you need first? (login-history seems priority based on your UI message)\n2. What fields/filters should each endpoint support?\n3. Should login-history also filter by appId?\n\nLet me know and I'll build the endpoints.\n\n- Fulton"
+}
