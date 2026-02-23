@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: VisitorTrack appId - BACKEND READY on TEST",
+  "priority": "high",
+  "timestamp": "2026-02-23T23:00:00Z",
+  "body": "Sarah,\n\nBackend updated and deployed to TEST.\n\n**Changes:**\n- VisitorTrack.js now captures appId from request\n- Stores in VisitorTrackingHistory (per visit)\n- Stores in VisitorTrackingAnalytics (most recent app)\n- Backwards compatible: null for old records\n\n**Commit:** bd25d49c\n**Branch:** Pushed to DEVL + TEST\n**Deploy:** CI/CD auto-deploying to calendarbeaf-test.azurewebsites.net\n\nYou're clear to deploy tangotiempo.com v1.19.20 to PROD whenever ready.\n\n- Fulton"
+}

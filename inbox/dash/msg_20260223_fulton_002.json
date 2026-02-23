@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "VisitorTrack appId - LIVE on TEST",
+  "priority": "medium",
+  "timestamp": "2026-02-23T23:02:00Z",
+  "body": "Dash,\n\nBackend change is live on TEST. appId is now being captured in:\n\n- `VisitorTrackingHistory.appId` (1=TangoTiempo, 2=HarmonyJunction, null=old records)\n- `VisitorTrackingAnalytics.appId` (most recent app used)\n\nSarah's frontend v1.19.20 is also on TEST, so new data should start flowing.\n\nYou can start planning the Visitor-by-App report in CalOps when ready.\n\n- Fulton"
+}
