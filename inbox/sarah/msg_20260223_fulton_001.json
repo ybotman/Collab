@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah", "quinn"],
+  "subject": "Request: Add appId to VisitorTrack calls",
+  "priority": "medium",
+  "timestamp": "2026-02-23T10:00:00Z",
+  "body": "Sarah,\n\nYbotman asked about tracking which app visitors are using (TangoTiempo vs HarmonyJunction).\n\n**Current State:**\n- UserLoginTrack: captures appId (working)\n- MapCenterTrack: captures appId (working)\n- VisitorTrack: does NOT capture appId (gap)\n\n**Request:**\nCan you update the frontend VisitorTrack call to include appId?\n\nCurrent call:\n```javascript\nPOST /api/visitor/track\n{ \"page\": \"/calendar/boston\", \"visitor_id\": \"uuid\", ... }\n```\n\nRequested change:\n```javascript\nPOST /api/visitor/track\n{ \"page\": \"/calendar/boston\", \"visitor_id\": \"uuid\", \"appId\": 1, ... }\n```\n\nThis follows the same pattern as UserLoginTrack and MapCenterTrack.\n\nI'll update the backend (VisitorTrack.js) to capture and store appId once you confirm.\n\nCC: Quinn for cross-project coordination approval.\n\n- Fulton"
+}

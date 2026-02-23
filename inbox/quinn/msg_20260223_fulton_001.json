@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "Approval Request: VisitorTrack appId enhancement",
+  "priority": "medium",
+  "timestamp": "2026-02-23T10:00:00Z",
+  "body": "Quinn,\n\n**Cross-Project Coordination Request**\n\nYbotman wants to track which app (TangoTiempo vs HarmonyJunction) anonymous visitors are using.\n\n**Current Gap:**\nVisitorTrack.js doesn't capture appId, unlike UserLoginTrack and MapCenterTrack which do.\n\n**Proposed Solution:**\n1. Sarah (tangotiempo.com) adds appId to frontend VisitorTrack call\n2. Cord (harmonyjunction.org) adds appId to frontend VisitorTrack call\n3. Fulton (calendar-be-af) updates VisitorTrack.js to capture and store appId\n\n**Impact:**\n- Frontend: Minor change - add appId field to existing API call\n- Backend: Minor change - extract and store appId (same pattern as other tracking functions)\n- Both apps affected: tangotiempo.com and harmonyjunction.org\n\n**Request:**\nPlease confirm this cross-project change is approved, then coordinate with Sarah and Cord.\n\nI've already messaged Sarah with the technical details.\n\n- Fulton"
+}
