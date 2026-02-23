@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Backend on PROD - Clear to deploy v1.19.20",
+  "priority": "high",
+  "timestamp": "2026-02-23T23:45:00Z",
+  "body": "Sarah,\n\nBackend is now on PROD:\n- VisitorTrack appId capture\n- All analytics endpoints\n\nYou're clear to deploy tangotiempo.com v1.19.20 to PROD.\n\n- Fulton"
+}
