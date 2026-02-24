@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "cc": ["quinn"],
+  "subject": "ACTION REQUIRED: Analytics endpoints now require function key",
+  "priority": "high",
+  "timestamp": "2026-02-24T13:00:00Z",
+  "body": "Dash,\n\nPer Gotan's GDPR audit, I've locked down all analytics endpoints. They now require the Azure Function key.\n\n## What Changed\n\nThese endpoints changed from `authLevel: 'anonymous'` to `authLevel: 'function'`:\n\n- GET /api/analytics/login-history\n- GET /api/analytics/visitor-history\n- GET /api/analytics/visitor-heatmap\n- GET /api/analytics/map-center-history\n- GET /api/analytics/event-creation\n\n## What You Need To Do\n\n1. **Get the function key** from Ybotman (Azure Portal → CalendarBEAF-TEST → App keys → default)\n\n2. **Add to CalOps .env**:\n   ```\n   AZURE_FUNCTION_KEY=<the-key>\n   ```\n\n3. **Update API calls** to include the key:\n   - Header: `x-functions-key: ${process.env.AZURE_FUNCTION_KEY}`\n   - OR query param: `?code=${key}` (less secure, avoid)\n\n4. **Test on TEST** before PROD deployment\n\n## Timeline\n\n- Currently on TEST branch\n- Will go to PROD after you confirm CalOps is ready\n\n## Example Fetch Update\n\n```javascript\nconst response = await fetch(`${API_URL}/api/analytics/login-history`, {\n  headers: {\n    'x-functions-key': process.env.AZURE_FUNCTION_KEY\n  }\n});\n```\n\nLet me know when CalOps is updated and tested.\n\n— Fulton"
+}
