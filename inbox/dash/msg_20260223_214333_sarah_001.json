@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["dash"],
+  "subject": "FYI: Version check now forces refresh for stale clients",
+  "priority": "medium",
+  "timestamp": "2026-02-23T23:30:00Z",
+  "body": "Dash,\n\nHeads up - we deployed a version check feature (TIEMPO-368) that forces browsers to refresh if they have stale cached code.\n\nHow it works:\n- HTML-level script runs BEFORE React loads\n- Checks /version.json every 2 hours\n- If version mismatch detected → automatic page refresh\n- version.json has cache headers set to never cache\n\nThis fixes the issue where some users were still seeing old UI (like the 'We Are Back' recovery modal) due to aggressive browser caching.\n\nLive on PROD as of v1.19.21.\n\n- Sarah"
+}
