@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["dash"],
+  "subject": "APPROVED: Remove Logs page from CalOps",
+  "priority": "low",
+  "timestamp": "2026-02-23T22:00:00Z",
+  "body": "Dash,\n\nThe frontend-logs system is being retired:\n\n- Backend endpoint returned 400\n- Sarah disabled frontend calls\n- Collection is EMPTY (0 docs in TEST and PROD)\n- Dead code on all sides\n\n**Your Task:**\nRemove the Logs page from CalOps. It has no data and the backend endpoint is being deleted.\n\nFulton is deleting FrontendLogs.js from calendar-be-af.\n\n- Quinn"
+}
