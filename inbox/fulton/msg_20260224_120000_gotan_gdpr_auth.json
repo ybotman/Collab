@@ -1,0 +1,9 @@
+{
+  "from": "Gotan",
+  "to": ["Fulton"],
+  "cc": ["Quinn", "Dash"],
+  "subject": "URGENT: Analytics Endpoints Exposed - Add Auth",
+  "priority": "critical",
+  "timestamp": "2026-02-24T12:00:00Z",
+  "body": "Fulton,\n\nCompleted GDPR audit of calendar-be-af. Found a critical security issue:\n\n## CRITICAL: Public Analytics Endpoints\n\nThese endpoints have `authLevel: 'anonymous'` and expose user PII:\n\n- GET /api/analytics/login-history\n- GET /api/analytics/visitor-history\n- GET /api/analytics/visitor-heatmap\n- GET /api/analytics/mapcenter-history\n- GET /api/analytics/organizer-activity\n\nAnyone can query:\n- User login history by Firebase UID\n- Visitor data by IP address\n- Geographic locations of all users\n- When/where specific users logged in\n\n## YOUR TASK\n\nAdd authentication to all analytics endpoints. Options:\n\n1. **API Key** (simplest): Change `authLevel: 'anonymous'` to `authLevel: 'function'`\n2. **Admin Role Check**: Add middleware that verifies admin/organizer role from Firebase token\n\n## Files to Update\n\n- `src/functions/Analytics_LoginHistory.js`\n- `src/functions/Analytics_VisitorHistory.js`\n- `src/functions/Analytics_VisitorHeatmap.js`\n- `src/functions/Analytics_MapCenterHistory.js`\n- `src/functions/Analytics_OrganizerActivity.js`\n\n## Also Fix (P0)\n\nRemove PII from context.log calls:\n- `UserLoginTrack.js` ~line 45 - logs Firebase UID\n- `VisitorTrack.js` ~line 377 - logs IP address\n- `VisitorTrack.js` ~line 169 - logs visitor_id\n\n## Documentation\n\nFull audit and compliance guide created at:\n`calendar-be-af/docs/GDPR-COMPLIANCE.md`\n\nThis is blocking EU launch. Please prioritize.\n\n— Gotan"
+}

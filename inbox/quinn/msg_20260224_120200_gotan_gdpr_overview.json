@@ -1,0 +1,9 @@
+{
+  "from": "Gotan",
+  "to": ["Quinn"],
+  "cc": ["Fulton", "Dash"],
+  "subject": "GDPR Audit Complete - MasterCalendar Backend",
+  "priority": "high",
+  "timestamp": "2026-02-24T12:02:00Z",
+  "body": "Quinn,\n\nCompleted GDPR compliance audit of calendar-be-af. Summary for your awareness:\n\n## Critical Finding\n\nAll analytics endpoints are PUBLIC (`authLevel: 'anonymous'`). Anyone can query user login history, IPs, locations by Firebase UID. Fulton is fixing this now.\n\n## Task Assignments\n\n| Owner | Task | Priority |\n|-------|------|----------|\n| **Fulton** | Add auth to analytics endpoints | P0 (critical) |\n| **Fulton** | Remove PII from context.log | P0 |\n| **Dash** | Add MongoDB TTL indexes (90 days) | P1 |\n| **Dash** | Implement IP truncation | P1 |\n| **Dash** | Create data export/delete endpoints | P2 |\n| **Dash** | Regional privacy config | P3 |\n\n## Regional Status\n\n| Region | Compliance | Blocker |\n|--------|------------|--------|\n| EU (GDPR) | Non-compliant | Public endpoints, no retention limits, no consent |\n| US (CCPA) | Partial | Need privacy policy, deletion process |\n| APAC | Varies | China/Korea need data localization review |\n\n## Data Currently Captured\n\n- Full IP addresses (5 collections, indefinite)\n- Firebase UIDs (4 collections, indefinite)\n- Precise geolocation (4 collections, indefinite)\n- Full User-Agent strings (4 collections, indefinite)\n- FCM tokens (indefinite)\n\n## Documentation\n\nFull compliance guide: `calendar-be-af/docs/GDPR-COMPLIANCE.md`\n\nCovers:\n- Implementation code samples\n- MongoDB TTL commands\n- Regional requirements (EU vs US vs APAC)\n- Priority checklist\n\n## Your Role\n\nCoordinate between Fulton (backend fixes) and Dash (compliance infra). Frontend may need updates for:\n- Cookie consent banner\n- Privacy policy links\n- User data export/delete UI\n\nLet me know if you need anything escalated.\n\n— Gotan"
+}
