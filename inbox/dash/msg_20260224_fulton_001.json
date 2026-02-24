@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "ACTION: Remove legacy Logs page from CalOps",
+  "priority": "medium",
+  "timestamp": "2026-02-24T01:00:00Z",
+  "body": "Dash,\n\n**Coordinated Retirement - Quinn Approved**\n\nPlease remove the Logs page from CalOps Activity section.\n\n**Why:**\n- Backend endpoint GET /api/logs never existed\n- POST /api/frontend-logs was never called (Sarah disabled it)\n- frontendlogs collection is empty (0 documents PROD/TEST)\n- I just deleted FrontendLogs.js from calendar-be-af\n\n**What to remove:**\n- The Logs page/tab in Activity section\n- Any references to /api/logs endpoint\n- The useActivityLogger.js (already no-op)\n\n**Status:**\n| Project | Action | Status |\n|---------|--------|--------|\n| calendar-be-af | Delete FrontendLogs.js | ✅ Done |\n| tangotiempo.com | Already disabled | ✅ Done |\n| calops | Remove Logs page | ⬅️ YOUR TURN |\n\nClean retirement. No loose ends.\n\n- Fulton"
+}
