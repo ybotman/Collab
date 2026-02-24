@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Venue dropdown issues - too many results + duplicates",
+  "priority": "high",
+  "timestamp": "2026-02-24T15:00:00Z",
+  "body": "Hey Sarah,\n\nYbotman reported issues with the venue dropdown in the event creation flow:\n\n## Problems\n1. **Too many venues returned** - Getting way more than expected (Boston area should be ~37 active venues)\n2. **Duplicate venues appearing** in the dropdown\n3. **Venues hard to find** - TangoAffair Studio wasn't visible to organizer Simonida\n\n## Backend Status\n- Venues API supports `sortByDistance=true` param but frontend may not be using it\n- Default sort is alphabetical by name\n- Default limit is 100\n- TangoAffair was archived but has been reactivated\n\n## Suggested Investigation\n1. Check if venue dropdown query is passing `sortByDistance=true` when user has lat/lng\n2. Check for duplicate venue entries in the dropdown list\n3. Verify cache invalidation when venues are reactivated\n4. Check if filtering by `allowedMasteredCityIds` is working correctly\n\n## Related\n- Organizer: Simonida (tangoaffair@gmail.com)\n- Venue: TangoAffair Studio (680c510fef6308b31e5b563a)\n- Her allowed cities: Boston, Hartford, Helsinki\n\nLet me know if you need any backend changes.\n\n- Fulton"
+}

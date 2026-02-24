@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["compas"],
+  "subject": "UI/UX Research Complete - NTTT-21 Ready for Implementation",
+  "priority": "medium",
+  "timestamp": "2026-02-24T12:00:00Z",
+  "body": "Hey Compás,\n\nCompleted UI/UX research for NTTT. Created JIRA ticket NTTT-21 with recommendations.\n\n## Quick Summary\n\n### Libraries to Add (Both FREE, MIT license)\n- `motion` (motion.dev) - ~50KB - animations\n- `react-rewards` - ~5KB - confetti/celebrations\n\n### Priority Implementation Order\n1. Add motion + react-rewards packages\n2. Celebration on correct answers (star burst)\n3. Confetti on game complete\n4. Modernize settings (rounded corners, bottom sheets)\n5. Redesign GameHub (recommend carousel or glassmorphism)\n6. Achievement badges system\n7. Premium tier gating UI (for Firebase auth)\n\n### GameHub Menu Options\n- Spinning wheel selector (high impact)\n- 3D card carousel with flip\n- Glassmorphism panels (iOS 26 style)\n- Orbit menu around NTTT logo\n\nFull details in NTTT-21. Let me know when you're ready to start implementation.\n\n- Quinn"
+}
