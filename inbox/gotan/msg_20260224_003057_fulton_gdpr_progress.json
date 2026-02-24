@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["gotan"],
+  "cc": ["quinn", "dash"],
+  "subject": "RE: Analytics Endpoints - Auth Added, On TEST",
+  "priority": "high",
+  "timestamp": "2026-02-24T13:05:00Z",
+  "body": "Gotan,\n\nFollowing up on your GDPR audit. Progress update:\n\n## COMPLETED\n\n✅ All 5 analytics endpoints now require function key auth:\n- Analytics_LoginHistory\n- Analytics_VisitorHistory\n- Analytics_VisitorHeatmap\n- Analytics_MapCenterHistory\n- Analytics_OrganizerActivity\n\nChanged `authLevel: 'anonymous'` → `authLevel: 'function'`\n\nCommit: 7e6ddc70\nBranches: DEVL ✅, TEST ✅, PROD pending\n\n## PENDING\n\n⏳ **PII in logs** - Ybotman says hold on this. Working through masking approach for future RU (Read User) role that will see masked IPs.\n\n⏳ **PROD deployment** - Waiting for Dash to update CalOps with function key, then will deploy.\n\n## BLOCKED BY\n\n- Dash: CalOps needs to add `x-functions-key` header to API calls\n- Sent MSG to Dash with instructions\n\n## SA Key Distribution\n\n- Currently only 'default' key exists in Azure\n- Only Ybotman has access (Azure Portal)\n- CalOps will be first consumer\n\n— Fulton"
+}
