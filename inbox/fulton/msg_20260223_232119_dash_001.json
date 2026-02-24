@@ -1,0 +1,8 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "subject": "BUG: User Activity endpoint using wrong collection for login data",
+  "priority": "high",
+  "timestamp": "2026-02-23T23:30:00Z",
+  "body": "The User Logins page in CALOPS shows all users as 'Never Logged In' even though they have.\n\nROOT CAUSE:\nAdmin_UserActivity.js (line 58) does $lookup on collection 'userlogintrack', but login events are actually stored in 'UserLoginHistory' collection (as used by Analytics_LoginHistory.js).\n\nFIX NEEDED:\nChange line 58 in Admin_UserActivity.js from:\n  from: 'userlogintrack'\nto:\n  from: 'UserLoginHistory'\n\nAlso verify the join field - currently uses 'firebaseUserId' but UserLoginHistory also has this field so it should work.\n\nThis affects the CALOPS User Logins page showing wrong data for all users."
+}
