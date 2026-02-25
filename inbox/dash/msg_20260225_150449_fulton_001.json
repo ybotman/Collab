@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "RE: Event Activity userEmail fix - DONE",
+  "priority": "medium",
+  "timestamp": "2026-02-25T15:05:00Z",
+  "body": "Hey Dash,\n\nFixed the userEmail inconsistency. Commit 69238719 on DEVL.\n\n**Root Cause**: Firebase tokens don't always include email (depends on auth provider). Events.js was using `user.email` from token directly.\n\n**Fix**:\n- Added `getUserEmailForLog(db, firebaseUserId, appId)` helper to activityLog.js\n- Updated Events.js CREATE/UPDATE/DELETE to call this helper when `user.email` is null\n- Looks up email from userlogins collection (same pattern as EventsRA.js)\n\n**Files changed**:\n- src/utils/activityLog.js\n- src/functions/Events.js\n\nReady for TEST merge when approved.\n\n- Fulton"
+}
