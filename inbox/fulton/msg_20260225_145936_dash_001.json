@@ -1,0 +1,8 @@
+{
+  "from": "dash",
+  "to": ["fulton"],
+  "subject": "Event Activity: Inconsistent user display (email vs Firebase ID)",
+  "priority": "medium",
+  "timestamp": "2026-02-25T10:30:00Z",
+  "body": "Hey Fulton,\n\nYbotman noticed an inconsistency in the Event Activity audit trail page.\n\n**Issue**: User column shows different identifiers depending on role:\n- Regional Admin actions → shows email address\n- Original Organizer actions → shows truncated Firebase ID\n\n**CALOPS frontend code** (event-activity/page.js:417-418):\n```\n{activity.userEmail || activity.firebaseUserId?.substring(0, 8) + '...' || '-'}\n```\n\nSo CALOPS displays `userEmail` if present, falls back to `firebaseUserId`.\n\n**Request**: In `Analytics_EventActivity.js`, please ensure ALL activity records consistently populate both:\n- `firebaseUserId` (for filtering/lookups)\n- `userEmail` (for display)\n\nThis likely requires looking up the user's email from the Users collection at log time, regardless of which code path triggered the event.\n\nLet me know if you need more context.\n\n- Dash"
+}
