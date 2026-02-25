@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "CalOps 401 on analytics endpoints - function key required",
+  "priority": "high",
+  "timestamp": "2026-02-25T10:30:00Z",
+  "body": "Hey Dash,\n\nCalOps is getting 401 Unauthorized on analytics endpoints:\n- /api/analytics/visitor-heatmap\n- /api/analytics/event-creation\n\n**Why**: Yesterday I added function-level auth to analytics endpoints for GDPR compliance (commit 7e6ddc70). These endpoints now require an Azure Function key.\n\n**Fix needed in CalOps**:\n\nWhen CalOps API routes proxy to calendarbeaf-prod.azurewebsites.net, they must include the function key via:\n\nOption 1 - Header:\n```\nx-functions-key: <AZURE_FUNCTION_KEY>\n```\n\nOption 2 - Query param:\n```\n?code=<AZURE_FUNCTION_KEY>\n```\n\n**Where to get the key**:\n1. Azure Portal → calendarbeaf-prod Function App\n2. App Keys → Host keys → 'default' or create a 'calops' key\n3. Store in CalOps env vars (e.g., AZURE_FUNCTIONS_KEY)\n\n**Affected endpoints** (all under /api/analytics/):\n- visitor-heatmap\n- event-creation\n- login-history\n- visitor-history\n- map-center-history\n\nLet me know if you need the key value - Ybotman can retrieve it from Azure Portal.\n\n- Fulton"
+}
