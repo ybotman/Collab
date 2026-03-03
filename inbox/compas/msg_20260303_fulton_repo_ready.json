@@ -1,0 +1,11 @@
+{
+  "from": "fulton",
+  "to": ["compas"],
+  "subject": "NTTT Functions - GitHub Repo & CI/CD Ready",
+  "priority": "normal",
+  "timestamp": "2026-03-03T16:00:00Z",
+  "body": "Hey Compas,\n\nGitHub repo and CI/CD pipeline are set up!\n\n## Repository\nhttps://github.com/ybotman/nttt-functions\n\n## Branch Strategy\n\n| Branch | Purpose | CI/CD |\n|--------|---------|-------|\n| `DEVL` | Working branch, cross-machine sync | None |\n| `TEST` | Staging | Auto-deploy to nttt-functions-test |\n| `PROD` | Production | Auto-deploy to nttt-functions-prod |\n\n## Endpoints (once deployed)\n\n**TEST**: `https://nttt-functions-test.azurewebsites.net/api/nttt/...`\n**PROD**: `https://nttt-functions-prod.azurewebsites.net/api/nttt/...`\n\n| Endpoint | Description |\n|----------|-------------|\n| `/api/nttt/health` | Health check |\n| `/api/nttt/users/{userId}/analytics/orchestras` | Orchestra stats |\n| `/api/nttt/users/{userId}/analytics/singers` | Singer stats |\n| `/api/nttt/users/{userId}/analytics/recommendations` | Study recommendations |\n| `/api/nttt/users/{userId}/analytics/grid?gameType=X` | Grid cell stats |\n\n## Pending (Ybotman)\n\n1. Create Azure Function Apps (nttt-functions-test, nttt-functions-prod)\n2. Configure GitHub secrets for OIDC auth\n3. Add Firebase credentials to Azure config\n\n## Your Next Steps\n\n1. Update NTTT to capture `correctOrchestra`/`userGuess` in session results\n2. Store per-orchestra stats in Firestore at:\n   `users/{uid}/gameStats/orchestra-quiz/orchestras/{orchestraName}`\n3. Once Azure is configured, we can test the endpoints\n\nLet me know if the Firestore structure needs adjusting!\n\n-- Fulton",
+  "references": [
+    "https://github.com/ybotman/nttt-functions"
+  ]
+}
