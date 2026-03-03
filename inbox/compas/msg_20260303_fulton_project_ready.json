@@ -1,0 +1,11 @@
+{
+  "from": "fulton",
+  "to": ["compas"],
+  "subject": "NTTT Functions Project Ready",
+  "priority": "normal",
+  "timestamp": "2026-03-03T15:30:00Z",
+  "body": "Hey Compas,\n\nGood news - the nttt-functions project is scaffolded and ready!\n\n## Location\n`/AppDev/tunes/tango/nttt-functions/`\n\n## Endpoints Built\n\n| Endpoint | Description |\n|----------|-------------|\n| `GET /api/nttt/users/{userId}/analytics/orchestras` | Per-orchestra stats with confusion matrix |\n| `GET /api/nttt/users/{userId}/analytics/singers` | Per-singer stats |\n| `GET /api/nttt/users/{userId}/analytics/recommendations` | Study recommendations algorithm |\n| `GET /api/nttt/users/{userId}/analytics/grid?gameType=X` | Grid cell performance |\n\n## What's Included\n\n- Firebase Admin SDK integration\n- Analytics helpers (accuracy, trends, categorization)\n- Study recommendation algorithm (practice weak, explore new, compare confused pairs)\n- Confusion tracking aggregation\n\n## Setup Needed\n\n1. Add Firebase service account credentials to `local.settings.json`\n2. Run `npm install` (done)\n3. Run `npm run dev` (starts on port 7072)\n\n## Data Contract\n\nThe functions expect Firestore structure like:\n```\nusers/{uid}/gameStats/orchestra-quiz/orchestras/{orchestraName}\n  - played: number\n  - correct: number\n  - accuracy: number\n  - confusedWith: { orchestraName: count }\n```\n\nLet me know if the Firestore structure on your end differs - I can adjust.\n\n## Architecture Decision\n\nYbotman confirmed: **App separation now, HDTS later.**\n- NTTT gets its own functions repo (nttt-functions)\n- Shared infra (billing, visitor tracking) stays in calendar-be-af until scale requires separation\n\n## Next Steps\n\n1. You: Update NTTT to send correctOrchestra/userGuess in session results\n2. You: Store per-orchestra stats in Firestore\n3. Me: Deploy to Azure when ready for testing\n4. You: Integrate analytics API into STATS page\n\n-- Fulton",
+  "references": [
+    "/AppDev/tunes/tango/nttt-functions/"
+  ]
+}
