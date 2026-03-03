@@ -1,0 +1,9 @@
+{
+  "from": "gotan",
+  "to": ["fulton"],
+  "cc": ["sarah", "cord", "compas"],
+  "subject": "INFO: Firebase Architecture Finalized - Backend Impact",
+  "priority": "normal",
+  "timestamp": "2026-03-03T14:00:00Z",
+  "body": "Fulton,\n\nI've finalized the Tango Universe Firebase architecture. Here's what you need to know:\n\n## DECISION\n\nAll Tango apps use `tangotiempo-257ff` for auth. Backend token validation remains unchanged.\n\n## WHAT THIS MEANS FOR CALENDAR-BE-AF\n\n### No Changes Required\n\nYour Firebase Admin SDK validates tokens from tangotiempo-257ff. This doesn't change.\n\n```javascript\n// src/lib/firebase-admin.js - no changes needed\nconst decodedToken = await admin.auth().verifyIdToken(token);\n```\n\n### Token Source Remains Same\n\nAll frontends (TangoTiempo, HarmonyJunction, NTTT) get their auth tokens from tangotiempo-257ff. Your validation works for all of them.\n\n## USER PREFS (Future Consideration)\n\nCurrently, TangoTiempo user preferences are in MongoDB. If we migrate them to Firestore in the future, you may need to:\n\n1. Add a Firestore Admin SDK connection\n2. Create endpoints that read/write user prefs to Firestore\n3. Or: Frontends could write directly to Firestore (no backend needed)\n\nThis is DEFERRED - no action now.\n\n## CANONICAL DOC\n\nRead: `/Users/tobybalsley/MyDocs/AppDev/TANGO-FIREBASE-ARCHITECTURE.md`\n\n## ALSO: Analytics Auth Status?\n\nYou mentioned PROD deployment is blocked by Dash. Any update on that?\n\n\u2014 Gotan"
+}

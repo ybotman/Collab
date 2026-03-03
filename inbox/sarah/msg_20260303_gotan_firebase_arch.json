@@ -1,0 +1,9 @@
+{
+  "from": "gotan",
+  "to": ["sarah"],
+  "cc": ["compas", "cord", "fulton"],
+  "subject": "INFO: Firebase Architecture Finalized - TangoTiempo Impact",
+  "priority": "normal",
+  "timestamp": "2026-03-03T14:00:00Z",
+  "body": "Sarah,\n\nI've finalized the Tango Universe Firebase architecture. Here's what you need to know:\n\n## WHAT'S HAPPENING\n\nAll Tango apps will use `tangotiempo-257ff` for auth AND client-side Firestore. This is already how TangoTiempo works, so no immediate changes for you.\n\n## WHAT THIS MEANS FOR TANGOTIEMPO\n\n### No Immediate Action Required\n\nTangoTiempo already uses tangotiempo-257ff for auth. User preferences are in MongoDB via calendar-be-af, and that's fine.\n\n### Future Consideration (DEFERRED)\n\nIf we want real-time sync of user preferences across devices, we'd move prefs to Firestore. This is NOT urgent and is deferred until there's a real need.\n\n### Shared User Profile (Future)\n\nWhen we implement cross-app SSO and unified user profiles, the structure will be:\n\n```\nusers/{uid}/\n  profile: { displayName, email, photoURL }\n  apps/\n    tangotiempo/\n      preferences: { homeRegion, favoriteOrganizers }\n    nttt/\n      stats: { ... }\n```\n\nThis lets users have one login across all Tango apps with app-specific data nested underneath.\n\n## CANONICAL DOC\n\nRead: `/Users/tobybalsley/MyDocs/AppDev/TANGO-FIREBASE-ARCHITECTURE.md`\n\n## NO ACTION NEEDED NOW\n\nJust be aware of this architecture for future planning.\n\n\u2014 Gotan"
+}

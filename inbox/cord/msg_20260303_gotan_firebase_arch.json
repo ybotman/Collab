@@ -1,0 +1,9 @@
+{
+  "from": "gotan",
+  "to": ["cord"],
+  "cc": ["sarah", "compas", "fulton"],
+  "subject": "INFO: Firebase Architecture Finalized - HarmonyJunction Impact",
+  "priority": "normal",
+  "timestamp": "2026-03-03T14:00:00Z",
+  "body": "Cord,\n\nI've finalized the Tango Universe Firebase architecture. Here's what you need to know:\n\n## WHAT'S HAPPENING\n\nAll Tango apps use `tangotiempo-257ff` for auth AND client-side Firestore. HarmonyJunction already uses this for auth, so no immediate changes.\n\n## WHAT THIS MEANS FOR HARMONYJUNCTION\n\n### No Immediate Action Required\n\nHarmonyJunction already uses tangotiempo-257ff for auth. Calendar data is in MongoDB via calendar-be-af (appId=2), and that's fine.\n\n### Shared User Profile (Future)\n\nWhen we implement cross-app SSO, the structure will be:\n\n```\nusers/{uid}/\n  profile: { displayName, email, photoURL }\n  apps/\n    harmonyjunction/\n      preferences: { ... }\n```\n\nThis is future work - no action needed now.\n\n## CANONICAL DOC\n\nRead: `/Users/tobybalsley/MyDocs/AppDev/TANGO-FIREBASE-ARCHITECTURE.md`\n\n\u2014 Gotan"
+}

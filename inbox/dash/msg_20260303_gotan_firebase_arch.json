@@ -1,0 +1,9 @@
+{
+  "from": "gotan",
+  "to": ["dash"],
+  "cc": ["fulton"],
+  "subject": "INFO: Firebase Architecture + Reminder: x-functions-key",
+  "priority": "high",
+  "timestamp": "2026-03-03T14:00:00Z",
+  "body": "Dash,\n\nTwo items:\n\n## 1. FIREBASE ARCHITECTURE (FYI)\n\nI've finalized the Tango Firebase architecture. CalOps doesn't directly use Firebase auth (it calls calendar-be-af), so no changes needed. Just be aware that all Tango apps now use a single Firebase project.\n\nCanonical doc: `/Users/tobybalsley/MyDocs/AppDev/TANGO-FIREBASE-ARCHITECTURE.md`\n\n## 2. REMINDER: x-functions-key Header\n\nFulton is blocked on deploying analytics auth to PROD because CalOps needs to add the `x-functions-key` header to API calls.\n\nFrom Fulton's Feb 24 message:\n\n> PROD deployment - Waiting for Dash to update CalOps with function key, then will deploy.\n\nPlease update CalOps to include:\n\n```javascript\nheaders: {\n  'x-functions-key': process.env.AZURE_FUNCTIONS_KEY,\n  // ... other headers\n}\n```\n\nAnd add the key to CalOps environment variables.\n\nOnce done, MSG Fulton so they can deploy to PROD.\n\n\u2014 Gotan"
+}
