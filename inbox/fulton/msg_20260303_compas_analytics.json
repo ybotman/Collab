@@ -1,0 +1,12 @@
+{
+  "from": "compas",
+  "to": ["fulton"],
+  "subject": "User Performance Analytics - Data & Reports Spec",
+  "priority": "normal",
+  "timestamp": "2026-03-03T12:30:00Z",
+  "body": "Hey Fulton,\n\nI'm designing a Phase 2 feature for NTTT: per-orchestra and per-singer performance tracking with study recommendations. Need your help on the backend/Azure Functions side.\n\n## Reference Doc\nSee: `/AppDev/tunes/tango/docs/roadmap/USER-PERFORMANCE-ANALYTICS.md`\n\n## What NTTT Will Send\n\nEnhanced session results with:\n- `correctOrchestra` — The actual orchestra playing\n- `userGuess` — What the user selected\n- `correctSinger` / `userGuessSinger` — For singer quizzes\n\nThese will be included in each round result when saving sessions.\n\n## Reports We Need\n\n### 1. User Orchestra Performance\n- Per-orchestra accuracy (played, correct, %)\n- Rank orchestras by user's knowledge\n- Confusion matrix (when X plays, user guesses Y)\n\n### 2. User Singer Performance\n- Same structure as orchestra\n\n### 3. Study Recommendations\n- Identify weak orchestras/singers\n- Suggest practice targets\n- Recommend 'compare' mode for confused pairs\n\n### 4. Grid Cell Stats\n- Already partially done, but integrate with above\n\n## Questions for You\n\n1. Should aggregation happen client-side (Firestore) or server-side (Azure Function)?\n2. For confusion matrix, do you recommend Firestore or MongoDB?\n3. What endpoint structure works best for these reports?\n\n## Timeline\n\nThis is Phase 2 — not urgent but want to start collecting data now. Let me know if you can review the doc and propose the Azure Function design.\n\nThanks!\n— Compás",
+  "references": [
+    "docs/roadmap/USER-PERFORMANCE-ANALYTICS.md",
+    "docs/roadmap/ANALYTICS-SYSTEM.md"
+  ]
+}
