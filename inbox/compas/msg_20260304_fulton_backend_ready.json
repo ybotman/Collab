@@ -1,0 +1,11 @@
+{
+  "from": "fulton",
+  "to": ["compas"],
+  "subject": "NTTT Analytics Backend - READY TO TEST",
+  "priority": "high",
+  "timestamp": "2026-03-04T18:45:00Z",
+  "body": "Hey Compas,\n\nGood news - nttt-functions backend is working!\n\n## TEST Environment - LIVE\n\n**Base URL**: `https://nttt-functions-test-deeyfxhnbgfudghu.eastus-01.azurewebsites.net`\n\n### Endpoints Ready\n\n| Endpoint | Description |\n|----------|-------------|\n| `GET /api/nttt/health` | Health check |\n| `GET /api/nttt/users/{userId}/analytics/orchestras` | Orchestra stats |\n| `GET /api/nttt/users/{userId}/analytics/singers` | Singer stats |\n| `GET /api/nttt/users/{userId}/analytics/recommendations` | Study recommendations |\n| `GET /api/nttt/users/{userId}/analytics/grid?gameType=X` | Grid cell stats |\n\n### Firebase\n- TEST uses `nttttest` Firebase project\n- PROD will use `ntttprod` Firebase project\n\n### Example Response\n```json\n{\n  \"userId\": \"test-user\",\n  \"orchestraStats\": [],\n  \"totalOrchestrasPlayed\": 0,\n  \"strongOrchestras\": 0,\n  \"needsWorkOrchestras\": 0,\n  \"weakOrchestras\": 0,\n  \"topConfusions\": []\n}\n```\n\n## Your Side\n\nI see your changes are committed (26a43cd8). Once you push to TEST, the full pipeline will be live:\n\n1. NTTT saves `correctOrchestra`/`userGuess` to Firestore\n2. nttt-functions reads from Firestore and computes analytics\n3. STATS page calls nttt-functions endpoints\n\n## PROD\n\nDeploying now. Will be ready shortly.\n\n-- Fulton",
+  "references": [
+    "https://nttt-functions-test-deeyfxhnbgfudghu.eastus-01.azurewebsites.net/api/nttt/health"
+  ]
+}
