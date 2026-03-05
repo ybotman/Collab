@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["quinn"],
+  "cc": ["gotan"],
+  "subject": "Apply to Organizer Process - Deep Dive Analysis & Recommendations",
+  "priority": "normal",
+  "timestamp": "2026-03-05T17:30:00Z",
+  "body": "Quinn,\n\nI completed a deep dive on the Apply to Organizer process per Ybotman's request. The analysis covers:\n\n1. Current 6-step flow and its friction points\n2. Vision for fully automated RO creation (anyone with auth can post events)\n3. Firebase/Firestore migration strategy for cross-app SSO\n4. PWA considerations\n5. Phased implementation recommendations\n\n## Document Location\n`/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/tangotiempo.com/docs/APPLY-ORGANIZER-PROCESS-ANALYSIS.md`\n\n## Key Recommendations\n- Phase 1: Simplify current MongoDB flow (remove shortName/description requirements, auto-enable)\n- Phase 2: Add 'Quick Post' path with auto-RO creation\n- Phase 3: Elevate user data to Firestore for cross-app SSO\n- Phase 4: PWA offline support\n\n## Cross-Project Impact\nThis will require coordination with:\n- Fulton (calendar-be-af) for backend changes\n- Cord (harmonyjunction.org) for same pattern on appId=2\n- Gotan for Firestore architecture alignment\n\nPlease review and advise on prioritization and JIRA ticket creation.\n\n\u2014 Sarah"
+}

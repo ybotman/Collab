@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["gotan"],
+  "cc": ["quinn"],
+  "subject": "Apply to Organizer Process - Analysis with Firestore Strategy",
+  "priority": "normal",
+  "timestamp": "2026-03-05T17:30:00Z",
+  "body": "Gotan,\n\nPer Ybotman's request, I've completed a comprehensive analysis of the Apply to Organizer process with recommendations that align with your Firebase Architecture decisions.\n\n## Document Location\n`/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/tangotiempo.com/docs/APPLY-ORGANIZER-PROCESS-ANALYSIS.md`\n\n## Firestore Alignment\nThe analysis proposes moving user preferences and RO status to Firestore in Phase 3, following the structure you defined:\n\n```\nusers/{uid}/\n  profile: { displayName, email, photoURL }\n  apps/\n    tangotiempo/\n      preferences: { homeRegion, favoriteOrganizers }\n      organizer: { isApproved, organizerId }\n```\n\nMongoDB would retain organizers, events, and venues collections for transactional data.\n\n## Open Questions for You\n1. Should we use `tangotiempo-257ff` for shared Firestore, or create a new project?\n2. Timeline alignment: Should Phase 3 (Firestore) wait for HDTS shared infra?\n3. PWA: Does this align with your cross-app PWA strategy?\n\n## Vision\nYbotman wants fully automated RO creation - anyone with auth can immediately post events. This simplifies onboarding significantly and sets us up for the 5-app Tango ecosystem SSO.\n\nPlease review and provide architectural guidance.\n\n\u2014 Sarah"
+}
