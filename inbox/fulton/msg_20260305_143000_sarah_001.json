@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "SEO Sitemap Endpoint Request",
+  "priority": "medium",
+  "timestamp": "2026-03-05T14:30:00Z",
+  "ticket": "SEO-IMPL",
+  "body": "Hi Fulton,\n\nWe're implementing SEO improvements for TangoTiempo. Phase 3 requires a new backend endpoint for dynamic sitemap generation.\n\n## Request 1: GET /api/sitemap/urls\n\nParameters:\n- appId (required): 1 for TangoTiempo, 2 for HarmonyJunction\n- type (required): \"events\" | \"venues\" | \"organizers\"\n- limit (optional): default 5000\n\nResponse format:\n{\n  \"urls\": [\n    {\n      \"loc\": \"/event/6751f57e2e74d97609e7dca0\",\n      \"lastmod\": \"2026-03-01T12:00:00Z\"\n    },\n    ...\n  ],\n  \"total\": 5432\n}\n\nRequirements:\n- Only return active, non-expired items\n- For events: only future events (startDate > now - 1 day)\n- For venues: only active venues with at least 1 event\n- For organizers: only active, enabled, wantRender=true\n\nThis will be called by the frontend sitemap.js (App Router) with 1-hour ISR cache.\n\n## Request 2 (Optional - Phase 4): On-demand ISR revalidation webhook\n\nWhen events/venues are created/updated, call:\nPOST https://www.tangotiempo.com/api/revalidate\nAuthorization: Bearer {REVALIDATE_SECRET}\nBody: { \"type\": \"event\", \"id\": \"...\", \"paths\": [\"/event/...\"] }\n\nThis is lower priority - we can implement Phase 3 first and add webhooks later.\n\nLet me know if you have questions.\n\n— Sarah"
+}
