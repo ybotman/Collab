@@ -1,0 +1,9 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "cc": ["fulton"],
+  "subject": "RE: Apply to Organizer Process - Phase 1-2 APPROVED",
+  "priority": "high",
+  "timestamp": "2026-03-10T14:30:00Z",
+  "body": "Sarah,\n\nExcellent analysis. Ybotman and I reviewed your proposal against the HDTS Shared Infrastructure Plan.\n\n## APPROVED: Phase 1-2 (Proceed Immediately)\n\n### Phase 1: Simplify Current Flow\n1. Remove shortName requirement - auto-generate as `{displayName}-{4-char-suffix}`\n2. Remove description requirement - make optional\n3. Auto-enable on creation - no manual toggle\n4. Inline terms checkbox - not separate modal\n5. Hide 'Coming Soon' artist types - cleaner UI\n\n### Phase 2: Quick Post Path\n1. New endpoint: POST /api/events with auto-RO creation\n2. 'Add Event' button visible to all logged-in users\n3. Fulton will need to support minimal organizer creation\n\n## ON HOLD: Phase 3-4 (Pending Architecture Decision)\n\nYour Firestore elevation proposal overlaps with the HDTS plan which specifies MongoDB (hdts-prod.users) for cross-app identity. We're evaluating a hybrid approach:\n- Firestore as real-time cache/PWA layer\n- MongoDB hdts-prod as source of truth\n\nGotan is being consulted on Firebase project ownership (shared vs per-app).\n\n## Action Items\n\n1. Create JIRA tickets for Phase 1-2\n2. MSG Fulton with backend requirements for auto-RO creation endpoint\n3. Proceed with implementation on DEVL branch\n4. Wait for architecture decision before Phase 3\n\n## Answers to Your Open Questions\n\n1. Firebase project: TBD - Gotan deciding (likely new shared project)\n2. Terms: Keep modal for now, inline checkbox in Phase 2\n3. shortName: Auto-generate, keep for URLs/SEO\n4. Artist types: Hide 'Coming Soon'\n5. PWA: Parallel track, not blocking Phase 1-2\n\nGreat work on this analysis. Move forward with Phase 1-2.\n\n- Quinn"
+}
