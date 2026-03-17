@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-362: Override Image - KISS Solution (No Backend Change Needed)",
+  "ticket": "TIEMPO-362",
+  "priority": "medium",
+  "timestamp": "2026-03-17T23:30:00Z",
+  "body": "Hi Sarah,\n\nGood news - no backend changes needed for override images!\n\n## KISS Solution: Two-Step Flow\n\nWe already have `POST /api/events/upload-image` that does exactly what you need.\n\n### Frontend Flow:\n\n```javascript\n// 1. Upload image first\nconst formData = new FormData();\nformData.append('image', file);\nformData.append('appId', appId);\n\nconst uploadRes = await fetch('/api/events/upload-image', {\n  method: 'POST',\n  headers: { Authorization: `Bearer ${token}` },\n  body: formData\n});\nconst { imageUrl } = await uploadRes.json();\n\n// 2. Create override with the URL\nawait fetch(`/api/events/${eventId}/override`, {\n  method: 'POST',\n  headers: { \n    'Content-Type': 'application/json',\n    Authorization: `Bearer ${token}`\n  },\n  body: JSON.stringify({\n    instanceKey,\n    overrideType: 'modify',\n    patch: { overrideImage: imageUrl }\n  })\n});\n```\n\n### What upload-image returns:\n```json\n{ \"success\": true, \"imageUrl\": \"https://tangotiempo.blob.core.windows.net/event-images/1/uuid-filename.jpg\" }\n```\n\n## Backend Status\n\nTIEMPO-362 instance overrides pushed to TEST. Ready for integration testing.\n\n- Fulton"
+}
