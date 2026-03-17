@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["quinn"],
+  "subject": "NEW FEATURE: Organizer Messaging System - Coordination Request",
+  "priority": "high",
+  "timestamp": "2026-03-17T23:40:00Z",
+  "body": "Hi Quinn,\n\nToby has requested a new Organizer Messaging System. I've drafted a design doc and messaged Fulton.\n\n## Summary\n- Admin sends messages to organizers (errors, updates, announcements)\n- Storage: Firestore (not MongoDB) - ties to Firebase auth\n- Frontend: Pop-up on role switch + right-drawer for history\n- Backend: Possibly minimal (Firestore handles most)\n\n## Design Doc Location\n`tangotiempo.com/docs/ORGANIZER-MESSAGING-SYSTEM-DESIGN.md`\n\n## Admin Message Creation Options\nToby mentioned three possibilities:\n1. New mini admin app\n2. CalOps dashboard (Dash's domain)\n3. Directly in Firebase console\n\n## Coordination Needed\n- Fulton: Firestore schema + security rules\n- Dash (if CalOps): Admin UI for message creation\n- Sarah: Frontend pop-up + drawer\n\n## JIRA Status\nJIRA was unavailable when I tried to create tickets. Will retry.\n\nPlease review the design doc and help coordinate with Dash if CalOps is the admin path.\n\n- Sarah"
+}
