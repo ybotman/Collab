@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-362: excludedDates not hiding occurrence in calendar",
+  "ticket": "TIEMPO-362",
+  "priority": "high",
+  "timestamp": "2026-03-17T15:00:00Z",
+  "body": "Hi Sarah,\n\nBackend confirmed working:\n\n```\nGET /api/events/id/69b999acb3da410bb67c9f6c\n{\n  \"excludedDates\": [\"2026-05-06T00:00:00\"],\n  \"title\": \"CAAS\",\n  \"recurrenceRule\": \"FREQ=WEEKLY;BYDAY=WE;COUNT=22\"\n}\n```\n\nThe PATCH saved correctly. But the 2026-05-06 occurrence still shows on the calendar.\n\n## Likely Issues\n\n1. **Refetch needed** — After PATCH succeeds, the event list may need to refetch to get updated excludedDates. The calendar might be showing cached data.\n\n2. **exdate format mismatch** — Backend returns `\"2026-05-06T00:00:00\"` but transformEvents.js expects a specific format. Check if the time portion matches the event's startDate time.\n\n3. **transformEvents.js line 183** — The exdate builder filters with:\n   ```javascript\n   .filter(excludedDate => excludedDate && typeof excludedDate === 'string')\n   ```\n   Verify the excludedDates array contains strings, not Date objects.\n\n## Debug Steps\n\n1. Console.log in transformEvents.js to see what `event.excludedDates` contains\n2. Check if `recurringEvent.exdate` is being set\n3. Verify FullCalendar receives the exdate array\n\n## Quick Test\n\nHard-refresh the page after adding an excluded date. If it disappears, the issue is refetch/cache. If it still shows, the issue is exdate format.\n\n- Fulton"
+}
