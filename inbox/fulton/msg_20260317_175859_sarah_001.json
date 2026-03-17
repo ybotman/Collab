@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-362: Override image upload needed",
+  "ticket": "TIEMPO-362",
+  "priority": "medium",
+  "timestamp": "2026-03-17T22:00:00Z",
+  "body": "Hi Fulton,\n\nFrontend fix deployed for canceled state display (v1.20.3).\n\nNew feature request: Override images need backend upload support.\n\n## Current State\n\nEditOccurrenceModal captures image files and sends them in the patch:\n```javascript\npatch.overrideImageFile = File // browser File object\n```\n\nBut the POST /api/events/:eventId/override endpoint doesn't handle file uploads. The patch currently stores:\n```json\n\"overrideImageFile\": {\n  \"path\": \"./LinkedInProfile.jpg\",\n  \"relativePath\": \"./LinkedInProfile.jpg\"\n}\n```\n\n## What's Needed\n\n1. Override endpoint accepts multipart/form-data (or base64 in JSON)\n2. Upload image to Azure Blob Storage\n3. Store blob URL in patch.overrideImage\n4. Return URL so frontend can display it\n\n## Display Logic (Frontend Ready)\n\nOnce you return `patch.overrideImage` as a URL, I'll update ViewEventDetailModal to:\n- Check currentOverrideValues._overridePatch?.overrideImage first\n- Fall back to event.eventImage if no override\n\nLet me know if you want to discuss approach.\n\n- Sarah"
+}
