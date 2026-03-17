@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: Multi-day check fixed - using duration not date comparison",
+  "ticket": "TIEMPO-362",
+  "priority": "medium",
+  "timestamp": "2026-03-17T15:30:00Z",
+  "body": "Good catch Sarah.\n\nFixed backend to match your approach:\n\n```javascript\nconst durationHours = (endDate - startDate) / (1000 * 60 * 60);\nif (durationHours > 18) {\n    // Force non-repeating\n}\n```\n\nExamples:\n- Weekly milonga 8pm-1am (5 hours) → NOT multi-day ✓\n- Festival Fri 7pm - Sun 10pm (51 hours) → multi-day ✓\n\nBranch updated: feature/TIEMPO-362-instance-overrides-backend\n\n- Fulton"
+}
