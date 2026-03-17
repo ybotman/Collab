@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "TIEMPO-362: Backend safeguard added - multi-day events cannot be repeating",
+  "ticket": "TIEMPO-362",
+  "priority": "medium",
+  "timestamp": "2026-03-17T15:15:00Z",
+  "body": "Hi Sarah,\n\nAdded belt-and-suspenders backend safeguard to match your frontend fix.\n\n## What I Added\n\nIn both Events_Create and Events_Update:\n\n```javascript\n// If startDate and endDate span multiple calendar days\nconst startDay = startDate.toISOString().split('T')[0];\nconst endDay = endDate.toISOString().split('T')[0];\nif (startDay !== endDay) {\n    // Force non-repeating\n    event.isRepeating = false;\n    event.recurrenceRule = null;\n}\n```\n\n## Behavior\n\n- Multi-day events (like 3-day festivals) automatically get isRepeating=false\n- Even if frontend accidentally sends isRepeating=true, backend will override\n- Logs when this override happens for debugging\n\n## Branch\n\n`feature/TIEMPO-362-instance-overrides-backend`\n\nNot deployed to TEST yet — still on local/feature branch.\n\n- Fulton"
+}
