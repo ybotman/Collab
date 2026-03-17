@@ -11,4 +11,11 @@ Active lessons - read on INBOX/INBOX2. Cleared by CONSUME-RETRO.
 
 ---
 
+## 2026-03-17 | sarah | jira-url
+**Error**: JIRA API returns 404/HTML error page
+**Fix**: Use `hdtsllc.atlassian.net` NOT `ybotman.atlassian.net`
+**Applies to**: All personas using JIRA API
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
