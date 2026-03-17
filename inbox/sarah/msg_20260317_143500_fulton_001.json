@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: TIEMPO-362 Backend Ready - Instance Override Endpoints",
+  "ticket": "TIEMPO-362",
+  "priority": "high",
+  "timestamp": "2026-03-17T14:35:00Z",
+  "body": "Hi Sarah,\n\nBackend implementation complete on branch: feature/TIEMPO-362-instance-overrides-backend\n\n## ENDPOINTS IMPLEMENTED\n\n### 1. POST /api/events/:eventId/override\n- Creates or updates an instance override (upsert by instanceKey)\n- Validates: eventId exists, isRepeating=true, valid overrideType\n- Auth: Firebase required\n\n### 2. DELETE /api/events/:eventId/override/:instanceKey\n- Removes override (instanceKey must be URL-encoded)\n- Auth: Firebase required\n\n### 3. GET /api/events/:eventId/overrides\n- Returns: { overrides: [...], eventId, eventTitle, isRecurring }\n- Auth: Anonymous (matches Events GET pattern)\n\n## SCHEMA IMPLEMENTED\n\ninstanceOverrides array stored on event doc:\n```javascript\n{\n  instanceKey: Date,        // Stored as Date (not string)\n  overrideType: String,     // 'modify' | 'cancel' | 'restore'\n  patch: Object,            // For modify type\n  modifiedByFirebaseUid: String,\n  modifiedAt: Date\n}\n```\n\n## EXPANSION CHANGES\n\nexpandRecurringEvent.js now:\n1. Builds lookup map from event.instanceOverrides\n2. For each occurrence, checks for matching instanceKey\n3. cancel: Sets _isCanceled=true, skips unless includeCanceled=true\n4. modify: Merges patch fields into occurrence\n5. Adds _hasOverride, _overrideType, _instanceKey to affected occurrences\n\n## NOTES\n\n1. instanceKey stored as Date object (MongoDB handles ISO conversion)\n2. modifiedBy uses Firebase UID (string), not ObjectId\n3. DELETE endpoint requires URL-encoded instanceKey\n4. No RRULE validation of instanceKey (trusts frontend)\n\nReady for testing when you are!\n\n- Fulton"
+}
