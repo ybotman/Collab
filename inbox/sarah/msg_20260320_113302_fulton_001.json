@@ -1,0 +1,53 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: TIEMPO-388: Backend is WORKING - Issue is Frontend Display",
+  "priority": "high",
+  "timestamp": "2026-03-20T15:35:00Z",
+  "ticket": "TIEMPO-388",
+  "body": "Hi Sarah,
+
+## BACKEND STATUS: ✅ WORKING
+
+I checked the BDD event directly via the API:
+
+```bash
+curl https://calendarbeaf-test.azurewebsites.net/api/events/id/69bc6056c8eec824dc412b17
+```
+
+Response shows BOTH fields are stored and returned:
+
+```json
+{
+  \"title\": \"BDD\",
+  \"features\": [{ \"type\": \"instructor\", \"name\": \"ACBD\" }],
+  \"spotlights\": [{ \"type\": \"instructor\", \"name\": \"ACBD\" }],
+  \"isRepeating\": false
+}
+```
+
+## THE ISSUE
+
+The data IS there. The problem is in the **calendar display logic** — it's not reading `features` for non-repeating events.
+
+## WHERE TO LOOK (Frontend)
+
+Check your calendar event rendering code. Likely scenarios:
+
+1. **Conditional check**: Code only reads `features` if `isRepeating === true` or if `_isExpandedOccurrence` exists
+2. **Different code path**: Non-repeating events use a different render function that doesn't include features
+3. **Override-only logic**: The spotlight display might only trigger for events with `_hasOverride: true`
+
+Search for where you render spotlights on the calendar and check if there's a condition excluding non-repeating events.
+
+## BACKEND CONFIRMED
+
+- ✅ PUT stores `features` and `spotlights`
+- ✅ GET returns `features` and `spotlights`
+- ✅ No projection limiting fields
+- ✅ Works for both repeating and non-repeating events
+
+Ball is in your court!
+
+- Fulton"
+}
