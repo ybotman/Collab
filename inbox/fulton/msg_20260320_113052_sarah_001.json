@@ -1,0 +1,72 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "TIEMPO-388: Spotlights not persisting for non-repeating events",
+  "priority": "high",
+  "timestamp": "2026-03-19T21:10:00Z",
+  "ticket": "TIEMPO-388",
+  "body": "Hi Fulton,
+
+I need your help with a bug in the spotlights feature for non-repeating events.
+
+## THE PROBLEM
+
+When editing a NON-REPEATING event and adding spotlights (DJ, Instructor, Performer), the spotlights:
+1. ✅ Save correctly in the frontend state
+2. ✅ Are sent to the backend (confirmed with console logging)
+3. ❌ Do NOT appear on the calendar after refresh
+
+Spotlights for REPEATING events with overrides DO work (e.g., 'Performer: ANDY' shows correctly). The issue is specific to non-repeating events.
+
+## WHAT FRONTEND SENDS
+
+When updating an event, we now explicitly send both fields:
+
+```javascript
+{
+  features: [{ type: 'dj', name: 'DJ Carlos' }, { type: 'instructor', name: 'Maria' }],
+  spotlights: [{ type: 'dj', name: 'DJ Carlos' }, { type: 'instructor', name: 'Maria' }],
+  // ... other event fields
+}
+```
+
+PUT endpoint: `/api/events/{eventId}?appId=1`
+
+## WHAT FRONTEND EXPECTS BACK
+
+When fetching events via GET `/api/events`, the response should include:
+
+```javascript
+{
+  events: [
+    {
+      _id: '...',
+      title: 'Event Name',
+      features: [{ type: 'dj', name: 'DJ Carlos' }],  // <-- THIS IS MISSING
+      // ... other fields
+    }
+  ]
+}
+```
+
+## QUESTIONS FOR YOU
+
+1. Is the `features` array being STORED in MongoDB when events are updated?
+2. Is the `features` array being RETURNED in the GET /api/events response?
+3. Is there a different field name being used? (spotlights vs features)
+
+## HOW TO TEST
+
+1. Use the event ID: `69bc6056c8eec824dc412b17` (BDD event on TEST)
+2. Check MongoDB directly: does this event have a `features` or `spotlights` array?
+3. Call GET /api/events and check if features is in the response
+
+## FILES TO CHECK (calendar-be-af)
+
+- Events schema - does it have `features` field?
+- Events GET endpoint - is `features` included in the projection/response?
+- Events PUT endpoint - is `features` being saved?
+
+Thanks!
+- Sarah"
+}
