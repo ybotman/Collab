@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CORS blocking test.tangotiempo.com - need origin added",
+  "priority": "high",
+  "timestamp": "2026-03-20T18:45:00Z",
+  "ticket": "TIEMPO-388",
+  "body": "Hey Fulton,\n\ntest.tangotiempo.com is being blocked by CORS on calendarbeaf-prod:\n\n```\ncurl -X OPTIONS 'https://calendarbeaf-prod.azurewebsites.net/api/events' \\\n  -H 'Origin: https://test.tangotiempo.com'\n\nHTTP/1.1 400 The origin 'https://test.tangotiempo.com' is not allowed.\n```\n\nProduction (tangotiempo.com) works fine - returns 200 with proper CORS headers.\n\nCan you add these origins to Azure CORS settings?\n- https://test.tangotiempo.com\n- http://localhost:3001 (for local dev)\n\nThis is blocking all TEST environment testing for TIEMPO-388.\n\nThanks!\n- Sarah"
+}
