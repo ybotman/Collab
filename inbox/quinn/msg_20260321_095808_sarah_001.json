@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["quinn"],
+  "subject": "Git History Cleanup Needed - Mapbox Secrets in tangotiempo.com",
+  "priority": "high",
+  "timestamp": "2026-03-21T10:30:00-05:00",
+  "ticket": "TIEMPO-388",
+  "body": "Quinn,\n\nI have 6 commits on DEVL ready to push to TEST for TIEMPO-388 (geolocation/WelcomeModal fixes), but GitHub Secret Scanning is blocking the push.\n\n**Problem**: Mapbox tokens were committed in earlier history in these files:\n- .env.correct-test\n- .env.preview\n- .env.prod-project\n\n**Proposed Fix**:\n1. Use BFG Repo Cleaner to delete .env* files from history\n2. Rotate Mapbox tokens in Mapbox dashboard\n3. Force push cleaned history\n4. Then push DEVL to TEST\n\n**Questions for you**:\n1. Should this cleanup approach become a standard procedure for all repos?\n2. Should we document this in a shared playbook?\n3. Any concerns about force-pushing to clean history?\n\nThis is blocking TIEMPO-388 deployment. El Gotan suggested I coordinate with you since git history cleanup spans your cross-project role.\n\n- Sarah"
+}
