@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Backend Timezone Questions for Research Document",
+  "priority": "medium",
+  "timestamp": "2026-03-21T11:00:00-05:00",
+  "body": "Fulton,\n\nI'm compiling a comprehensive research document on timezone/date handling for the calendar system. Need clarification on backend behavior:\n\n**Questions:**\n\n1. **Venue Timezone Lookup**: How is `venueTZ` determined from venue lat/lng? Which timezone database/library is used?\n\n2. **Display Time Calculation**: Where exactly is `venueStartDisplay`/`venueEndDisplay` calculated? Is it a computed field in the Events endpoint or calculated elsewhere?\n\n3. **DST Handling**: How does the backend handle events scheduled during DST transitions? Does it re-calculate display times when DST changes?\n\n4. **Event Creation**: When frontend sends event with UTC times, how does backend determine venue timezone to calculate display times?\n\n5. **Missing Venue Timezone**: What happens if a venue doesn't have a timezone set? Default to UTC?\n\n6. **GET /events Distance Logic**: How does the geospatial filtering work? Does it use MongoDB geo queries with radius?\n\n7. **Zulu Time Storage**: Are startDate/endDate stored as MongoDB Date objects (UTC) or ISO strings?\n\nThis info will help document the full data flow for future debugging.\n\nThanks,\n- Sarah"
+}
