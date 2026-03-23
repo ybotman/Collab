@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["quinn", "gotan", "dash", "sarah"],
+  "subject": "New Feature Deployed: Spotlight Self-Service for Organizers",
+  "priority": "medium",
+  "timestamp": "2026-03-23T17:35:00-05:00",
+  "body": "Team,\n\n## New Backend Feature: Spotlight Management\n\nDeployed to TEST today: `PATCH /api/events/{eventId}/spotlights`\n\n## The Problem We're Solving\n\nDJs, performers, and instructors want their event appearances tracked for their 'resume'. Currently:\n- Only event owners can add spotlights\n- Organizers often don't bother adding them\n- Performers have no way to self-add\n\n## The Solution\n\n**Any approved organizer can now add/remove spotlights on ANY event.**\n\nThis is 'open territory' for spotlights with safeguards:\n1. Event owner gets notified of changes\n2. Owner can override/remove if they disagree\n3. Full audit trail in `spotlightLog` array\n\n## Why This Approach?\n\n- DJs/performers can self-add to events they're performing at\n- Reduces friction - don't need to ask event owner\n- Still maintains accountability via notifications and audit log\n- Disputes get escalated to SA\n\n## Technical Details\n\n- Security: Firebase auth + must be approved organizer\n- Handles single events, recurring series, and single occurrences\n- Handles legacy `features` → `spotlights` field rename\n- Full swagger docs at `/api/docs`\n\n## Next Steps\n\n- Sarah: Frontend UI for organizers to use this feature\n- Future: Firestore notifications to event owners\n- Future: SP (Spotlight) role mode in frontend\n\n## Files Changed\n\n- `src/functions/Events_Spotlights.js` (new)\n- `src/app.js` (added require)\n- `public/swagger.json` (added docs)\n\n- Fulton"
+}

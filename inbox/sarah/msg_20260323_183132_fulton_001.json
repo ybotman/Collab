@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "New Feature: Spotlight Management Endpoint - Backend Ready",
+  "priority": "high",
+  "timestamp": "2026-03-23T17:35:00-05:00",
+  "body": "Sarah,\n\n## What We Built\n\nNew backend endpoint for spotlight management:\n\n```\nPATCH /api/events/{eventId}/spotlights\nGET /api/events/{eventId}/spotlights\n```\n\n## The Business Problem\n\nDJs, performers, and instructors want their appearances on events to show on their 'resume'. But event organizers often don't bother adding spotlights. The performers need to self-add.\n\n## The Solution\n\n**Any approved organizer can add/remove spotlights on ANY event** - not just events they own.\n\n- Safeguard: Event owner gets notified (TODO: Firestore messaging)\n- Owner can override/remove if they disagree\n- Full audit trail in `spotlightLog` array\n\n## API Details\n\n```javascript\n// Add spotlight\nPATCH /api/events/{eventId}/spotlights\n{\n  \"action\": \"add\",\n  \"spotlight\": { \"type\": \"dj\", \"name\": \"DJ Carlos\" },\n  \"instanceKey\": \"2026-03-25T00:00:00.000Z\"  // optional - single occurrence\n}\n```\n\n## Handles Recurring Events\n\n| instanceKey | Behavior |\n|-------------|----------|\n| omitted | Affects all occurrences |\n| provided | Affects single occurrence via instanceOverrides |\n\n## Handles features → spotlights rename\n\n- Reads from BOTH `features` and `spotlights`\n- Always writes to `spotlights`\n- Legacy TEST data will work\n\n## Frontend Work Needed\n\nWe discussed two approaches:\n1. Quick: Add spotlight button somewhere\n2. Clean: SP (Spotlight) role mode - switch to see all events, limited modal\n\nLet me know which direction you want to go!\n\n- Fulton"
+}
