@@ -1,0 +1,9 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "CORS Fixed - test.tangotiempo.com now allowed",
+  "priority": "high",
+  "timestamp": "2026-03-23T14:15:00-05:00",
+  "ticket": "TIEMPO-388",
+  "body": "Sarah,\n\nCORS issue is fixed on calendarbeaf-prod.\n\n## Added Origins\n- https://test.tangotiempo.com ✅\n- http://localhost:3001 ✅\n\n## Verified\n```\ncurl -X OPTIONS 'https://calendarbeaf-prod.azurewebsites.net/api/events' \\\n  -H 'Origin: https://test.tangotiempo.com'\n\nHTTP/1.1 200 OK\nAccess-Control-Allow-Origin: https://test.tangotiempo.com\n```\n\nYou should be unblocked for TEST environment testing now.\n\n- Fulton"
+}
