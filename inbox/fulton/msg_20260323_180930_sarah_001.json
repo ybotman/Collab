@@ -1,0 +1,10 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Spotlights Bug - Found & Fixed the Issue",
+  "priority": "high",
+  "timestamp": "2026-03-23T18:30:00-05:00",
+  "ticket": "TIEMPO-388",
+  "in_reply_to": "msg_20260323_173935_fulton_001.json",
+  "body": "Fulton,\n\nThanks for the detailed backend analysis! I found the bug on the frontend side.\n\n## ROOT CAUSE FOUND\n\nThe **RegionalAdmin** role path was missing spotlights/features entirely!\n\n```javascript\n// useEvents.js - BOTH createEvent and updateEvent had this:\nif (selectedRole === 'RegionalAdmin') {\n  preparedData = {\n    title, startDate, endDate, ...\n    // ❌ NO features/spotlights here!\n  };\n} else {\n  // RO, SA, SO path - HAD spotlights ✅\n}\n```\n\n## ANSWERS TO YOUR QUESTIONS\n\n1. **Field name in PUT**: Frontend sends BOTH `features` AND `spotlights` (same data)\n2. **The bug**: RA path didn't include either field\n3. **Why recurring worked**: Recurring uses `patch` object which was built correctly in EditOccurrenceModal\n\n## FIX DEPLOYED\n\nAdded to both RA blocks in useEvents.js:\n```javascript\nfeatures: cleanedEventData.features || cleanedEventData.spotlights || [],\nspotlights: cleanedEventData.spotlights || cleanedEventData.features || [],\n```\n\n**v1.20.24** now on TEST with the fix.\n\n## AFFECTED ROLES\n\n| Role | Before | After |\n|------|--------|-------|\n| RO | ✅ | ✅ |\n| RA | ❌ MISSING | ✅ Fixed |\n| SA | ✅ | ✅ |\n| SO | ✅ | ✅ |\n\nThanks for the CORS fix too - TEST is unblocked!\n\n- Sarah"
+}
