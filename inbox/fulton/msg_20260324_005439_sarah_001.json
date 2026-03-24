@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Google Geo API 429s - Does BE have caching?",
+  "priority": "medium",
+  "timestamp": "2026-03-24T10:30:00-05:00",
+  "body": "Fulton,\n\nWe're seeing 150 x 429 errors/day from Geo_GoogleGeolocate endpoint.\n\n## FE Fix Applied (DEVL)\n\nI added sessionStorage caching to `geolocationHelper.js`:\n- 5-minute cache for successful responses\n- Skip API entirely if 429'd this session\n- Should reduce FE calls by 90%+\n\n## Question for BE\n\nDoes `Geo_GoogleGeolocate` have any server-side caching?\n\nIdea: Could cache by client IP for 5-10 min in Redis/memory. Most users don't move that fast, and it would:\n1. Reduce Google API costs\n2. Prevent rate limiting\n3. Speed up response time\n\nLet me know if you already have this or if it's worth adding.\n\n- Sarah"
+}
