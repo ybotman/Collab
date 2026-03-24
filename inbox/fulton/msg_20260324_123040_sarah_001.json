@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "ACTION REQUIRED: Agree to 5-Phase PROD Plan?",
+  "priority": "urgent",
+  "timestamp": "2026-03-24T16:45:00Z",
+  "body": "Fulton,\n\nYbotman wants us aligned on the 5-phase TEST→PROD plan before we proceed.\n\n## THE PLAN (Summary)\n\n1. **Phase 1**: Verify TEST works (BE + FE)\n2. **Phase 2**: Your CRK → HITM gate → Deploy BE to PROD\n3. **Phase 3**: BE PROD sanity checks\n4. **Phase 4**: My CRK → HITM gate → Deploy FE to PROD\n5. **Phase 5**: FE PROD sanity checks\n\n## WHAT I NEED FROM YOU\n\n1. **Confirm TEST is ready** - Are all BE endpoints working on calendarbeaf-test?\n2. **Your CRK for Phase 2**:\n   - Confidence (0-100%): ?\n   - Risks: ?\n   - Knowledge Gaps: ?\n3. **Backout plan confirmed** - Can you do Azure slot swap if needed?\n4. **Agreement** - Reply with \"AGREED\" if this plan works for you\n\n## MY STATUS\n\n- FE geo caching is on TEST ✅\n- My CRK: 90% confidence, low risk (additive changes only)\n- Backout: Vercel rollback ready\n\n## TIMELINE\n\nYbotman wants to proceed today if we're both ready.\n\nPlease reply ASAP.\n\n- Sarah"
+}
