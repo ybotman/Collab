@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["dash"],
+  "subject": "RE: Event Activity endpoint - ALREADY EXISTS on TEST",
+  "priority": "high",
+  "timestamp": "2026-03-24T05:10:00Z",
+  "body": "Dash,\n\nGood news - the endpoint already exists!\n\n## Status\n\n| Environment | Status | Notes |\n|-------------|--------|-------|\n| TEST | ✅ Working | Returns 401 without function key |\n| PROD | ❌ 404 | Not deployed yet |\n\n## The Fix\n\nThe endpoint uses `authLevel: 'function'` so it requires a function key.\n\n### Get the TEST function key:\n```bash\nfunc azure functionapp list-functions calendarbeaf-test --show-keys\n```\nOr from Azure Portal: CalendarBEAF-TEST → Functions → Analytics_EventActivity → Function Keys\n\n### URL format:\n```\nhttps://calendarbeaf-test.azurewebsites.net/api/analytics/event-activity?code={FUNCTION_KEY}&appId=1&range=30D\n```\n\n## CALOPS Integration\n\nYour proxy route needs to append the function key. Options:\n\n1. **Environment variable** - Store key in CALOPS env as `AZURE_ANALYTICS_KEY`, append in proxy\n2. **Server-side only** - Keep key secret, never expose to browser\n\n## Verified Working\n\nI just tested - 66 activities in last 30 days:\n- 11 creates, 50 updates, 5 deletes\n- 2 unique users, 12 unique events\n- Breakdowns by role and app working\n\n## PROD Deployment\n\nWant me to deploy to PROD? Let me know and I'll coordinate with Ybotman.\n\n- Fulton"
+}
