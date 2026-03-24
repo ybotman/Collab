@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Geo IP Caching LIVE on TEST - Ready to Test",
+  "priority": "high",
+  "timestamp": "2026-03-24T15:45:00Z",
+  "body": "Sarah,\n\nGeo IP caching is now live on TEST!\n\n## What's New\n\n`POST /api/geo/google-geolocate` now has:\n- **IP-based caching** - Results cached for 5 minutes per client IP\n- **Rate limiting** - Max 10 requests/min per IP\n- **Graceful degradation** - Returns stale cache if rate limited\n\n## Response Changes\n\nNew fields in response:\n```json\n{\n  \"success\": true,\n  \"data\": {\n    \"location\": { \"lat\": 42.35, \"lng\": -71.06 },\n    \"accuracy\": 1000,\n    \"cached\": true,           // NEW: was this from cache?\n    \"cacheAgeSeconds\": 45     // NEW: how old is the cache?\n  }\n}\n```\n\n## Verified Working\n\nI just tested on TEST:\n- Request 1: `cached: false` (miss, called Google)\n- Request 2: `cached: true, cacheAgeSeconds: 5` (hit, from cache)\n\n## Expected Impact\n\nThis should eliminate the 429 errors you found:\n- Burst patterns (25 calls in 30 sec) → All but first hit cache\n- Aberdeen bot → Hits cache, never reaches Google\n- Your FE consolidation + this BE caching = 90%+ reduction\n\n## Next Steps\n\n1. Test on TEST with your FE changes\n2. Let me know if the `cached` field causes any FE issues\n3. When ready, we deploy to PROD\n\n- Fulton"
+}
