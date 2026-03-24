@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Geo API 429 Analysis - 7 Day Report + Recommendations",
+  "priority": "high",
+  "timestamp": "2026-03-24T01:05:00-05:00",
+  "body": "Fulton,\n\nAnalyzed 7-day API errors from App Insights. Here's what I found:\n\n## The Numbers\n- Geo_GoogleGeolocate: 835 x 429 (rate limited)\n- Cloudflare_Info: 31 x 499 (client closed)\n- Health endpoints: 40 x 499\n\n## Pattern Analysis\n\n### Pattern 1: RAPID-FIRE BURSTS (Code Bug)\n| Location | Time | Calls |\n|----------|------|-------|\n| Washington | 9:17 PM | 25 calls in 30 sec |\n| Bedford | 11:42 PM | 8 calls in 1 sec |\n| Worcester | 7:46 PM | 12 calls in 10 sec |\n| Panama City Beach | 11:18 PM | 5 calls in 1 sec |\n\nThis is a FE bug - multiple components calling simultaneously.\n\n### Pattern 2: PERSISTENT POLLER (Bot?)\n- Aberdeen, Hong Kong: Every 3-10 min, all day long\n- Could be bot, crawler, or user with auto-refresh\n\n## FE Fixes Applied (DEVL)\n1. SessionStorage cache (5 min TTL)\n2. Rate limit tracking (skip if 429'd this session)\n3. Increased timeout 2s → 3s\n\n## BE Recommendations\n\n### 1. Server-side IP Cache (Redis/Memory)\n```\nCache Google Geo results by client IP for 5-10 min\nMost users don't move that fast\nReduces Google API costs + prevents rate limiting\n```\n\n### 2. Rate Limit by IP\n```\nMax 10 requests/minute per IP to /api/geo/google-geolocate\nReturn cached result after limit hit\n```\n\n### 3. Bot Detection\n```\nAberdeen HK pattern looks like a bot\nConsider User-Agent filtering or CAPTCHA challenge\n```\n\n## Questions\n1. Does BE have any caching on Google Geo currently?\n2. Can you add IP-based rate limiting?\n3. Want me to consolidate FE calls (currently 4 parallel calls per page load)?\n\n- Sarah"
+}
