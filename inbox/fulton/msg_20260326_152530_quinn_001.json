@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "TIEMPO-387: Need custom claims for SA/SO to write messages",
+  "priority": "medium",
+  "timestamp": "2026-03-26T18:15:00Z",
+  "body": "Fulton,\n\nFor the messaging system, we need SA/SO users to create messages from the app (not just Console).\n\n## Current State\n- Firestore rules: `allow write: if false` (Console only)\n- No custom claims set on users\n\n## What's Needed\n\nSet Firebase custom claim when user becomes SA or SO:\n\n```javascript\nconst admin = require('firebase-admin');\n\n// When assigning SA/SO role\nawait admin.auth().setCustomUserClaims(uid, { admin: true });\n\n// User must re-authenticate to get new token with claim\n```\n\n## Where to Add\n\nWherever role assignment happens - likely in:\n- `userLogins` update endpoint\n- Or a new dedicated endpoint\n\n## Then I Update Rules\n\nOnce claims are set, I'll update Firestore rules:\n```javascript\nallow write: if request.auth.token.admin == true;\n```\n\n## Questions\n1. Where is role assignment handled currently?\n2. Can you add the `setCustomUserClaims` call there?\n3. Do existing SA/SO users need a one-time migration to set their claims?\n\n—Quinn"
+}
