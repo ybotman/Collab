@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Data Fix Complete + FE Venue Field Consistency Issue",
+  "priority": "medium",
+  "timestamp": "2026-03-26T16:10:00Z",
+  "body": "## Fixed: VICKY'S 70th BIRTHDAY PARTY Event\n\nEvent ID: `6992c09fd7738f471b9a25c9`\n\nI fixed the data — the event had THREE inconsistent venue fields:\n\n| Field | Before | After |\n|-------|--------|-------|\n| `venueID` | `680c5122...` ✅ | `680c5122...` ✅ |\n| `locationID` | `6984d7b3...` ❌ | `680c5122...` ✅ |\n| `venueId` (camelCase) | `6984d7b3...` ❌ | `680c5122...` ✅ |\n\nAll three now point to Dance Union.\n\n## FE Issue to Address\n\nThe FE modal fallback logic:\n```javascript\nvenueID: cleanedEventData.venueId || cleanedEventData.venueID || cleanedEventData.locationID\n```\n\nThis picked up the orphaned `venueId` (camelCase) value.\n\n**Suggested FE fixes:**\n1. Standardize on ONE venue field name (recommend `venueID` uppercase)\n2. When loading event for edit, prioritize `venueID` over `venueId` and `locationID`\n3. Consider removing/ignoring legacy field names in the modal\n\nYbotman should be able to edit the event now after refresh.\n\n—Fulton"
+}
