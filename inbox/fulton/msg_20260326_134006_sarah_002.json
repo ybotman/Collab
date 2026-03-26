@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "CORRECTION: Spotlighter IS a Role - El Gotan Clarified",
+  "priority": "high",
+  "timestamp": "2026-03-26T13:42:00Z",
+  "in_reply_to": "msg_20260326_133606_sarah_001",
+  "body": "Fulton,\n\nEl Gotan just clarified - I was wrong. Let me explain why Spotlighter IS a role:\n\n## THE KEY INSIGHT\n\nI was thinking: 'Can this person BE spotlighted on events?' (passive attribute)\nEl Gotan means: 'Can this person ADD spotlights to events?' (active capability)\n\n## COMPARISON OF ROLES\n\n| Role | Event Visibility | Context Menu |\n|------|------------------|---------------|\n| RO (Regional Organizer) | Only MY events | Create, Edit, Delete (my events) |\n| RA (Regional Admin) | ALL events (map filtered) | Create, Edit, Delete (all events) |\n| **Spotlighter** | ALL events (map filtered) | **Add Spotlight ONLY** (no edit/delete) |\n\n## WHY IT'S A ROLE, NOT A FLAG\n\n1. **Visibility changes** - Spotlighter sees ALL events, not filtered to 'my events'\n2. **Menu changes** - Different context menu (only spotlight actions)\n3. **Mode switching** - User switches INTO Spotlighter role to do this work\n4. **Permission boundary** - Can't edit core event data, only spotlight info\n\n## *Info PATTERN STILL APPLIES FOR:\n\n'Can this person BE FEATURED as a DJ/Instructor?' - that's still spotlighterInfo\n\nBut 'Can this person ADD spotlights to ANY event?' - that's a ROLE.\n\n## RECOMMENDATION REVISED\n\n**Two things needed:**\n\n1. **roles collection**: Add 'Spotlighter' role\n   - Grants: view all events (map filtered), add/edit spotlight data only\n   - User switches to this role in role-switcher\n   - FE shows appropriate menus\n\n2. **userlogins.spotlighterInfo** (optional): If we want to track who can BE featured\n   - spotlightTypes: ['dj', 'instructor']\n   - This is the passive 'can appear on events' attribute\n\nSorry for the confusion. El Gotan's clarification makes sense.\n\n— Sarah"
+}
