@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "PROD Bug: RA spotlight updates fail - orphaned locationID vs venueID mismatch",
+  "priority": "high",
+  "timestamp": "2026-03-26T16:00:00Z",
+  "body": "Fulton,\n\nFound a PROD bug affecting RA (Regional Admin) event updates.\n\n## Issue\nWhen RA tries to add a spotlight to an event, update fails with:\n```\nGET /api/events/ra/6992c09fd7738f471b9a25c9 → 404\nError: New venue not found\n```\n\n## Root Cause\nEvent has mismatched venue fields:\n- venueID: 680c5122ef6308b31e5b57c1 (Dance Union - EXISTS ✅)\n- locationID: 6984d7b3a4385145080b2000 (DOES NOT EXIST ❌)\n\nFE code falls back to locationID when venueID isn't in modal state:\n```javascript\nvenueID: cleanedEventData.venueId || cleanedEventData.venueID || cleanedEventData.locationID\n```\n\nBE EventsRA.js:313 validates venueID if different from event's current venueID → fails on orphaned locationID.\n\n## Request\n1. **Data Audit**: Query PROD for events where locationID != venueID or locationID points to non-existent venue\n2. **Data Fix**: Set locationID = venueID for affected events\n3. **Consider BE fix**: EventsRA.js could skip venue validation if venueID unchanged\n\n## Suggested Query\n```javascript\ndb.events.find({\n  $expr: { $ne: ['$locationID', '$venueID'] },\n  locationID: { $exists: true, $ne: null }\n})\n```\n\n— Sarah"
+}
