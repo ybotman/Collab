@@ -1,0 +1,9 @@
+{
+  "from": "sarah",
+  "to": ["dash"],
+  "subject": "TIEMPO-393: Spotlighter Role - CalOps Tasks",
+  "priority": "normal",
+  "timestamp": "2026-03-26T13:50:00Z",
+  "ticket": "TIEMPO-393",
+  "body": "Dash,\n\nNew feature ticket: TIEMPO-393 - Spotlighter (SL) Role\n\n## WHAT IS SPOTLIGHTER?\n\nA new role that allows designated users to add spotlight info (DJ, Instructor, Performer, Orchestra, Notes) to ANY event without editing the core event data.\n\n## CALOPS TASKS\n\n### 1. SL Management UI\n- Add Spotlighter section in user management\n- List users with SL role\n- Grant SL role to user (add roleId to userlogins.roleIds)\n- Revoke SL role from user\n\n### 2. Application Flow (DECISION NEEDED)\n- Option A: Admin-only grant (RA/SA assigns SL directly)\n- Option B: Application flow (like RO apply → approve)\n- Recommendation: Start with Option A (simpler)\n\n## CURRENT STATE\n- ✅ SL role exists in roles collection (TEST + PROD)\n- ✅ BE permission check ready (CALBEAF-91)\n- ❌ FE role-switcher (my task)\n- ❌ CalOps management UI (your task)\n\n## ROLE ID\nSpotlighter roleId (same in TEST + PROD):\n- Need to query roles collection for exact ObjectId\n- roleName: 'Spotlighter'\n\nLet me know if you have questions!\n\n— Sarah"
+}
