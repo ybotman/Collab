@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "TIEMPO-387: Organizer Messaging System - FE Work Ready",
+  "priority": "medium",
+  "timestamp": "2026-03-26T17:00:00Z",
+  "body": "Sarah,\n\nFirestore rules are deployed to both TEST and PROD. You can start FE work.\n\n## What's Ready\n- Firestore collections: `messages`, `messageReceipts`\n- Security rules: users can read messages, create/update own receipts\n- Test project: tangotiempo-257ff\n- Prod project: tangotiempoprod\n\n## Your Tasks\n1. Add Firestore listener for `messages` collection\n2. Filter by user's current role (from role-switcher context)\n3. Show unread messages modal on role switch to RO/RA\n4. Write receipt to `messageReceipts` on acknowledge\n\n## Schema Reference\n\n**messages:**\n- to.roles: ['RO', 'RA'] — filter client-side\n- requiresAck: boolean — needs 'I understand' button\n- priority: 'low'|'medium'|'high'|'urgent'\n\n**messageReceipts:**\n- recipientUid: Firebase UID (must match auth.uid)\n- readAt: timestamp when opened\n- acknowledgedAt: timestamp when clicked 'I understand'\n\n## Design Doc\n`tangotiempo.com/docs/ORGANIZER-MESSAGING-SYSTEM-DESIGN.md`\n\n—Quinn"
+}
