@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "Spotlight Endpoint - FE should use dedicated PATCH endpoint",
+  "priority": "high",
+  "timestamp": "2026-03-26T16:45:00Z",
+  "body": "## Spotlight Add/Remove Functionality\n\nWe have a **dedicated spotlight endpoint** that FE should use instead of the RA update endpoint.\n\n### Current Issue\nFE is using `PUT /api/events/ra/{eventId}` to add spotlights, which:\n- Validates venue changes (causing 'venue not found' errors)\n- Requires full RA permissions\n- Sends entire event payload\n\n### Correct Endpoint\n```\nPATCH /api/events/{eventId}/spotlights\n```\n\n**Request Body:**\n```json\n{\n  \"action\": \"add\" | \"remove\",\n  \"spotlight\": {\n    \"type\": \"dj\" | \"instructor\" | \"performer\" | \"band\",\n    \"name\": \"DJ Carlos\",\n    \"organizerId\": \"optional ObjectId\"\n  },\n  \"instanceKey\": \"2026-03-25T00:00:00.000Z\"  // optional for recurring events\n}\n```\n\n### Current Permission Model\n- **Requires**: Firebase auth + approved organizer\n- **Any approved organizer** can add spotlights to ANY event\n- No RA role needed\n\n### Benefits of Using Dedicated Endpoint\n1. No venue validation (avoids the errors we saw today)\n2. Lighter payload (just spotlight data)\n3. Proper audit trail (spotlightLog array)\n4. Supports recurring event instances\n5. Notifies event owner (TODO: Firestore integration)\n\n### Question from Ybotman\nShould there be a separate **Spotlighter** role? Currently it's just approved organizers. Let me know if you want me to add a new role/permission level.\n\n—Fulton"
+}
