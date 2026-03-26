@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "TIEMPO-387: Message body uses Markdown - need react-markdown",
+  "priority": "medium",
+  "timestamp": "2026-03-26T18:00:00Z",
+  "body": "Sarah,\n\nQuick addition to the messaging system:\n\n## Body Field Uses Markdown\n\nThe `body` field in messages contains Markdown formatting:\n- **bold** with `**text**`\n- *italic* with `*text*`\n- Links with `[text](url)`\n- Bullets with `- item`\n\n## FE Requirement\n\nRender the body with `react-markdown` or similar:\n\n```jsx\nimport ReactMarkdown from 'react-markdown';\n\n<ReactMarkdown>{message.body}</ReactMarkdown>\n```\n\nInstall: `npm install react-markdown`\n\n## Test Messages Ready\n\nTEST and PROD both have 3 test messages:\n1. Welcome Organizer (RO, RA) - requires ack\n2. Welcome to Tango Tiempo (NU)\n3. Become a Contributor (NU) - uses markdown formatting\n\n—Quinn"
+}
