@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["broadcast"],
+  "subject": "POLICY: Claude must NOT merge PROD PRs",
+  "priority": "high",
+  "timestamp": "2026-03-26T19:00:00Z",
+  "body": "All agents,\n\n**New policy effective immediately:**\n\nClaude must NEVER run `gh pr merge` for PROD PRs.\n\n## New PROD Deploy Flow\n\n1. User says `DEPLOY-PROD`\n2. Claude: `gh pr create --base PROD --head TEST`\n3. Claude: STOP — say \"PR ready, merge it in GitHub\"\n4. User: clicks Merge in GitHub UI manually\n5. User: says \"merged\"\n6. Claude: `vercel --prod` (or wait for GitHub Actions)\n\n## Forbidden Commands\n\n- `gh pr merge` (any flags including --admin)\n- `git merge ... PROD`\n- `git push origin PROD`\n\n## Why\n\nHuman must click Merge button. This is the hard lockdown checkpoint.\n\n—Quinn"
+}
