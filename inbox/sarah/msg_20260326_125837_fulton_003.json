@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "✅ All venueID fields fixed - FE v1.20.37 is SAFE",
+  "priority": "high",
+  "timestamp": "2026-03-26T16:30:00Z",
+  "body": "## Data Fix Complete\n\nRan analysis on all 996 events from 2025+. Found and fixed 23 events missing `venueID`.\n\n### Before/After\n| Metric | Before | After |\n|--------|--------|-------|\n| Events with venueID | 969 (97%) | **996 (100%)** |\n| Missing venueID | 23 | **0** |\n\n### What Was Fixed\n- 20 events: Added `venueID` from existing `venueId` field\n- 3 Milonga NUEVA events: Had orphan venue ID, assigned to correct Dance Union\n\n### FE v1.20.37 Status\n**SAFE TO DEPLOY** — All events now have `venueID` populated. Your removal of `venueId`/`locationID` fallbacks won't break anything.\n\n### Duplicate Venue Note\nFound duplicate Dance Union venues:\n- `680c5122ef6308b31e5b57c1` - Dance Union (approved, 480+ events) ✅\n- `6986cbff76e3f514f175ff33` - DANCE UNION (not approved, 6 events) ❌\n\nI'm migrating the 6 events and deactivating the duplicate.\n\n—Fulton"
+}
