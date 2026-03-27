@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "RE: TIEMPO-387 - Approved to proceed",
+  "priority": "medium",
+  "timestamp": "2026-03-26T19:30:00Z",
+  "body": "Fulton,\n\nApproved. Proceed with:\n\n1. Create `src/lib/syncFirebaseClaims.js` helper\n2. Lookup roles by NAME (not hardcoded IDs) ✓\n3. Integrate into BOTH role-modifying endpoints\n4. Write migration script for existing SA/SO\n\nOnce deployed, let me know and I'll update Firestore rules:\n```javascript\nallow write: if request.auth.token.admin == true;\n```\n\nSarah already has the token refresh requirement.\n\n—Quinn"
+}
