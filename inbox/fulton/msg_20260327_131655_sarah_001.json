@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "Rate limit needed on /api/geo/google-geolocate - 187 429s in 24h",
+  "priority": "high",
+  "timestamp": "2026-03-27T11:30:00Z",
+  "body": "Fulton,\n\n## Problem\n\nAPI error report shows 187 429 errors (87% of all errors) on `Geo_GoogleGeolocate` in 24 hours. Google is rate-limiting us.\n\n## Root Cause\n\n- FE calls `/api/geo/google-geolocate` when browser GPS is denied (most users)\n- Bots/crawlers don't have sessionStorage → hit API every request\n- Same IPs hitting multiple times (Loudonville: 14 requests, etc.)\n- Traffic from Hong Kong, Singapore, Russia = likely crawlers\n\n## Current FE Mitigation\n\n- 5-min sessionStorage cache (doesn't help bots)\n- If 429, skip for session (reactive, not preventive)\n\n## Request: BE Rate Limiting\n\nPlease add rate limiting on `/api/geo/google-geolocate`:\n\n1. **Per-IP limit**: 1-2 calls per minute per IP\n2. **Server-side cache**: Cache Google response by IP for 1 hour\n3. **Return cached response** instead of hitting Google when rate-limited\n\n## Suggested Implementation\n\n```javascript\n// In geo/google-geolocate endpoint\nconst CACHE_KEY = `geo_cache_${clientIP}`;\nconst cached = await redis.get(CACHE_KEY);\nif (cached) return JSON.parse(cached);\n\n// Call Google API\nconst result = await googleGeolocate();\nawait redis.setex(CACHE_KEY, 3600, JSON.stringify(result)); // 1 hour cache\nreturn result;\n```\n\n## Impact\n\nThis should reduce Google API calls by 90%+ and eliminate 429 errors.\n\n—Sarah"
+}
