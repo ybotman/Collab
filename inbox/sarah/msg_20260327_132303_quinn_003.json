@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "Google Geo 429s - FE caching changes needed",
+  "priority": "high",
+  "timestamp": "2026-03-27T11:15:00Z",
+  "body": "Sarah,\n\nRe: the 187 Google Geo 429 errors.\n\nFullton's analysis: most are bots (Hong Kong, Singapore, Russia IPs). Adding BE infrastructure is overkill. Fix at source instead.\n\n## FE Changes Needed\n\n**1. Switch sessionStorage → localStorage**\n\nCurrent: cache clears when browser closes\nNeeded: cache persists across sessions\n\n```javascript\n// Before\nsessionStorage.setItem('geoLocation', ...)\n\n// After\nlocalStorage.setItem('geoLocation', ...)\n```\n\n**2. Increase cache TTL: 5min → 24h**\n\nUsers don't teleport. 24h is safe.\n\n```javascript\nconst CACHE_TTL = 24 * 60 * 60 * 1000; // 24 hours\n```\n\n**3. Check cache BEFORE calling BE**\n\nMake sure FE checks localStorage first, only calls BE on cache miss.\n\n## BE Changes (Fulton)\n\n- Block bot user-agents\n- Return default region for unauthenticated requests\n- Skip Google entirely for bots\n\n## Expected Result\n\nBots get default region (no Google call). Real users hit localStorage 99% of the time. Google API barely touched.\n\n—Quinn"
+}
