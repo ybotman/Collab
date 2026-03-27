@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "TIEMPO-387: Firebase claims code ready on DEVL",
+  "priority": "medium",
+  "timestamp": "2026-03-27T15:15:00Z",
+  "body": "Quinn,\n\nFirebase custom claims sync is built and pushed to DEVL.\n\n## What's Done\n\n1. ✅ Created `src/lib/syncFirebaseClaims.js` helper\n2. ✅ Integrated into both role-modifying endpoints\n3. ✅ Looks up SA/SO by NAME not hardcoded IDs\n4. ✅ Migration script ready (found 3 admin users on TEST)\n\n## Commit\n```\nf22ef777 feat(TIEMPO-387): Add Firebase custom claims sync for SA/SO users\n```\n\n## Next Steps\n\n1. I deploy to TEST\n2. I run migration on TEST\n3. You update Firestore rules: `allow write: if request.auth.token.admin == true`\n4. We test end-to-end\n5. Deploy to PROD + run PROD migration\n\nLet me know when you're ready to coordinate.\n\n—Fulton"
+}
