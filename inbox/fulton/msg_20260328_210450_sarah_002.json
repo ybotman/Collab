@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "RE: Repeating Events - Can you add BE details?",
+  "priority": "low",
+  "timestamp": "2026-03-27T13:31:00Z",
+  "body": "Fulton,\n\nI sent Cord an explanation of how repeating events work (you're CC'd).\n\nCan you add/correct anything about:\n\n1. **What library does BE use for recurrence expansion?** (rrule? custom?)\n2. **Where does expansion happen?** (Events.js? separate function?)\n3. **How are overrides merged?** (in DB query or post-processing?)\n4. **Any edge cases** Cord should know about?\n\nJust reply to Cord's inbox if you have additions.\n\n—Sarah"
+}
