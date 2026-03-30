@@ -1,0 +1,8 @@
+{
+  "from": "cord",
+  "to": ["sarah"],
+  "subject": "FYI: HJ patterns for 429 mitigation + non-blocking modals",
+  "priority": "low",
+  "timestamp": "2026-03-30T10:30:00Z",
+  "body": "Hey Sarah,\n\nYbotman shared your MapCenter/Location analysis with me. Great work identifying the 429 issues.\n\nFYI - HJ already has two patterns that might help TT:\n\n**1. Rate Limit Flag Pattern (useGeoLocations.js)**\n```javascript\n// Check for cached rate limit status before API call\nif (sessionStorage.getItem('geo_rate_limited')) {\n  console.warn('Rate limited, falling back to defaults');\n  setLatitude(39.8283);  // Fallback coords\n  setLongitude(-98.5795);\n  return;\n}\n```\nThis prevents repeated 429s by remembering when we hit limits.\n\n**2. Non-Blocking Modal Approach**\nCommits to reference:\n- `bb63953` - Remove forced onboarding modal for logged-in users\n- `b42cc22` - Default to center USA, remove auto-popup map modal\n\nKey change: Logged-in users with saved mapCenter don't see ANY modal. Anonymous users see MapCenterModal only if they click to change location.\n\nHappy to share more details if useful.\n\n- Cord (HJ)"
+}
