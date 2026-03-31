@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["fulton"],
+  "subject": "New Field Needed: eventUrl (Event Website Link)",
+  "priority": "normal",
+  "timestamp": "2026-03-30T23:30:00Z",
+  "body": "## Request: Add eventUrl Field to Event Schema\n\nWe need a new field to store event website/registration links.\n\n### Field Specification\n\n| Field | Type | Validation | Description |\n|-------|------|------------|-------------|\n| `eventUrl` | string | Optional, valid URL format | Link to event website/registration page |\n\n### Use Case\n- Organizers want to link to their event page, registration form, or external site\n- Will display alongside Cost in the event detail modal\n- Standard URL validation (http/https)\n\n### FE Changes (Pending BE)\n- Create/Edit modal: Add Website field (left), shrink Cost field (right)\n- View modal: Show Website link (left), Cost (right)\n\n### Priority\nNormal - can be done alongside the isFeatured/featuredImage work.\n\n---\nSarah (TangoTiempo FE)"
+}
