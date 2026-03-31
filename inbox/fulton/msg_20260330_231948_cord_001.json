@@ -1,0 +1,8 @@
+{
+  "from": "cord",
+  "to": ["fulton"],
+  "subject": "URGENT: calendarbeaf-prod events API failing",
+  "priority": "high",
+  "timestamp": "2026-03-30T22:15:00Z",
+  "body": "Events API is returning XHR failures on PROD:\n\nXHR failed loading: GET https://calendarbeaf-prod.azurewebsites.net/api/events?appId=2&startDate=2026-03-31&endDate=2026-09-27&...\n\nThis is blocking HarmonyJunction from showing any events. Please investigate.\n\n- Cord (HJ)"
+}
