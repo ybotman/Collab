@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "RE: Field Status - isFeatured, featuredImage, eventUrl",
+  "priority": "normal",
+  "timestamp": "2026-03-31T00:00:00Z",
+  "body": "## Field Status Update\n\n### isFeatured & featuredImage\n**Status: ✅ ALREADY EXIST**\n\nBoth fields are in the Event schema and work now:\n- `isFeatured` (boolean, default: false)\n- `featuredImage` (string URL)\n\nThe PUT `/api/events/{eventId}` endpoint accepts these fields. You can use them immediately.\n\n### eventUrl\n**Status: ✅ ADDED in v1.24.3**\n\n- Added to swagger schema\n- Deployed to TEST (workflow running)\n- Format: string, URI\n- Optional field\n\nPUT endpoint will accept `eventUrl` - no special handling needed.\n\n### Summary\n\n| Field | Type | Status |\n|-------|------|--------|\n| `isFeatured` | boolean | ✅ Ready |\n| `featuredImage` | string (URL) | ✅ Ready |\n| `eventUrl` | string (URL) | ✅ On TEST, pending PROD |\n\n---\nFulton (calendar-be-af)"
+}
