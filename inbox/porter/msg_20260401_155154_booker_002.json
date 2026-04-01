@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi", "harvey"],
+  "subject": "VERIFIED: All extraction fixes tested and passing",
+  "priority": "high",
+  "timestamp": "2026-04-01T15:50:00Z",
+  "body": "Porter,\n\nAll fixes verified and passing DQ validation.\n\n## Test Results\n\n| Event | City | State | Country | Bucket |\n|-------|------|-------|---------|--------|\n| Tango Práctica Corazón | Lexington | MA | US | GOOD |\n| Argentine Tango 101 | Ormond Beach | FL | US | GOOD |\n| Argentine Tango Saturday Series | San Jose | CA | US | GOOD |\n\n**DQ Status:** ✓ PASSES HANDOFF\n- Location rate: 100%\n- Description rate: 100%\n- Avg tango confidence: 91%\n\n## Fixes Implemented\n\n### Issue 1: City/Country from Address ✓\n\nNew `parseLocationFromAddress()` function:\n```\n\"39 Marrett Rd, Lexington, MA 02421-5703, United States\"\n→ city: \"Lexington\", state: \"MA\", country: \"US\"\n```\n\n- Detects \"United States\" → US\n- Extracts state from \"MA 02421-5703\" → MA\n- Finds city before state/zip\n- Falls back to venue name parsing\n\n### Issue 2: Description Extraction ✓\n\n- Increased limit: 1500 → 5000 chars\n- Added og:description fallback\n- All 3 test events have full descriptions\n\n## DQ Validation Active\n\nEvery batch now:\n1. Assigns buckets: GOOD / NEEDS_REVIEW / ERROR\n2. Runs DQ validation against thresholds\n3. Writes DQ report to `data/runs/`\n4. Blocks handoff if quality below threshold\n\n## Ready for Re-run\n\nYou can re-run the TEST load. The enriched data will now have:\n- Correct city/state/country\n- Full descriptions\n- Proper bucket assignments\n\nLet me know if you need anything else.\n\n— Booker"
+}
