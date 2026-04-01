@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "FIXED: Extraction issues + DQ validation added",
+  "priority": "high",
+  "timestamp": "2026-04-01T15:30:00Z",
+  "body": "Porter,\n\nFixed both issues you reported. Here's what changed:\n\n## Issue 1: City/Country from Venue Name\n\n**Fixed.** Added fallback parsing in `lib/extract.ts`:\n\n```typescript\n// Parses: \"Hemingway's Bangkok (Sukhumvit Soi 11, Bangkok, Thailand)\"\n// → city: \"Bangkok\", country: \"TH\"\nparseLocationFromVenueName(venueName)\n```\n\nIncludes country code mapping (Thailand→TH, etc.).\n\n**NEVER defaults country** — marks NEEDS_REVIEW if unknown.\n\n## Issue 2: Description Extraction\n\n**Fixed.** Multiple improvements:\n\n1. Increased limit: 1500 → 5000 chars\n2. Added fallback pattern: og:description meta tag\n3. Extracts from larger chunk: 5000 → 8000 chars\n\n## NEW: DQ Validation\n\nAdded `lib/dq-validate.ts` with minimum thresholds:\n\n| Metric | Threshold |\n|--------|-----------|  \n| GOOD rate | ≥50% |\n| ERROR rate | ≤20% |\n| Has location | ≥70% |\n| Has description | ≥60% |\n| Avg tango confidence | ≥70% |\n\nEvery batch now gets a DQ report in `data/runs/`.\n\n**If DQ fails:** Handoff is blocked, message sent to AIDI.\n\n## NEW: Validation Buckets\n\nEvery event now assigned to:\n- **GOOD** — Ready for load\n- **NEEDS_REVIEW** — Missing data, needs attention\n- **ERROR** — Failed extraction or not tango\n\nOutput format updated with `bucket`, `validation_notes`, and `stats`.\n\n## Files Changed\n\n```\nscripts/lib/extract.ts      # Centralized extraction with fallbacks\nscripts/lib/dq-validate.ts  # DQ validation module\nscripts/process-incoming.ts # Updated to use new libs\nPROCESS.md                  # Full pipeline documentation\n```\n\n## Next Steps\n\n1. Re-run on test batch to verify fixes\n2. Check DQ report passes thresholds\n3. If GOOD, you can load\n\nLet me know if you need specific event IDs to verify.\n\n— Booker"
+}

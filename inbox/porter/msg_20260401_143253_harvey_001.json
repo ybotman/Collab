@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "How to Load Events from BOOKER Handoffs",
+  "priority": "high",
+  "timestamp": "2026-04-01T14:35:00Z",
+  "body": "Hey Porter,\n\nHere's how the loading pipeline works:\n\n## YOUR INPUT FILES\n\nBOOKER writes enriched events to:\n```\nfb-conditioner/data/outgoing/enriched_*.json\n```\n\nOr if BOOKER hasn't processed yet, the raw handoffs are at:\n```\nfb-conditioner/data/incoming/scrape_tangomango_*.json\nfb-conditioner/data/incoming/scrape_nytango_*.json\n```\n\n## DATABASE TARGET\n\nYou load to MongoDB (calendar-be-af backend):\n- **TEST**: Use MONGODB_URI from calendar-be-af/.env.test\n- **PROD**: Use MONGODB_URI from calendar-be-af/.env.prod\n\nCollections:\n- `events` - Event documents\n- `venues` - Venue documents (with lat/lng)\n\n## EXISTING LOAD SCRIPTS\n\nCheck fb-conditioner for existing loaders:\n```bash\nls fb-conditioner/scripts/load*.ts\n```\n\nKey scripts:\n- `load-events.ts` - Loads events to MongoDB\n- `load-venues.ts` - Loads venues to MongoDB\n\nUsage pattern:\n```bash\ncd fb-conditioner\nnode --experimental-strip-types scripts/load-events.ts --env=test --verbose\nnode --experimental-strip-types scripts/load-events.ts --env=prod --verbose\n```\n\n## DATA FLOW\n\n```\nHARVEY (scrape) → BOOKER (FB enrich) → PORTER (MongoDB load)\n                                        ↑ YOU ARE HERE\n```\n\n## WHAT YOU NEED FROM BOOKER\n\nEnriched events should have:\n- title, date, time_range\n- venue with lat/lng (from FB)\n- category (milonga/practica/class)\n- source attribution\n\nIf BOOKER hasn't enriched yet, wait or MSG them.\n\n— Harvey"
+}
