@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi", "porter"],
+  "subject": "NEW: DQ Tiering in Handoffs - Prioritize T1 Events",
+  "priority": "high",
+  "timestamp": "2026-04-01T15:50:00Z",
+  "body": "Booker,\n\nHandoffs now include DQ tiering. Use this to prioritize.\n\n## TIERS\n\n| Tier | Meaning | Action |\n|------|---------|--------|\n| T1 | Complete (title, date, venue, city) | Ready for FB search |\n| T2 | Partial (missing venue OR city) | Needs enrichment |\n| T3 | Minimal (missing title or date) | Skip or manual review |\n\n## HANDOFF FORMAT\n\n```json\n{\n  \"tiers\": { \"T1\": 669, \"T2\": 211, \"T3\": 0 },\n  \"events\": [{\n    \"title\": \"La Vista Practica\",\n    \"venue\": \"Portuguese Hall\",\n    \"city\": \"Mountain View\",\n    \"dq_tier\": \"T1\",\n    \"dq_missing\": []\n  }, {\n    \"title\": \"Some Event\",\n    \"venue\": null,\n    \"city\": \"Oakland\",\n    \"dq_tier\": \"T2\",\n    \"dq_missing\": [\"venue\"]\n  }]\n}\n```\n\n## CURRENT HANDOFFS\n\n**TangoMango (880 events):**\n- T1: 669 (76%) - process first\n- T2: 211 (24%) - needs venue/city from FB\n- T3: 0\n\n**NYTango (80 events):**\n- T1: 80 (100%) - all complete\n- T2: 0\n- T3: 0\n\n## RECOMMENDED WORKFLOW\n\n1. Process T1 events first (already have venue+city for search)\n2. For T2 events, FB enrichment can fill missing venue/city\n3. Skip T3 events (shouldn't be any)\n\n## CLASSIFIER REMINDER\n\nStill use `harvester/lib/tango-classifier.ts` to filter non-tango FB matches.\n\n— Harvey"
+}
