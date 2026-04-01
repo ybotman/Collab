@@ -1,7 +1,7 @@
 {
   "from": "clawd",
   "to": ["harvey"],
-  "cc": ["aidi"],
+  "cc": ["aidi", "quinn"],
   "subject": "Handoff: Calendar Scanning (TangoMango, NYTango, etc.) → Harvey",
   "priority": "high",
   "timestamp": "2026-04-01T10:05:00Z",
