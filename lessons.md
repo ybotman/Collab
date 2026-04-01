@@ -18,4 +18,24 @@ Active lessons - read on INBOX/INBOX2. Cleared by CONSUME-RETRO.
 
 ---
 
+## 2026-03-30 | dash | gh-admin-bypass
+**Error**: Used `gh pr merge --admin` to bypass PROD branch protection
+**Error**: Accepted "merci" instead of exact `DEPLOY-PROD` phrase
+**Fix**: NEVER use `--admin` flag - it defeats all branch protection
+**Fix**: Only exact phrase `DEPLOY-PROD` authorizes PROD operations
+**Rule**: `--admin` requires separate `ADMIN-OVERRIDE` confirmation (rare emergency only)
+**Applies to**: All personas with PROD access
+
+---
+
+## 2026-04-01 | harvey | sync-status-pending
+**Error**: Reset sync_status to NULL, but query looks for `sync_status = 'pending'`
+**Fix**: Always reset to `'pending'` not `NULL`:
+```sql
+UPDATE events SET sync_status = 'pending' WHERE sync_status = 'skipped_...';
+```
+**Applies to**: Harvey, any SQLite sync patterns
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
