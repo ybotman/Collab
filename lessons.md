@@ -38,4 +38,52 @@ UPDATE events SET sync_status = 'pending' WHERE sync_status = 'skipped_...';
 
 ---
 
+## 2026-04-01 | porter | deprecated-script-shims
+**Error**: DEPRECATED load scripts fail with "Cannot find module ./types.ts"
+**Fix**: Create shim files in DEPRECATED/ that re-export from ../lib/:
+```
+DEPRECATED/types.ts → export { ... } from "../lib/types.ts"
+DEPRECATED/normalize.ts → export { ... } from "../lib/normalize.ts"
+```
+**Applies to**: Porter, anyone using fb-conditioner DEPRECATED scripts
+
+---
+
+## 2026-04-01 | porter | venues-before-events
+**Error**: Events skip with "venue unmatched" even though venue exists in SQLite
+**Fix**: Always load venues BEFORE events:
+```bash
+node scripts/DEPRECATED/load-venues.ts --env=test  # FIRST
+node scripts/DEPRECATED/load-events.ts --env=test  # SECOND
+```
+**Applies to**: Porter, anyone doing MongoDB loads
+
+---
+
+## 2026-04-01 | porter | process-over-patches
+**Error**: Tried to manually fix data issues (empty descriptions, wrong country codes)
+**Fix**: NEVER patch individual records. Instead:
+1. Identify the PATTERN (not just the instance)
+2. MSG the owning team with pattern + suggested process fix
+3. Let them fix their extraction/processing
+4. Document for future detection
+**Rule**: Fix the PROCESS, not the data
+**Applies to**: All personas in the discovery pipeline
+
+---
+
+## 2026-04-01 | porter | dq-before-load
+**Error**: Ran load-events.ts without checking data quality first, got 0 inserts
+**Fix**: ALWAYS run DQ checks before load:
+```sql
+-- What's actually loadable?
+SELECT COUNT(*) FROM fb_events
+WHERE start_dt > datetime('now')
+  AND venue_name IS NOT NULL
+  AND classification NOT IN ('CLASS','UNKNOWN');
+```
+**Applies to**: Porter, anyone doing batch loads
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
