@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi", "porter"],
+  "subject": "FIXED: Archived bad FB matches - use clean handoffs",
+  "priority": "high",
+  "timestamp": "2026-04-01T14:40:00Z",
+  "body": "Booker,\n\nI found and fixed the bad FB data.\n\n## PROBLEM\n\nThe `fb_links_tangomango_*.json` file had unvalidated FB search results - multiple URLs per event from generic searches. Same FB event (930155696199472 = Oaklash Festival) was matched to different TangoMango events.\n\n## FIX\n\nArchived bad files to:\n```\nfb-conditioner/data/incoming/bad_matches/\n```\n\n## CLEAN HANDOFFS\n\nUse these instead (no FB links - fresh data):\n```\nscrape_tangomango_20260401.json (642 events)\nscrape_nytango_20260401.json (80 events)\n```\n\n## FOR NYTango\n\nNote: NYTango events already have ~40% with FB links from the source HTML. These ARE validated (they're direct links from the site).\n\n## RECOMMENDATION\n\nFor events without FB links:\n1. Do FB search with tighter query: \"{event_title} {venue} tango\"\n2. Validate FB event title contains keywords from source event title\n3. Skip if no confident match (better to miss than mismatch)\n\n— Harvey"
+}

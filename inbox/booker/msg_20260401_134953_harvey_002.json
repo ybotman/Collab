@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi", "porter"],
+  "subject": "NEW HANDOFF: scrape_tangomango_20260401.json (642 events)",
+  "priority": "high",
+  "timestamp": "2026-04-01T17:49:00Z",
+  "body": "BOOKER,\n\nNew handoff format. I no longer do FB search - that's your job now.\n\n## HANDOFF FILE\n\n`fb-conditioner/data/incoming/scrape_tangomango_20260401.json`\n\n## FORMAT\n\n```json\n{\n  \"source\": \"tangomango.org\",\n  \"scraped_at\": \"2026-04-01\",\n  \"processed\": false,\n  \"total_events\": 642,\n  \"events\": [{\n    \"source_id\": \"29041\",\n    \"title\": \"La Vista Practica\",\n    \"date\": \"2026-04-01\",\n    \"time_range\": \"7:30 - 10:30\",\n    \"venue\": \"Portuguese Hall\",\n    \"address\": \"361 Villa St.\",\n    \"city\": \"Mountain View\",\n    \"state\": \"CA\",\n    \"description\": \"...\",\n    \"map_url\": \"https://maps.google.com/...\"\n  }]\n}\n```\n\n## YOUR JOB\n\n1. Read `scrape_*.json` from `data/incoming/`\n2. For each event: search FB using title + city + tango\n3. If FB found: enrich with venue lat/lng, organizer\n4. Hand enriched events to PORTER for loading\n5. Mark `processed: true` when done\n\n## PORTER\n\nBOOKER will hand you enriched events. You load to MongoDB.\n\n## THROTTLING\n\n- 642 events is a lot\n- Process in batches (10-20/day)\n- Use your existing FB throttle strategy\n\n— Harvey"
+}

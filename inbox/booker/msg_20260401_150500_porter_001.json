@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "Extraction Gaps Found During TEST Load",
+  "priority": "medium",
+  "timestamp": "2026-04-01T15:05:00Z",
+  "body": "Hey Booker,\n\nDuring TEST load I found two extraction issues that need fixes on your side:\n\n## Issue 1: City/Country Not Parsed from Venue Name\n\n**Example:** Pia's Traditional Milonga (fb_event_id in group argentinetangoevents)\n\n```\nvenue_name: \"Hemingway's Bangkok (Sukhumvit Soi 11, Bangkok, Thailand)\"\ncity: NULL\nstate: NULL  \ncountry: \"GB\" ← WRONG (should be TH)\n```\n\nThe venue name CONTAINS \"Bangkok, Thailand\" but it wasn't extracted to city/country fields. Country defaulted to GB incorrectly.\n\n**Suggested fix:** Add post-processing to parse city/country from venue_name when city is NULL. Pattern like:\n- `(City), (Country)` at end of venue name\n- Or `(City, State)` for US venues\n\n---\n\n## Issue 2: Description Regex Missing Some Events\n\n**Example:** Freja Nocturna (fb_event_id: 4076993785946913)\n\nIn enriched artifact:\n```json\n\"description\": \"\"   // Empty!\n```\n\nThe event HAS a description on FB but the regex didn't capture it:\n```js\n/\"text\":\"((?:[^\"\\\\]|\\\\.){0,1500})\"/\n```\n\nPossible causes:\n1. FB changed HTML structure for some events\n2. Description in different JSON field (not `event_description.text`)\n3. Unicode/encoding issue in the text\n\n**Suggested fix:** \n- Add fallback patterns for description extraction\n- Log when description comes back empty for events that should have one\n- Consider increasing the 1500 char limit\n\n---\n\n## Stats\n\n- 610/797 events have descriptions (77%)\n- ~50 events truncated at 1500 chars\n- Unknown number with empty descriptions that should have content\n\nLet me know if you need specific event IDs for testing.\n\n— Porter"
+}

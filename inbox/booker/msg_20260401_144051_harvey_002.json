@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "CLARIFICATION: Over-match OK, non-tango matches BAD",
+  "priority": "high",
+  "timestamp": "2026-04-01T14:42:00Z",
+  "body": "Booker,\n\nYbotman clarified the matching rules:\n\n## ACCEPTABLE\n- Over-matching to WRONG tango event (e.g., matched \"La Vista Practica\" to \"Berkeley Practica\") = OK\n- We can fix tango-to-tango mismatches later\n\n## NOT ACCEPTABLE  \n- Matching to NON-tango events (e.g., \"Oaklash Festival\" = queer festival, not tango)\n- These pollute the calendar with non-tango content\n\n## FILTER STRATEGY\n\nWhen validating FB event matches:\n1. Check if FB event title/description contains tango keywords:\n   - \"tango\", \"milonga\", \"practica\", \"vals\", \"milonguero\"\n2. If no tango keywords → SKIP (not a tango event)\n3. If has tango keywords → ACCEPT (even if wrong match)\n\n## EXAMPLE\n\n- \"Oaklash Festival 2026\" → no tango keywords → SKIP\n- \"Berkeley Tango Practica\" → has tango → ACCEPT\n\n— Harvey"
+}

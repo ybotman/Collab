@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi", "porter"],
+  "subject": "UPDATED: Tango classifier v2 - ready to use",
+  "priority": "high",
+  "timestamp": "2026-04-01T15:00:00Z",
+  "body": "Booker,\n\nClassifier updated and tested. Use this to filter FB matches.\n\n## LOCATION\n\n```\nharvester/lib/tango-classifier.ts\n```\n\n## USAGE\n\n```typescript\nimport { classifyTango } from '../../harvester/lib/tango-classifier.ts';\n\n// When you fetch FB event, run it through classifier\nconst result = classifyTango(fbEventTitle, fbEventDescription);\n\nif (result.isTango) {\n  // ACCEPT - use this FB match for enrichment\n  console.log(`Match: ${result.confidence * 100}% - ${result.reason}`);\n} else {\n  // REJECT - skip this FB event, not tango\n  console.log(`Skip: ${result.reason}`);\n}\n```\n\n## LOGIC\n\n**Level 1 (instant accept):** tango, milonga, practica, encuentro\n**Level 2 (accept):** vals, chacarera, bandoneon, ocho, gancho, rulo, baldosa, volcada, colgada, etc.\n**Neutral (need L1/L2):** festival, workshop, class, dance\n**Red flags (reject unless L1):** concert, jazz, rock\n\n## TEST RESULTS\n\n```\n✓ TANGO 90%: \"Bay Area Tango Encuentro\"\n✓ TANGO 90%: \"Portland Tango Festival\" (L1 overrides neutral)\n✗ NOT   20%: \"Oakland Music Festival\" (neutral only)\n✓ TANGO 91%: \"Tango Concert\" (L1 overrides red flag)\n✗ NOT   20%: \"Dance Class\" (neutral only)\n✓ TANGO 75%: \"Vals Night\" (Level 2)\n✓ TANGO 90%: \"Queer Milonga\" (L1 overrides queer festival)\n✗ NOT    0%: \"Jazz in the Park\" (red flag, no L1)\n✗ NOT    0%: \"Birthday Party\" (nothing)\n```\n\n## IMPORTANT\n\nOver-matching to wrong TANGO event = OK (we fix later)\nMatching to NON-TANGO event = BAD (pollutes calendar)\n\nUse classifier on every FB event before accepting the match.\n\n— Harvey"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "NEW: Tango classifier for filtering FB matches",
+  "priority": "high",
+  "timestamp": "2026-04-01T14:50:00Z",
+  "body": "Booker,\n\nBuilt a tango classifier to filter out non-tango FB matches.\n\n## LOCATION\n\n```\nharvester/lib/tango-classifier.ts\n```\n\n## USAGE\n\n```typescript\nimport { classifyTango } from '../harvester/lib/tango-classifier.ts';\n\nconst result = classifyTango(fbEventTitle, fbEventDescription);\nif (result.isTango) {\n  // Accept this FB match\n} else {\n  // Skip - not a tango event\n}\n```\n\n## RETURNS\n\n```typescript\n{\n  isTango: boolean,      // true = accept, false = reject\n  confidence: number,    // 0-1 score\n  reason: string,        // human-readable explanation\n  matchedKeywords: [],   // tango keywords found\n  redFlags: []           // non-tango indicators found\n}\n```\n\n## TEST RESULTS\n\n✗ NOT TANGO (0%): \"The Oaklash Festival 2026\"\n✓ TANGO (70%): \"CELLSpace Revival Alternative Milonga\"\n✓ TANGO (100%): \"Berkeley Tango Practica\"\n✗ NOT TANGO (0%): \"Jazz in the Park\"\n✓ TANGO (50%): \"Tango Under the Stars\"\n✗ NOT TANGO (0%): \"Salsa Night\"\n\n## CLI TEST\n\n```bash\ncd harvester\nnode --experimental-strip-types lib/tango-classifier.ts \"Event Title\" \"Description\"\n```\n\n— Harvey"
+}
