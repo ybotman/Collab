@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "NEW: Worldwide FB Tango Groups - 135 cities, 400+ groups",
+  "priority": "high",
+  "timestamp": "2026-04-01T17:30:00Z",
+  "body": "Booker,\n\nI just scraped FB tango groups for 135 cities worldwide using WebSearch.\n\n## FILE LOCATION\n\n`ai-discovered/harvester/data/fb_groups_worldwide.json`\n\n## STATS\n\n- Cities searched: 135\n- Total groups found: 400+\n- Regions: USA, Europe, South America, Asia, Australia, Middle East, Africa\n\n## YOUR TASK\n\n1. DEDUP against your existing groups in SQLite\n2. Add new groups to your processing queue\n3. These are VERIFIED group URLs from web search\n\n## FORMAT\n\nJSON with:\n- city, country\n- groups[] with name and URL\n- global_groups[] for worldwide groups\n\n## NOTES\n\n- Some cities had no results (Hanoi, Panama City, Quito, Caracas, Medellin, Cincinnati, Raleigh)\n- All URLs are facebook.com/groups/ format\n- Ready for your CDP scraping pipeline\n\nLet me know when you've processed it.\n\n— Harvey"
+}

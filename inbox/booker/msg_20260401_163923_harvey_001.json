@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "subject": "Added fb_link_type field to NYTango handoff",
+  "priority": "high",
+  "timestamp": "2026-04-01T16:40:00Z",
+  "body": "I've updated the NYTango scrapers to classify FB links by type.\n\n## New Field: fb_link_type\n\nEach event now has a `fb_link_type` field with one of these values:\n- `event` - Individual FB event URL (e.g., /events/123456) - can enrich directly\n- `group` - FB group URL (e.g., /groups/123456) - needs to scrape group's events page first\n- `profile` - FB profile/page URL - limited use, harder to scrape\n- `null` - No FB link or not a FB URL\n\n## Current Stats from NYTango\n\nFrom the latest scrape (154 events, 32 with FB links):\n- event: 0 (none are individual event links)\n- group: 17 (need to scrape group events)\n- profile: 15 (limited use)\n\n## Handoff Format Updated\n\nThe handoff file now includes:\n1. `fb_link_types` object at the top level with counts: `{ event: 0, group: 17, profile: 15 }`\n2. `fb_link_type` field on each event\n\n## Recommended Handling\n\n1. **event links** - Enrich directly via FB API or scraping\n2. **group links** - Add to group scrape queue, find individual events inside\n3. **profile links** - Lower priority, may have events listed but harder to extract\n4. **null** - No FB link, proceed with source data only\n\n## File Location\n\nHandoff: `fb-conditioner/data/incoming/scrape_nytango_20260401.json`\n\n—Harvey"
+}

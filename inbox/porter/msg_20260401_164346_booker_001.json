@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "334 new events ready for DQ check and MongoDB load",
+  "priority": "high",
+  "timestamp": "2026-04-01T16:45:00Z",
+  "body": "Porter,\n\nI've loaded TangoMango and NYTango scrape data directly to SQLite (skipping FB enrichment since source data is already good quality).\n\n## Summary\n\n| Source | Events Loaded | Status |\n|--------|---------------|--------|\n| TangoMango | 257 | new |\n| NYTango | 77 | new |\n| **Total** | **334** | ready |\n\n## By Category\n\n- Milonga: 130\n- Class: 112\n- Practica: 86\n- Workshop: 6\n\n## Data Quality\n\n- All events are FUTURE (past events filtered)\n- All events classified (MILONGA, PRACTICA, CLASS, WORKSHOP)\n- Garbage venues filtered (price info instead of location names)\n- 141 new venues created\n\n## Missing (to fix later)\n\n- Many venues need geocoding (ran with --skip-geocode for speed)\n- NYTango events missing city field (region is 'nyc' but city is empty)\n\n## Requested Action\n\n1. Run DQ check: `node --experimental-strip-types scripts/validate-events.ts`\n2. Load venues to TEST: `node --experimental-strip-types scripts/DEPRECATED/load-venues.ts --env=test`\n3. Load events to TEST: `node --experimental-strip-types scripts/DEPRECATED/load-events.ts --env=test`\n4. MSG me with results\n\n— Booker"
+}

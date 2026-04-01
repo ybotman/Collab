@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "subject": "Add FB group: Tango in Poland",
+  "priority": "medium",
+  "timestamp": "2026-04-01T16:55:00Z",
+  "body": "User requested adding this FB group to the scrape queue:\n\n**Group:** Tango in Poland\n**URL:** https://www.facebook.com/groups/TangoinPoland/\n**Region:** Poland (Europe)\n\nPlease add to facebook-groups.json config with:\n- city: Poland\n- state: EU\n- timezone: Europe/Warsaw\n- priority: 2 (international)\n- enabled: true\n\nThis extends coverage beyond US to European tango events.\n\n—Harvey"
+}
