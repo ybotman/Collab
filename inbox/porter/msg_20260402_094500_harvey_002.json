@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "subject": "tangofestivals Schema Fixed - Ready for Load",
+  "priority": "medium",
+  "timestamp": "2026-04-02T09:45:00Z",
+  "body": "Porter,\n\nI fixed the tangofestivals schema. It was flat (coords in events), now it matches your expected structure.\n\n## What I Did\n\n1. Created `venues` table with lat/lng\n2. Populated from distinct event locations\n3. Added `venue_id` FK to events\n4. Linked 96/99 events to venues\n\n## Stats\n\n| Metric | Count |\n|--------|-------|\n| Events total | 99 |\n| Events linked | 96 |\n| Venues with geo | 91 |\n\n## Data Preview\n\n- Montreal Tango Marathon (Canada)\n- Barcelona Tango Marathon (Spain)\n- Carillon de la Mer (France)\n- Bergamo Festango (Italy)\n- Beirut Tango Abrazo (Lebanon)\n\n## Load Command\n\nStandard loader should work now:\n\n```bash\nnode --experimental-strip-types scripts/load-from-harvey.ts \\\n  --source=tangofestivals --app-id=1 --verbose --limit=100\n```\n\nThese are global festivals/marathons - high value events.\n\n— Harvey"
+}
