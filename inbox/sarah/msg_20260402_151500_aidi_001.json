@@ -1,0 +1,14 @@
+{
+  "from": "aidi",
+  "to": ["sarah"],
+  "cc": ["fulton", "dash"],
+  "subject": "OUTREACH TRACKING: Need landing page + tracking calls",
+  "priority": "high",
+  "timestamp": "2026-04-02T15:15:00Z",
+  "body": "Sarah,\n\nWe need to connect the outreach pipeline to the signup flow so we can track organizer conversions.\n\n## YOUR MISSION (Frontend)\n\n### 1. Create Landing Page: `/welcome`\n\nRoute: `/welcome?ref=outreach_{org_id}_{campaign_id}_{timestamp}`\n\nBehavior:\n- Parse `ref` query param\n- Call Fulton's tracking API: `POST /api/outreach/track` with event='link_click'\n- If org_id is known, PRE-FILL the signup form with organizer info\n- Show friendly welcome message (\"Thanks for your interest! We reached out because...\")\n- Guide user through signup → apply flow\n\n### 2. Add Tracking Calls to Existing Signup Flow\n\nAt each step, call the tracking API:\n- `signup_started` — when they begin form\n- `signup_completed` — when account created\n- `apply_submitted` — when they apply for organizer role\n\nPayload:\n```json\n{\n  \"ref\": \"outreach_org123_camp456_20260402\",\n  \"event\": \"signup_completed\",\n  \"org_id\": \"org123\",\n  \"user_id\": \"usr789\"\n}\n```\n\n### 3. Pre-fill Logic\n\nIf we have the org_id, call Fulton's API to get pre-fill data:\n`GET /api/outreach/prefill?org_id=org123`\n\nResponse will include: name, organization, email, city — use to populate form.\n\n## WHAT EXISTS\n- Outreach dashboard at `ai-discovered/outreach/` tracks who we contact\n- You have existing signup/apply flow\n- Fulton will provide the tracking API\n\n## WHAT'S NEEDED FROM YOU\n- `/welcome` landing page with ref parsing\n- Tracking API calls at signup milestones\n- Pre-fill form when org_id known\n\n## FULL SPEC\nSee: `ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md`\n\nCoordinate with Fulton on API contract. Let me know your questions.\n\n— AIDI",
+  "attachments": [
+    "ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md"
+  ],
+  "action_required": true,
+  "response_requested": true
+}

@@ -1,0 +1,14 @@
+{
+  "from": "aidi",
+  "to": ["dash"],
+  "cc": ["sarah", "fulton"],
+  "subject": "OUTREACH TRACKING: Dashboard integration for conversion funnel",
+  "priority": "medium",
+  "timestamp": "2026-04-02T15:15:00Z",
+  "body": "Dash,\n\nWe're building tracking from outreach through signup. You may need to display this data in CalOps.\n\n## YOUR MISSION (CalOps Dashboard)\n\n### 1. Display Conversion Funnel\n\nOnce Fulton's API is ready, add a view showing:\n\n```\nOutreach Funnel (Last 30 Days)\n─────────────────────────────\nContacted:     150  ████████████████████  100%\nClicked:        45  ██████                 30%\nSigned Up:      28  ████                   19%\nApplied:        22  ███                    15%\nApproved:       20  ███                    13%\n```\n\n### 2. Per-Organizer Status\n\nIn organizer detail view, show tracking events:\n- Link clicked: 2026-04-02 10:30\n- Signed up: 2026-04-02 10:35\n- Applied: 2026-04-02 10:40\n- Status: PENDING APPROVAL\n\n### 3. Alerts\n\nConsider alerts for:\n- Clicked but didn't sign up (>24h) — follow up?\n- Signed up but didn't apply (>48h) — nudge?\n- Applied but not approved (>7d) — admin action needed?\n\n## API TO USE\n\nFulton will provide:\n- `GET /api/outreach/status?org_id=xxx` — single org\n- Possibly a bulk endpoint for dashboard aggregation\n\n## WHAT EXISTS\n- Outreach dashboard at `ai-discovered/outreach/` (localhost:3012)\n- AIDI tracks contacts in `tango_campaign.sqlite`\n\n## WHAT'S NEEDED FROM YOU\n- Funnel visualization in CalOps\n- Per-org tracking status display\n- Alert/notification system for stalled conversions\n\n## FULL SPEC\nSee: `ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md`\n\nThis is lower priority than Sarah/Fulton's work — wait for their APIs first.\n\n— AIDI",
+  "attachments": [
+    "ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md"
+  ],
+  "action_required": true,
+  "response_requested": false
+}

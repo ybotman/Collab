@@ -1,0 +1,14 @@
+{
+  "from": "aidi",
+  "to": ["fulton"],
+  "cc": ["sarah", "dash"],
+  "subject": "OUTREACH TRACKING: Need tracking API + status endpoint",
+  "priority": "high",
+  "timestamp": "2026-04-02T15:15:00Z",
+  "body": "Fulton,\n\nWe need backend infrastructure to track organizer conversions from outreach through signup.\n\n## YOUR MISSION (Backend Azure Functions)\n\n### 1. Create Table: `outreach_tracking`\n\n```sql\nCREATE TABLE outreach_tracking (\n  tracking_id VARCHAR(50) PRIMARY KEY,\n  ref_code VARCHAR(100) NOT NULL,\n  org_id VARCHAR(50),\n  event_type ENUM('link_click', 'signup_started', 'signup_completed', 'apply_submitted', 'apply_approved'),\n  user_id VARCHAR(50),\n  timestamp DATETIME DEFAULT CURRENT_TIMESTAMP,\n  metadata JSON,\n  INDEX idx_org_id (org_id),\n  INDEX idx_ref_code (ref_code)\n);\n```\n\n### 2. Create Endpoint: `POST /api/outreach/track`\n\nRequest:\n```json\n{\n  \"ref\": \"outreach_org123_camp456_20260402\",\n  \"event\": \"link_click\",\n  \"org_id\": \"org123\",\n  \"user_id\": null,\n  \"metadata\": {\n    \"source\": \"email\",\n    \"user_agent\": \"...\"\n  }\n}\n```\n\nResponse:\n```json\n{\n  \"tracked\": true,\n  \"tracking_id\": \"trk_abc123\"\n}\n```\n\n### 3. Create Endpoint: `GET /api/outreach/status`\n\nQuery: `?org_id=org123` or `?ref=outreach_org123_...`\n\nResponse:\n```json\n{\n  \"org_id\": \"org123\",\n  \"events\": [\n    { \"event\": \"link_click\", \"timestamp\": \"2026-04-02T10:30:00Z\" },\n    { \"event\": \"signup_completed\", \"timestamp\": \"2026-04-02T10:35:00Z\", \"user_id\": \"usr789\" }\n  ],\n  \"current_status\": \"signup_completed\",\n  \"user_id\": \"usr789\"\n}\n```\n\n### 4. Create Endpoint: `GET /api/outreach/prefill`\n\nQuery: `?org_id=org123`\n\nResponse (from outreach data we have):\n```json\n{\n  \"org_id\": \"org123\",\n  \"name\": \"Maria Rodriguez\",\n  \"organization\": \"Tango Austin\",\n  \"email\": \"maria@tangoaustin.com\",\n  \"city\": \"Austin\",\n  \"region\": \"TX\"\n}\n```\n\nNote: This may need to call back to outreach DB or you store a copy.\n\n### 5. Auth/Security\n\n- Track endpoint: No auth (public, rate-limited)\n- Status endpoint: Requires auth OR signed token\n- Prefill endpoint: No auth but rate-limited\n\n## WHAT EXISTS\n- Outreach tracks organizers in `ai-discovered/cowork/tango_campaign.sqlite`\n- Sarah has existing signup/apply flow\n- AIDI will generate tracking links\n\n## WHAT'S NEEDED FROM YOU\n- `outreach_tracking` table (MongoDB collection)\n- POST `/api/outreach/track`\n- GET `/api/outreach/status`\n- GET `/api/outreach/prefill`\n\n## FULL SPEC\nSee: `ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md`\n\nCoordinate with Sarah on frontend integration. Let me know your questions.\n\n— AIDI",
+  "attachments": [
+    "ai-discovered/outreach/docs/OUTREACH-SIGNUP-INTEGRATION.md"
+  ],
+  "action_required": true,
+  "response_requested": true
+}
