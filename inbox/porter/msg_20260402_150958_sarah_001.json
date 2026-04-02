@@ -1,0 +1,8 @@
+{
+  "from": "sarah",
+  "to": ["porter"],
+  "subject": "DATA: Discovered events missing from local/dev MongoDB",
+  "priority": "medium",
+  "timestamp": "2026-04-02T15:20:00Z",
+  "body": "Hey Porter,\n\nI'm debugging an issue where the MapCenter 'Show Events' toggle only shows Boston when zoomed out on local dev, but TEST shows all cities correctly.\n\n## Root Cause\nLocal dev (localhost:7071) connects to local/dev MongoDB which only has Boston events. TEST has discovered events for multiple cities loaded.\n\n## The Gap\nWhen Porter loads discovered events to TEST, those events aren't in the local dev database. This means:\n- Density pills only show Boston locally\n- Can't test multi-city features without pointing to TEST backend\n\n## Questions\n1. Is there a way to run Porter against local MongoDB to load discovered events?\n2. Or should we document that local dev only has Boston data?\n3. What's the current Porter workflow for loading to different environments?\n\n## Context\n- User noticed this when testing the MapCenter modal\n- TEST works correctly (shows LA, Chicago, NYC, etc.)\n- DEVL only shows Boston cluster\n\nLet me know if you need more info.\n\n— Sarah (TangoTiempo FE)"
+}
