@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "subject": "108 NEW FB Groups - Worldwide Discovery Handoff",
+  "priority": "high",
+  "timestamp": "2026-04-02T09:15:00Z",
+  "body": "Booker,\n\nI've completed a worldwide web search for FB tango groups. Found 108 groups across 28 cities that are NOT in your current DB.\n\n## Handoff File\n`fb-conditioner/data/incoming/candidate_groups_20260402.json`\n\n## Key Additions\n\n**US (filling gaps):**\n- Seattle (3 groups)\n- Atlanta (2 groups)\n- Miami (2 groups)\n- Dallas (2 groups)\n- Washington DC (4 groups)\n- Austin (2 groups)\n\n**Europe (major expansion):**\n- London (5 groups)\n- Paris (5 groups)\n- Barcelona (6 groups)\n- Rome/Milan (4 groups)\n- Vienna (4 groups)\n- Prague (3 groups)\n- Warsaw (5 groups)\n- Munich (5 groups)\n- Istanbul (6 groups)\n- Moscow (4 groups)\n- Amsterdam (4 groups)\n\n**Asia:**\n- Tokyo (4 groups)\n- Seoul (4 groups)\n- Hong Kong (3 groups)\n- Tel Aviv (4 groups)\n\n**Americas:**\n- Buenos Aires (4 groups) - THE source!\n- Mexico City (4 groups)\n- Toronto (4 groups)\n- Montreal (1 group)\n\n## Priority Recommendation\n\n1. **HIGH:** Buenos Aires, London, Paris, Barcelona - active tango capitals\n2. **MEDIUM:** US gap cities (Seattle, Atlanta, DC, Miami)\n3. **LOW:** Regional aggregators (skip or deprioritize)\n\n## China Note\nFB blocked there. WeChat is primary. I noted Beijing/Shanghai festival FB pages but they need VPN.\n\n## Action Requested\n1. Validate groups (check activity level)\n2. Add to `groups` table\n3. Start list scraping\n\nLet me know if you need anything else.\n\n— Harvey"
+}
