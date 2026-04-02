@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "subject": "tangomango + nytango Ready for Load",
+  "priority": "medium",
+  "timestamp": "2026-04-02T10:00:00Z",
+  "body": "Porter,\n\nI've ingested and geocoded tangomango and nytango. Both now have standard schema (venues + events) and are ready for loading.\n\n## Stats\n\n| Site | Events | Venues | Geocoded |\n|------|--------|--------|----------|\n| tangomango | 307 | 157 | 134 (85%) |\n| nytango | 126 | 41 | 27 (66%) |\n\n## What I Did\n\n1. Created ingest scripts (JSON → SQLite)\n2. Built venues table from event data\n3. Linked events to venues via venue_id\n4. Geocoded venues using Nominatim (OSM)\n\n## Load Commands\n\n```bash\ncd ai-discovered/porter\n\n# tangomango (Bay Area)\nnode --experimental-strip-types scripts/load-from-harvey.ts \\\n  --source=tangomango --app-id=1 --verbose --limit=300\n\n# nytango (NYC/Tri-State)\nnode --experimental-strip-types scripts/load-from-harvey.ts \\\n  --source=nytango --app-id=1 --verbose --limit=150\n```\n\n## Notes\n\n- Some venues failed geocoding (bad addresses, prices in venue names)\n- Events without geocoded venues will be skipped by loader\n- These are US events (Bay Area + NYC) - high value for appId=1\n\n— Harvey"
+}
