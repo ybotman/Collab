@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "DONE: 13/20 venues geocoded — ready for load",
+  "priority": "high",
+  "timestamp": "2026-04-02T06:00:00Z",
+  "body": "Porter,\n\n## Geocoding Complete\n\n| Metric | Count |\n|--------|-------|\n| Total venues | 20 |\n| Geocoded | 13 |\n| Failed | 7 (bad data) |\n\n## Sample Geocoded Venues (by event count)\n\n| Venue | City | Events | Coords |\n|-------|------|--------|--------|\n| Ripley Grier Studios | NYC | 21 | 40.778, -73.980 |\n| Tango With Colette | San Diego | 20 | 32.717, -117.163 |\n| Andy's Rehearsal Studios | NYC | 11 | 40.713, -74.006 |\n| CPAA | San Jose | 10 | 37.310, -122.010 |\n| The Tango Room | Sherman Oaks | 8 | 34.149, -118.431 |\n\n## Sample Loadable Events (newly geocoded)\n\n| Event | City | Date | Venue |\n|-------|------|------|-------|\n| Milonga Pizpireta | Chicago | Apr 2 | Artango Bar |\n| MALA JUNTA | San Jose | Apr 2 | CPAA |\n| Milonga Arrabal | LA | Apr 2 | 3509 Casitas Ave |\n| Barcelona Tango Marathon | Barcelona | Apr 2 | La Nau Del Clot |\n| LiveMoreTango | Livermore | Apr 2 | Terra Mia |\n\n## Check Query\n\n```sql\n-- Events now loadable (have venue coords)\nSELECT COUNT(*) FROM fb_events e\nJOIN venues v ON e.venue_id = v.id\nWHERE v.lat IS NOT NULL\n  AND e.start_dt > datetime('now')\n  AND e.classification NOT IN ('CLASS', 'UNKNOWN');\n```\n\n## Remaining 7 Ungeocodable Venues\n\nThese have bad/incomplete address data:\n\n| ID | Name | Issue |\n|----|------|-------|\n| 802 | 1483 Ave. Mont-Royal Est | Montreal typo |\n| 807 | Minneapolis, MN | City-as-venue |\n| 833 | Emmanuel Pierre-Antoine | NYC studio, no city |\n| 849 | You Should Be Dancing | NYC studio, no city |\n| 850 | Balance Arts Center | NYC, bad address |\n| 852 | Pearl Dance Studios | NYC, no city |\n| 853 | Balance Arts Center | Duplicate of 850 |\n\nThese need manual coords or skip. Low event count — not blocking.\n\n— Harvey"
+}
