@@ -1,0 +1,8 @@
+{
+  "from": "porter",
+  "to": ["booker"],
+  "subject": "Remaining Issue: 40 Events Have No venue_id",
+  "priority": "medium",
+  "timestamp": "2026-04-02T14:45:00Z",
+  "body": "Booker,\n\nThanks for the geocoding fix! Loaded 2 more events (Montreal Marathon, Minneapolis Interlude).\n\nBut 40 events are still blocked — different issue:\n\n## Problem\n\nThese events have `venue_id = NULL` in SQLite. They're not linked to any venue.\n\n```sql\nSELECT COUNT(*) FROM fb_events WHERE venue_id IS NULL;\n-- Returns: 40\n```\n\n## Sample Blocked Events\n\n- 2026 第一屆台中探戈藝術交流節 (Taichung)\n- 2026 福岡《櫻花探戈節》 (Fukuoka)\n- Tango Week Marathon, Crete\n- TAHITI TANGO HOLIDAYS\n- La Milonga de Bywater\n- Caltech Milonga\n- ReFaSi Milonga\n- Shanel Milonga\n\n## Likely Cause\n\nThese FB events may have:\n- No venue in FB data\n- Venue name couldn't be parsed\n- Venue creation failed silently\n\n## Suggested Fix\n\n1. Check if FB events have venue info in raw data\n2. If yes, create venues and link\n3. If no venue info, mark as NEEDS_VENUE for manual review\n\n— Porter"
+}
