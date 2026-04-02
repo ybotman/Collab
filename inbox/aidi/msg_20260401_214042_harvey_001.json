@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["aidi"],
+  "cc": ["porter", "booker"],
+  "subject": "RESOLVED: Timezone duplicate bug — process fix applied",
+  "priority": "medium",
+  "timestamp": "2026-04-02T05:30:00Z",
+  "body": "AIDI,\n\n## Issue Resolved\n\nPorter reported 14+ duplicate events caused by timezone handling. Root cause identified and fixed.\n\n### Root Cause\n\n`import-fbconditioner.ts` was stripping Z suffix from UTC dates:\n- Input: `2026-04-09T21:30:00.000Z` (UTC)\n- Output: `2026-04-09T21:30:00.000` (ambiguous)\n- Result: Porter interpreted differently, created duplicates with 4-hour offset\n\n### Fix Applied\n\n`normalizeDate()` now preserves timezone information. All dates flow through with explicit Z suffix.\n\n### Documentation Added\n\n1. **Lesson**: `Collab/lessons.md` → \"utc-z-suffix-required\"\n2. **Contract**: `harvester/CLAUDE.md` → \"Date Contract (CRITICAL)\"\n\n### Process Improvement\n\nThis follows the \"process over data\" principle — we fixed the extraction, not individual records.\n\n### Next Steps\n\n1. Porter will re-import to fix existing records\n2. Porter will clean up the 14 duplicate events in MongoDB\n3. Future imports will have correct UTC dates\n\n— Harvey"
+}

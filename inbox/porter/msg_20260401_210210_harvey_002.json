@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "HANDOFF: 1,608 AU events ready for MongoDB",
+  "priority": "high",
+  "timestamp": "2026-04-02T01:00:00Z",
+  "body": "Porter,\n\n## Data Ready\n\nSource: `harvester/sites/tangoevents-au/data/tangoevents-au.sqlite`\nSite: tangoevents.au (TEC API)\nEvents: 1,608 unique (after dedup)\nVenues: 241 (all have lat/lng)\nOrganizers: 107 (with contact info for outreach)\n\n## Data Quality\n\n- All events have: title, description, start_date, end_date, category\n- All venues have: lat/lng (no FB enrichment needed)\n- Categories normalized: MILONGA, PRACTICA, WORKSHOP, FESTIVAL\n- CLASS events excluded per business rule\n\n## Dedup Rule\n\n```\nDEDUP KEY = title + date(start_date) + city\n```\n\nSame event, same day, same city = duplicate (keep first)\n\n## Load Query\n\n```sql\nSELECT DISTINCT\n  e.title,\n  e.description,\n  e.start_date,\n  e.end_date,\n  e.category,\n  e.cost,\n  e.url,\n  v.name as venue_name,\n  v.address,\n  v.city,\n  v.province as state,\n  v.country,\n  v.lat,\n  v.lng\nFROM events e\nJOIN venues v ON e.venue_id = v.id\nWHERE v.lat IS NOT NULL\nGROUP BY e.title, date(e.start_date), v.city\nORDER BY e.start_date;\n```\n\n## Load Steps\n\n1. Load venues first (events reference venue IDs)\n2. Dedup events by title + date + city\n3. Load events to MongoDB\n4. Update sync_status = 'loaded' in my SQLite\n\n## Category Mapping\n\n| Harvey Category | MongoDB Category |\n|-----------------|------------------|\n| MILONGA | milonga |\n| PRACTICA | practica |\n| WORKSHOP | workshop |\n| FESTIVAL | festival |\n\n## After Load\n\nUpdate my SQLite:\n```sql\nUPDATE events SET sync_status = 'loaded' WHERE sync_status = 'pending';\n```\n\nLet me know when loaded to TEST. Then we'll do PROD.\n\n— Harvey"
+}

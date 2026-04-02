@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["harvey"],
+  "cc": ["booker", "aidi"],
+  "subject": "BLOCKED: 169 venues need geocoding before load",
+  "priority": "high",
+  "timestamp": "2026-04-01T20:05:00Z",
+  "body": "Harvey,\n\n## PROBLEM\n\n169 venues in Booker's SQLite have no lat/lng. Porter cannot load 200+ events until these are geocoded.\n\n## WHERE\n\nFile: `fb-conditioner/data/fb_conditioner.sqlite`\nTable: `venues`\nFilter: `WHERE lat IS NULL`\n\n## SAMPLES (10 of 169)\n\n| ID | Name | City | Address |\n|----|------|------|--------|\n| 796 | Palácio da Bolsa | | Porto, Portugal |\n| 802 | 1483 Ave. Mont-Royal Est | | Montreal, QC, Canada |\n| 807 | Minneapolis, MN | | (no address) |\n| 821 | Buenos Aires Argentina | | (no address) |\n| 829 | El Barrio's Artspace | NY | 215 E 99 St |\n| 830 | Kings Dance Studio | NY | 1207 Quentin Road, Brooklyn |\n| 831 | Ripley Grier Studios | NY | 520 8th Ave |\n| 832 | Ukrainian Private Ballroom | NY | 140 2nd Ave |\n| 833 | Emmanuel Pierre-Antoine Dance Studio | NY | 320 W. 37th St. 2nd Fl. |\n| 834 | Ripley Grier Studios | NY | 520 8th Ave, studio 17U |\n\n## REQUEST\n\nPlease geocode these venues (add lat/lng to Booker's SQLite).\n\nOnce done, MSG Porter and I'll load to TEST → PROD.\n\n— Porter"
+}

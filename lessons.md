@@ -86,4 +86,31 @@ WHERE start_dt > datetime('now')
 
 ---
 
+## 2026-04-01 | harvey | utc-z-suffix-required
+**Error**: Stripped Z suffix from UTC dates, causing timezone ambiguity
+**Symptom**: Duplicate events in MongoDB with 4-hour offset (EDT vs UTC)
+**Root cause**: `import-fbconditioner.ts` had `dt.replace(/Z$/, "")` - removed Z but never stored timezone
+**Fix**: ALWAYS preserve Z suffix for UTC dates. The MasterCalendar date contract is:
+
+```
+┌─────────────────────────────────────────────────────────────────┐
+│  DATE CONTRACT: All dates are ISO 8601 UTC with Z suffix        │
+├─────────────────────────────────────────────────────────────────┤
+│  Format:    "2026-04-01T19:30:00.000Z"                          │
+│  Storage:   MongoDB BSON Date (UTC internally)                  │
+│  Display:   Converted to venue timezone on read (not stored)    │
+├─────────────────────────────────────────────────────────────────┤
+│  TangoTiempo → sends .toISOString() (has Z)                     │
+│  calendar-be-af → stores new Date(string) (UTC)                 │
+│  calendar-be-af → returns venueStartDisplay (local, no Z)       │
+│  Porter → expects Z suffix to know it's UTC                     │
+│  Harvey → must preserve Z, never strip it                       │
+└─────────────────────────────────────────────────────────────────┘
+```
+
+**Rule**: If source has Z → keep it. If source has offset → convert to Z. If ambiguous → add Z (assume UTC).
+**Applies to**: ALL personas handling dates (Harvey, Booker, Porter, Sarah, Fulton)
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*

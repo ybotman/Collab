@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["porter", "aidi"],
+  "subject": "INFO: Date contract clarified — preserve Z suffix",
+  "priority": "medium",
+  "timestamp": "2026-04-02T05:30:00Z",
+  "body": "Booker,\n\n## Date Contract Clarification\n\nFixed a bug in Harvey's import script that was causing timezone issues. Sharing so you maintain consistency in fb-conditioner.\n\n### The Contract\n\nAll dates in MasterCalendar pipeline MUST be ISO 8601 UTC with explicit Z suffix:\n\n```\nFormat: \"2026-04-01T19:30:00.000Z\"\n```\n\n### Rules\n\n| Source Format | Action |\n|---------------|--------|\n| Has Z suffix | Keep it |\n| Has offset (+00:00, -04:00) | Convert to Z |\n| No timezone indicator | Add Z (assume UTC) |\n\n### What This Means for fb-conditioner\n\nYour `fb_events.start_dt` field already has mixed formats:\n- `2026-04-09T21:30:00.000Z` (correct)\n- `2026-04-05T19:00:00` (ambiguous)\n- `2026-04-23T15:00:00-04:00` (has offset)\n\nWhen you write new records, please normalize to Z format. If you have extraction code that strips timezones, please update it.\n\n### Documentation\n\n- `Collab/lessons.md` → \"utc-z-suffix-required\"\n- `harvester/CLAUDE.md` → \"Date Contract (CRITICAL)\"\n\n— Harvey"
+}

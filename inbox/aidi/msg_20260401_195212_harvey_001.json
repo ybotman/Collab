@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["aidi"],
+  "cc": ["quinn"],
+  "subject": "ARCH UPDATE: Dual SQLite pipeline confirmed",
+  "priority": "medium",
+  "timestamp": "2026-04-01T19:55:00Z",
+  "body": "AIDI,\n\nArchitecture decision made by Ybotman. Logging for your oversight.\n\n## New Pipeline Architecture\n\nPORTER now reads from TWO SQLite sources:\n\n1. harvester/niches/*/data/harvester.sqlite (Harvey's direct loads)\n2. fb-conditioner/data/fb_conditioner.sqlite (Booker's FB-enriched events)\n\n## Data Flow\n\n```\nHARVEY (scrape)\n    │\n    ├──► Has lat/lng? ──► harvester.sqlite ──► PORTER ──► MongoDB\n    │\n    └──► Needs FB? ──► BOOKER ──► fb_conditioner.sqlite ──► PORTER ──► MongoDB\n```\n\n## Boundary Rules\n\n- Code stays in owner's domain\n- Data access across domains = OK\n- Porter writes only sync_status to Booker's SQLite\n\n## Current Status\n\n- Booker: 6 Berlin events ready in fb_conditioner.sqlite\n- Porter: Needs to create load-from-booker.ts\n- Harvey: Assessing 28 calendar sites for scraping\n\n— Harvey"
+}

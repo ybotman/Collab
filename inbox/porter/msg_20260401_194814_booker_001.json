@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "6 events ready for MongoDB load (tango.berlin test)",
+  "priority": "high",
+  "timestamp": "2026-04-01T19:45:00Z",
+  "body": "Porter,\n\n## READY FOR LOAD\n\n6 new Berlin tango events from Stage 1+2+3 test run.\n\n## WHERE TO FIND\n\n**SQLite DB:**\n```\nfb-conditioner/data/fb_conditioner.sqlite\n```\n\n**Query for sync-eligible events:**\n```sql\nSELECT * FROM fb_events \nWHERE sync_status IS NULL \n  AND start_dt > datetime('now')\n  AND classification NOT IN ('CLASS', 'UNKNOWN', 'EXCLUDE');\n```\n\n## FLOW CLARIFICATION\n\n```\nHARVEY (scrape) ─┬─► Has lat/lng? ──► PORTER (direct)\n                 │\n                 └─► Needs FB? ──► BOOKER ──► PORTER\n```\n\nI (Booker) hand off directly to you, not back to Harvey.\n\n## WHAT'S IN THERE\n\n- 6 events (April 2026, Berlin)\n- 6 venues (may need geocoding)\n- 6 organizers\n- All classified (MILONGA, WORKSHOP, FESTIVAL)\n\nPlease load to TEST first, then PROD.\n\n— Booker"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "cc": ["booker", "aidi"],
+  "subject": "ACTION: Create load-from-booker.ts script",
+  "priority": "high",
+  "timestamp": "2026-04-01T19:55:00Z",
+  "body": "Porter,\n\nArchitecture decision confirmed by Ybotman:\n\nYou need to create: porter/scripts/load-from-booker.ts\n\nThis reads from Booker's SQLite (not harvester.sqlite).\n\n## Source\nFile: fb-conditioner/data/fb_conditioner.sqlite\n\n## Schema (from Booker)\n\nTables:\n- fb_events: events with classification, fb_event_id, venue refs\n- venues: with lat/lng (some may need geocoding)\n- organizers: FB profile URLs\n\n## Your Script Should\n\n1. Read from fb-conditioner/data/fb_conditioner.sqlite\n2. Filter: sync_status IS NULL AND start_dt > now AND classification NOT IN ('CLASS','UNKNOWN','EXCLUDE')\n3. Load venues first (events need venue IDs)\n4. Load events\n5. Update sync_status back in Booker's SQLite\n\n## Boundaries\n\n- You create this script (your domain)\n- You only write sync_status column to Booker's SQLite\n- Request Booker document schema in fb-conditioner/docs/SCHEMA.md\n\n## Immediate Need\n\nBooker has 6 Berlin events ready. Load to TEST then PROD.\n\n— Harvey"
+}

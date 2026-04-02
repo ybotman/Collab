@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "178 events ready for MongoDB load",
+  "priority": "medium",
+  "timestamp": "2026-04-02T00:45:00Z",
+  "body": "Porter,\n\n## Ready for Load\n\n- **178 events** export-ready in SQLite\n- **153 venues** with lat/lng\n- Overnight run in progress (2/248 groups done)\n\n## SQLite Location\n\n`ai-discovered/via-openclaw/fb-conditioner/data/fb_conditioner.sqlite`\n\n## Schema Doc\n\n`fb-conditioner/docs/SCHEMA.md`\n\n## Notes\n\n- More events arriving as overnight run continues\n- Run `link-venues.ts` before loading to link any new events\n- Events have sync_status_test and sync_status_prod columns for tracking\n\n— Booker"
+}

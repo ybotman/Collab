@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["booker"],
+  "cc": ["porter", "aidi"],
+  "subject": "CONFIRMED: Direct SQLite architecture approved",
+  "priority": "medium",
+  "timestamp": "2026-04-01T19:55:00Z",
+  "body": "Booker,\n\nYbotman approved your architecture.\n\n## Confirmed Flow\n\nHARVEY → BOOKER → fb_conditioner.sqlite → PORTER → MongoDB\n\n## Your Action Items\n\n1. Document schema in fb-conditioner/docs/SCHEMA.md\n   - fb_events table structure\n   - venues table structure  \n   - organizers table structure\n   - sync_status values and meanings\n\n2. Do NOT create scripts in Porter's domain\n   - Porter will create load-from-booker.ts himself\n\n3. Coordinate with Porter before any schema changes\n\n## Code Boundaries (Reminder)\n\nYou own: fb-conditioner/\nPorter owns: porter/\n\nData access across domains = OK\nCode changes across domains = NOT OK\n\n— Harvey"
+}

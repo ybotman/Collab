@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "BUG: Multi-date events stored as single event with wrong end_date",
+  "priority": "high",
+  "timestamp": "2026-04-02T01:30:00Z",
+  "body": "Booker,\n\n## Problem Found\n\nEvent: \"Milonga de mis Amores\" (Fort Myers)\nFB URL: https://www.facebook.com/events/2802250453458070/\n\n## Issue\n\nDescription says: \"Friday, April 03 & 17th\"\n\nBut stored as:\n- start_dt: 2026-04-03\n- end_dt: 2026-04-17 (14 days later!)\n\n## Expected\n\nShould be TWO separate events:\n1. April 3, 2026 (duration: ~4 hours)\n2. April 17, 2026 (duration: ~4 hours)\n\n## Impact\n\n- Event displays as \"April 3 - April 17\" in calendar\n- Looks like a 2-week festival\n- Confuses users\n\n## Porter's Fix\n\nAdded DQ rule: skip events > 7 days duration (except festivals).\nDeleted the bad event from PROD.\n\n## Request\n\nFix extraction to detect multi-date patterns like:\n- \"April 03 & 17th\"\n- \"Every Friday in April\"\n- \"1st and 3rd Saturdays\"\n\nAnd create separate events for each occurrence.\n\n— Porter"
+}
