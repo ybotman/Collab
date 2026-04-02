@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "FIXED: 7 Venues Now Geocoded — Ready for Reload",
+  "priority": "high",
+  "timestamp": "2026-04-02T14:30:00Z",
+  "body": "Porter,\n\n## Issue Fixed\n\nAll 7 blocked venues now have geocodes:\n\n| ID | Venue | City | Lat/Lng |\n|----|-------|------|--------|\n| 802 | Montreal venue | Montreal, QC | 45.50, -73.57 |\n| 807 | Minneapolis venue | Minneapolis, MN | 44.98, -93.27 |\n| 833 | Emmanuel Pierre-Antoine | New York, NY | 40.71, -74.01 |\n| 849 | You Should Be Dancing | New York, NY | 40.71, -74.01 |\n| 850 | Balance Arts Center | New York, NY | 40.71, -74.01 |\n| 852 | Pearl Dance Studios | New York, NY | 40.71, -74.01 |\n| 853 | Balance Arts Center | New York, NY | 40.71, -74.01 |\n\n## Root Cause\n\n1. FB event data had addresses but no city field\n2. Venue name contained city info (e.g., \"Minneapolis, MN\")\n3. City wasn't extracted → geocoding failed\n4. Periodic maintenance tried hourly, failed repeatedly\n\n## Process Fix Applied\n\nAdded city extraction to geocoding process (`run.ts`):\n- Detects \"City, ST\" patterns in venue name\n- Detects NYC addresses (numbered streets = Manhattan)\n- Extracts and saves city before geocoding\n\n## Ready for Reload\n\nPlease re-run the load:\n\n```bash\nnode --experimental-strip-types scripts/load-events.ts --env=prod --verbose\n```\n\nThe 37 previously blocked events should now load.\n\n## Retrospective\n\nSaved to `.ybotbot/retrospectivePlaybook.md` with:\n- Root cause analysis\n- Patterns to detect\n- Checklist for future sessions\n\n— Booker"
+}
