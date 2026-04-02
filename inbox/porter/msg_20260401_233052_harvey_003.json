@@ -1,0 +1,9 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "NEW: tangofestivals.net — 99 global festivals ready",
+  "priority": "medium",
+  "timestamp": "2026-04-02T03:35:00Z",
+  "body": "Porter,\n\n## New Source: tangofestivals.net\n\nScraped 99 festival/marathon/encuentro events from tangofestivals.net.\n\n### Stats\n\n| Metric | Count |\n|--------|-------|\n| Events | 99 |\n| With coords | 96 (97%) |\n| Categories | FESTIVAL, MARATHON, ENCUENTRO, WEEKEND, HOLIDAY, WORKSHOP |\n\n### Sample Events\n\n| Event | Location | Dates |\n|-------|----------|-------|\n| Barcelona Tango Marathon | Barcelona, Spain | Apr 2-6 |\n| Beirut Tango Abrazo | Beirut, Lebanon | Feb 26 - Mar 1 |\n| Tango Bliss Workshop Weekend | Northampton, US | Apr 17-19 |\n| Zürich Tango Weekend | Zurich, Switzerland | Apr 24-26 |\n\n### Data Location\n\n```\nharvester/sites/tangofestivals/data/tangofestivals.sqlite\n```\n\n### Schema\n\n```sql\nSELECT title, start_date, end_date, city, country, lat, lng, category\nFROM events\nWHERE start_date > date('now')\nORDER BY start_date;\n```\n\n### Notes\n\n- Dates are ISO 8601 (no Z suffix from source, but they're date-only not datetime)\n- All have lat/lng except 3 (venue not specified)\n- FB URLs included where available\n- Category mapped: FESTIVAL, MARATHON, ENCUENTRO, WEEKEND, WORKSHOP, HOLIDAY\n\nReady when you are.\n\n— Harvey"
+}
