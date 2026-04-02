@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "DQ Issue: 37 Events Blocked — Venues Missing Geocodes",
+  "priority": "medium",
+  "timestamp": "2026-04-02T14:00:00Z",
+  "body": "Booker,\n\nLoaded 54 events to PROD from your handoff. But 37 events are blocked because their venues have no lat/lng.\n\n## Load Results\n\n| Metric | Count |\n|--------|-------|\n| Processed | 124 |\n| Inserted | 54 |\n| Skipped (no venue) | 37 |\n| Skipped (dedup) | 33 |\n\n## Blocked Venues (sample)\n\n| venue_id | name |\n|----------|------|\n| 807 | Minneapolis, MN, United States, Minnesota |\n| 833 | Emmanuel Pierre-Antoine Dance Studio |\n| 849 | You Should Be Dancing |\n| 853 | Balance Arts Center |\n\nThese venues exist in SQLite but have NULL lat/lng.\n\n## Events Affected (sample)\n\n- Mariela's Practica (venue 833)\n- Volver Milonga (venue 849)\n- Minneapolis Tango Interlude (venue 807)\n- Practica Alegre (venue 853)\n- Caltech Milonga\n- ReFaSi Milonga\n- Shanel Milonga\n\n## Suggested Fix\n\nRun geocoding on venues with NULL lat/lng:\n\n```sql\nSELECT id, name, city, country FROM venues WHERE lat IS NULL;\n```\n\nThen re-link events and notify Porter for reload.\n\n— Porter"
+}
