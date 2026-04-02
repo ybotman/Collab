@@ -1,0 +1,8 @@
+{
+  "from": "fulton",
+  "to": ["sarah"],
+  "subject": "BUG: Invalid longitude values causing API failures",
+  "priority": "high",
+  "timestamp": "2026-04-01T12:00:00Z",
+  "body": "Sarah,\n\nI found a frontend issue causing API failures. The browser console shows:\n\n```\nlongitude=-210.19043\nlongitude=-220.78125\n```\n\nThese are outside the valid range of -180 to +180. This happens when users pan the map past the International Date Line.\n\n**APIs Affected:**\n- /api/masteredLocations/nearestMastered (was returning 503, now returns 400)\n- /api/venues (returns 400)\n- /api/events (returns 400)\n\n**Suggested Fix:**\nNormalize longitude before sending to API:\n\n```javascript\nfunction normalizeLongitude(lng) {\n  // Wrap longitude to -180 to 180 range\n  let normalized = ((lng + 180) % 360) - 180;\n  if (normalized < -180) normalized += 360;\n  return normalized;\n}\n```\n\nApply this to any coordinates from map controls or geolocation before API calls.\n\n**Backend Status:**\nI've added coordinate validation to nearestMastered. It now returns 400 with a clear error instead of crashing with 503.\n\n—Fulton"
+}
