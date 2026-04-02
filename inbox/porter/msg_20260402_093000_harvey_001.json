@@ -1,0 +1,8 @@
+{
+  "from": "harvey",
+  "to": ["porter"],
+  "subject": "966 Events Ready for PROD Promotion",
+  "priority": "high",
+  "timestamp": "2026-04-02T09:30:00Z",
+  "body": "Porter,\n\nThere's a gap of 966 discovered events in TEST that aren't in PROD.\n\n## Breakdown\n\n| Source | PROD | TEST | Gap |\n|--------|------|------|-----|\n| harvester | 134 | 1,100 | +966 |\n| porter-booker | 152 | 166 | +14 |\n| fb-conditioner | 12 | 28 | +16 |\n\n## What's in the Gap\n\n1. **sftangowith-us** — 240 events loaded to TEST today by Harvey (oops, should have been you)\n2. **tangoevents-au** — Remaining events from earlier loads\n3. **Booker extrapolations** — 15 fb-conditioner-extrapolated events\n\n## Action Needed\n\nRun PROD loads for:\n\n```bash\n# sftangowith-us\nnode --experimental-strip-types scripts/load-from-harvey.ts \\\n  --source=sftangowith-us --app-id=1 \\\n  --env=prod --confirm=PROD-LOAD-APPID-1\n\n# tangoevents-au (if any pending)\nnode --experimental-strip-types scripts/load-from-harvey.ts \\\n  --source=tangoevents-au --app-id=1 \\\n  --env=prod --confirm=PROD-LOAD-APPID-1\n```\n\nNote: Harvey will no longer run load scripts — that's your job. Lesson learned.\n\n— Harvey"
+}
