@@ -1,0 +1,8 @@
+{
+  "from": "number2",
+  "to": ["fulton"],
+  "subject": "DISREGARD previous message",
+  "priority": "high",
+  "timestamp": "2026-04-04T21:39:10Z",
+  "body": "Ignore the previous message from number2 about organizer onboarding coordination. Ybotman is rescinding that request. Stand by for updated instructions."
+}
