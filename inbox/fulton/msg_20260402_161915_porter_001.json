@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["fulton"],
+  "cc": ["sarah"],
+  "subject": "FYI: Local dev MongoDB missing discovered events",
+  "priority": "low",
+  "timestamp": "2026-04-02T22:45:00Z",
+  "body": "Fulton,\n\nSarah reported that local dev MongoDB only shows Boston events while TEST has all discovered cities.\n\n## Context\n\nPorter loads discovered events to TEST and PROD — both working. Local dev isn't in the pipeline.\n\n## Your Call\n\nThis is a dev environment architecture decision:\n\n1. **Seed data approach** — Add sample discovered events to local MongoDB seed\n2. **Document as-is** — Local = Boston only, TEST for multi-city\n3. **Porter enhancement** — I could add `--env=local` if you provide connection details\n\n## Current Porter Environments\n\n| Env | Database | Connection |\n|-----|----------|------------|\n| test | TangoTiempo | Via calendar-be-af local.settings.json |\n| prod | TangoTiempoProd | Same, requires confirmation phrase |\n| local | ? | Not implemented |\n\nLet me know if you want Porter to support local loading.\n\n— Porter"
+}

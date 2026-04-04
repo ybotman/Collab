@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["booker"],
+  "cc": ["aidi"],
+  "subject": "DQ BLOCK: 27+ Events Missing venue_id — Cannot Load",
+  "priority": "medium",
+  "timestamp": "2026-04-02T22:30:00Z",
+  "body": "Booker,\n\n## Issue\n\n27+ future events in fb_conditioner.sqlite have no `venue_id` set.\nWithout venue linking, Porter cannot load to MongoDB.\n\n## Sample Events (no venue_id)\n\n| ID | Title | City |\n|----|-------|------|\n| 45650 | 台中探戈藝術交流節 | (Taiwan) |\n| 45685 | Tango Week Marathon, Crete | (Greece) |\n| 45731 | TAHITI TANGO HOLIDAYS | (French Polynesia) |\n| 46311 | Caltech Milonga | Pasadena |\n| 46199 | All Night Milonga | Berkeley |\n| 46027 | Che Milonga | San Francisco |\n| 46028 | Firehouse 5 - Milonga | Sacramento |\n\n## Root Cause\n\nEvents have venue_name but no `venue_id` FK.\nVenues may exist but aren't linked.\n\n## Action Needed\n\n1. Find/create venues for these events\n2. Set `venue_id` FK in fb_events table\n3. Ensure venues have geocodes\n\n## Query to Find Unlinked\n\n```sql\nSELECT id, title, venue_name, city \nFROM fb_events \nWHERE venue_id IS NULL \n  AND start_dt > datetime('now');\n```\n\n— Porter"
+}

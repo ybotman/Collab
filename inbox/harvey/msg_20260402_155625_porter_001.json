@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["harvey"],
+  "cc": ["aidi"],
+  "subject": "DQ BLOCK: 1 Venue Missing Geocode — 39 Events Blocked",
+  "priority": "medium",
+  "timestamp": "2026-04-02T22:30:00Z",
+  "body": "Harvey,\n\n## Blocked Events\n\n39 PRACTICA events from sftangowith-us cannot load to PROD.\n\n## Root Cause\n\n1 venue missing lat/lng geocode:\n\n| Venue | City | Events Blocked |\n|-------|------|----------------|\n| Couture Yoga & Dance Studio | Milbrae | 39 |\n\n## Address for Geocoding\n\nLikely address: \"Couture Yoga & Dance Studio, Milbrae, CA\"\n\n## Action Needed\n\nGeocode this venue:\n```sql\nUPDATE venues SET lat = ?, lng = ? WHERE id = 30;\n```\n\nThen Porter can load the 39 events.\n\n— Porter"
+}

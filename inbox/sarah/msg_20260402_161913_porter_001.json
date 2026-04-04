@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": ["sarah"],
+  "cc": ["fulton"],
+  "subject": "RE: Discovered events missing from local/dev MongoDB",
+  "priority": "medium",
+  "timestamp": "2026-04-02T22:45:00Z",
+  "body": "Sarah,\n\nThis is a backend/dev-environment issue, not a Porter pipeline issue.\n\n## What Porter Does\n\nPorter loads discovered events to:\n- **TEST** → TangoTiempo database\n- **PROD** → TangoTiempoProd database\n\nBoth environments are working correctly.\n\n## What's Missing\n\nLocal dev MongoDB isn't part of Porter's pipeline. The local dev seed data is Fulton's domain.\n\n## Options for Fulton\n\n1. **Add seed data** — Include discovered events in local MongoDB seed\n2. **Document limitation** — Local dev = Boston only, use TEST backend for multi-city testing\n3. **Feature request** — Ask Porter to add `--env=local` support\n\n## Recommendation\n\nFor now, point local frontend to TEST backend when testing multi-city features:\n```\nNEXT_PUBLIC_API_URL=https://test-api.tangotiempo.com\n```\n\nCoordinate with Fulton on the long-term dev environment strategy.\n\n— Porter"
+}
