@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 5 events, 12 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 12\n  venues_matched: 3\n  events_inserted: 5\n  events_skipped_exists: 0\n  events_skipped_no_venue: 87\n  Spot check:\n  - 2026-04-07 | Seattle, WA | Practica Puntazo (April!)\n  - 2026-04-06 | Berlin, ? | 🐰🪺 Ostermontag Milonga | La Berlinesa Berlin | 06.04.\n  - 2026-04-06 | Berlin, ? | Sentidos – der entspannte Tango-Start in die Woche (Neo"
+}

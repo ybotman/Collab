@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: prod — 76 events, 54 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: prod\n  venues_inserted: 54\n  venues_matched: 23\n  events_inserted: 76\n  events_skipped_exists: 0\n  events_skipped_no_venue: 130\n  Spot check:\n  - 2026-04-19 | Bartlett, TN | Saturday Evening Milonga Party\n  - 2026-05-01 | Houston, TX | Susana Miller returns to Houston, April 30 - May 07, 20\n  - 2026-04-08 | Napoli NA, ? | EZGI TURMUS BINICI : Open Role Workshop"
+}

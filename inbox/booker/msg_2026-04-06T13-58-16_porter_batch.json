@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: prod — 4 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: prod\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 4\n  events_skipped_exists: 0\n  events_skipped_no_venue: 90\n  Spot check:\n  - 2026-07-01 | Santander, ? | Voglia di Spagna , tango e mare?\n  - 2026-04-06 | SL6 0DW Maidenhead, ? | Tango Secrets Easter Monday Milonga 6 Apr\n  - 2026-04-08 | Bromma bromma, ? | Onsdagspractica i Alvik"
+}

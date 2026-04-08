@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 5 events, 15 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 15\n  venues_matched: 11\n  events_inserted: 5\n  events_skipped_exists: 0\n  events_skipped_no_venue: 75\n  events_skipped_bounds: 16\n  Spot check:\n  - 2026-04-12 | Scottsdale, AZ | Milonga Cooperativa with Guest DJ Marek!\n  - 2026-04-11 | Troy, NY | Karla's Memorial Milonga REGISTRATION CLOSED\n  - 2026-04-12 | Seattle, INTL | “In Full Bloom” Milonga Yo Soy El Tango on Saturday, Ap"
+}

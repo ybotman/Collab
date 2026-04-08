@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 76 events, 55 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 55\n  venues_matched: 22\n  events_inserted: 76\n  events_skipped_exists: 0\n  events_skipped_no_venue: 123\n  Spot check:\n  - 2026-04-07 | Athens, ? | Un Abrazo MILONGA EMPROS\n  - 2026-04-11 | AZ Maastricht, ? | Milonga Tango Maastricht\n  - 2026-04-10 | 4 Chemin de Codebosc, ? | Week-end Tango avec Emilie & Pablo Tegli La Bouriotte T"
+}

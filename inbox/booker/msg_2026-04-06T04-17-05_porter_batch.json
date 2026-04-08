@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: prod — 18 events, 14 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: prod\n  venues_inserted: 14\n  venues_matched: 13\n  events_inserted: 18\n  events_skipped_exists: 0\n  events_skipped_no_venue: 77\n  events_skipped_bounds: 1\n  Spot check:\n  - 2026-04-07 | New York, NY | LOS TRES AMIGOS MILONGA: FLOWERS\n  - 2026-04-25 | Charleston, SC | Milonga Roja - Charleston, SC\n  - 2026-04-12 | Lincoln, NE | Milonga de Primavera"
+}

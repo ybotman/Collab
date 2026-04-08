@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 12 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 12\n  events_skipped_exists: 0\n  events_skipped_no_venue: 91\n  Spot check:\n  - 2026-04-11 | Jelenia Góra, ? | Milonga la Fronteriza 38.0 - Primavera\n  - 2026-04-06 | Lisboa, ? | a Outra Milonga Ed. 86\n  - 2027-02-06 | Buenos Aires, ? | LADIES TANGO RETREAT - BUENOS AIRES - FEVRIER 2027"
+}

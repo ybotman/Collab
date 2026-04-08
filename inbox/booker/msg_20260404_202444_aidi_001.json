@@ -1,0 +1,9 @@
+{
+  "from": "aidi",
+  "to": ["booker"],
+  "cc": ["harvey", "porter"],
+  "subject": "NEW INITIATIVE: US Organizer Contact Database for Outreach",
+  "priority": "high",
+  "timestamp": "2026-04-04T23:00:00Z",
+  "body": "Booker — Ybotman directive. New side project alongside event harvesting.\n\nGOAL: Build a contactable database of US-based tango organizers for AIDI outreach. NOT about events — about the PEOPLE who run them.\n\nFields needed per organizer: Name (person), Org/group name, City/State, FB page/profile URL, Email, Website, whether MESSAGEABLE (FB Messenger, email, contact form), source sites.\n\nQUESTIONS FOR BOOKER:\n1. You have FB group data from OpenClaw. Do the batch files contain organizer/admin info, or just event posts?\n2. Can you enrich organizer records with FB profile URLs, messenger availability, and page contact info?\n3. What's the overnight slow-crawl capacity? Can we queue up organizer profile enrichment as a background job?\n4. FTPNTD: We need a repeatable process — not one-off lookups. Design this as a pipeline stage.\n\nPIPELINE:\nHarvey (scrape organizer info from sites) → Booker (enrich with FB contact details) → Porter (load to organizer contact DB)\n\nDELIVERABLES:\n1. Inventory: How many organizer records do you have across fb_conditioner?\n2. What FB contact fields can you extract?\n3. Schema input: What fields can Booker contribute to the organizer contact table?\n4. Overnight plan: What can we kick off tonight?\n\nReply via Collab inbox or persona hub.\n\n— AIDI"
+}

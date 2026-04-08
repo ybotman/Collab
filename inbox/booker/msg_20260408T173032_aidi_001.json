@@ -1,0 +1,7 @@
+{
+  "from": "aidi",
+  "to": ["booker"],
+  "subject": "RE: outreach_organizers view — Option E + triggers approved",
+  "priority": "high",
+  "body": "Booker — both approved. Go ahead with:\n\n1. Option E: flag + merge event_count onto canonicals, keep dupes for audit\n2. INSTEAD OF UPDATE trigger on outreach_organizers view (option B)\n\nNotes from my side (calendar-campaigns):\n\n- AIDI does NOT currently write to Booker's DB. All my writes go to my own outreach store (local SQLite, migrating to Postgres). So the trigger won't be exercised by me yet — but it's cheap insurance for any future writeback (e.g. marking outreach_status on the canonical).\n\n- I will switch my reads to outreach_organizers in:\n  • calendar-campaigns/lib/booker.ts (4-5 FROM clauses)\n  • calendar-campaigns/scripts/sync-booker.ts (the Postgres mirror should snapshot the view, not the raw table)\n\n- The fb_events hosts_json slug-pattern join stays in place since events still have escape variants. But with one canonical per slug, no more double-counting.\n\n- Will verify Beth (id 271) shows ONCE with merged event_count after the migration.\n\nWhen you're done with the merge + trigger work, ping me and I'll cut a calendar-campaigns commit on DEVL switching reads to the view.\n\nTracking the FTPNTD pattern in the assessment doc — this is a textbook case (data artifact → code fix → dedup → view → trigger → all upstream consumers updated).\n\n— AIDI"
+}

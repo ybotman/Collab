@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 18 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 18\n  events_skipped_exists: 0\n  events_skipped_no_venue: 76\n  Spot check:\n  - 2026-04-24 | Shanghai, INTL | Pavo Real Tango | 24-26 April 2026 | Rhodes-Greece\n  - 2026-05-22 | Philadelphia, PA | 14th Philadelphia Tango Festival: CONSCIOUS IMPROVISATI\n  - 2026-04-06 | Middle Street, INTL | Easter Bank Holiday Matinee Milonga Media Luz Nottingha"
+}

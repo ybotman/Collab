@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: prod — 5 events, 11 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: prod\n  venues_inserted: 11\n  venues_matched: 4\n  events_inserted: 5\n  events_skipped_exists: 0\n  events_skipped_no_venue: 89\n  Spot check:\n  - 2026-04-06 | Roma, ? | 🌟𝐍𝐎𝐓𝐓𝐄 𝐃𝐈 𝐓𝐀𝐍𝐆𝐎 𝐀 𝐑𝐈𝐕𝐀 𝐌𝐀𝐑𝐂𝐎𝐍𝐈\n  - 2026-04-09 | Roma, ? | 𝗔𝘀𝘁𝗼𝗿 𝗣𝗶𝗮𝘇𝘇𝗼𝗹𝗹𝗮 — 𝗠𝘂𝘀𝗶𝗰𝗮, 𝗣𝗮𝗿𝗼\ud835\n  - 2026-04-17 | Granada, ? | Sueña Granada Tango"
+}

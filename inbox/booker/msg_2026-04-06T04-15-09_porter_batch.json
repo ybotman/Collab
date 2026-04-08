@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 20 events, 14 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 14\n  venues_matched: 13\n  events_inserted: 20\n  events_skipped_exists: 0\n  events_skipped_no_venue: 75\n  events_skipped_bounds: 1\n  Spot check:\n  - 2026-04-05 | Scottsdale, AZ | Milonga Cooperativa with Guest DJ Marek!\n  - 2026-04-18 | Northampton, MA | WMT Big Tango Weekend with Tomás\n  - 2026-04-05 | New York, NY | MILONGA DE LA TARDE 5PM TO 10PM -SUNDAY APRIL 5th"
+}

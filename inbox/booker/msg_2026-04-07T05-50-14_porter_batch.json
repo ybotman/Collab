@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 4 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 4\n  events_skipped_exists: 0\n  events_skipped_no_venue: 87\n  Spot check:\n  - 2026-06-12 | Barcelona, ? | the 2nd Brilloso Tango Fest\n  - 2026-04-27 | Ann Arbor, MI | Post Marathon Milonga\n  - 2026-04-17 | Bellingham, WA | Tango Leo Featuring DJ Steve Brady"
+}

@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 11 events, 12 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 12\n  venues_matched: 4\n  events_inserted: 11\n  events_skipped_exists: 0\n  events_skipped_no_venue: 83\n  Spot check:\n  - 2026-04-17 | Granada, ? | Sueña Granada Tango\n  - 2026-04-09 | Roma, ? | 𝗔𝘀𝘁𝗼𝗿 𝗣𝗶𝗮𝘇𝘇𝗼𝗹𝗹𝗮 — 𝗠𝘂𝘀𝗶𝗰𝗮, 𝗣𝗮𝗿𝗼\ud835\n  - 2026-04-11 | Stockholm, ? | TANGO STAGE ELEMENTS - for tango & other dances"
+}

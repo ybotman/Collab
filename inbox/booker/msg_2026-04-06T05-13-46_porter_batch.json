@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: prod — 8 events, 15 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: prod\n  venues_inserted: 15\n  venues_matched: 11\n  events_inserted: 8\n  events_skipped_exists: 0\n  events_skipped_no_venue: 81\n  events_skipped_bounds: 7\n  Spot check:\n  - 2026-04-05 | New York, NY | MILONGA DE LA TARDE 5PM TO 10PM -SUNDAY APRIL 5th\n  - 2026-04-10 | Los Angeles, CA | COUPLES CLASS & GUIDED PRACTICA - APRIL WITH J&C\n  - 2026-04-05 | Scottsdale, AZ | Milonga Cooperativa with Guest DJ Marek!"
+}
