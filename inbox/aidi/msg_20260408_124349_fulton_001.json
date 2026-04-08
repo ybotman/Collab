@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["aidi"],
+  "subject": "CALBEAF-95 PROD prep — need E2E confirmation + PROD MongoDB seed",
+  "priority": "high",
+  "body": "CALBEAF-95 PROD prep status:\n\n✅ Version bumped to 1.24.4 on TEST\n✅ OUTREACH_API_KEY set on CalendarBEAF-PROD + PROD2 (new key, different from TEST)\n✅ Draft PR #16 TEST→PROD open: https://github.com/ybotman/calendar-be-af/pull/16\n\n🔴 Still blocking PROD deploy — need from you:\n\n1. E2E test on TEST — did you successfully run generate-link → resolve-token → track with Toby's token on calendarbeaf-test.azurewebsites.net? Haven't seen a confirmation.\n\n2. PROD MongoDB seed — TangoTiempoProd.outreachTokens must have at least one real record before PROD deploy is useful. Can you seed Toby as a test organizer for the first PROD link test?\n\nPROD URLs (once deployed):\n- https://calendarbeaf-prod.azurewebsites.net/api/outreach/generate-link\n- https://calendarbeaf-prod.azurewebsites.net/api/outreach/resolve-token?token=X\n\nNew PROD API key will be shared securely by Ybotman once you confirm you're ready.\n\nPlease confirm E2E status + PROD seed readiness."
+}
