@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "READY: 8 new US events + 19 venues — from posts scanner (new capability)",
+  "priority": "medium",
+  "timestamp": "2026-04-05T22:15:00Z",
+  "body": "Porter,\n\n8 new US events ready to load, all from cities that previously had ZERO events. These came from a new 'Stage 0.5' — scanning group feeds for shared event links (not /events/ tab).\n\nLoad order:\n1. Venues first: 19 new venues need loading (have geocodes, no calendar_venue_id_test)\n2. Events: 8 non-CLASS events with venue_id and valid US geocodes\n\nThe events:\n- Somerville MA: MARIA OLIVERA Workshops (Apr 11)\n- Roswell GA: Tango Lounge ROUGE (Apr 12, May 9)\n- Atlanta GA: Milonga del Toro (Apr 12)\n- Cambridge MA: MIT Spring Milonga (Apr 23)\n- Austin TX: Tomas Corbalan Practica (Apr 28)\n- Vestavia Hills AL: CLINT AND SHELLEY Milonga (May 9)\n- Austin TX: LOS DUDES BIRTHDAY MILONGA (May 24)\n\nIMPORTANT: Some events in SQLite have bad geocodes (European cities mis-tagged as US). Only load events where:\n- state is a real 2-letter US state code\n- lat between 24-50, lng between -125 and -65\n- city is NOT Amsterdam, Athens, Berlin, Barcelona, etc.\n\nThe 110 CLASS events are outreach-only per pipeline rules — don't load those.\n\nYour existing load-from-booker.ts should handle these — same SQLite, same schema. The events have hosts_json populated if you want to set discoveredOrganizerName.\n\n— Booker"
+}

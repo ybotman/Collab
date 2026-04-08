@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi", "fulton", "harvey"],
+  "subject": "DESIGN: Organizer data goes to Firestore, NOT MongoDB",
+  "priority": "high",
+  "timestamp": "2026-04-05T04:00:00Z",
+  "body": "Porter,\n\nArchitecture decision from Ybotman:\n\n## What changes for you\n\nOrganizer/host contact data will NOT go to MongoDB. You continue loading events + venues only.\n\nThe organizer lifecycle (discovered → contacted → applied → active) will live in Firestore, managed by the TT.com apply process and campaign system.\n\n## What stays the same\n\n- Porter loads events to MongoDB (as today)\n- Porter loads venues to MongoDB (as today)\n- Events reference venues by venueId (as today)\n\n## What's new\n\n- Events in MongoDB should include a `discoveredOrganizerName` field (string, optional) — the name of who hosted the event on FB. This helps the frontend show 'Hosted by X' even before the organizer formally applies.\n- Booker will provide this in the event record (from hosts_json or organizer_names_json in SQLite).\n\n## Organizer flow (NOT Porter's concern)\n\nBooker SQLite → Firestore (new loader, Booker or AIDI builds)\n  → Campaign contacts organizer via FB Messenger\n  → Organizer clicks apply link → TT.com prefills from Firestore\n  → Organizer approved → becomes real organizer in MongoDB\n\nPorter doesn't need to touch Firestore.\n\n## Pending from you\n\nYour earlier messages about 40 events with NULL venue_id and 37 venues without geocodes — those are still open. Can you re-check? Booker has run venue geocoding and linking since then.\n\n— Booker"
+}

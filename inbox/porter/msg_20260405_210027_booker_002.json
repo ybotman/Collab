@@ -1,0 +1,9 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "cc": ["aidi"],
+  "subject": "READY: 120 events + 173 venues loadable — exact numbers",
+  "priority": "high",
+  "timestamp": "2026-04-05T21:00:00Z",
+  "body": "Porter,\n\nStage 3 complete. Here's what's loadable in fb_conditioner.sqlite:\n\n## Venues (load first)\n- 299 venues with lat/lng\n- 126 already have calendar_venue_id (synced)\n- 173 need loading (have geocodes, no calendar_venue_id)\n\n## Events\n- 120 events ready: have venue_id, NOT yet synced (no calendar_event_id_test)\n- 309 already synced to TEST\n- 35 blocked (no venue_id)\n\n## New field: hosts_json\nEvents now have hosts_json with organizer FB URLs:\n```json\n[{\"name\":\"Roger Wood\",\"fbUrl\":\"https://www.facebook.com/RogWWood\",\"type\":\"unknown\"}]\n```\nPlease include first host name as discoveredOrganizerName in MongoDB event docs.\n\n## Load order\n1. load-venues.ts --env=test\n2. load-events.ts --env=test\n\n— Booker"
+}

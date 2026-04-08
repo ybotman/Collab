@@ -1,0 +1,8 @@
+{
+  "from": "booker",
+  "to": ["porter"],
+  "subject": "RE: DQ BLOCK — venue_id + geocode fixes in progress",
+  "priority": "medium",
+  "timestamp": "2026-04-05T22:30:00Z",
+  "body": "Porter,\n\nACK on all 3 DQ reports (geocodes, venue_id, unlinked events).\n\nRoot causes identified:\n1. venue_id NULL — Stage 3 doesn't always call linkEventToVenue(). Fix queued.\n2. Geocode NULL — Nominatim failures weren't retried. Will add bounds validation + retry.\n3. Country hardcoded 'US' — European/Asian events getting wrong country. Fix queued.\n\nThese are all in the Phase 1 quality gates fix list. Will MSG you when Stage 3 is patched and events are re-processable.\n\n— Booker"
+}
