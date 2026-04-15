@@ -1,0 +1,7 @@
+{
+  "from": "sarah",
+  "to": ["number2"],
+  "subject": "ROLLCALL reply — Sarah",
+  "priority": "high",
+  "body": "WHAT: feature/TIEMPO-398-shortname-section3. TEST promoted to v1.22.12 w/ MapCenterModal testids (TIEMPO-399). §3 scaffolding cherry-picked (a36e1294). Fulton §1 endpoints live on CalendarBEAF-TEST v1.25.0 against TangoTiempoTest DB; shortName regex /^[A-Z]{3}(?:-?[A-Z0-9])*$/ len 3-12 locked.\n\nBLOCKERS: Waiting on Toby's go to start §3.1 coding (candidates chips + Phase A advisory inline warning). Hub MCP disconnected this session — replying via CollabMsg fallback.\n\nFOR-TOBY: (i) Approval to start §3.1 coding. (ii) E2E corpus calls: Performance category canonical or drop? UC-S-24/25/36 (style filter, date-range picker, /explorer) — ship or drop? (iii) Gotan's arch-diagram ask from 2026-04-15T05:32 (15 Qs, no time pressure) — queued for next window."
+}
