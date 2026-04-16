@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 64 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 7\n  events_inserted: 64\n  events_skipped_exists: 15\n  events_skipped_no_venue: 21\n  Spot check:\n  - 2026-04-23 | San Diego, CA | Tango Barre Class w/ Katia Diamond in SD\n  - 2026-04-22 | Burbank, CA | Tango Burbank Group Class\n  - 2026-04-25 | San Jose, CA | Andrea & Adrian’s Beginner Tango Series @ SM"
+}
