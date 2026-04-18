@@ -1,6 +1,6 @@
 # BE-AF Bulk-Enrich Endpoint — Design Spec
 
-**Status:** v1.3 — All sign-offs in (Quinn + Porter + AIDI); PROD-STAY-OUT codified
+**Status:** v1.4 — Country fully centralized at BE-AF (Toby clarification 2026-04-18 via Number2)
 **Author:** Fulton (calendar-be-af)
 **Date:** 2026-04-18
 **Convergence ref:** Quinn's "Architecture LOCKED: D" message 2026-04-18
@@ -139,7 +139,7 @@ The single function called by both the bulk endpoint and BE-AF's Events_Create/U
 | Niche guard | (gate) | `appId === '1'` |
 | Beginner classification | `forBeginners`, `beginnerFriendly` | `classifyBeginner(title, desc)` + category gate (`Class`+`Workshop`+`DayWorkshop`+`Festival`) |
 | TravelWorthy | `travelWorthy` | duration + category exclusion |
-| Country denorm | `masteredCountryId`, `masteredCountryName` | `masteredRegionId` chain |
+| Country denorm (AUTHORITATIVE — Toby 2026-04-18 clarification via Number2) | `masteredCountryId`, `masteredCountryName` | `masteredRegionId` chain. **BE-AF is now sole authority for country resolution; intake-side country derivation (Harvey from feed config) is REMOVED — BE-AF computes for ALL events regardless of source.** |
 | Venue resolution | `venueGeolocation`, `venueCityName`, `venueTimezone` | `venueID` lookup |
 | Override field init | `*Override` fields | `null` if undefined |
 | Date sanity | (warn-only) | `endDate >= startDate`, `duration <= 7d` |
