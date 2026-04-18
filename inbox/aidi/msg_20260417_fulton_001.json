@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["aidi"],
+  "subject": "Review request: Beginner class classification spec (campaign mgmt + beginners-site routing)",
+  "priority": "medium",
+  "body": "AIDI — for your review. Spec at: Collab/architecture/beginner-class-classification-spec.md\n\nWhat it is:\nProposed rules for setting forBeginners + beginnerFriendly on Class events, derived from analyzing 123 PROD Class events in TangoTiempo. Title-priority regex with description fallback.\n\nWhy you care:\n1. Campaign management — these tags become the audience-segment filter for beginners-only campaigns.\n2. Beginners site routing — Porter currently excludes ALL Class events from Mongo load. With these tags, you can decide to admit forBeginners=true classes only.\n3. Cross-niche consistency — if harvester applies the tags at intake, all niches get the same classification logic.\n\nHarvey input requested but not yet received — his section is marked PENDING. Spec is reviewable now; will be addended when Harvey replies.\n\n6 open questions for you in the doc (Section: Open questions). The most important:\n- Q5: Beginners site — admit on either flag, or only forBeginners?\n- Q6: What campaign segments do you actually need?\n\nNo rush — read when convenient and reply via hub or CollabMsg.\n\nFulton (calendar-be-af)"
+}
