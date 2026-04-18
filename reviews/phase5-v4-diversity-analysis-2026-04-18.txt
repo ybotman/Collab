@@ -1,0 +1,271 @@
+=== DIVERSITY ANALYSIS ===
+Total flipping rows: 302
+Distinct titles:     28
+
+=== TOP-10 FLIP TITLES BY COUNT ===
+ 1.  62× [Class] “PRACTILONGA CAMINITO” –the true Practica in Boston! Every Sunday Class & Practice
+ 2.  30× [Practica] Tango Embrace Guided Practica
+ 3.  30× [Practica] Tango Embrace Practica
+ 4.  27× [Practica] DanceSport Class for Beginners and improvers and technique
+ 5.  27× [Milonga] Guided práctica with Alex Krebs @ Tango Berretín
+ 6.  26× [Milonga] Cooperativa Drop-in All levels Tango Class
+ 7.  21× [Practica] The Tango Club - ALL LEVELS Class
+ 8.  13× [Practica] Tacoma Tango Class & Practica (1st & 3rd Fridays)
+ 9.   9× [Milonga] Matilda Milonga – Perth
+10.   9× [Practica] Spire Tango Practica (alternative/contemporary)
+
+=== DIVERSITY-WEIGHTED SAMPLE (1 row per distinct title, cap 40) ===
+[
+  {
+    "eventId": "683212f5dc1865da47fdcdef",
+    "title": "“PRACTILONGA CAMINITO” –the true Practica in Boston! Every Sunday Class & Practice",
+    "category": "Class",
+    "flip_count_for_title": 62,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels are welcome",
+    "desc_excerpt": "Tangueros, Laura Grandi will be teaching the pre-practica class and making sure she is there at all times to answer your questions during our ‘guided practica’ >> What will you be able to see when you"
+  },
+  {
+    "eventId": "69cdc1d7224a58a12d878f99",
+    "title": "Tango Embrace Guided Practica",
+    "category": "Practica",
+    "flip_count_for_title": 30,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners welcome",
+    "desc_excerpt": "@ Cost: Contact organiser for details. Luxury air-conditioning, brilliant floor, mood lighting, easy parking, however, most important of all, your teachers are dedicated to the magic and authenticity "
+  },
+  {
+    "eventId": "69cdc1d7224a58a12d878f9b",
+    "title": "Tango Embrace Practica",
+    "category": "Practica",
+    "flip_count_for_title": 30,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners welcome",
+    "desc_excerpt": "@ Cost: Contact organiser for details. Luxury air-conditioning, brilliant floor, mood lighting, easy parking, however, most important of all, your teachers are dedicated to the magic and authenticity "
+  },
+  {
+    "eventId": "69d35f7b43e836d1e7b9fc3f",
+    "title": "DanceSport Class for Beginners and improvers and technique",
+    "category": "Practica",
+    "flip_count_for_title": 27,
+    "trigger_label": "title:beginner+inter/adv",
+    "trigger_match": "Beginners and improvers",
+    "desc_excerpt": "Tango Class for Beginners and improvers and technique at Dancesport Dupont! Analia Centurion at Dancesport Dupont 2 Classes & Guided Practica-Technique Class 8PM-9PM $18 Cash (FREE if you Take Int/Adv"
+  },
+  {
+    "eventId": "69d3602e54a953dd1e0f1c7a",
+    "title": "Guided práctica with Alex Krebs @ Tango Berretín",
+    "category": "Milonga",
+    "flip_count_for_title": 27,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels welcome",
+    "desc_excerpt": "Guided Tango Práctica with Alex KrebsAlex hosts a guided práctica, where students can come and practice things they are learning in tango and ask Alex questions. All levels welcome.Time: Wednesdays, n"
+  },
+  {
+    "eventId": "69d360ac42a1395aa22aba5a",
+    "title": "Cooperativa Drop-in All levels Tango Class",
+    "category": "Milonga",
+    "flip_count_for_title": 26,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "All levels",
+    "desc_excerpt": "New drop in pre milonga class before the Cooperativa. New dancers welcome. Rotating monthly instructors. November. David & Nancy December Jose Garriga Jr January Sharon Alworth February TBD March. Dav"
+  },
+  {
+    "eventId": "69d35f9b43e836d1e7b9fcc4",
+    "title": "The Tango Club - ALL LEVELS Class",
+    "category": "Practica",
+    "flip_count_for_title": 21,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "ALL LEVELS",
+    "desc_excerpt": "Led by Travis and Avital; $157:30-8:30pm (Note that browsers other than Chrome or Safari may display times that are wrong by an hour.) Followed by Practica ($10 for practica; $20 for class and practic"
+  },
+  {
+    "eventId": "69d35fe64e993d651197c4e9",
+    "title": "Tacoma Tango Class & Practica (1st & 3rd Fridays)",
+    "category": "Practica",
+    "flip_count_for_title": 13,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels welcome",
+    "desc_excerpt": "Contact: Patricio Touceda I believe we’re building something special together. Thank you for your support in getting this practica up and running. We now have a regular tango class and practica at the"
+  },
+  {
+    "eventId": "69cdc1bc224a58a12d878e59",
+    "title": "Matilda Milonga – Perth",
+    "category": "Milonga",
+    "flip_count_for_title": 9,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels are welcome",
+    "desc_excerpt": "@ Doors open 7pmOpen level workshop 7:30pmSocial dancing 8:30 – midnightPerth’s original monthly Milonga. Dancers of all levels are welcome to this relaxed & friendly social. Snacks and water provided"
+  },
+  {
+    "eventId": "69ce0a1638abad9dae109865",
+    "title": "Spire Tango Practica (alternative/contemporary)",
+    "category": "Practica",
+    "flip_count_for_title": 9,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners are welcome",
+    "desc_excerpt": "$10-$20 sliding scale, $15 recommended Venmo, Zelle, Paypal, Eventbrite (no cash or credit) No one turned away for lack of funds Spire Tango Practica is committed to the principle that inclusivity is "
+  },
+  {
+    "eventId": "684651c7df99a7ff192e3f3b",
+    "title": "UT – Open Level –  CHE TANGO! – Saturday Afternoon Practica at ULTIMATE TANGO",
+    "category": "Practica",
+    "flip_count_for_title": 8,
+    "trigger_label": "title:open-level",
+    "trigger_match": "Open Level",
+    "desc_excerpt": "CHE TANGO! – Saturday Afternoon Practica at ULTIMATE TANGO Walk in. Dance out. Laugh throughout. Saturdays | 3-6 PM Ultimate Tango – 349 Washington St, Malden, MA 02155 FREE PARKING for 50+ cars! Just"
+  },
+  {
+    "eventId": "69cdc1d6224a58a12d878f8b",
+    "title": "Tango Delight Milonga",
+    "category": "Milonga",
+    "flip_count_for_title": 7,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners are welcomed",
+    "desc_excerpt": "@ Fourth Saturday of the monthStep into “La Delicia de Tango”, an atmosphere where warm light, soft shadows and traditional music weave a magical social night of dance. The Tandas flow with balance an"
+  },
+  {
+    "eventId": "69d36088152868e73be72483",
+    "title": "CAYA Milonga in Durham",
+    "category": "Milonga",
+    "flip_count_for_title": 7,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels welcome",
+    "desc_excerpt": "Come As You Are MilongaFinal Fridays at Move with Grace Ballroom in Durham! Wind down after your work week and dress up or down or simply \"come as you are!\"Public Social Tango Milonga with Free Class "
+  },
+  {
+    "eventId": "69d35f7943e836d1e7b9fc34",
+    "title": "Elegan Dancing - All Levels Class",
+    "category": "Practica",
+    "flip_count_for_title": 5,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "All Levels",
+    "desc_excerpt": "Teachers: Edwin Roa and Lynda BuechelElegant Dancing, Fairfax, VAAll classes below will be held as a 5 week series on Wednesdays (4/1, 4/8, 4/15, 4/22, 4/29)6:15pm: Level 3 Group Class - Floorcraft, n"
+  },
+  {
+    "eventId": "684651c5df99a7ff192e3f22",
+    "title": "UT – Open Level –  I Had the Heart – One-of-a-kind tango experience with Oliver Kolker",
+    "category": "Milonga",
+    "flip_count_for_title": 3,
+    "trigger_label": "title:open-level",
+    "trigger_match": "Open Level",
+    "desc_excerpt": "Oliver Kolker @ Ultimate Tango – May 2-3-4 Join us for a one-of-a-kind tango experience with Oliver Kolker, an internationally acclaimed tango dancer, performer, and film director. Over the course of "
+  },
+  {
+    "eventId": "69ce12d45b400edc0c769339",
+    "title": "Oxygen Tango Learning Lab - Inglewood",
+    "category": "Practica",
+    "flip_count_for_title": 3,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners welcome",
+    "desc_excerpt": "2:00 Tango Learning Lab (all levels; total beginners welcome) 3:00 - 5:00 Garden Practica (family friendly) $20 Lab + practica $10 Practica only Kids under 18 get in free Map"
+  },
+  {
+    "eventId": "69ce12d65b400edc0c769351",
+    "title": "Oxygen Tango Learning Lab All Levels Inglewood",
+    "category": "Practica",
+    "flip_count_for_title": 3,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "All Levels",
+    "desc_excerpt": "8:00 Tango Learning Lab (all - levels;total beginners welcome) 9:00 - 11:00 Practica $20 Learning Lab (practica included) $10 Practica only FREE with Oxygen monthly pass Map"
+  },
+  {
+    "eventId": "69ce12d05b400edc0c769306",
+    "title": "James Kang Class & Practica",
+    "category": "Practica",
+    "flip_count_for_title": 2,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels welcome",
+    "desc_excerpt": "7:00 - 8:00 Intermediate Class ( all levels welcome) 8:00 - 10:00 Practica Class( practica included with class) $18.00 Practica (only) $15.00 Monthly packages available at the front desk. Map"
+  },
+  {
+    "eventId": "68532f72a1e3cfb6f8bb9d62",
+    "title": "CANCLED : PRACTILONGA CAMINITO",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels are welcome",
+    "desc_excerpt": "Tangueros, Laura Grandi will be teaching the pre-practica class and making sure she is there at all times to answer your questions during our ‘guided practica’ >> What will you be able to see when you"
+  },
+  {
+    "eventId": "69ce0a1638abad9dae109866",
+    "title": "Free flat-shoe tango practica at the Hillside Club with DJ Jonas",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners are welcome",
+    "desc_excerpt": "Join us for a free tango practica at the Hillside Club! DJ Jonas Aquino spins traditional and alternative tunes! No stiletto heels are allowed at the Hillside Club, to protect the wooden floor. Please"
+  },
+  {
+    "eventId": "69d339aaa6014f32da1fed7e",
+    "title": "Tango Class and Minipractica with Katerine Ricardo",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:beginners-welcome",
+    "trigger_match": "beginners are welcome",
+    "desc_excerpt": "7:30 - 8:30 Open Role Class with Katerine Ricardo in Monterey Park (No partner needed, beginners are welcome) 8:30 - 9:00 Minipractica! Price $20 Drop in Class. (Packages available on our website) Ema"
+  },
+  {
+    "eventId": "69d339b0a6014f32da1fed89",
+    "title": "Directed Practica by Maestros Andrea & Adrián",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels are welcome",
+    "desc_excerpt": "9:15 - 11:15 (right after Andrea & Adrian's Intermediate Tango Class 8.00 - 9.15pm) COST: $12 p/person (Cash preferred) ALL LEVELS are welcome! Map"
+  },
+  {
+    "eventId": "69d339b1a6014f32da1fed8b",
+    "title": "Intermediate Tango Series + 2 HourPractica by A & A",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels are welcome",
+    "desc_excerpt": "Our INTERMEDIATE TANGO SERIES + 2 - HOUR PRACTICA will now take place at the well - known, spacious, outstanding AMERICAN LEGION HALL in Los Altos! 8:00 - 9:15 Intermediate Tango Class 9:15 - 11:00 Pr"
+  },
+  {
+    "eventId": "69d339b2a6014f32da1fed8d",
+    "title": "Argentine Tango All Levels with Sandor & Parissa",
+    "category": "Milonga",
+    "flip_count_for_title": 1,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "All Levels",
+    "desc_excerpt": "8:00 - 9:00 $25 Map"
+  },
+  {
+    "eventId": "69d35f8d43e836d1e7b9fc87",
+    "title": "The Tango Club - ALL LEVELS Class w/Yesica Esquivel and Ariel Leguizamon",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "ALL LEVELS",
+    "desc_excerpt": "Instructors: Yesica Esquivel and Ariel Leguizamon Cost: $30 for class and practica, $20 for class only, $10 for practica only.Followed by Practicahttps://sites.google.com/site/dctangocalendar/the-tang"
+  },
+  {
+    "eventId": "69d403a5bbbe0dae119682c5",
+    "title": "The Tango Club - ALL LEVELS Class w/Gaby Mataloni",
+    "category": "Practica",
+    "flip_count_for_title": 1,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "ALL LEVELS",
+    "desc_excerpt": "Instructor: Gaby Mataloni Followed by PracticaCost: $30 for class and practica, $20 for class only, $10 for practica onlyhttps://sites.google.com/site/dctangocalendar/the-tango-club"
+  },
+  {
+    "eventId": "69d403f9378e2c9f1587c56e",
+    "title": "Tango Milonguero with Pipe & Anna All level",
+    "category": "Milonga",
+    "flip_count_for_title": 1,
+    "trigger_label": "title:all-levels",
+    "trigger_match": "All level",
+    "desc_excerpt": "7:30 - 9:00 $30 Map"
+  },
+  {
+    "eventId": "69d5e3b8feec8e7779c45bc4",
+    "title": "Milonga Tropical Spring 2026",
+    "category": "Milonga",
+    "flip_count_for_title": 1,
+    "trigger_label": "desc:all-levels-welcome",
+    "trigger_match": "all levels welcome",
+    "desc_excerpt": "Athens Tangueros presents Milonga Tropical – Tango intertwined with Latin Rhythm dancing for a memorable evening of dancing. Live Dance performances by TIMBAthens, Bachata Connexión, Salsa Pasión, Rev"
+  }
+]
