@@ -1,0 +1,176 @@
+{
+  "meta": {
+    "mode": "DRY-RUN",
+    "specVersion": "1.0.0",
+    "organizer": "Ultimate Tango",
+    "orgId": "680d9a06e0cc7a532a560556",
+    "timestamp": "2026-04-18T23:40:10.278Z",
+    "threshold": 0.25,
+    "minGroup": 3,
+    "packageImport": true
+  },
+  "counts": {
+    "eventsScanned": 73,
+    "groupsDetected": 6,
+    "matchedGroupsPackage": 3,
+    "reviewGroupsPackage": 3,
+    "convert": 3,
+    "convertPartial": 1,
+    "reviewRemaining": 1,
+    "noOp": 1,
+    "eventsToConvert": 33,
+    "outlierSingletons": 2,
+    "eventsInReview": 17,
+    "eventsNoOp": 3
+  },
+  "proposals": [
+    {
+      "title": "UT – Beginner –  Learn Argentine Tango! – drop in to any Tuesday or Thursday at 7:30pm",
+      "count": 17,
+      "action": "REVIEW",
+      "reviewReason": "gap_cv_0.43_high",
+      "gapCv": 0.42857142857142855,
+      "coreCount": 0,
+      "outlierCount": 17,
+      "eventIds": [
+        "684651c4df99a7ff192e3f1d",
+        "684651cfdf99a7ff192e3f95",
+        "684651d3df99a7ff192e3fb8",
+        "684651dedf99a7ff192e4017",
+        "684651e2df99a7ff192e4049",
+        "684651ecdf99a7ff192e40b2",
+        "684651f1df99a7ff192e40e9",
+        "684651fcdf99a7ff192e414d",
+        "68465201df99a7ff192e4184",
+        "68532f2aa1e3cfb6f8bb9ab2",
+        "68532f2ea1e3cfb6f8bb9ae4",
+        "68532f38a1e3cfb6f8bb9b39",
+        "68532f3da1e3cfb6f8bb9b75",
+        "68532f47a1e3cfb6f8bb9bd9",
+        "68532f4ca1e3cfb6f8bb9c0b",
+        "68532f57a1e3cfb6f8bb9c7e",
+        "68532f5ba1e3cfb6f8bb9cab"
+      ],
+      "spanDays": 56
+    },
+    {
+      "title": "UT – Open Level –  I Had the Heart – One-of-a-kind tango experience with Oliver Kolker",
+      "count": 3,
+      "action": "NO-OP",
+      "reviewReason": "span 1.7d < 7d — workshop/weekend, not recurring series",
+      "gapCv": 0,
+      "coreCount": 0,
+      "outlierCount": 3,
+      "eventIds": [
+        "684651c5df99a7ff192e3f22",
+        "684651c7df99a7ff192e3f31",
+        "684651cadf99a7ff192e3f54"
+      ]
+    },
+    {
+      "title": "UT – Open Level –  CHE TANGO! – Saturday Afternoon Practica at ULTIMATE TANGO",
+      "count": 8,
+      "action": "CONVERT",
+      "confidence": "HIGH",
+      "cadence": "WEEKLY",
+      "rrule": "FREQ=WEEKLY;BYDAY=SA",
+      "gapCv": 0,
+      "sameDayDuplicates": 0,
+      "coreCount": 8,
+      "outlierCount": 0,
+      "coreEventIds": [
+        "684651c7df99a7ff192e3f3b",
+        "684651d6df99a7ff192e3fc7",
+        "684651e5df99a7ff192e4062",
+        "684651f5df99a7ff192e4107",
+        "68465206df99a7ff192e41ac",
+        "68532f32a1e3cfb6f8bb9afd",
+        "68532f41a1e3cfb6f8bb9b93",
+        "68532f50a1e3cfb6f8bb9c2e"
+      ],
+      "outlierEventIds": [],
+      "dtstart": "2025-05-03T19:00:00.000Z",
+      "until": "2025-06-21T19:00:00.000Z"
+    },
+    {
+      "title": "UT – Advanced Level – Elevating Technique, Connection, and Expression – couples only only",
+      "count": 9,
+      "action": "CONVERT",
+      "confidence": "HIGH",
+      "cadence": "WEEKLY",
+      "rrule": "FREQ=WEEKLY;BYDAY=SA",
+      "gapCv": 0,
+      "sameDayDuplicates": 0,
+      "coreCount": 9,
+      "outlierCount": 0,
+      "coreEventIds": [
+        "684651c8df99a7ff192e3f45",
+        "684651d6df99a7ff192e3fcc",
+        "684651e6df99a7ff192e4067",
+        "684651f5df99a7ff192e410c",
+        "68465206df99a7ff192e41b6",
+        "68532f32a1e3cfb6f8bb9b02",
+        "68532f41a1e3cfb6f8bb9b9d",
+        "68532f50a1e3cfb6f8bb9c33",
+        "68532f5fa1e3cfb6f8bb9cdc"
+      ],
+      "outlierEventIds": [],
+      "dtstart": "2025-05-03T21:00:00.000Z",
+      "until": "2025-06-28T21:00:00.000Z"
+    },
+    {
+      "title": "Short Sequences – enrich your vocabulary with 52 sequences every year",
+      "count": 8,
+      "action": "CONVERT",
+      "confidence": "HIGH",
+      "cadence": "WEEKLY",
+      "rrule": "FREQ=WEEKLY;BYDAY=TU",
+      "gapCv": 0,
+      "sameDayDuplicates": 0,
+      "coreCount": 8,
+      "outlierCount": 0,
+      "coreEventIds": [
+        "684651cfdf99a7ff192e3f90",
+        "684651dedf99a7ff192e4012",
+        "684651ecdf99a7ff192e40ad",
+        "684651fbdf99a7ff192e4148",
+        "68532f29a1e3cfb6f8bb9aad",
+        "68532f38a1e3cfb6f8bb9b34",
+        "68532f47a1e3cfb6f8bb9bd4",
+        "68532f56a1e3cfb6f8bb9c79"
+      ],
+      "outlierEventIds": [],
+      "dtstart": "2025-05-06T23:30:00.000Z",
+      "until": "2025-06-24T23:30:00.000Z"
+    },
+    {
+      "title": "UT Learn Tango In One Summer!",
+      "count": 10,
+      "action": "CONVERT_PARTIAL",
+      "confidence": "HIGH",
+      "cadence": "WEEKLY",
+      "rrule": "FREQ=WEEKLY;BYDAY=MO",
+      "gapCv": 0,
+      "sameDayDuplicates": 0,
+      "coreCount": 8,
+      "outlierCount": 2,
+      "coreEventIds": [
+        "68532f74a1e3cfb6f8bb9d71",
+        "68532f81a1e3cfb6f8bb9dd5",
+        "68532f8da1e3cfb6f8bb9e43",
+        "68532f9ba1e3cfb6f8bb9eb1",
+        "68532fa7a1e3cfb6f8bb9f1a",
+        "68532fb4a1e3cfb6f8bb9f7e",
+        "68532fc0a1e3cfb6f8bb9fe7",
+        "68532fcca1e3cfb6f8bba05a"
+      ],
+      "outlierEventIds": [
+        "68532fa3a1e3cfb6f8bb9ef2",
+        "68532fc5a1e3cfb6f8bba014"
+      ],
+      "dtstart": "2025-07-07T23:30:00.000Z",
+      "until": "2025-08-25T23:30:00.000Z",
+      "reviewReason": "Original group REVIEW (mixed_times_of_day_4.5h); sub-group re-detection found core subset."
+    }
+  ]
+}
