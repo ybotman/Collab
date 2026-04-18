@@ -1,6 +1,6 @@
 # BE-AF Bulk-Enrich Endpoint — Design Spec
 
-**Status:** v1.4 — Country fully centralized at BE-AF (Toby clarification 2026-04-18 via Number2)
+**Status:** v1.5 — §7 service-to-service auth (Porter) section added per Quinn arbitration 2026-04-18
 **Author:** Fulton (calendar-be-af)
 **Date:** 2026-04-18
 **Convergence ref:** Quinn's "Architecture LOCKED: D" message 2026-04-18
@@ -234,14 +234,46 @@ States (AIDI 2026-04-18 governance call: 3 states; `deferred` dropped — no dis
 ## 7. Auth / rate-limiting
 
 **v1:**
-- Same Firebase token + role-check as Events_Create/Update
-- Porter uses an internal service-token role (`ServicePorter`) — bypasses normal user-RBAC
+- Same `firebaseAuth` middleware as Events_Create/Update — validates Firebase ID token via Bearer header
+- Porter authenticates via Firebase service account (Quinn arbitration 2026-04-18, Option 2 LOCKED)
 - No rate-limiting on Porter (trusted internal caller)
 - External callers: no public access (endpoint internal-only)
+
+### Service-to-service auth for Porter (Quinn arbitration 2026-04-18)
+
+**Pattern:** Firebase service account JSON → custom token → exchange for ID token → Bearer header to BE-AF.
+
+**Why service account, not manual token mint:**
+- Firebase ID tokens expire at 1h; manual mint+drop doesn't scale
+- Service account = standard Firebase pattern for service-to-service auth
+- Rotation-friendly; no human-in-loop for token refresh
+
+**Lane placement:**
+- **Fulton owns:** minting the TEST Firebase service account (`service-porter@tangotiempo-257ff.iam.gserviceaccount.com`); managing credential lifecycle; rotation policy
+- **Porter consumes:** via env var `PORTER_SA_KEY_PATH` pointing at a local JSON file. Programmatic flow:
+  1. Load SA JSON via `admin.credential.cert(saJson)`
+  2. Mint custom token: `admin.auth().createCustomToken('service-porter')`
+  3. Exchange for ID token via Identity Toolkit REST: `POST https://identitytoolkit.googleapis.com/v1/accounts:signInWithCustomToken?key=<WEB_API_KEY>`
+  4. Cache ID token; refresh 5 min before 1h expiry
+- **Credential transfer:** out-of-band ONLY. Never via hub (no secrets in hub channel). Local file drop at a path Porter can read (e.g., `~/.credentials/service-porter-test.json`, `chmod 600`); path communicated via hub (path is not a secret), file content never transmitted electronically to other personas.
+
+**Service account scope (TEST only):**
+- Identity: `service-porter@tangotiempo-257ff.iam.gserviceaccount.com`
+- Firebase project: `tangotiempo-257ff` (TangoTiempoTest)
+- Required IAM roles: NONE (custom token minting works for any service account in the project; the Admin SDK call uses the SA's identity, not its IAM permissions)
+- CAN do: authenticate to BE-AF bulk-enrich endpoint via custom token → ID token flow
+- CANNOT do: anything outside Firebase Auth (no Firestore, no Storage, no Realtime DB roles granted)
+- PROD-scoped credential: explicitly NOT part of v1 work per PROD STAY-OUT
+
+**Rotation guidance:**
+- TEST credential: rotate every 90 days (manual)
+- Compromise response: revoke key in Firebase Console → IAM → Service Accounts → Keys; mint new key; deliver to Porter out-of-band; Porter updates `PORTER_SA_KEY_PATH`
+- No automated rotation in v1 (defer to ops maturity later)
 
 **v2 if external consumers appear:**
 - Per-tenant rate limit (e.g., 10 batches/minute per token)
 - API-key-based auth as alternative to Firebase
+- Automated key rotation via secrets manager
 
 ---
 
