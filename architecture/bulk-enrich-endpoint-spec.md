@@ -1,12 +1,13 @@
 # BE-AF Bulk-Enrich Endpoint — Design Spec
 
-**Status:** Draft v1 — for async team review
+**Status:** Draft v1.2 — Quinn + Porter sign-offs; AIDI governance pending
 **Author:** Fulton (calendar-be-af)
 **Date:** 2026-04-18
 **Convergence ref:** Quinn's "Architecture LOCKED: D" message 2026-04-18
+**Decision record:** `Collab/architecture/enrichment-architecture-decision-2026-04-18.md`
 **Vote:** 5/5 — Fulton, Harvey, Porter, Booker, AIDI
 **Source spec:** `Collab/architecture/beginner-class-classification-spec.md` (v3, signed off)
-**Ticket:** TBD (new CALBEAF-XXX — will open after spec review)
+**Ticket:** TBD (single new CALBEAF-XXX — covers endpoint + Tier-2 + schema + metrics; do NOT split)
 
 ---
 
@@ -149,22 +150,34 @@ The single function called by both the bulk endpoint and BE-AF's Events_Create/U
 **Implementation:**
 - New Azure Function: `DQ_PeriodicChecker.js`
 - Trigger: timer, every **30 minutes** (Porter's "≤hourly" tolerance, with headroom)
-- Query (indexed):
+- Query — uses BOTH `enrichmentStatus` AND field-nullity (Quinn clarification: status answers "why", nullity answers "what's missing"):
   ```js
   events.find({
     appId: '1',
-    enrichmentStatus: { $in: ['pending', 'failed'] },
-    updatedAt: { $gte: new Date(Date.now() - 4 * 3600 * 1000) }  // last 4h
+    updatedAt: { $gte: new Date(Date.now() - 24 * 3600 * 1000) },  // last 24h (Quinn lean)
+    $or: [
+      { enrichmentStatus: { $ne: 'complete' } },
+      { forBeginners: null },
+      { beginnerFriendly: null },
+      { travelWorthy: null },
+      { masteredCountryId: null }
+    ]
   }).limit(200)
   ```
+  24h lookback (not 4h) covers realistic outage shapes — overnight Azure incidents, weekend deploys, multi-hour issues. Scan cost bounded by `limit 200`.
+
+  **TODO (post-v1):** `appId: '1'` is hardcoded for Tango-only launch. When HJ/NTTT/etc. opt in to enrichment, change to `appId: { $in: [...allActiveNiches] }`. Per Porter sign-off — flagged to prevent silent bug.
 - For each row: call `runDataQualityPipeline(event, db)` (no `forceRecompute`)
 - Update with computed fields + flip `enrichmentStatus` to `"complete"` if successful
 - Bulk update via `bulkWrite` ops array (one op per event)
-- Emit metrics:
+- Emit metrics (AIDI must-have #1 — degraded-mode rate visibility):
   - `dq_checker.events_scanned`
   - `dq_checker.events_enriched`
   - `dq_checker.events_still_failing`
+  - `dq_checker.degraded_mode_rate` — % of recent inserts that hit pending/deferred status
   - `dq_checker.duration_ms`
+
+**SHIP-GATE:** Tier-2 ships in v1, NOT a follow-up. Single JIRA ticket covers endpoint + Tier-2 + schema + metrics. Per AIDI must-have #1 — without Tier-2, degraded-mode insertions sit invisibly and rot.
 
 **Steady state:** `events_enriched` should trend to ~0 once D ships and Porter goes through bulk-enrich primary path. Sustained non-zero = degraded-mode rate worth investigating.
 
@@ -178,15 +191,16 @@ The single function called by both the bulk endpoint and BE-AF's Events_Create/U
 ```js
 enrichmentStatus: {
   type: String,
-  enum: ['complete', 'pending', 'failed'],
+  enum: ['complete', 'pending', 'deferred', 'failed'],
   default: 'pending',  // for new inserts pre-enrichment
   index: true          // composite index w/ appId + updatedAt
 }
 ```
 
-States:
+States (Quinn clarification: 4 states, not 3):
 - `"complete"` — runDataQualityPipeline ran successfully, all in-scope fields populated (or correctly null)
 - `"pending"` — inserted by Porter degraded-mode fallback; awaiting Tier-2 pickup
+- `"deferred"` — bulk-enrich call returned partial-failure for this event; Porter inserted with this flag; Tier-2 will retry
 - `"failed"` — pipeline ran but returned `needs_review` (validation/data-shape failure); needs human review or schema fix
 
 **Indexes:**
@@ -240,6 +254,9 @@ States:
 - Connection timeout (>10s)
 - Network error (DNS, refused, etc.)
 
+**NOT triggers (per Porter sign-off — fail loud, don't silently fall through):**
+- HTTP 4xx errors (malformed payload, oversized batch, auth failure) — Porter surfaces error for operator fix, does NOT degrade-mode insert. 4xx is caller's bug, not a BE-AF outage.
+
 **Degraded path:**
 - Porter reverts to raw `insertOne`/bulk insert
 - Sets `enrichmentStatus: "pending"` on every degraded-mode insert
@@ -282,13 +299,13 @@ States:
 
 ---
 
-## Open questions for team
+## Open questions — RESOLVED (Quinn sign-off 2026-04-18)
 
-1. **`enrichmentStatus` field naming** — proposed values `complete`/`pending`/`failed`. AIDI: any objection or preferred enum?
-2. **Tier-2 lookback window** — 4h proposed. If Porter degraded-mode is rare (expected), 24h might be safer. Porter: thoughts on what window catches realistic outages?
-3. **Force-recompute trigger** — for rule changes, who calls the bulk-enrich with `forceRecompute=true`? Manual script run by AIDI? Scheduled? (Lean: manual, AIDI-gated.)
-4. **Deletion of stale `enrichmentDeferred` flag** — if anyone is using a similar pre-existing flag, please flag for cleanup.
-5. **`runDataQualityPipeline` location** — `src/utils/dataQuality.js` (current draft) or somewhere more discoverable like `src/lib/enrichment.js`? Naming bikeshed; not blocking.
+1. **`enrichmentStatus` enum** — Quinn issued contradictory guidance (clarification msg: 4 states `complete|pending|deferred|failed` for partial-failure expressiveness; sign-off msg: 3 states "more granularity adds no signal"). **Spec ships 4 states** per the explicit clarification reasoning. Awaiting AIDI's formal governance call to confirm or revert.
+2. **Tier-2 lookback window** — Quinn: **24h**, not 4h. Limit 200 bounds scan cost; 24h covers overnight outages. Updated.
+3. **Force-recompute trigger** — Quinn: **manual, AIDI-gated** via `scripts/runDataQualityBackfill.js --force-recompute`. Same Q1=C sign-off as backfill apply. Never scheduled.
+4. **Stale flag cleanup** — Quinn: nothing known on coordination side. Schema PR will grep for leftover refs.
+5. **Function location** — Quinn lean: `src/utils/enrichment.js` (function does more than DQ — classification, denorm, venue resolution, DQ warnings). Renaming local draft from `dataQuality.js` to `enrichment.js`.
 
 ---
 
@@ -306,24 +323,30 @@ States:
 
 ---
 
+## Locked contracts (do not weaken in future optimization)
+
+**A. Per-event response payload IS the Harvey write-back contract.** The bulk-enrich response must include the full enriched event document per row (`event: {...enriched}` in §1's response schema), not just status/error. Porter relays this back to Harvey's SQLite so Harvey's intake corpus stays in sync with Mongo's enrichment. **Future optimizations that shrink the response payload to status-only will silently break Harvey's reconciliation — coordinate with Harvey before any such change.**
+
+**B. Porter writes `enrichmentStatus="failed"` events back to Harvey's SQLite.** Per §3 partial-failure: events that come back with `status: needs_review` are inserted to Mongo with `enrichmentStatus="failed"`. Porter ALSO write-backs the failed-status to Harvey's intake row (so Harvey's dashboards see "this row was rejected at BE-AF"). Locked into Porter's spec; flagged here so it inherits cleanly.
+
 ## What this spec does NOT cover
 
-- Porter's refactor (insertOne → bulk-enrich call). Porter's plate; Quinn coordinates.
+- Porter's refactor (insertOne → bulk-enrich call). Porter's plate; Quinn coordinates. (Porter approved spec 2026-04-18; Porter branch `porter/bulk-enrich-integration` planned.)
 - Harvey/Booker's intake-side classification responsibilities — locked in Quinn's contract (this doc is BE-AF-side only).
 - Sarah's UI category gate (TIEMPO-405) — orthogonal, unaffected by D vs C.
 - TIEMPO/CALOPS frontend changes for `enrichmentStatus` display — out of scope; coordinator can route if frontends want to show "pending" state.
 
 ---
 
-## Sign-offs needed
+## Sign-offs
 
-| Persona | Concern |
-|---|---|
-| Quinn | Architecture coherence + cross-team coordination |
-| AIDI | Governance items: Tier-2 ships v1, dry-run gate, never-guess-venue rule, per-event status |
-| Porter | Endpoint contract, batch size, degraded-mode trigger conditions, observability batch_id propagation |
-| Harvey / Booker | (No new asks — locked at intake-side per Quinn's contract) |
+| Persona | Concern | Status |
+|---|---|---|
+| Quinn | Architecture coherence + cross-team coordination | ✅ APPROVED 2026-04-18 |
+| Porter | Endpoint contract, batch size, degraded-mode triggers, observability batch_id | ✅ APPROVED 2026-04-18 (3 minor notes folded — 4xx exclusion, 24h lookback, niche TODO) |
+| AIDI | Governance: Tier-2 ships v1, dry-run gate, never-guess-venue, per-event status, enum naming (3 vs 4 states), degraded-mode metric | ⏳ PENDING |
+| Harvey / Booker | (No new asks — locked at intake-side per Quinn's contract) | ✅ Implicit (covered in convergence) |
 
-Reply via hub. Will iterate on this doc until sign-off. Once locked, open new CALBEAF JIRA ticket and begin Phase 1.
+Once AIDI signs off (or revises the 4-state enum + any other governance points), open single CALBEAF JIRA ticket per Quinn's clarification (endpoint + Tier-2 + schema + metrics — DO NOT split) and begin Phase 1.
 
 — Fulton
