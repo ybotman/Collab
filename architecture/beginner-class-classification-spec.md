@@ -1,20 +1,32 @@
 # Beginner Class Classification Spec
 
-**For:** AIDI (AI-Discovery Coordinator)
-**From:** Fulton (calendar-be-af) — with input requested from Harvey (harvester)
-**Date:** 2026-04-17 (rev 2026-04-18 — Harvey input integrated)
-**Status:** Draft v2 — Harvey input MERGED; awaiting AIDI review
+**Hand-off recipients:** AIDI · Harvey · Fulton · Porter
+**Date:** 2026-04-17 (rev 2026-04-18 — v3: Toby rule-curation pass)
+**Status:** Draft v3 — canonical four-consumer hand-off doc; build deferred pending sign-off
 **Source ticket:** CALBEAF-109 (event classification fields)
 
 ---
 
-## Why this matters to AIDI
+## Why this exists & who consumes it
 
-Two new event attributes (`forBeginners`, `beginnerFriendly`) need to be set automatically on `categoryFirst='Class'` events. Beyond the calendar-be-af use case, these tags are the foundation for downstream consumers:
+Two new event attributes (`forBeginners`, `beginnerFriendly`) classify Class events. Until organizers have UI to set them per-event, **rules-based classification is authoritative**; once UI ships, organizer overrides win (Stage 5 — always preserved).
 
-1. **Campaign Management Tool** — segment audiences by skill level. "Send beginners-only campaigns" needs a reliable `forBeginners=true` filter.
-2. **Beginners Site (routing decision)** — when AIDI/Porter discover a class via Harvey, should it be auto-loaded to a beginners-focused front-end? Today Porter excludes the entire `Class` category from MongoDB load. With these tags, we can selectively admit `forBeginners=true` classes only.
-3. **Cross-niche reuse** — if classification rules are well-defined here, harvester+porter can apply the same scoring at intake (avoids round-trip through calendar-be-af).
+Long-term architecture: **rules + override**. Discovered events (harvester/Porter pipeline) are forever rules-classified — there's no human author in our ecosystem to ask. Manual events get rules at create/update; organizer can override later.
+
+### Four-consumer hand-off
+
+| Consumer | Project | When it runs | What it does with the rules |
+|---|---|---|---|
+| **Harvey** | `ai-discovered/harvester` | Intake (scrape → SQLite) | Optional: pre-tag rows so downstream consumers see consistent flags. v1: not required (be-af classifies on insert). |
+| **Porter** | `ai-discovered/porter` | Mongo admission | Filter `beginnerFriendly=true` to admit Class events to beginners-site (AIDI Q2 decision). **v1: keep blanket Class exclusion; flip after tags clean ~1 week on TEST.** |
+| **Fulton** | `calendar-be-af` | Event Create/Update | Authoritative classifier. Runs only when `forBeginners`/`beginnerFriendly` are `undefined` (preserve organizer override). |
+| **AIDI** | `ai-discovered` (root) | Coordination | Owns rule changes; signs off before any consumer ships. Routes Porter sequencing post-launch. |
+
+### Downstream uses
+
+1. **Campaign Management Tool** — beginner-audience segments use these flags.
+2. **Beginners Site routing** — Porter admits `beginnerFriendly=true` Class events (AIDI: either-flag, not strict forBeginners).
+3. **Cross-niche reuse** — same rules, four lifecycle stages, one source of truth (this doc).
 
 ---
 
@@ -105,9 +117,9 @@ Earlier rules short-circuit later ones:
 /\btango\s+100[SM]?\b/i                          → danceus "Tango 100S/100M" = level 1
 /\bnivel\s+(uno|1|b[áa]sico)\b/i                 → ES "Nivel 1 / Nivel básico"
 
-# Fundamentals / foundations
-/\bfundamentals?\b/i
-/\bbeginners?\s+foundations?\b/i
+# Fundamentals / Foundations — REMOVED v3 (Toby 2026-04-18)
+# Reason: "Tango Fundamentals" / "Foundations" used by Int + Adv classes too. Ambiguous.
+# "Beginner Foundations" still caught by plain "beginner" rule below.
 
 # Plain "beginner" — ONLY if no §1a or §1b hit
 /\bbeginners?\b/i
@@ -150,9 +162,10 @@ Apply ONLY when title is generic (none of §1a/§1b/§1c matched). Strip HTML, l
 ```
 /\bbeginners?\s+(?:are\s+)?welcomed?\b/i        → "Beginners welcomed"
 /\ball\s*levels?\s+(?:are\s+)?welcomed?\b/i     → "All levels welcome"
-/\bno\s+partner\s+(?:needed|required|necessary)\b/i
-                                                ← 26 desc-only hits in Harvey corpus.
-                                                  Friendly-only — experienced dancers also benefit.
+
+# REMOVED v3 (Toby 2026-04-18):
+# /\bno\s+partner\s+(?:needed|required|necessary)\b/i
+# Reason: Orthogonal to skill level — common at Int/Adv classes too. Was a false signal.
 ```
 
 ### Stage 3 — Superset rule
@@ -161,7 +174,17 @@ Apply ONLY when title is generic (none of §1a/§1b/§1c matched). Strip HTML, l
 if (forBeginners) beginnerFriendly = true;
 ```
 
-### Stage 4 — Override resolution (always last)
+### Stage 4 — Niche guard (v3, Toby 2026-04-18)
+
+```
+if (appId !== '1') {
+    // Skip Stages 1-3 entirely. Both flags stay false (or null if never written).
+    // v1 launches TangoTiempo only. HarmonyJunction (appId=2), NTTT (3), TangoDJ (4),
+    // Tangology (5) opt in by future ticket.
+}
+```
+
+### Stage 5 — Override resolution (always last)
 
 ```
 finalForBeginners      = forBeginnersOverride      ?? computedForBeginners
@@ -176,11 +199,13 @@ finalBeginnerFriendly  = beginnerFriendlyOverride  ?? max(computedBeginnerFriend
 | `Beginner/Intermediate` | `friendly=true, forBeginners=false` | §1b mixed-level rule |
 | Title `Intermediate Series` + desc mentions "Advanced Beginner" | `forBeginners=false`; friendly only if §2b matches | Title-priority §0 rule |
 | `THURSDAY Tango Class with Srini and Lola` + empty desc | both false (no signal) | All stages no-match |
-| `Beyond Beginner` | both false | §1a explicit negative (caught by Harvey, missed in v1) |
-| `Ongoing Beginner` (e.g. "Level 1.5") | `forBeginners=true` | §1c "ongoing/absolute/total/advanced beginners" |
+| `Beyond Beginner` | both false | §1a explicit negative |
+| `Ongoing Beginner` (e.g. "Level 1.5") | `forBeginners=true` | §1c |
 | `Beginner Level 2` | `forBeginners=true` | "beginner" in title wins over the "2" |
 | `Tango 100S` / `100M` (danceus) | `forBeginners=true` | §1c numbered-level — danceus convention |
-| `No partner needed` (desc only) | `friendly=true`, NOT forBeginners | §2b — experienced solo practice common |
+| `Tango Fundamentals` (Int or Adv) | both false | v3 — Fundamentals removed as ambiguous |
+| `No partner needed` (desc only) | both false | v3 — orthogonal to skill level, removed |
+| Class for `appId=2` (HarmonyJunction) | both false | §4 niche guard — appId=1 only at launch |
 
 ---
 
@@ -289,6 +314,24 @@ Harvey ran a 478-distinct-Class-row sweep across 24 harvested sites and contribu
 3. **AIDI + Harvey**: Decide whether harvester applies these tags at intake (faster, more consistent) vs delegating to calendar-be-af on insert.
 4. **Fulton**: Refine ruleset post-AIDI feedback, build dry-run, ship.
 5. **Porter**: If decision is "admit beginner classes only", Porter's filter logic changes (AIDI to coordinate).
+
+---
+
+## v3 changelog (Toby curation pass, 2026-04-18)
+
+Three rule changes since v2 (Harvey-merged):
+
+1. **Removed §1c `\bfundamentals?\b`** — "Tango Fundamentals" used by Int + Adv classes; ambiguous.
+2. **Removed §1c `\bbeginners?\s+foundations?\b`** — redundant ("beginner" rule catches it).
+3. **Removed §2b desc rule `\bno\s+partner\s+(?:needed|required|necessary)\b`** — orthogonal to skill level; common at Int/Adv classes too.
+4. **Added §4 niche guard** — classifier only fires for `appId='1'` (TangoTiempo). HJ/NTTT/TangoDJ/Tangology opt in via future ticket.
+
+### Impact on consumers
+
+- **Harvey**: fixture (`harvester/test/beginners-fixture.json`) needs updates — rows that expected `friendly=true` from "no partner needed" now expect `false`. Harvey gap id 21 ("Argentine Tango Foundations Class") now correctly classifies as **neither** (acceptable per Toby).
+- **Porter**: no admission-rule change. Pool slightly smaller because "no partner" no longer promotes events.
+- **Fulton**: implementation simplified — fewer regexes, niche guard is a single `if`.
+- **AIDI**: governance unchanged.
 
 ---
 
