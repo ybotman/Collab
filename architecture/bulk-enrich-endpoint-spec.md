@@ -1,13 +1,30 @@
 # BE-AF Bulk-Enrich Endpoint — Design Spec
 
-**Status:** Draft v1.2 — Quinn + Porter sign-offs; AIDI governance pending
+**Status:** v1.3 — All sign-offs in (Quinn + Porter + AIDI); PROD-STAY-OUT codified
 **Author:** Fulton (calendar-be-af)
 **Date:** 2026-04-18
 **Convergence ref:** Quinn's "Architecture LOCKED: D" message 2026-04-18
 **Decision record:** `Collab/architecture/enrichment-architecture-decision-2026-04-18.md`
 **Vote:** 5/5 — Fulton, Harvey, Porter, Booker, AIDI
 **Source spec:** `Collab/architecture/beginner-class-classification-spec.md` (v3, signed off)
-**Ticket:** TBD (single new CALBEAF-XXX — covers endpoint + Tier-2 + schema + metrics; do NOT split)
+**Ticket:** **CALBEAF-110** (https://hdtsllc.atlassian.net/browse/CALBEAF-110) — single ticket per Quinn (endpoint + Tier-2 + schema + metrics; do NOT split)
+
+---
+
+## 🚧 PROD STAY-OUT — HARD RAIL
+
+Toby 2026-04-18 (relayed via Porter): **"don't load this stuff to PROD. to be clear — stay out of PROD."**
+
+**Standing order for the entire D-architecture rollout:**
+- All work lands **DEVL → TEST only**
+- NO PROD deploys of calendar-be-af code for this initiative
+- NO PROD loads from Porter (PROD-LOAD-APPID-1 phrase gate remains in force)
+- NO PROD schema migrations — `enrichmentStatus` field + index land on TEST only
+- NO PROD backfill — dry-run + `--apply` are TEST-scope; AIDI Q1=C dry-run gate applies to TEST
+- Backout path = revert TEST, never touch PROD
+- Reauthorization required from Toby explicitly (escalation: Quinn → number2 → Toby)
+
+This supersedes any "DEVL→TEST→PROD standard branch strategy" framing in earlier sign-off notes. PROD is fenced off until explicitly reauthorized.
 
 ---
 
@@ -174,7 +191,7 @@ The single function called by both the bulk endpoint and BE-AF's Events_Create/U
   - `dq_checker.events_scanned`
   - `dq_checker.events_enriched`
   - `dq_checker.events_still_failing`
-  - `dq_checker.degraded_mode_rate` — % of recent inserts that hit pending/deferred status
+  - `dq_checker.degraded_mode_rate` — % of recent inserts that hit `pending` status (i.e., Porter degraded-mode fallback rate)
   - `dq_checker.duration_ms`
 
 **SHIP-GATE:** Tier-2 ships in v1, NOT a follow-up. Single JIRA ticket covers endpoint + Tier-2 + schema + metrics. Per AIDI must-have #1 — without Tier-2, degraded-mode insertions sit invisibly and rot.
@@ -191,17 +208,16 @@ The single function called by both the bulk endpoint and BE-AF's Events_Create/U
 ```js
 enrichmentStatus: {
   type: String,
-  enum: ['complete', 'pending', 'deferred', 'failed'],
+  enum: ['complete', 'pending', 'failed'],
   default: 'pending',  // for new inserts pre-enrichment
   index: true          // composite index w/ appId + updatedAt
 }
 ```
 
-States (Quinn clarification: 4 states, not 3):
+States (AIDI 2026-04-18 governance call: 3 states; `deferred` dropped — no distinct producer in v1, additive later if real transient-retry case emerges):
 - `"complete"` — runDataQualityPipeline ran successfully, all in-scope fields populated (or correctly null)
 - `"pending"` — inserted by Porter degraded-mode fallback; awaiting Tier-2 pickup
-- `"deferred"` — bulk-enrich call returned partial-failure for this event; Porter inserted with this flag; Tier-2 will retry
-- `"failed"` — pipeline ran but returned `needs_review` (validation/data-shape failure); needs human review or schema fix
+- `"failed"` — pipeline ran but returned `needs_review` (validation/data-shape failure) OR partial-failure case from §3; needs human review or schema fix
 
 **Indexes:**
 ```js
@@ -299,9 +315,9 @@ States (Quinn clarification: 4 states, not 3):
 
 ---
 
-## Open questions — RESOLVED (Quinn sign-off 2026-04-18)
+## Open questions — RESOLVED
 
-1. **`enrichmentStatus` enum** — Quinn issued contradictory guidance (clarification msg: 4 states `complete|pending|deferred|failed` for partial-failure expressiveness; sign-off msg: 3 states "more granularity adds no signal"). **Spec ships 4 states** per the explicit clarification reasoning. Awaiting AIDI's formal governance call to confirm or revert.
+1. **`enrichmentStatus` enum** — RESOLVED: **3 states** per AIDI 2026-04-18 governance call. `deferred` dropped (no v1 producer path, additive later if a real transient-retry case emerges). Quinn confirmed alignment.
 2. **Tier-2 lookback window** — Quinn: **24h**, not 4h. Limit 200 bounds scan cost; 24h covers overnight outages. Updated.
 3. **Force-recompute trigger** — Quinn: **manual, AIDI-gated** via `scripts/runDataQualityBackfill.js --force-recompute`. Same Q1=C sign-off as backfill apply. Never scheduled.
 4. **Stale flag cleanup** — Quinn: nothing known on coordination side. Schema PR will grep for leftover refs.
@@ -313,13 +329,13 @@ States (Quinn clarification: 4 states, not 3):
 
 | Phase | Deliverable | Gate |
 |---|---|---|
-| 1 | `runDataQualityPipeline` lib (current local draft) — finalize, unit tests against canonical fixture | Quinn lock |
-| 2 | Bulk-enrich endpoint (Events_BulkEnrich.js) | Spec sign-off |
-| 3 | `enrichmentStatus` schema field + index migration | Spec sign-off |
-| 4 | Tier-2 DQ_PeriodicChecker function | Endpoint live on TEST |
-| 5 | Backfill script (dry-run + apply gates) | AIDI Q1=C review |
+| 1 | `runDataQualityPipeline` lib (current local draft) — finalize, unit tests against canonical fixture | Quinn lock ✓ |
+| 2 | Bulk-enrich endpoint (Events_BulkEnrich.js) | Spec sign-off ✓ |
+| 3 | `enrichmentStatus` schema field + index migration (TEST only) | Spec sign-off ✓ |
+| 4 | Tier-2 DQ_PeriodicChecker function (ships v1 per AIDI must-have #1) | Endpoint live on TEST |
+| 5 | Backfill script (dry-run + apply gates) — **FULL-HISTORY SCAN** (not 24h-bounded; per AIDI migration nudge — overwrites existing rows defaulted to `complete` if classification missing) | AIDI Q1=C review |
 | 6 | Wire Events_Create/Update to call lib in-process (replace existing classifyAndEnrichEvent) | Endpoint stable on TEST |
-| 7 | Deploy DEVL → TEST → PROD per branch strategy | Standard CR |
+| 7 | Deploy DEVL → **TEST, STOP** (per Toby PROD STAY-OUT 2026-04-18). NO PROD until explicit reauthorization. | Standard CR for DEVL→TEST only |
 
 ---
 
@@ -344,7 +360,7 @@ States (Quinn clarification: 4 states, not 3):
 |---|---|---|
 | Quinn | Architecture coherence + cross-team coordination | ✅ APPROVED 2026-04-18 |
 | Porter | Endpoint contract, batch size, degraded-mode triggers, observability batch_id | ✅ APPROVED 2026-04-18 (3 minor notes folded — 4xx exclusion, 24h lookback, niche TODO) |
-| AIDI | Governance: Tier-2 ships v1, dry-run gate, never-guess-venue, per-event status, enum naming (3 vs 4 states), degraded-mode metric | ⏳ PENDING |
+| AIDI | Governance: Tier-2 ships v1, dry-run gate, never-guess-venue, per-event status, enum naming, degraded-mode metric | ✅ APPROVED 2026-04-18 (3-state enum call; Phase 5 full-history scan nudge; §3/§6 contradiction noted — fixed in v1.3) |
 | Harvey / Booker | (No new asks — locked at intake-side per Quinn's contract) | ✅ Implicit (covered in convergence) |
 
 Once AIDI signs off (or revises the 4-state enum + any other governance points), open single CALBEAF JIRA ticket per Quinn's clarification (endpoint + Tier-2 + schema + metrics — DO NOT split) and begin Phase 1.
