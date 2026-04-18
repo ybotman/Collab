@@ -4,7 +4,7 @@
     "specVersion": "1.0.0",
     "organizer": "Ultimate Tango",
     "orgId": "680d9a06e0cc7a532a560556",
-    "timestamp": "2026-04-18T23:40:10.278Z",
+    "timestamp": "2026-04-18T23:44:53.574Z",
     "threshold": 0.25,
     "minGroup": 3,
     "packageImport": true
@@ -90,7 +90,17 @@
       ],
       "outlierEventIds": [],
       "dtstart": "2025-05-03T19:00:00.000Z",
-      "until": "2025-06-21T19:00:00.000Z"
+      "until": "2025-06-21T19:00:00.000Z",
+      "sampleSingletonUpdate": {
+        "filter": {
+          "_id": "ObjectId(\"684651c7df99a7ff192e3f3b\")"
+        },
+        "update": {
+          "$set": {
+            "replacedByMaster": "ObjectId(\"<newMasterId>\")"
+          }
+        }
+      }
     },
     {
       "title": "UT – Advanced Level – Elevating Technique, Connection, and Expression – couples only only",
@@ -116,7 +126,17 @@
       ],
       "outlierEventIds": [],
       "dtstart": "2025-05-03T21:00:00.000Z",
-      "until": "2025-06-28T21:00:00.000Z"
+      "until": "2025-06-28T21:00:00.000Z",
+      "sampleSingletonUpdate": {
+        "filter": {
+          "_id": "ObjectId(\"684651c8df99a7ff192e3f45\")"
+        },
+        "update": {
+          "$set": {
+            "replacedByMaster": "ObjectId(\"<newMasterId>\")"
+          }
+        }
+      }
     },
     {
       "title": "Short Sequences – enrich your vocabulary with 52 sequences every year",
@@ -141,7 +161,17 @@
       ],
       "outlierEventIds": [],
       "dtstart": "2025-05-06T23:30:00.000Z",
-      "until": "2025-06-24T23:30:00.000Z"
+      "until": "2025-06-24T23:30:00.000Z",
+      "sampleSingletonUpdate": {
+        "filter": {
+          "_id": "ObjectId(\"684651cfdf99a7ff192e3f90\")"
+        },
+        "update": {
+          "$set": {
+            "replacedByMaster": "ObjectId(\"<newMasterId>\")"
+          }
+        }
+      }
     },
     {
       "title": "UT Learn Tango In One Summer!",
@@ -170,7 +200,17 @@
       ],
       "dtstart": "2025-07-07T23:30:00.000Z",
       "until": "2025-08-25T23:30:00.000Z",
-      "reviewReason": "Original group REVIEW (mixed_times_of_day_4.5h); sub-group re-detection found core subset."
+      "reviewReason": "Original group REVIEW (mixed_times_of_day_4.5h); sub-group re-detection found core subset.",
+      "sampleSingletonUpdate": {
+        "filter": {
+          "_id": "ObjectId(\"68532f74a1e3cfb6f8bb9d71\")"
+        },
+        "update": {
+          "$set": {
+            "replacedByMaster": "ObjectId(\"<newMasterId>\")"
+          }
+        }
+      }
     }
   ]
 }
