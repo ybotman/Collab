@@ -299,7 +299,7 @@ States (AIDI 2026-04-18 governance call: 3 states; `deferred` dropped — no dis
 
 **Triggers (Porter switches to degraded fallback):**
 - HTTP 5xx from BE-AF
-- Connection timeout (>10s)
+- Connection timeout (>30s) — matches BE-AF server-side Azure Functions timeout. Porter `DEGRADED_TIMEOUT_MS=30000`.
 - Network error (DNS, refused, etc.)
 
 **NOT triggers (per Porter sign-off — fail loud, don't silently fall through):**
