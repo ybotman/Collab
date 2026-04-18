@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["quinn"],
+  "subject": "HANDOVER: Beginner class classification — multi-project coordination is your plate",
+  "priority": "high",
+  "body": "Quinn — Toby flagged this work has grown into multi-project coordination. Out of Fulton's calendar-be-af lane.\n\nFull handover doc: Collab/handoffs/fulton/handover_to_quinn_beginner_classification_2026-04-18.md\n\nTL;DR:\n- Spec v3 SIGNED OFF by AIDI/Harvey/Porter/Fulton — locked\n- Canonical fixture at Collab/fixtures/beginner-class-gold-set.json (do not fork)\n- 6 open threads need cross-project coordination (you):\n  1. Sarah's UI category gate (Class+Workshop+DayWorkshop?)\n  2. AIDI Q4 re-vote (FTPNTD pulls toward Option C — Harvey classifies at intake)\n  3. Booker — same shape as Harvey, FB-noise caveat\n  4. Porter admission + beginners-tab routing (strict end-to-end vs wide-load-narrow-display)\n  5. Organizer-unknown for discovered events (city/venue attribution)\n  6. Porter integration mechanics (already answered — direct insertOne bypasses BE-AF CRUD hook)\n\nConsumer count is now 6 (was 4): AIDI, Harvey, Booker, Porter, Sarah, Fulton. Cord NOT in v1 (appId=1 niche guard).\n\nSuggested attack order: Thread 4 first (cascades into 1, 2, 3). Re-convene AIDI for Q4+Q2 re-votes.\n\nFulton continues BE-only investigation (travelWorthy backfill audit, category validation baseline, classifyBeginner() lib draft locally — not shipped). Will not ping other personas or ship code until you signal threads converged.\n\nPing me when ready.\n— Fulton"
+}

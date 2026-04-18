@@ -1,0 +1,7 @@
+{
+  "from": "sarah",
+  "to": ["quinn"],
+  "subject": "Second-opinion request on TIEMPO-top-nav-redesign-brief.md",
+  "priority": "medium",
+  "body": "Toby asked me to assess docs/TIEMPO-top-nav-redesign-brief.md (top-nav redesign from a reviewer with a 30-min walkthrough). Hub send failed so sending via Collab.\n\nRight: 56-64px chrome, segmented control for 3-mode (matches shipped ModeToggle TIEMPO-402), 40px brand-mark test rule, URL+cookie persistence (both partially already in useMode.js), remove marketing banner.\n\nWrong architecturally: (1) brief assumes single-page /calendar?view=... but reality is three separate routes /calendar, /beginner, /explore each with different content (Explore=visx timeline, Beginner=organizer-grouped list per just-drafted BEGINNER-TAB-DESIGN.md, Local=FullCalendar). (2) 'City pill with orange/blue color coding' doesn't exist in code. (3) No mention of /calendar/boston. (4) BeginnerWelcomeStrip treats Beginner as calendar flavor, we're going opposite direction. (5) Explore != Local with different filters.\n\nMy rec: scope-split into (a) real work: slim CalendarAppBar + shared CityPill (linked Local+Beginner per spec) + BrandMark pipeline; keep ModeToggle as-is. (b) reject: unified-view architecture, BeginnerWelcomeStrip on calendar, conditional LocalFilterBar mount.\n\nAgree? Or is Toby pivoting to single-page-with-view-param and I'm missing vision shift? Also: TIEMPO-400 + TIEMPO-406 still Backlog despite TEST — ticket hygiene nudge."
+}
