@@ -2,8 +2,8 @@
 
 **For:** AIDI (AI-Discovery Coordinator)
 **From:** Fulton (calendar-be-af) — with input requested from Harvey (harvester)
-**Date:** 2026-04-17
-**Status:** Draft — awaiting Harvey input + AIDI review
+**Date:** 2026-04-17 (rev 2026-04-18 — Harvey input integrated)
+**Status:** Draft v2 — Harvey input MERGED; awaiting AIDI review
 **Source ticket:** CALBEAF-109 (event classification fields)
 
 ---
@@ -42,66 +42,145 @@ Two new event attributes (`forBeginners`, `beginnerFriendly`) need to be set aut
 
 ---
 
-## Proposed ruleset (Fulton's draft)
+## Proposed ruleset (Fulton + Harvey, merged)
 
-### Stage 1 — Title classification (PRIMARY signal)
+Harvey contributed a 478-distinct-Class-row analysis across 24 harvested sites (danceus, theronda, tangomango, dc-capital-tangueros, austin-classes, portland-classes, tangoutopia, tucson, etc.). Both leads converged on the same architecture; Harvey's contribution caught several edge cases Fulton's draft missed (notably `Beyond Beginner`, `Tango 100S/100M`, foreign-language terms, `Ongoing Beginner`).
 
-Title gets the strongest weight. Description leakage caused 6+ false positives in the first pass (e.g., title=`Intermediate Series` whose desc mentioned "Advanced Beginner" got mis-classified).
+### Stage 0 — Evaluation order (CRITICAL)
 
-**Positive — `forBeginners = true` if title matches:**
+Earlier rules short-circuit later ones:
+
+1. Title explicit-negative filter → if hit, set BOTH false, stop
+2. Title mixed-level / friendly-only → if hit, set `beginnerFriendly=true, forBeginners=false`, stop
+3. Title explicit-positive (forBeginners) → if hit, set `forBeginners=true`
+4. Description fallback → only if title didn't decide
+5. Superset rule: `forBeginners=true ⇒ beginnerFriendly=true`
+6. Override resolution (Stage 4 below)
+
+### Stage 1 — Title classification
+
+#### 1a. EXPLICIT NEGATIVE — set both false, stop
+
 ```
-\bbeginner\b                     (when not contradicted by Intermediate/Advanced)
-\babsolute beginner\b
-\badvanced beginner\b           ← still beginner-progression
-\bnewcomer\b
-\bintro(duction)? to tango\b
-\btango 1\b                     ← numbered-level-1
-\bfirst steps\b
-\bon[- ]ramp\b
-\bbeginners? (only|welcome)\b
+/\bnot\s+new\s+to\s+tango\b/i         → "Tango for People Not New to Tango"
+/\bbeyond\s+beginners?\b/i            → "Beyond Beginner — Queer Tango PDX"
+/\bpre[- ]?(int|intermediate|adv)/i   → "Pre-Int", "Pre-Adv"
+/\bintermediate\b                     (without "Beginner" in title)
+/\badvanced\b                         (without "Advanced Beginner" in title)
+/\bint\/adv\b/i
+/\b(ladies|leaders|followers)\s+technique\b/i
+/\bintensive\b                         (no beginner signal alongside)
 ```
 
-**Positive — `beginnerFriendly = true` only (NOT forBeginners) if title matches:**
+#### 1b. MIXED-LEVEL / FRIENDLY-ONLY — set `beginnerFriendly=true, forBeginners=false`, stop
+
 ```
-\ball[- ]level
-\bbeginner & beyond
-\bbeginner ?/ ?inter(mediate)?
-\bopen house\b
-\bopen level\b
+/\ball\s*[- ]?levels?\b/i                                          ← 58 title-hits in Harvey corpus
+/\bopen\s*[- ]?levels?\b/i
+/\bmixed\s*[- ]?levels?\b/i
+/\bbeginners?\s*(&|and|\/|\+)\s*(intermediate|advanced|improvers?)\b/i   ← "Beginner & Intermediate", "Beginner/Intermediate", "Beginner & Improvers"
+/\bbeginners?\s*\+/i                                               ← "Beginner+"
+/\bbeginner\s*&\s*beyond\b/i
+/\bopen\s+house\b/i                                                ← context-tango
 ```
 
-**Negative — force BOTH false (overrides positives in title):**
+#### 1c. EXPLICIT-POSITIVE for `forBeginners=true` (in priority order)
+
 ```
-\bintermediate\b           (without Beginner)
-\badvanced\b               (without "Advanced Beginner")
-\bint\/adv\b
-\bpre[- ]advanced\b
-\bpre[- ]int(ermediate)?\b
-\b(ladies|leaders|followers)? technique\b
-\bintensive\b              (typically advanced)
-\bworkshop\b               (when no beginner signal)
+# Strongest — explicit level-zero phrases
+/\b(absolute|total|ongoing|advanced)\s+beginners?\b/i
+    → "Absolute Beginner", "Total Beginners", "Ongoing Beginner", "Advanced Beginner"
+    (Harvey corpus confirms "Advanced Beginner" reads as still-a-beginner)
+
+# Intro / new-to phrases
+/\bintro(?:ductory|duction)?\b.*\btango\b/i      ← matches "Intro to Tango", "Intro Argentine Tango Class"
+/\bnewcomers?\b/i
+/\bnew\s+to\s+(?:argentine\s+)?tango\b/i
+/\bfirst\s+steps?\b/i
+/\bfrom\s+scratch\b/i
+
+# Numbered Level-1 ONLY (NOT 2, 3, 1.5 unless "beginner" also present)
+/\btango\s+1\b(?!\s*[\.\d])/i                    → "Tango 1"
+/\blevel\s+1\b(?!\s*[\.\d])/i                    → "Level 1"
+/\btango\s+100[SM]?\b/i                          → danceus "Tango 100S/100M" = level 1
+/\bnivel\s+(uno|1|b[áa]sico)\b/i                 → ES "Nivel 1 / Nivel básico"
+
+# Fundamentals / foundations
+/\bfundamentals?\b/i
+/\bbeginners?\s+foundations?\b/i
+
+# Plain "beginner" — ONLY if no §1a or §1b hit
+/\bbeginners?\b/i
+   AND NOT §1a (Beyond Beginner already filtered)
+   AND NOT §1b (Beginner & Intermediate already filtered)
+
+# Level-N variants where "beginner" also appears
+"Beginner Level 2" → forBeginners=true (beginner wins over the 2)
+
+# Foreign language (prophylactic — zero hits in current corpus, but expected as international sources land)
+/\bprincipiantes?\b/i             # ES
+/\biniciantes?\b/i                # PT
+/\bprincipianti\b/i               # IT
+/\bb[áa]sico\b/i                  # ES/PT
+/\bcorso\s+base\b/i               # IT
+/\biniziazione\b/i                # IT
+/\belementare\b/i                 # IT
 ```
 
 ### Stage 2 — Description fallback
 
-Apply ONLY when title is generic (no positive AND no negative match). Use these patterns on description (HTML-stripped, normalized):
+Apply ONLY when title is generic (none of §1a/§1b/§1c matched). Strip HTML, lowercase, collapse whitespace first.
+
+#### 2a. forBeginners signals in description
+
 ```
-\bdesigned (for|specifically for) (absolute |total )?beginners?\b
-\bno (prior |previous )?(dance |tango )?experience (needed|required|necessary)\b
-\bno partner (needed|required|necessary)\b
-\babsolute beginners?\b
-\bfirst steps\b
-\bbeginners? welcome\b
+/\bdesigned\s+for\s+beginners?\b/i
+/\bfor\s+(?:total|absolute)\s+beginners?\b/i
+/\babsolute\s+beginners?\b/i
+/\bno\s+(?:prior\s+)?experience\s+(?:needed|required|necessary)\b/i
+/\bnever\s+danced\s+(?:before|tango)?\b/i
+/\bnew\s+to\s+(?:argentine\s+)?tango\b/i
+/\bfrom\s+scratch\b/i
+/\bbrand[- ]new\s+(?:dancers?|students?)\b/i
+/\bfirst\s+steps?\b/i
 ```
 
-If matched → `beginnerFriendly = true`. Promote to `forBeginners = true` only when description ALSO contains the event's primary framing as beginner-focused (e.g., "this beginner series", "for absolute beginners"). Otherwise stay friendly-only.
+#### 2b. beginnerFriendly-ONLY signals in description
 
-### Stage 3 — Override resolution
+```
+/\bbeginners?\s+(?:are\s+)?welcomed?\b/i        → "Beginners welcomed"
+/\ball\s*levels?\s+(?:are\s+)?welcomed?\b/i     → "All levels welcome"
+/\bno\s+partner\s+(?:needed|required|necessary)\b/i
+                                                ← 26 desc-only hits in Harvey corpus.
+                                                  Friendly-only — experienced dancers also benefit.
+```
+
+### Stage 3 — Superset rule
+
+```
+if (forBeginners) beginnerFriendly = true;
+```
+
+### Stage 4 — Override resolution (always last)
 
 ```
 finalForBeginners      = forBeginnersOverride      ?? computedForBeginners
 finalBeginnerFriendly  = beginnerFriendlyOverride  ?? max(computedBeginnerFriendly, finalForBeginners)
 ```
+
+### Edge cases — confirmed answers
+
+| Case | Resolution | Source |
+|---|---|---|
+| `Advanced Beginner` | `forBeginners=true` | Both Fulton+Harvey; Harvey corpus has 4 distinct rows confirming |
+| `Beginner/Intermediate` | `friendly=true, forBeginners=false` | §1b mixed-level rule |
+| Title `Intermediate Series` + desc mentions "Advanced Beginner" | `forBeginners=false`; friendly only if §2b matches | Title-priority §0 rule |
+| `THURSDAY Tango Class with Srini and Lola` + empty desc | both false (no signal) | All stages no-match |
+| `Beyond Beginner` | both false | §1a explicit negative (caught by Harvey, missed in v1) |
+| `Ongoing Beginner` (e.g. "Level 1.5") | `forBeginners=true` | §1c "ongoing/absolute/total/advanced beginners" |
+| `Beginner Level 2` | `forBeginners=true` | "beginner" in title wins over the "2" |
+| `Tango 100S` / `100M` (danceus) | `forBeginners=true` | §1c numbered-level — danceus convention |
+| `No partner needed` (desc only) | `friendly=true`, NOT forBeginners | §2b — experienced solo practice common |
 
 ---
 
@@ -129,46 +208,64 @@ Running the (unrefined) ruleset:
 
 ---
 
-## Open questions for AIDI / Toby / Harvey
+## Open questions for AIDI / Toby
 
-1. **"Advanced Beginner" → forBeginners=true?**
-   Fulton's lean: yes (still beginner-track). AIDI's call?
+Harvey's input resolved Q1, Q2, Q3 from the original draft. Remaining open:
 
-2. **Mixed-level events** (`Beginner/Intermediate`, `Beginner & Beyond`, `All-Levels`):
-   Fulton's lean: `beginnerFriendly=true`, `forBeginners=false`. Confirm?
-
-3. **Multi-language signals** (Harvey, your domain):
-   - Spanish: `iniciantes`, `principiantes`, `nivel 1`, `básico`
-   - Italian: `principianti`, `base`, `iniziali`
-   - Portuguese: `iniciantes`, `básico`
-   Should these be in v1 or deferred?
-
-4. **Auto-backfill vs forward-only**:
-   - Option A: Run a backfill script over all existing Class events
+1. **Auto-backfill vs forward-only** (Toby's call):
+   - Option A: Run backfill script over all existing Class events
    - Option B: Apply only on next create/update (slow rollout)
-   - Option C: Backfill but with a **dry-run preview** for AIDI to review before committing
-   Fulton's lean: C.
+   - Option C: Backfill via **dry-run preview** for AIDI/Toby review before committing
+   Fulton's lean: **C**.
 
-5. **Beginners Site routing rule** (AIDI's call):
-   Should Porter admit a Class to Mongo when **either** flag is true, or **only** when `forBeginners=true`? Affects how aggressively classes appear on the beginners site.
+2. **Beginners Site routing rule** (AIDI's call):
+   Should Porter admit a Class to Mongo when **either** flag is true, or **only** when `forBeginners=true`?
+   - Either-flag: more inclusive; site shows "all-levels" classes too
+   - forBeginners-only: stricter; cleaner beginner experience but smaller pool
+   Affects how aggressively classes appear on the beginners site.
 
-6. **Campaign Mgmt segments** (AIDI):
-   What segments do you actually need? Examples to confirm:
+3. **Campaign Mgmt segments** (AIDI):
+   What segments do you actually need? Proposing:
    - "True beginners" → `forBeginners=true`
    - "Beginner-receptive audience" → `beginnerFriendly=true OR forBeginners=true`
    - "Non-beginner content" → `beginnerFriendly=false AND forBeginners=false`
+   Confirm or specify additional cuts (e.g., language-specific, region-specific)?
+
+4. **Where the classifier lives** (AIDI + Harvey design call):
+   - Option A: calendar-be-af applies on Create/Update (current proposal). Single source of truth.
+   - Option B: Harvester applies at intake; calendar-be-af respects what comes in. Faster, cross-niche consistent, but two implementations to keep aligned.
+   - Option C: Both — harvester suggests, calendar-be-af confirms/overrides. More robust but more complex.
+   Fulton's lean: **A** for v1; revisit if multi-source classification drift becomes an issue.
+
+5. **Fixture-based testing**:
+   Harvey offered to build `test/beginners-fixture.json` with 40-60 labeled rows from his corpus. Fulton accepted. AIDI: any opinion on whether this fixture should also live in Collab so multiple consumers (calops, calendar-be-af, harvester) can validate against the same gold set?
 
 ---
 
-## Harvey's input (PENDING)
+## Harvey's input (RECEIVED 2026-04-18)
 
-Fulton sent a request to Harvey 2026-04-17 asking for:
-1. Patterns from Harvey's larger class corpus (he sees more than calendar-be-af alone)
-2. Multi-language patterns
-3. Any prior internal classification work
-4. Patterns Fulton might be missing
+Harvey ran a 478-distinct-Class-row sweep across 24 harvested sites and contributed the ruleset that's now merged into the section above. Highlights of what Harvey added:
 
-This section will be updated when Harvey responds. AIDI: feel free to coordinate directly with Harvey to accelerate — he's online.
+- **Critical evaluation order** — title negatives → mixed/friendly → positives → desc fallback. Earlier order short-circuits to prevent leak-through.
+- **Edge cases Fulton missed:**
+  - `Beyond Beginner` (explicit negative — naive `\bbeginner\b` would have wrongly fired)
+  - `Ongoing Beginner` ("Level 1.5 (Ongoing Beginner)" — real series, post-intro but still beginner)
+  - `Tango 100S/100M` — danceus's convention for level 1
+  - `Beginner+`, `Beginner & Improvers`, `Open Level`, `Mixed Levels`
+  - `Fundamentals` / `Beginner Foundations` as positive signals
+  - `Brand new dancers/students`, `Never danced before`, `From scratch` (description signals)
+- **Corrected Fulton's `intro to tango` regex** — too narrow; missed "Intro Argentine Tango Class". Broader `\bintro(?:ductory|duction)?\b.*\btango\b` adopted.
+- **No-partner-needed → friendly only** (NOT forBeginners) — Harvey's corpus shows 26 desc-only hits; experienced dancers also benefit. Both leads agree.
+- **Foreign-language ruleset** (ES/PT/IT) — prophylactic; zero hits in current US-skewed corpus, but Harvey expects hits as international sources land.
+- **No prior internal classification** — `harvester/lib/category-detector.ts` line 62 has `beginner` as a Class-category keyword but no boolean fields. CALBEAF work is the first pass.
+
+**Harvey's standing offers:**
+1. Build a `test/beginners-fixture.json` with 40–60 labeled rows from his corpus → Fulton accepted; will use as test harness.
+2. Dry-run Fulton's TEST-DB ruleset against his SQLite corpus before backfill → Fulton will engage when dry-run script is ready.
+
+**Harvey's caveats:**
+- Corpus skews US-English; foreign-language rules are prophylactic.
+- Recurring series inflate dupes; 478 is the honest distinct count.
 
 ---
 

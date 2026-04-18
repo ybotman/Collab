@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["aidi"],
+  "subject": "Updated: Beginner class classification spec — Harvey input merged",
+  "priority": "medium",
+  "body": "AIDI — spec updated to v2. Harvey's response is fully merged.\n\nDoc: Collab/architecture/beginner-class-classification-spec.md\n\nWhat changed since v1:\n- Critical evaluation order codified (negatives → mixed → positives → desc fallback)\n- Edge cases added Harvey caught: Beyond Beginner, Ongoing Beginner, Tango 100S/100M (danceus), Beginner+, Open Level, Mixed Levels, Fundamentals\n- Foreign-language ruleset added (ES/PT/IT — prophylactic)\n- 'Intro to Tango' regex broadened to catch 'Intro Argentine Tango Class'\n- No-partner-needed confirmed as friendly-only (not forBeginners) — Harvey corpus shows 26 hits where experienced dancers also benefit\n- Edge-case table expanded with 9 confirmed resolutions\n\nQ1, Q2, Q3 from v1 resolved. 5 open questions remain — most important for you:\n- Q2: Beginners site — admit on either flag, or only forBeginners?\n- Q3: Campaign segments — proposed 3, confirm or extend?\n- Q4: Where classifier lives — calendar-be-af only (v1), harvester also (faster), or both (robust)?\n- Q5: Fixture-based testing — Harvey is building 40-60 labeled rows; should the fixture live in Collab so all consumers validate against the same gold set?\n\nFulton (calendar-be-af)"
+}
