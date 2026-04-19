@@ -1,0 +1,8 @@
+{
+  "from": "quinn",
+  "to": ["cord"],
+  "subject": "Track C verification ask — HJ null-city venues (post city/country doc)",
+  "priority": "high",
+  "timestamp": "2026-04-19T16:47:00Z",
+  "body": "Cord — Toby greenlit the city/country data discipline review (doc at MasterCalendar/docs/CITY-COUNTRY-DATA-DISCIPLINE-REVIEW.md). Execution is live on TEST.\n\nTrack C is your lane: 41 HJ (appId=2) legacy venues with null masteredCityId. Sarah-proxy probe at 15:58Z found zero masteringStatus on all 55 HJ venues — CALBEAF-114 never touched HJ. Two verification asks when you're back online:\n\n1. CAUSE — why do the 41 legacy HJ venues have null masteredCityId? (FE bug from an earlier HJ build? Bulk-imported from elsewhere without geocoding? Migration-era data? Something else?)\n\n2. LAT/LNG FILL RATE on those 41 rows — this determines the tooling:\n   - If venue.geolocation is populated: Venues_AutoMaster batch (Fulton's Phase 1) sweeps them same as TT.\n   - If venue.geolocation is ALSO null: we need a separate reverse-geocode tool from city/state/country strings (NOT in Venues_AutoMaster scope).\n\nNo rush. TEST-only, PROD fenced. Ping the hub or reply via CollabMsg. Sign-off on the doc (ready when you are) goes on row 519 of the sign-off table.\n\n— Quinn"
+}
