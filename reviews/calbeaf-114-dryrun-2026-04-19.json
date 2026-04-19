@@ -1,0 +1,462 @@
+{
+  "meta": {
+    "specVersion": "1.0.0",
+    "mode": "DRY-RUN",
+    "timestamp": "2026-04-19T05:45:22.399Z",
+    "totalProcessed": 1072,
+    "citiesInCorpus": 215
+  },
+  "actionCounts": {
+    "AUTO_HIGH": 60,
+    "AUTO_MEDIUM_GEOSTATE": 0,
+    "AUTO_MEDIUM_NAMESTATE": 1,
+    "REVIEW": 1011
+  },
+  "reviewReasonDistribution": {
+    "pN_multi_city_match_N_candidates_need_disambiguator": 141,
+    "no_priority_matched_dist_bucket_N_Nkm": 519,
+    "nearest_city_Nkm_exceeds_Nkm_max": 299,
+    "cityText_contradicts_nearest_geo_th ave_vs_new york city": 1,
+    "cityText_contradicts_nearest_geo_irvine_vs_orange county": 1,
+    "cityText_contradicts_nearest_geo_stockholm_vs_pittsburgh": 1,
+    "cityText_contradicts_nearest_geo_manhattan_vs_new york city": 1,
+    "pN_N_candidates_within_Nkm_no_disambiguator": 22,
+    "cityText_contradicts_nearest_geo_city of rensselaer_vs_albany": 1,
+    "cityText_contradicts_nearest_geo_lisboa_vs_lisbon": 2,
+    "cityText_contradicts_nearest_geo_fitzroy_vs_melbourne": 2,
+    "cityText_contradicts_nearest_geo_haymarket_vs_sydney": 1,
+    "cityText_contradicts_nearest_geo_pyrmont_vs_sydney": 1,
+    "cityText_contradicts_nearest_geo_ultimo_vs_sydney": 1,
+    "cityText_contradicts_nearest_geo_fortitude valley_vs_brisbane": 3,
+    "cityText_contradicts_nearest_geo_rushcutters bay_vs_sydney": 1,
+    "cityText_contradicts_nearest_geo_surry hills_vs_sydney": 3,
+    "cityText_contradicts_nearest_geo_carlton_vs_melbourne": 2,
+    "cityText_contradicts_nearest_geo_spring hill_vs_brisbane": 1,
+    "cityText_contradicts_nearest_geo_darlinghurst_vs_sydney": 1,
+    "cityText_contradicts_nearest_geo_tustin_vs_orange county": 1,
+    "cityText_contradicts_nearest_geo_santa clara_vs_san jose": 1,
+    "cityText_contradicts_nearest_geo_dresden_vs_hamburg": 1,
+    "cityText_contradicts_nearest_geo_tx N_vs_austin": 1,
+    "cityText_contradicts_nearest_geo_chichester road_vs_manchester": 1,
+    "cityText_contradicts_nearest_geo_co N_vs_denver": 1,
+    "cityText_contradicts_nearest_geo_N_vs_pittsburgh": 1
+  },
+  "samples": {
+    "AUTO_HIGH": [
+      {
+        "venueId": "6982b278ddc751b73917133e",
+        "venueName": "Cinecitta Lounge Bar",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            13.3951309,
+            52.5173885
+          ]
+        },
+        "venueCityText": "Berlin",
+        "venueStateText": "DE",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c43b1360acd655892779",
+          "matchedCityName": "Berlin",
+          "matchedCityDistanceKm": 0.7281733768322042
+        }
+      },
+      {
+        "venueId": "6982b27eddc751b739171351",
+        "venueName": "Studio M Ballroom Club",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -121.890591,
+            37.3361663
+          ]
+        },
+        "venueCityText": "San Jose",
+        "venueStateText": "CA",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c4391360acd655892765",
+          "matchedCityName": "San Jose",
+          "matchedCityDistanceKm": 0.441649030900009
+        }
+      },
+      {
+        "venueId": "6982b280ddc751b73917135a",
+        "venueName": "www.TampaTangoArgentino.com",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -82.4583107,
+            27.9449854
+          ]
+        },
+        "venueCityText": "Tampa",
+        "venueStateText": "FL",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c4391360acd655892768",
+          "matchedCityName": "Tampa",
+          "matchedCityDistanceKm": 0.6337761341348943
+        }
+      },
+      {
+        "venueId": "6983d0acaeb3d39049f6c91a",
+        "venueName": "DoubleTree by Hilton San Jose",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -121.922063,
+            37.3714658
+          ]
+        },
+        "venueCityText": "San Jose",
+        "venueStateText": "CA",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c4391360acd655892765",
+          "matchedCityName": "San Jose",
+          "matchedCityDistanceKm": 4.865653139256993
+        }
+      },
+      {
+        "venueId": "698a31a616f848e158104383",
+        "venueName": "Le Quai Centre Social et culturel du Sablon",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            13.3951309,
+            52.5173885
+          ]
+        },
+        "venueCityText": "Berlin",
+        "venueStateText": "DE",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c43b1360acd655892779",
+          "matchedCityName": "Berlin",
+          "matchedCityDistanceKm": 0.7281733768322042
+        }
+      },
+      {
+        "venueId": "69ccad56fd1bee1564621c7f",
+        "venueName": "Dorá Hotel Buenos Aires",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -58.3887904,
+            -34.6095579
+          ]
+        },
+        "venueCityText": "Buenos Aires",
+        "venueStateText": "",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c43e1360acd65589279e",
+          "matchedCityName": "Buenos Aires",
+          "matchedCityDistanceKm": 0.9259284406587485
+        }
+      },
+      {
+        "venueId": "69ccad57fd1bee1564621c8b",
+        "venueName": "The new robles for ever",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            144.9631732,
+            -37.8142454
+          ]
+        },
+        "venueCityText": "Melbourne",
+        "venueStateText": "",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c43f1360acd6558927a9",
+          "matchedCityName": "Melbourne",
+          "matchedCityDistanceKm": 0.07205270705705245
+        }
+      },
+      {
+        "venueId": "69ccad58fd1bee1564621c8e",
+        "venueName": "Alcalá 42, 28014 Madrid, Spain",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -3.6965142,
+            40.4182071
+          ]
+        },
+        "venueCityText": "Madrid",
+        "venueStateText": "",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c43b1360acd65589277c",
+          "matchedCityName": "Madrid",
+          "matchedCityDistanceKm": 0.6363307792650382
+        }
+      },
+      {
+        "venueId": "69cdadd46b1ac58337020858",
+        "venueName": "Tango Argentino in Japantown San Jose Carlos Osvaldo",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -121.894143,
+            37.3498745
+          ]
+        },
+        "venueCityText": "San Jose",
+        "venueStateText": "California",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c4391360acd655892765",
+          "matchedCityName": "San Jose",
+          "matchedCityDistanceKm": 1.4716942133524522
+        }
+      },
+      {
+        "venueId": "69cdadd46b1ac5833702085a",
+        "venueName": "Tango by the River",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -121.504529,
+            38.5830635
+          ]
+        },
+        "venueCityText": "Sacramento",
+        "venueStateText": "California",
+        "proposal": {
+          "action": "AUTO_HIGH",
+          "confidence": "high",
+          "matchedCityId": "6984c4391360acd655892764",
+          "matchedCityName": "Sacramento",
+          "matchedCityDistanceKm": 0.8953509658691593
+        }
+      }
+    ],
+    "AUTO_MEDIUM_GEOSTATE": [],
+    "AUTO_MEDIUM_NAMESTATE": [
+      {
+        "venueId": "698a6cc3fb18bf573a8502be",
+        "venueName": "Sentrum, Oslo",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            10.743309,
+            59.9099697
+          ]
+        },
+        "venueCityText": "Oslo",
+        "venueStateText": "NO",
+        "proposal": {
+          "action": "AUTO_MEDIUM_NAMESTATE",
+          "confidence": "medium-name-state",
+          "matchedCityId": "698a537afa4266bff71a0209",
+          "matchedCityName": "Oslo",
+          "matchedCityDistanceKm": null
+        }
+      }
+    ],
+    "REVIEW": [
+      {
+        "venueId": "6979c198e40b4c44e09c6073",
+        "venueName": "You Should Be Dancing...!",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -73.9903,
+            40.7443
+          ]
+        },
+        "venueCityText": "New York",
+        "venueStateText": "NY",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6cc31ddcab31bbee45",
+        "venueName": "Pivot Ballroom",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -75.2977313,
+            40.0112644
+          ]
+        },
+        "venueCityText": "Ardmore",
+        "venueStateText": "PA",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "no_priority_matched_dist_bucket_10_20km",
+          "_nearestKm": 13.04078053807805,
+          "_nearestCityName": "Philadelphia"
+        }
+      },
+      {
+        "venueId": "69825e6cc31ddcab31bbee46",
+        "venueName": "Pivot Ballroom",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -75.2882893,
+            40.004128
+          ]
+        },
+        "venueCityText": "Ardmore",
+        "venueStateText": "PA",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "no_priority_matched_dist_bucket_10_20km",
+          "_nearestKm": 11.951113120881505,
+          "_nearestCityName": "Philadelphia"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee47",
+        "venueName": "Austin Uptown Dance",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7436995,
+            30.2711286
+          ]
+        },
+        "venueCityText": "Austin",
+        "venueStateText": "TX",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee48",
+        "venueName": "Esquina Tango",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7157436,
+            30.2559048
+          ]
+        },
+        "venueCityText": "Austin",
+        "venueStateText": "TX",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee49",
+        "venueName": "Vic Mathias Shores",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7499221,
+            30.2619628
+          ]
+        },
+        "venueCityText": "Austin",
+        "venueStateText": "TX",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee4a",
+        "venueName": "Avalon Ballroom",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -105.2092685,
+            40.015524
+          ]
+        },
+        "venueCityText": "Boulder",
+        "venueStateText": "CO",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "no_priority_matched_dist_bucket_35_50km",
+          "_nearestKm": 35.961266896837536,
+          "_nearestCityName": "Denver"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee4b",
+        "venueName": "2560 Blake St #303",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9871225,
+            39.7595737
+          ]
+        },
+        "venueCityText": "Denver",
+        "venueStateText": "CO",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6dc31ddcab31bbee4c",
+        "venueName": "Denver Turnverein",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9771508,
+            39.74126
+          ]
+        },
+        "venueCityText": "Denver",
+        "venueStateText": "CO",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "p1_multi_city_match_2_candidates_need_disambiguator"
+        }
+      },
+      {
+        "venueId": "69825e6ec31ddcab31bbee4d",
+        "venueName": "Denver Turnverein",
+        "venueGeolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9623745,
+            39.6766157
+          ]
+        },
+        "venueCityText": "Denver",
+        "venueStateText": "CO",
+        "proposal": {
+          "action": "REVIEW",
+          "confidence": "review",
+          "reviewReason": "no_priority_matched_dist_bucket_5_10km",
+          "_nearestKm": 7.357652560801206,
+          "_nearestCityName": "Denver"
+        }
+      }
+    ]
+  },
+  "applyResults": null
+}
