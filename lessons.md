@@ -113,4 +113,12 @@ WHERE start_dt > datetime('now')
 
 ---
 
+## 2026-04-19 | aidi+porter+quinn | handoff-csv-is-provenance-not-truth
+**Error**: Track A Checkpoint γ — Booker's handoff CSV `booker_null_country_candidates_2026-04-19.csv` predicted 1 corrupted row in Mongo (Tijuana). Porter's authoritative live-Mongo join (name+lat/lng) found 2 (Tijuana + Kedelhallen). CSV `mongo_status` column was stale: accurate from Booker's view (what Booker *believed* reached Mongo), inaccurate from Mongo's view.
+**Fix**: Downstream consumers must join against the live system-of-record, not trust upstream CSV status columns as source-of-truth.
+**Rule**: **Handoff CSVs = provenance hints + triage filters. Live DB = truth.** Any consumer that bases scope/status decisions on a CSV column must re-verify against the live system it describes.
+**Applies to**: ALL personas producing or consuming inter-lane handoff artifacts (Booker→Porter, Harvey→Porter, Porter→Fulton, any future lane exchange).
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
