@@ -1,0 +1,381 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-114",
+    "purpose": "data-shape summary for AIDI methodology spec",
+    "timestamp": "2026-04-19T05:36:50.024Z",
+    "environment": "TangoTiempoTest (appId=1)"
+  },
+  "venueCorpus": {
+    "total": 1518,
+    "mastered": 446,
+    "unmastered": 1072,
+    "masteredRate": "29.4%"
+  },
+  "unmasteredFieldPopulation": {
+    "address": "0 (0.0%)",
+    "addressMissing": "1072 (100.0%)",
+    "geolocation": "1072 (100.0%)",
+    "geolocationMissing": "0 (0.0%)",
+    "geolocationWithLatLng": "1072 (100.0%)",
+    "name": "1072 (100.0%)",
+    "cityText": "938 (87.5%)",
+    "stateText": "764 (71.3%)",
+    "countryText": "1072 (100.0%)"
+  },
+  "masteredCitiesCorpus": {
+    "totalCities": 215,
+    "citiesWithGeo": "212 (98.6%)",
+    "citiesWithCountry": "7 (3.3%)",
+    "fieldKeys": [
+      "_id",
+      "active",
+      "appId",
+      "cityCode",
+      "cityName",
+      "location",
+      "masteredDivisionId",
+      "isActive"
+    ],
+    "fieldPopulation": {
+      "_id": 215,
+      "active": 68,
+      "appId": 212,
+      "cityCode": 136,
+      "cityName": 215,
+      "location": 212,
+      "masteredDivisionId": 215,
+      "isActive": 215
+    },
+    "sampleDoc": {
+      "_id": "6751f58a5db435dd8005e475",
+      "active": true,
+      "appId": "1",
+      "cityCode": "ALBNY",
+      "cityName": "Albany",
+      "location": {
+        "type": "Point",
+        "coordinates": [
+          -73.7562,
+          42.6526
+        ]
+      },
+      "masteredDivisionId": "6751f58a5db435dd8005e461",
+      "isActive": true
+    },
+    "indexes": [
+      {
+        "name": "_id_",
+        "key": {
+          "_id": 1
+        }
+      },
+      {
+        "name": "location_2dsphere",
+        "key": {
+          "location": "2dsphere"
+        }
+      }
+    ]
+  },
+  "venueIndexes": [
+    {
+      "name": "_id_",
+      "key": {
+        "_id": 1
+      }
+    },
+    {
+      "name": "geolocation_2dsphere",
+      "key": {
+        "geolocation": "2dsphere"
+      }
+    }
+  ],
+  "sample20": {
+    "easy10": [
+      {
+        "_id": "6979c198e40b4c44e09c6073",
+        "name": "You Should Be Dancing...!",
+        "city": "New York",
+        "state": "NY",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -73.9903,
+            40.7443
+          ]
+        },
+        "masteredCityId": null,
+        "country": "US"
+      },
+      {
+        "_id": "69825e6cc31ddcab31bbee45",
+        "name": "Pivot Ballroom",
+        "city": "Ardmore",
+        "state": "PA",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -75.2977313,
+            40.0112644
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6cc31ddcab31bbee46",
+        "name": "Pivot Ballroom",
+        "city": "Ardmore",
+        "state": "PA",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -75.2882893,
+            40.004128
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee47",
+        "name": "Austin Uptown Dance",
+        "city": "Austin",
+        "state": "TX",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7436995,
+            30.2711286
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee48",
+        "name": "Esquina Tango",
+        "city": "Austin",
+        "state": "TX",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7157436,
+            30.2559048
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee49",
+        "name": "Vic Mathias Shores",
+        "city": "Austin",
+        "state": "TX",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -97.7499221,
+            30.2619628
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4a",
+        "name": "Avalon Ballroom",
+        "city": "Boulder",
+        "state": "CO",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -105.2092685,
+            40.015524
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4b",
+        "name": "2560 Blake St #303",
+        "city": "Denver",
+        "state": "CO",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9871225,
+            39.7595737
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4c",
+        "name": "Denver Turnverein",
+        "city": "Denver",
+        "state": "CO",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9771508,
+            39.74126
+          ]
+        },
+        "country": "US"
+      },
+      {
+        "_id": "69825e6ec31ddcab31bbee4d",
+        "name": "Denver Turnverein",
+        "city": "Denver",
+        "state": "CO",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -104.9623745,
+            39.6766157
+          ]
+        },
+        "country": "US"
+      }
+    ],
+    "hard10": [
+      {
+        "_id": "69826043d250dcc9d00e1d15",
+        "name": "Palácio da Bolsa",
+        "city": "Porto",
+        "state": "",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -8.6158454,
+            41.1413903
+          ]
+        },
+        "country": "PT"
+      },
+      {
+        "_id": "69cca05130dda862a0c899fc",
+        "name": "First Presbyterian Church of New Orleans",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -90.10985,
+            29.94225
+          ]
+        }
+      },
+      {
+        "_id": "69cca05130dda862a0c899fd",
+        "name": "Arts Council of Greater Baton Rouge",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -91.186424195766,
+            30.445112690619
+          ]
+        }
+      },
+      {
+        "_id": "69cca05130dda862a0c899fe",
+        "name": "Sazon Dance Events - Sea",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -122.34468,
+            47.61578
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c899ff",
+        "name": "Altstadt (Plauen)",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            12.1358,
+            50.4938
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a00",
+        "name": "3221 Houston Ave, Houston, TX",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -95.37253,
+            29.78747
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a01",
+        "name": "The Trump Kennedy Center",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -77.055624174008,
+            38.895940779361
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a02",
+        "name": "VOGTLAND RADIO",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            12.13093,
+            50.51613
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a03",
+        "name": "Cafe Muse",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -83.14698,
+            42.48679
+          ]
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a04",
+        "name": "Dance Studio Lioudmila",
+        "city": "",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -77.08115,
+            38.80691
+          ]
+        }
+      }
+    ]
+  }
+}
