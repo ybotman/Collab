@@ -1,0 +1,569 @@
+{
+  "meta": {
+    "mode": "DRY-RUN",
+    "appId": "1",
+    "timestamp": "2026-04-19T04:46:34.728Z",
+    "processed": 5743,
+    "wouldChange": 369,
+    "pipelineErrors": 0
+  },
+  "fieldChangeCounts": {
+    "forBeginners": 0,
+    "beginnerFriendly": 0,
+    "travelWorthy": 0,
+    "masteredCountryId": 369,
+    "masteredCountryName": 54,
+    "venueGeolocation": 0,
+    "venueCityName": 0,
+    "venueTimezone": 0,
+    "enrichmentStatus": 0
+  },
+  "perCategoryCounts": {
+    "Class": {
+      "total": 406,
+      "changed": 21
+    },
+    "Milonga": {
+      "total": 2862,
+      "changed": 198
+    },
+    "Practica": {
+      "total": 2163,
+      "changed": 59
+    },
+    "Other": {
+      "total": 13,
+      "changed": 0
+    },
+    "Workshop": {
+      "total": 120,
+      "changed": 4
+    },
+    "(unknown)": {
+      "total": 8,
+      "changed": 0
+    },
+    "Festival": {
+      "total": 33,
+      "changed": 2
+    },
+    "Encuentro": {
+      "total": 2,
+      "changed": 0
+    },
+    "Marathon": {
+      "total": 11,
+      "changed": 3
+    },
+    "Performance": {
+      "total": 5,
+      "changed": 0
+    },
+    "UNKNOWN": {
+      "total": 40,
+      "changed": 10
+    },
+    "Trip": {
+      "total": 9,
+      "changed": 4
+    },
+    "WEEKEND": {
+      "total": 1,
+      "changed": 0
+    },
+    "SEMINAR": {
+      "total": 1,
+      "changed": 0
+    },
+    "OTHER": {
+      "total": 68,
+      "changed": 68
+    },
+    "MARATHON": {
+      "total": 1,
+      "changed": 0
+    }
+  },
+  "sampleDiffs": [
+    {
+      "eventId": "68532f5ca1e3cfb6f8bb9cad",
+      "title": "CAPE COD TANGO & BEACH WEEKEND",
+      "category": "Milonga",
+      "startDate": "2025-06-27T12:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68532f5da1e3cfb6f8bb9cbe",
+      "title": "CAPE COD TANGO & BEACH WEEKEND",
+      "category": "Milonga",
+      "startDate": "2025-06-27T23:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68532f60a1e3cfb6f8bb9cde",
+      "title": "CAPE COD TANGO & BEACH WEEKEND",
+      "category": "Milonga",
+      "startDate": "2025-06-28T23:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68532f62a1e3cfb6f8bb9cfe",
+      "title": "CAPE COD TANGO & BEACH WEEKEND",
+      "category": "Milonga",
+      "startDate": "2025-06-29T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "685ec6dda909d61e4f84b1f7",
+      "title": "Noche de Tango Argentino",
+      "category": "Milonga",
+      "startDate": "2025-07-12T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68617bd97c347bfff322d816",
+      "title": "TangoSpark: Beginner Level Series",
+      "category": "Class",
+      "startDate": "2025-07-02T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "6862f4700ac53b960834ee57",
+      "title": "Tango Práctica Corazón in Lexington",
+      "category": "Practica",
+      "startDate": "2025-07-10T22:15:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e5e360ac53b960835b0f4",
+      "title": "Advanced Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-09T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e5f180ac53b960835b1b8",
+      "title": "Advanced Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-16T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e5f780ac53b960835b299",
+      "title": "Advanced Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-23T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e5fcd0ac53b960835b335",
+      "title": "Advanced Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-30T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e602d0ac53b960835b3d1",
+      "title": "Advanced Beginner Series",
+      "category": "Class",
+      "startDate": "2025-08-06T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e9ca90ac53b960835be39",
+      "title": "Practilonga Caminito (Class all levels)",
+      "category": "Class",
+      "startDate": "2026-07-20T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "686e9d040ac53b960835be8d",
+      "title": "Practilonga Caminito (Practica)",
+      "category": "Practica",
+      "startDate": "2026-07-20T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68718796109a8420f85379ba",
+      "title": "Beginner Classes",
+      "category": "Class",
+      "startDate": "2025-07-16T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "687187fc109a8420f8537a28",
+      "title": "Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-23T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "6871885d109a8420f8537a96",
+      "title": "Beginner Series",
+      "category": "Class",
+      "startDate": "2025-07-30T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "687188c2109a8420f8537b20",
+      "title": "Beginner Series",
+      "category": "Class",
+      "startDate": "2025-08-06T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "68753dd756b4e944a75da7c7",
+      "title": "Queer Milonga",
+      "category": "Milonga",
+      "startDate": "2025-07-20T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "6876bd3f56b4e944a75deeed",
+      "title": "Noche de Tango Argentino",
+      "category": "Milonga",
+      "startDate": "2025-07-19T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "699558eb11507a789fe78c73",
+      "title": "La Social is CNCLD",
+      "category": "Milonga",
+      "startDate": "2026-02-19T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "6989f0c480cbd93808776b50",
+      "title": "Foundry Festival Milonga Demo",
+      "category": "Milonga",
+      "startDate": "2026-02-21T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "6992489bfb0f669d31e1336f",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-05-03T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a8d68f0853f030d53a62",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-06-07T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a95d8f0853f030d53a63",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-07-05T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a99c8f0853f030d53a64",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-08-02T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aa118f0853f030d53a65",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-09-06T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aa798f0853f030d53a66",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aac18f0853f030d53a68",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-11-08T01:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69a7ab0d8f0853f030d53a69",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-12-06T01:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    }
+  ]
+}
