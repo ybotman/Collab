@@ -62,7 +62,7 @@ Any venue not matching P1, P2, or P3 routes to REVIEW. Specifically:
 - **Venue in a city not present in masteredcities corpus** — international venues, small towns, rural venues
 - **All text fields empty** (edge case; shouldn't happen per data-shape, but guarded)
 
-**Routing:** REVIEW venues flagged on venue doc as `masteringStatus: "review"`, surfaced in Dash's CalOps admin panel (CALOPS ticket TBD) for human assignment. Tool does NOT write masteredCityId for REVIEW venues.
+**Routing (scope-reduced per Toby 05:44Z):** REVIEW venues flagged on venue doc as `masteringStatus: "review"`. Tool emits a query-list output (CSV / JSON list) for AIDI+Toby eyeball — expected ~150-250 rows, manageable at this scale. **No CalOps admin panel required for v1** — volume is bounded and low-frequency. Manual assignment via mongosh or ad-hoc script when reviewed. Tool does NOT write masteredCityId for REVIEW venues.
 
 ---
 
