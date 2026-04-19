@@ -1,0 +1,16 @@
+# Booker SQLite: venues with country IS NULL AND lat/lng populated
+# Source: ai-discovered/booker/data/fb_conditioner.sqlite @ 2026-04-19T15:55Z
+# Purpose: sweep-target evidence for Porter's load-from-booker.ts:353 `country: venue.country || "US"` corruption
+# Context: AIDI city/country sanity-check doc. All 8 venues are non-US (verified via Nominatim-returned address).
+# Porter action: (1) remove `|| "US"` default, (2) sweep Mongo rows by venue_id/calendar_venue_id below, (3) backfill country from nominatim address or re-geocode.
+# Booker contract: null country means "unknown, do not fabricate" — Porter must not collapse to "US".
+#
+venue_id,name,city,lat,lng,address,inferred_country_iso2,source_group,event_count,calendar_venue_id,mongo_status
+792,"Latin Training","Tijuana",32.5317397,-117.019529,"Avenida Melchor Ocampo 1551, Tijuana Centro, 22000 Tijuana, BC, México",MX,sandiegotango,1,69ccacf2c53af9009dbf62f4,LOADED_LIKELY_CORRUPTED
+1198,"De Danswerkplaats","NR Amersfoort",52.1607544,5.3788625,"Oude Fabriekstraat 20, 3812 NR Amersfoort, Nederland",NL,tangoinbelgium,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1199,"Life","Izegem",50.9198305,3.215435,"Lodewijk de Raetlaan 2/1, 8870 Izegem, België",BE,tangoinbelgium,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1203,"EL DORADO - Kerkstraat 251, 1851 Grimbergen, Belgium","Grimbergen",50.9457843,4.3890967,"Kerkstraat 251, 1851 Grimbergen, België",BE,166319156718539,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1208,"Kedelhallen by Tango-CPH","Frederiksberg",55.684734,12.521823,"Nyelandsvej 75, 2000 Frederiksberg, Danmark",DK,37589618639,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1213,"Zofingia Bern","Bern",46.9528076,7.4383631,"Alpeneggstrasse 8, 3012 Bern, Schweiz",CH,205005922937468,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1214,"Neuengasse 24, 3011 Bern, Switzerland","Bern",46.9490484,7.4424194,"Neuengasse 24, 3011 Bern, Schweiz",CH,205005922937468,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
+1216,"KulturBistro Solothurn","Solothurn",47.2164207,7.5326593,"Obere Steingrubenstrasse 21, 4500 Solothurn, Schweiz",CH,205005922937468,1,,PENDING_DO_NOT_LOAD_UNTIL_FIX
