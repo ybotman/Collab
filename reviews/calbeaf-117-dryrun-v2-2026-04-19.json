@@ -1,0 +1,219 @@
+{
+  "meta": {
+    "mode": "DRY-RUN",
+    "appId": "1",
+    "timestamp": "2026-04-19T14:38:19.468Z",
+    "processed": 5748,
+    "wouldChange": 427,
+    "pipelineErrors": 0
+  },
+  "fieldChangeCounts": {
+    "forBeginners": 0,
+    "beginnerFriendly": 0,
+    "travelWorthy": 0,
+    "masteredCityId": 427,
+    "masteredCityName": 11,
+    "masteredCountryId": 0,
+    "masteredCountryName": 0,
+    "venueGeolocation": 0,
+    "venueCityName": 0,
+    "venueTimezone": 0,
+    "enrichmentStatus": 0
+  },
+  "perCategoryCounts": {
+    "Class": {
+      "total": 409,
+      "changed": 11
+    },
+    "Milonga": {
+      "total": 2863,
+      "changed": 221
+    },
+    "Practica": {
+      "total": 2164,
+      "changed": 89
+    },
+    "Other": {
+      "total": 13,
+      "changed": 0
+    },
+    "Workshop": {
+      "total": 120,
+      "changed": 4
+    },
+    "(unknown)": {
+      "total": 8,
+      "changed": 0
+    },
+    "Festival": {
+      "total": 33,
+      "changed": 8
+    },
+    "Encuentro": {
+      "total": 2,
+      "changed": 0
+    },
+    "Marathon": {
+      "total": 11,
+      "changed": 5
+    },
+    "Performance": {
+      "total": 5,
+      "changed": 0
+    },
+    "UNKNOWN": {
+      "total": 40,
+      "changed": 14
+    },
+    "Trip": {
+      "total": 9,
+      "changed": 6
+    },
+    "WEEKEND": {
+      "total": 1,
+      "changed": 0
+    },
+    "SEMINAR": {
+      "total": 1,
+      "changed": 1
+    },
+    "OTHER": {
+      "total": 68,
+      "changed": 68
+    },
+    "MARATHON": {
+      "total": 1,
+      "changed": 0
+    }
+  },
+  "sampleDiffs": [
+    {
+      "eventId": "699558eb11507a789fe78c73",
+      "title": "La Social is CNCLD",
+      "category": "Milonga",
+      "startDate": "2026-02-19T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        },
+        "masteredCityName": {
+          "before": "",
+          "after": "Boston"
+        }
+      }
+    },
+    {
+      "eventId": "6989f0c480cbd93808776b50",
+      "title": "Foundry Festival Milonga Demo",
+      "category": "Milonga",
+      "startDate": "2026-02-21T23:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        },
+        "masteredCityName": {
+          "before": "",
+          "after": "Boston"
+        }
+      }
+    },
+    {
+      "eventId": "6992489bfb0f669d31e1336f",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-05-03T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a8d68f0853f030d53a62",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-06-07T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a95d8f0853f030d53a63",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-07-05T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7a99c8f0853f030d53a64",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-08-02T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aa118f0853f030d53a65",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-09-06T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aa798f0853f030d53a66",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-10-04T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7aac18f0853f030d53a68",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-11-08T01:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    },
+    {
+      "eventId": "69a7ab0d8f0853f030d53a69",
+      "title": "Milonga NUEVA!",
+      "category": "Milonga",
+      "startDate": "2026-12-06T01:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e46a"
+        }
+      }
+    }
+  ]
+}
