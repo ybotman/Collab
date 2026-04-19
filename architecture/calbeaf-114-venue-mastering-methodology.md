@@ -96,7 +96,7 @@ Estimated distribution bounds based on data-shape signals:
 
 **Pessimistic lower bound:** ~50-60% if many venues are in cities not in the 215-city corpus, or if cityText normalization yields many mismatches (e.g., "NYC" vs "New York City" — will fuzzy match catch this?).
 
-**Manual-review residual:** 15-50% of 1,072 = 160-536 venues flagged for CalOps assignment. Dash's admin panel needs to handle at least this volume.
+**Manual-review residual:** 15-50% of 1,072 = 160-536 venues in the query-list output. Ad-hoc manual assignment via mongosh or existing venue-edit UI (no dedicated CalOps admin panel per post-Toby-pressure-test scope reduction at line 65).
 
 **Coverage language to use with Toby:** "Automated tier reaches X% of un-mastered venues (Y% of total venue corpus). Remaining Z% flagged for manual review in CalOps panel. Once all tiers complete, next `--force-recompute` on events unlocks N country-denorm fills toward the 99.8% goal."
 
