@@ -1,11 +1,16 @@
 # CALBEAF-114 Venue-Mastering Methodology Spec
 
-**Date:** 2026-04-19
+**Version:** v1.1 (revised 2026-04-19T08:40Z per Toby Option 2 authorization — adds P1 tie-break fix + new P4)
 **Author:** AIDI
 **Purpose:** Define deterministic, never-invent-governed methodology for assigning `venue.masteredCityId` to 1,072 un-mastered venues in TangoTiempoTest
 **Input data-shape:** `Collab/reviews/calbeaf-114-data-shape-2026-04-19.{json,md}` (Fulton 2026-04-19T05:36Z)
 **Scope:** TEST-only per Toby preapproval 2026-04-19T05:20Z; PROD stay-out hard rail applies
 **Governance standing:** never-guess-venue rule, FTD scope-guard, Q1=C dry-run gate
+
+**v1.1 changes:**
+- P1 tie-break rule: multi-candidate within radius BUT cityText uniquely identifies ONE → that's the winner, NOT tie=REVIEW. Unlocks urban-adjacency cases (Boston/Cambridge ~141 venues in original dry-run).
+- New P4: geo 5-15km + stateText exact match + cityText match (if present) → MEDIUM_GEOSTATE. Separate from rejected state-only fallback; requires cityText match or emptiness, not just state agreement. Targets the 138 venues in 5-10km band.
+- `VENUE_MASTERING_SPEC_VERSION` bumps 1.0.0 → 1.1.0 when code implements.
 
 ---
 
@@ -27,7 +32,12 @@ Applied in strict order per venue. First matching priority wins. Ambiguity at an
 - Venue `cityText` populated AND normalizes-equal to matched city's `cityName`
   - Normalization: lowercase, trim, strip punctuation, collapse whitespace
   - Match: exact after normalization, OR cityText is a substring of cityName (handles "New York" ⊂ "New York City"), OR cityName is substring of cityText (handles "NYC" situations — reversed)
-- No OTHER masteredcity within 5 km with a different cityName (otherwise tie → REVIEW)
+
+**v1.1 tie-break rule (added 2026-04-19T08:40Z):**
+- If MULTIPLE masteredcities within 5 km, evaluate cityText against EACH candidate's cityName
+- If venue.cityText normalizes-equal to EXACTLY ONE candidate's cityName → that's the winner. HIGH confidence.
+- If venue.cityText normalizes-equal to ZERO or MULTIPLE candidates' cityNames → TIE, route to REVIEW
+- Rationale: when the algorithm has multiple spatial candidates, cityText is a deterministic human-authored disambiguator. "Boston vs Cambridge at 4 km apart" — if venue.cityText="Cambridge", that IS the answer. Never-invent preserved (requires explicit cityText match; doesn't arbitrarily pick nearest when cityText contradicts or is absent).
 
 **Action:** auto-assign `masteredCityId` to the matched city. HIGH confidence.
 
@@ -50,6 +60,24 @@ Applied in strict order per venue. First matching priority wins. Ambiguity at an
 - Optional: if `geolocation` is available, the matched city's location must be within **25 km** of venue geolocation (sanity check — name+state agree but geo is wildly off = REVIEW)
 
 **Action:** auto-assign `masteredCityId`. MEDIUM confidence. Log `confidence: "medium-name-state"`.
+
+### Priority 4 — MEDIUM confidence: extended geo radius with state + city cross-check (added v1.1)
+
+**Conditions (ALL required):**
+- Venue `geolocation` populated
+- Nearest masteredcity within **15 km** (extended from P1/P2's 5km — targets 5-10km suburban band that failed tighter threshold)
+- Venue `stateText` populated AND matches the matched city's state (via masteredDivisionId → division → state)
+- Venue `cityText` either (a) matches the candidate city's cityName (per P1 normalization), OR (b) is empty/absent
+- If multiple candidates within 15 km: tie-break via cityText (same rule as P1 v1.1 tie-break). If cityText absent AND multiple candidates → REVIEW.
+- Hard max 15 km (outer bound of this priority)
+
+**Why this isn't the rejected (b) state-only fallback:**
+- (b) would auto-assign to state-capital when venue is anywhere in state — WRONG-CITY semantic error
+- P4 requires BOTH state agreement AND (cityText agreement OR cityText-emptiness-plus-single-candidate). Doesn't assign "Boston" to a Springfield venue just because both are in MA.
+
+**Action:** auto-assign `masteredCityId`. MEDIUM confidence. Log `confidence: "medium-geo15-state-city"`.
+
+**Never-invent preserved:** this tier requires geo-proximity (≤15km) AND state agreement AND city-text consistency. Three signals have to align. If any one fails, routes to REVIEW rather than guess.
 
 ### REVIEW bucket — manual resolution required
 
@@ -115,12 +143,13 @@ Do NOT promise "100% automated" — repeats CALBEAF-113 narrative error. Do NOT 
 {
   venueId, venueName, venueGeolocation, venueCityText, venueStateText,
   proposal: {
-    action: "AUTO_HIGH" | "AUTO_MEDIUM_GEOSTATE" | "AUTO_MEDIUM_NAMESTATE" | "REVIEW",
+    action: "AUTO_HIGH" | "AUTO_MEDIUM_GEOSTATE" | "AUTO_MEDIUM_NAMESTATE" | "AUTO_MEDIUM_GEO15_STATECITY" | "REVIEW",
     matchedCityId?: ObjectId,
     matchedCityName?: string,
     matchedCityDistanceKm?: number,
-    confidence: "high" | "medium-geo-state" | "medium-name-state" | "review",
-    reviewReason?: string
+    confidence: "high" | "medium-geo-state" | "medium-name-state" | "medium-geo15-state-city" | "review",
+    reviewReason?: string,
+    tieBreakNotes?: string   // v1.1: populated when P1 tie-break rule fires (cityText disambiguated multi-candidate)
   }
 }
 ```
