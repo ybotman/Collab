@@ -1,0 +1,209 @@
+{
+  "meta": {
+    "mode": "APPLY",
+    "appId": "1",
+    "timestamp": "2026-04-19T08:44:55.454Z",
+    "processed": 5748,
+    "wouldChange": 68,
+    "pipelineErrors": 0
+  },
+  "fieldChangeCounts": {
+    "forBeginners": 0,
+    "beginnerFriendly": 0,
+    "travelWorthy": 0,
+    "masteredCountryId": 68,
+    "masteredCountryName": 0,
+    "venueGeolocation": 0,
+    "venueCityName": 0,
+    "venueTimezone": 0,
+    "enrichmentStatus": 0
+  },
+  "perCategoryCounts": {
+    "Class": {
+      "total": 409,
+      "changed": 1
+    },
+    "Milonga": {
+      "total": 2863,
+      "changed": 25
+    },
+    "Practica": {
+      "total": 2164,
+      "changed": 32
+    },
+    "Other": {
+      "total": 13,
+      "changed": 0
+    },
+    "Workshop": {
+      "total": 120,
+      "changed": 1
+    },
+    "(unknown)": {
+      "total": 8,
+      "changed": 0
+    },
+    "Festival": {
+      "total": 33,
+      "changed": 5
+    },
+    "Encuentro": {
+      "total": 2,
+      "changed": 0
+    },
+    "Marathon": {
+      "total": 11,
+      "changed": 1
+    },
+    "Performance": {
+      "total": 5,
+      "changed": 0
+    },
+    "UNKNOWN": {
+      "total": 40,
+      "changed": 1
+    },
+    "Trip": {
+      "total": 9,
+      "changed": 2
+    },
+    "WEEKEND": {
+      "total": 1,
+      "changed": 0
+    },
+    "SEMINAR": {
+      "total": 1,
+      "changed": 0
+    },
+    "OTHER": {
+      "total": 68,
+      "changed": 0
+    },
+    "MARATHON": {
+      "total": 1,
+      "changed": 0
+    }
+  },
+  "sampleDiffs": [
+    {
+      "eventId": "69ccad5afd1bee1564621ca2",
+      "title": "Noelia Hurtado Tango Workshops Melbourne",
+      "category": "Class",
+      "startDate": "2026-04-03T11:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca2"
+        }
+      }
+    },
+    {
+      "eventId": "69ccad5cfd1bee1564621cc4",
+      "title": "VIVA LA PEPA Madrid TANGO FESTIVAL 2026 💥April 30th to May 3, 2026. MADRID (Spain)",
+      "category": "Festival",
+      "startDate": "2026-04-29T23:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dcaa"
+        }
+      }
+    },
+    {
+      "eventId": "69cdaddb6b1ac583370208a5",
+      "title": "BA Tango Training Tour 2026",
+      "category": "Milonga",
+      "startDate": "2026-07-08T22:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca5"
+        }
+      }
+    },
+    {
+      "eventId": "69cdc1c2224a58a12d878ea5",
+      "title": "Perth Tango Festival – Autumn",
+      "category": "Festival",
+      "startDate": "2026-04-17T23:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca2"
+        }
+      }
+    },
+    {
+      "eventId": "69cdc1c3224a58a12d878eb0",
+      "title": "Perth Tango Festival – Autumn",
+      "category": "Festival",
+      "startDate": "2026-04-18T23:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca2"
+        }
+      }
+    },
+    {
+      "eventId": "69cdcdcf21616c50bfc813a6",
+      "title": "TANGO BUENOS AIRES 1-15/04/2026 Sergio Wolf",
+      "category": "Trip",
+      "startDate": "2026-04-01T12:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca5"
+        }
+      }
+    },
+    {
+      "eventId": "69cdcdd321616c50bfc813c6",
+      "title": "Practica Japantown San Jose",
+      "category": "Practica",
+      "startDate": "2026-04-23T11:30:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cdcdd321616c50bfc813ca",
+      "title": "Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-25T12:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69ce0d43baa1500edc84c4ff",
+      "title": "Encuentro Sous le Ciel de Paris",
+      "category": "Festival",
+      "startDate": "2026-06-12T00:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca7"
+        }
+      }
+    },
+    {
+      "eventId": "69ce12d15b400edc0c769316",
+      "title": "Advanced Tango",
+      "category": "Practica",
+      "startDate": "2026-04-02T19:00:00.000Z",
+      "changes": {
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    }
+  ]
+}
