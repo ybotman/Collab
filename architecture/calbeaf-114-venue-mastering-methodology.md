@@ -170,7 +170,7 @@ venue.masteringStatus: {
 }
 venue.masteringConfidence: {
   type: String,
-  enum: ["high", "medium-geo-state", "medium-name-state", "review", null],
+  enum: ["high", "medium-geo-state", "medium-name-state", "medium-geo15-state-city", "review", null],
   default: null
 }
 ```
