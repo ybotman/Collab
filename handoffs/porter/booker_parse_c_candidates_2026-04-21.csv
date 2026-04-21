@@ -1,0 +1,24 @@
+# CALBEAF-117 Pattern C — sweep-target candidates
+# Source: /Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/booker/data/fb_conditioner.sqlite @ 2026-04-21T18:40:17.672Z
+# Harness: booker/scripts/detect-pattern-c-candidates.ts
+# Purpose: venues where buggy `.includes()` in facebook.ts:388 hits a WORLD_CITIES key
+#          that the word-boundary-correct version would reject. Feeds Porter's
+#          one-shot Mongo sweep post-AIDI-greenlight + Toby Sal-Azul auth.
+#
+# CSV=provenance rail: `calendar_venue_id_*` columns below are ADVISORY (drift patterns A+B
+# confirmed in prior Track A handoff). Porter should join on (name + lat/lng) against Mongo
+# for any actual sweep target. Natural keys are the source of truth.
+#
+# Stats: scanned=554 candidates=7 buggyFalsePositive=4 buggyMissedHit=0
+#
+# Fix: facebook.ts:388-393 change `.includes(cityName)` to word-boundary regex
+# (lookaround against [\p{L}\p{N}] so Unicode chars like é, ö don't break boundary).
+#
+id,verdict,name,stored_city,stored_country,lat,lng,buggy_match,buggy_country,boundary_match,boundary_country,address,calendar_venue_id_test,calendar_venue_id_prod
+683,BUGGY_FALSE_POSITIVE,"Hotel Romero Mérida , 06800 Mérida, Spain",Rome,IT,38.85949,-6.36514,rome,IT,,,,69cc344524bf1d55b78bb2b6,698a52288e541be10b64f843
+1114,BUGGY_FALSE_POSITIVE,"Hotel Romero Mérida , 06800 Mérida, Spain",,ES,38.85949,-6.36514,rome,IT,,,,69cc344524bf1d55b78bb2b6,
+1118,BUGGY_FALSE_POSITIVE,"St Mary's Hall, Langham Road, Teddington TW11 9HF",Paris,FR,48.8534951,2.3483915,paris,FR,,,"St Mary's Parish Hall, Langham Road, Teddington, TW11 9HF, United Kingdom",69e16dc550fe4092891c6da2,
+1217,BUGGY_FALSE_POSITIVE,"Bologna, Italia",Roma,IT,44.4938203,11.3426327,roma,IT,,,"Bologna, Emilia-Romagna, Italy",69d5e39366c359fb7d2712fa,
+1107,BUGGY_WRONG_MATCH,"via Giacomo Watt, 5, Milano, Lombardia",Milan,IT,45.4442987,9.1541638,milan,IT,milano,IT,"Via Giacomo Watt, 5, 20143 Milano MI, Italia",69cc691ab39a58eb493ca094,
+1173,BUGGY_WRONG_MATCH,"Via Santa Monica, 4, 20162 Milano MI, Italia",Milan,IT,45.5116493,9.2019077,milan,IT,milano,IT,"Via Santa Monica, 4, 20162 Milano MI, Italia",69e17c5c9f868892cf04cfbb,
+1174,BUGGY_WRONG_MATCH,"Via Assietta, 20161 Milano MI, Italia",Milan,IT,45.5178433,9.161848,milan,IT,milano,IT,"Via Assietta, 38, 20161 Milano MI, Italia",69e17c5c9f868892cf04cfbc,
