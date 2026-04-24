@@ -1,0 +1,394 @@
+# niche-harvest M1 inheritance candidates — sourced from booker/data/fb_conditioner.sqlite (2026-04-24)
+# Commissioned by Narvest 2026-04-24T20:38Z for niche-harvest M1 starting inventory.
+# Ranking formula: (events_synced × 3) + events_produced − days_since_last_event / 30 − (consecutive_empty_scrapes × 2)
+#
+# Recommendation tiers:
+#   NOT_A_FB_GROUP — aggregator-source markers (source-tm, source-nyt, v21_batch_import). Skip; not actually FB groups.
+#   YES — events_synced >= 5 OR (events_produced >= 8 AND last_event within 90d). Inherit into M1.
+#   MAYBE — events_synced >= 1 OR events_produced >= 3. Manual review before inherit.
+#   NO — everything else (scraped-zero, never-scraped, flagged not_fb_group). Leave in Booker SQLite for archival; don't inherit.
+#
+# Counts: NOT_A_FB_GROUP=3 YES=11 MAYBE=83 NO=282
+#
+# Booker ranking thresholds are advisory. Tune on niche-harvest side after manual scan of YES + MAYBE tiers.
+#
+rec,score,fb_group_id,name,url,events_synced,events_produced,future_events,last_event_date,days_since_last_event,last_scraped_at,consecutive_empty_scrapes,activity_level,scrape_priority,reason
+NOT_A_FB_GROUP,257.00,source-tm,tangomango.org,https://tangomango.com,0,257,48,2026-04-25T19:00:00,0,,0,high,normal,"aggregator-source marker, not a real FB group"
+NOT_A_FB_GROUP,77.00,source-nyt,newyorktango.com,https://newyorktango.com,0,77,12,2026-05-14T19:00:00,0,,0,high,normal,"aggregator-source marker, not a real FB group"
+NOT_A_FB_GROUP,36.87,v21_batch_import,v2.1 Batch Import,https://www.facebook.com/groups/v21_batch_import/,0,40,0,2026-03-20T22:00:00.000Z,34,2026-04-16 23:11:20,1,high,normal,"aggregator-source marker, not a real FB group"
+YES,26.00,arg.tango.in.northern.california,Argentine Tango in Northern California,https://www.facebook.com/groups/arg.tango.in.northern.california/,3,19,6,2026-05-28T02:00:00.000Z,0,2026-04-16 22:11:28,1,medium,high,19 events + recent activity (0d)
+YES,18.00,154852087884242,Philadelphia Tango,https://www.facebook.com/groups/154852087884242/,2,14,4,2026-06-06T01:00:00.000Z,0,2026-04-16 21:43:01,1,high,high,14 events + recent activity (0d)
+YES,16.00,NewOrleansTango,New Orleans Argentine Tango Group,https://www.facebook.com/groups/NewOrleansTango/,2,12,6,2026-05-30T19:00:00.000Z,0,2026-04-16 21:52:32,1,high,high,12 events + recent activity (0d)
+YES,14.00,tangosocietyMN,Tango Society of Minnesota,https://www.facebook.com/groups/tangosocietyMN/,2,8,4,2026-09-25T18:00:00.000Z,0,2026-04-16 21:56:07,0,medium,high,8 events + recent activity (0d)
+YES,12.00,289538382905838,ARGENTINE TANGO IN SACRAMENTO,https://www.facebook.com/groups/289538382905838/,2,8,5,2026-07-07T08:00:00.000Z,0,2026-04-16 21:53:54,1,high,high,8 events + recent activity (0d)
+YES,12.00,5797538175,Madison Tango Society,https://www.facebook.com/groups/5797538175/,1,9,3,2026-05-13T23:00:00.000Z,0,2026-04-16 21:56:55,0,high,high,9 events + recent activity (0d)
+YES,10.83,688132571205945,BOSTON TANGO NEWS,https://www.facebook.com/groups/688132571205945/,1,10,0,2026-04-18T23:30:00.000Z,5,2026-04-16 21:49:47,1,high,high,10 events + recent activity (5d)
+YES,10.00,23980569997,Houston Tango,https://www.facebook.com/groups/23980569997/,1,9,4,2026-05-01T23:00:00.000Z,0,2026-04-16 21:45:20,1,high,high,9 events + recent activity (0d)
+YES,7.80,tango.berlin,tango.berlin,https://www.facebook.com/groups/tango.berlin/,0,8,0,2026-04-18T15:00:00.000Z,6,2026-04-16 23:24:49,0,unknown,dormant,8 events + recent activity (6d)
+YES,7.00,sandiegotango,San Diego Tango Group,https://www.facebook.com/groups/sandiegotango/,0,9,4,2027-02-06T18:00:00.000Z,0,2026-04-16 22:20:52,1,active,high,9 events + recent activity (0d)
+YES,6.83,751262302928194,Tango Events Los Angeles,https://www.facebook.com/groups/751262302928194/,0,9,0,2026-04-19T16:00:00.000Z,5,2026-04-16 22:15:26,1,low,high,9 events + recent activity (5d)
+MAYBE,14.83,298751814077528,Tango in Florida,https://www.facebook.com/groups/298751814077528/,3,6,0,2026-04-19T21:00:00.000Z,5,2026-04-16 21:59:36,0,medium,high,synced 3 event(s); review manually
+MAYBE,12.00,chicagotangolovers,Chicago Tango Lovers,https://www.facebook.com/groups/chicagotangolovers/,2,6,3,2026-07-25T14:30:00.000Z,0,2026-04-16 21:50:26,0,high,high,synced 2 event(s); review manually
+MAYBE,11.27,argentinetangoevents,"Tango Festivals, Marathons, Encuentros and events worldwide",https://www.facebook.com/groups/argentinetangoevents/,3,5,0,2026-04-02T18:30:00.000Z,22,2026-04-16 21:37:52,1,high,dormant,synced 3 event(s); review manually
+MAYBE,10.00,tucsontango,Tucson Tango,https://www.facebook.com/groups/tucsontango/,3,3,3,2026-07-08T18:00:00.000Z,0,2026-04-16 22:30:27,1,active,high,synced 3 event(s); review manually
+MAYBE,8.00,BosTango,BosTango,https://www.facebook.com/groups/BosTango/,2,4,1,2026-04-24T23:30:00.000Z,0,2026-04-16 22:16:21,1,unknown,high,synced 2 event(s); review manually
+MAYBE,8.00,144487065635684,Melbourne Argentine Tango dance scene,https://www.facebook.com/groups/144487065635684/,1,7,2,2026-05-02T05:00:00.000Z,0,2026-04-16 23:07:47,1,medium,high,synced 1 event(s); review manually
+MAYBE,7.00,136436746819225,Tango Argentino Info Bangkok Thailand,https://www.facebook.com/groups/136436746819225/,1,6,4,2026-09-04T14:00:00.000Z,0,2026-04-16 23:04:31,1,medium,high,synced 1 event(s); review manually
+MAYBE,6.00,puertaaltango,Puerta al Tango,https://www.facebook.com/groups/puertaaltango/,2,2,2,2026-06-06T01:00:00.000Z,0,2026-04-16 22:12:05,1,medium,dormant,synced 2 event(s); review manually
+MAYBE,6.00,546926272039452,FB Group 546926272039452,https://www.facebook.com/groups/546926272039452/,0,6,4,2026-06-10T12:00:00.000Z,0,2026-04-16 23:16:50,0,unknown,dormant,"6 events produced, 0 synced"
+MAYBE,6.00,141687102929,Charleston Argentine Tango Society,https://www.facebook.com/groups/141687102929/,0,6,5,2026-05-12T23:00:00.000Z,0,2026-04-16 22:38:20,0,active,normal,"6 events produced, 0 synced"
+MAYBE,6.00,1374042292687874,Jacksonville Argentine Tango,https://www.facebook.com/groups/1374042292687874/,0,6,4,2026-05-16T17:00:00.000Z,0,2026-04-16 22:41:46,0,active,normal,"6 events produced, 0 synced"
+MAYBE,6.00,205005922937468,Tango argentino in Zürich,https://www.facebook.com/groups/205005922937468/,0,6,1,2026-04-24T18:00:00.000Z,0,2026-04-17 00:59:02,0,unknown,normal,"6 events produced, 0 synced"
+MAYBE,6.00,tangoargentinohamburg,Tango in Hamburg,https://www.facebook.com/groups/tangoargentinohamburg/,0,6,4,2026-04-26T13:00:00.000Z,0,2026-04-17 02:07:04,0,unknown,normal,"6 events produced, 0 synced"
+MAYBE,5.93,146042045254,TANGO W KRAKOWIE/ TANGO IN KRAKÓW,https://www.facebook.com/groups/146042045254/,0,6,0,2026-04-22T19:00:00.000Z,2,2026-04-17 02:26:40,0,unknown,normal,"6 events produced, 0 synced"
+MAYBE,5.83,allseattletango.local.events,All Seattle Tango: Local Events,https://www.facebook.com/groups/allseattletango.local.events/,0,6,0,2026-04-19T21:00:00.000Z,5,2026-04-16 23:50:12,0,unknown,normal,"6 events produced, 0 synced"
+MAYBE,5.80,tangoinamsterdam,Tango in Amsterdam,https://www.facebook.com/groups/tangoinamsterdam/,0,6,0,2026-04-18T17:00:00.000Z,6,2026-04-17 00:21:15,0,unknown,high,"6 events produced, 0 synced"
+MAYBE,5.80,danceeverywhere,Pittsburgh Dance Friends,https://www.facebook.com/groups/danceeverywhere/,0,6,0,2026-04-18T00:00:00.000Z,6,2026-04-16 22:17:38,0,active,normal,"6 events produced, 0 synced"
+MAYBE,5.00,273316539359504,Tango Colorado (Argentine Tango Events),https://www.facebook.com/groups/273316539359504/,1,4,3,2026-05-30T01:00:00.000Z,0,2026-04-16 21:48:11,1,high,high,synced 1 event(s); review manually
+MAYBE,5.00,358192569234016,Argentine Tango NYC,https://www.facebook.com/groups/358192569234016/,0,7,2,2026-04-26T00:00:00.000Z,0,2026-04-16 21:41:43,1,high,high,"7 events produced, 0 synced"
+MAYBE,5.00,TangoStLouis,Tango St. Louis,https://www.facebook.com/groups/TangoStLouis/,1,4,2,2026-04-26T23:00:00.000Z,0,2026-04-16 22:25:51,1,active,high,synced 1 event(s); review manually
+MAYBE,5.00,27423415735,TangoClub Auckland,https://www.facebook.com/groups/27423415735/,0,7,5,2026-07-31T09:00:00.000Z,0,2026-04-16 23:09:11,1,medium,high,"7 events produced, 0 synced"
+MAYBE,5.00,131208406971399,Sydney Argentine Tango dance scene,https://www.facebook.com/groups/131208406971399/,0,7,5,2026-05-22T10:30:00.000Z,0,2026-04-16 23:06:29,1,medium,high,"7 events produced, 0 synced"
+MAYBE,5.00,265703983623938,FB Group 265703983623938,https://www.facebook.com/groups/265703983623938/,0,5,3,2026-05-08T12:00:00.000Z,0,2026-04-16 23:18:40,0,unknown,dormant,"5 events produced, 0 synced"
+MAYBE,5.00,475052734361392,Sweden Tango,https://www.facebook.com/groups/475052734361392/,0,5,2,2026-04-25T11:00:00.000Z,0,2026-04-16 22:09:17,0,medium,normal,"5 events produced, 0 synced"
+MAYBE,5.00,TangoAustria,Tango Austria,https://www.facebook.com/groups/TangoAustria/,0,5,1,2026-04-24T17:30:00.000Z,0,2026-04-17 00:29:26,0,unknown,normal,"5 events produced, 0 synced"
+MAYBE,5.00,1816962685206125,Tango à Lyon,https://www.facebook.com/groups/1816962685206125/,0,5,1,2026-04-24T09:00:00.000Z,0,2026-04-17 02:02:31,0,unknown,normal,"5 events produced, 0 synced"
+MAYBE,4.83,376655371590174,TokyoTango.jp,https://www.facebook.com/groups/376655371590174/,0,5,0,2026-04-19T04:30:00.000Z,5,2026-04-16 22:57:25,0,high,normal,"5 events produced, 0 synced"
+MAYBE,4.83,tangoinbelgium,Tango in Belgium,https://www.facebook.com/groups/tangoinbelgium/,0,5,0,2026-04-19T13:00:00.000Z,5,2026-04-17 00:34:37,0,unknown,normal,"5 events produced, 0 synced"
+MAYBE,4.80,12497711188,London Tango,https://www.facebook.com/groups/12497711188/,0,5,0,2026-04-18T14:00:00.000Z,6,2026-04-16 22:00:42,0,medium,high,"5 events produced, 0 synced"
+MAYBE,4.80,293801204829620,Grupa Tango Warszawa / Tango in Warsaw,https://www.facebook.com/groups/293801204829620/,0,5,0,2026-04-18T16:00:00.000Z,6,2026-04-17 00:50:35,0,unknown,high,"5 events produced, 0 synced"
+MAYBE,4.80,220377800308,Tango in Deutschland,https://www.facebook.com/groups/220377800308/,0,5,0,2026-04-18T13:00:00.000Z,6,2026-04-16 22:02:26,0,medium,normal,"5 events produced, 0 synced"
+MAYBE,4.00,218329594850422,Seattle Tangueros y Tangueras,https://www.facebook.com/groups/218329594850422/,0,4,3,2026-04-25T03:30:00.000Z,0,2026-04-16 23:53:47,0,unknown,high,"4 events produced, 0 synced"
+MAYBE,4.00,149826551783794,B.A. TANGO - Buenos Aires Tango,https://www.facebook.com/groups/149826551783794/,0,4,3,2026-05-03T19:45:00.000Z,0,2026-04-16 23:28:56,0,unknown,high,"4 events produced, 0 synced"
+MAYBE,4.00,tangovienna,Where to dance Tango in Vienna tonight?,https://www.facebook.com/groups/tangovienna/,0,4,4,2026-06-05T12:00:00.000Z,0,2026-04-17 00:27:55,0,unknown,high,"4 events produced, 0 synced"
+MAYBE,4.00,viennatango,Tango Vienna,https://www.facebook.com/groups/viennatango/,0,4,2,2026-08-15T16:00:00.000Z,0,2026-04-17 00:26:24,0,unknown,high,"4 events produced, 0 synced"
+MAYBE,4.00,166319156718539,BRUXELL'Aires (Tango in Brussels),https://www.facebook.com/groups/166319156718539/,0,4,3,2026-06-11T19:00:00.000Z,0,2026-04-17 00:38:02,0,unknown,normal,"4 events produced, 0 synced"
+MAYBE,4.00,1792314420960046,Argentine Tango Manchester,https://www.facebook.com/groups/1792314420960046/,0,4,3,2026-07-25T17:00:00.000Z,0,2026-04-17 02:14:26,0,unknown,normal,"4 events produced, 0 synced"
+MAYBE,4.00,590129797999908,Tango Tanzen Köln,https://www.facebook.com/groups/590129797999908/,0,4,2,2026-05-03T16:00:00.000Z,0,2026-04-17 02:17:14,0,unknown,normal,"4 events produced, 0 synced"
+MAYBE,3.97,memphisargentinetango,Memphis Argentine Tango,https://www.facebook.com/groups/memphisargentinetango/,0,4,0,2026-04-23T00:00:00.000Z,1,2026-04-17 02:41:36,0,unknown,normal,"4 events produced, 0 synced"
+MAYBE,3.80,164961677477,FB Group 164961677477,https://www.facebook.com/groups/164961677477/,0,4,0,2026-04-18T18:00:00.000Z,6,2026-04-16 23:22:22,0,unknown,dormant,"4 events produced, 0 synced"
+MAYBE,3.80,ILOVETANGOLOMBARDIA,TANGO Eventi in Lombardia,https://www.facebook.com/groups/ILOVETANGOLOMBARDIA/,0,4,0,2026-04-18T16:00:00.000Z,6,2026-04-17 00:19:05,0,unknown,normal,"4 events produced, 0 synced"
+MAYBE,3.77,531782213504632,Tango in Italy,https://www.facebook.com/groups/531782213504632/,0,4,0,2026-04-17T19:00:00.000Z,7,2026-04-16 22:04:25,0,medium,high,"4 events produced, 0 synced"
+MAYBE,3.00,PortugalTangoCommunity,Portugal Tango Community,https://www.facebook.com/groups/PortugalTangoCommunity/,1,2,1,2026-07-02T19:30:00.000Z,0,2026-04-16 22:08:06,1,medium,high,synced 1 event(s); review manually
+MAYBE,3.00,627038077337005,Where do I dance AT tonight in Chicago?,https://www.facebook.com/groups/627038077337005/,1,2,1,2026-05-30T20:30:00.000Z,0,2026-04-16 21:51:15,1,high,high,synced 1 event(s); review manually
+MAYBE,3.00,505tango,505 Tango Community,https://www.facebook.com/groups/505tango/,1,2,2,2026-04-30T00:50:00.000Z,0,2026-04-16 21:47:31,1,high,high,synced 1 event(s); review manually
+MAYBE,3.00,tangointheburgh,Tango in the Burgh,https://www.facebook.com/groups/tangointheburgh/,0,5,3,2026-08-14T19:00:00,0,2026-04-16 22:16:58,1,active,high,"5 events produced, 0 synced"
+MAYBE,3.00,IthacaTango,Ithaca Tango,https://www.facebook.com/groups/IthacaTango/,1,2,2,2026-09-02T19:00:00.000Z,0,2026-04-16 22:35:19,1,active,high,synced 1 event(s); review manually
+MAYBE,3.00,tangobaratlanta,Tango Bar Atlanta,https://www.facebook.com/groups/tangobaratlanta/,0,3,2,2026-05-09T23:30:00.000Z,0,2026-04-16 22:23:42,0,active,high,"3 events produced, 0 synced"
+MAYBE,3.00,austintango,Austin Tango,https://www.facebook.com/groups/austintango/,0,3,3,2026-05-24T00:30:00.000Z,0,2026-04-16 21:44:09,0,high,high,"3 events produced, 0 synced"
+MAYBE,3.00,AgendaTango,Tango Paris Agenda,https://www.facebook.com/groups/AgendaTango/,0,3,1,2026-04-25T17:00:00.000Z,0,2026-04-16 23:40:05,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,3.00,322601531184191,Tango In TOKYO,https://www.facebook.com/groups/322601531184191/,0,3,2,2026-07-11T08:00:00.000Z,0,2026-04-16 22:55:15,0,medium,high,"3 events produced, 0 synced"
+MAYBE,3.00,ArgentineTangoToronto,Argentine Tango Toronto Canada,https://www.facebook.com/groups/ArgentineTangoToronto/,0,3,1,2026-04-24T23:30:00.000Z,0,2026-04-17 01:36:29,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,3.00,tangomuenchen,Tango München,https://www.facebook.com/groups/tangomuenchen/,0,3,2,2026-05-02T17:30:00.000Z,0,2026-04-17 00:32:48,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,3.00,1620255408203916,Tango Nuevo Paris,https://www.facebook.com/groups/1620255408203916/,0,3,3,2026-04-25T16:00:00.000Z,0,2026-04-16 23:41:39,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,3.00,portlandmainetango,Portland Maine Tango,https://www.facebook.com/groups/portlandmainetango/,0,5,1,2026-05-30T23:00:00.000Z,0,2026-04-16 23:58:28,1,unknown,normal,"5 events produced, 0 synced"
+MAYBE,3.00,271632132861341,Tango Queer Madrid,https://www.facebook.com/groups/271632132861341/,0,3,2,2026-06-12T09:00:00.000Z,0,2026-04-17 00:05:36,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,3.00,2326702050954985,US Argentine Tango Festivals,https://www.facebook.com/groups/2326702050954985/,0,3,2,2026-06-12T20:00:00.000Z,0,2026-04-16 21:39:39,0,low,normal,"3 events produced, 0 synced"
+MAYBE,3.00,271226862945792,Asheville Tango Community,https://www.facebook.com/groups/271226862945792/,0,3,2,2026-05-23T19:00:00.000Z,0,2026-04-16 22:36:28,0,active,normal,"3 events produced, 0 synced"
+MAYBE,3.00,HARTSTango,Hartford Argentine Tango Society,https://www.facebook.com/groups/HARTSTango/,0,3,2,2026-05-06T22:30:00.000Z,0,2026-04-16 22:44:47,0,active,normal,"3 events produced, 0 synced"
+MAYBE,3.00,1120801077942656,TANGO ARGENTINO @ TU WIEN & ISTA,https://www.facebook.com/groups/1120801077942656/,0,3,3,2027-02-13T18:00:00.000Z,0,2026-04-17 00:24:11,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,3.00,184781288231496,Tango in Stockholm,https://www.facebook.com/groups/184781288231496/,0,3,1,2026-04-25T10:00:00.000Z,0,2026-04-17 00:42:19,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,3.00,226288127384322,Vancouver Argentine Tango,https://www.facebook.com/groups/226288127384322/,0,3,3,2026-09-18T16:00:00.000Z,0,2026-04-17 01:42:11,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,2.97,1779159005488222,Tango Prague / Tango Czech Republic,https://www.facebook.com/groups/1779159005488222/,0,3,0,2026-04-23T16:00:00.000Z,1,2026-04-17 00:41:09,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,2.97,5821479674639510,Tango in Korea (Buenos Aires in Asia),https://www.facebook.com/groups/5821479674639510/,0,3,0,2026-04-23T05:00:00.000Z,1,2026-04-16 22:59:10,0,medium,normal,"3 events produced, 0 synced"
+MAYBE,2.90,233002281833643,Phoenix Argentine Tango,https://www.facebook.com/groups/233002281833643/,0,3,0,2026-04-21T02:00:00.000Z,3,2026-04-16 22:29:16,0,active,normal,"3 events produced, 0 synced"
+MAYBE,2.87,TorontoTangoJunkies,Toronto Tango Junkies,https://www.facebook.com/groups/TorontoTangoJunkies/,0,3,0,2026-04-20T00:00:00.000Z,4,2026-04-17 01:37:45,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,2.83,tangomilongasuk,Tango Milongas UK,https://www.facebook.com/groups/tangomilongasuk/,0,3,0,2026-04-19T13:00:00.000Z,5,2026-04-16 23:36:30,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,2.83,wasatchtango,Wasatch Tango Club,https://www.facebook.com/groups/wasatchtango/,0,3,0,2026-04-19T19:00:00.000Z,5,2026-04-16 22:27:54,0,active,normal,"3 events produced, 0 synced"
+MAYBE,2.83,1495567617435021,Orlando Tango Club,https://www.facebook.com/groups/1495567617435021/,1,2,0,2026-04-18T23:00:00.000Z,5,2026-04-16 22:41:10,1,active,high,synced 1 event(s); review manually
+MAYBE,2.80,tangoenbarcelona,Tango en Barcelona,https://www.facebook.com/groups/tangoenbarcelona/,0,3,0,2026-04-18T17:00:00.000Z,6,2026-04-17 00:10:06,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,2.80,tangoroma,Tango Roma,https://www.facebook.com/groups/tangoroma/,0,3,0,2026-04-18T17:00:00.000Z,6,2026-04-17 00:13:00,0,unknown,high,"3 events produced, 0 synced"
+MAYBE,2.80,27263830501,Tango in Marseille,https://www.facebook.com/groups/27263830501/,0,3,0,2026-04-18T17:30:00.000Z,6,2026-04-17 02:04:50,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,2.80,294979340604361,NAPOLI TANGO,https://www.facebook.com/groups/294979340604361/,0,3,0,2026-04-18T19:00:00.000Z,6,2026-04-17 02:25:14,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,2.77,tangomilan,Tango a Milano,https://www.facebook.com/groups/tangomilan/,0,3,0,2026-04-17T18:30:00.000Z,7,2026-04-17 00:17:49,0,unknown,normal,"3 events produced, 0 synced"
+MAYBE,2.00,tango.events.worldwide,"Tango Festivals, Marathons, Encuentros and Events worldwide",https://www.facebook.com/groups/tango.events.worldwide/,1,1,1,2026-05-28T14:00:00.000Z,0,2026-04-16 21:37:04,1,high,dormant,synced 1 event(s); review manually
+MAYBE,2.00,419654858084406,THE HOUSE OF TANGO,https://www.facebook.com/groups/419654858084406/,0,4,4,2026-08-23T13:00:00.000Z,0,2026-04-16 21:41:04,1,high,dormant,"4 events produced, 0 synced"
+MAYBE,2.00,tangopoesia,La Milonga OC,https://www.facebook.com/groups/tangopoesia/,0,4,1,2026-06-06T03:00:00.000Z,0,2026-04-16 21:53:14,1,high,high,"4 events produced, 0 synced"
+MAYBE,2.00,KCTango,KC Tango (Argentine Tango in Kansas City),https://www.facebook.com/groups/KCTango/,1,1,1,2026-05-21T23:30:00.000Z,0,2026-04-16 22:26:24,1,active,high,synced 1 event(s); review manually
+MAYBE,2.00,tangosingapore,Tango Singapore,https://www.facebook.com/groups/tangosingapore/,1,1,1,2026-07-02T12:00:00.000Z,0,2026-04-16 23:01:41,1,medium,high,synced 1 event(s); review manually
+MAYBE,1.77,tangoeventsineurope,Tango Events in Europe,https://www.facebook.com/groups/tangoeventsineurope/,1,1,0,2026-04-16T23:00:00.000Z,7,2026-04-16 22:07:25,1,medium,dormant,synced 1 event(s); review manually
+MAYBE,1.00,bayareaargentinetango,Bay Area Argentine Tango,https://www.facebook.com/groups/bayareaargentinetango/,0,3,3,2026-04-30T02:00:00.000Z,0,2026-04-16 22:14:37,1,low,high,"3 events produced, 0 synced"
+MAYBE,1.00,tucsontangocalendar,Tucson Tango Calendar,https://www.facebook.com/groups/tucsontangocalendar/,0,3,1,2026-05-02T19:30:00.000Z,0,2026-04-16 22:31:09,1,active,high,"3 events produced, 0 synced"
+MAYBE,0.83,RichmondTango,Richmond Tango,https://www.facebook.com/groups/RichmondTango/,0,3,0,2026-04-18T23:00:00.000Z,5,2026-04-16 22:32:27,1,active,high,"3 events produced, 0 synced"
+NO,2.00,tango.japan,Tango in Japan,https://www.facebook.com/groups/tango.japan/,0,2,1,2026-04-25T09:10:00.000Z,0,2026-04-16 22:56:23,0,high,high,"low productivity, low recency"
+NO,2.00,147546302079864,BARCELONA TANGO,https://www.facebook.com/groups/147546302079864/,0,2,2,2026-09-03T17:00:00.000Z,0,2026-04-17 00:09:06,0,unknown,high,"low productivity, low recency"
+NO,2.00,303580233142860,Tango in Detroit and around,https://www.facebook.com/groups/303580233142860/,0,2,1,2026-04-27T23:00:00.000Z,0,2026-04-17 00:02:59,0,unknown,normal,"low productivity, low recency"
+NO,2.00,southeast.tango,SouthEast Tango,https://www.facebook.com/groups/southeast.tango/,0,2,2,2026-04-26T19:00:00.000Z,0,2026-04-16 22:52:19,0,active,normal,"low productivity, low recency"
+NO,2.00,tangueria,La Tangueria Brussels,https://www.facebook.com/groups/tangueria/,0,2,2,2026-07-26T16:30:00.000Z,0,2026-04-17 00:36:22,0,unknown,normal,"low productivity, low recency"
+NO,2.00,1662645294064567,What's Up Tango In Lisbon,https://www.facebook.com/groups/1662645294064567/,0,2,1,2026-05-09T14:00:00.000Z,0,2026-04-17 00:47:02,0,unknown,normal,"low productivity, low recency"
+NO,2.00,38621003419,Taipei Tango Festival,https://www.facebook.com/groups/38621003419/,0,2,2,2026-08-23T15:30:00.000Z,0,2026-04-17 01:30:37,0,unknown,normal,"low productivity, low recency"
+NO,2.00,1933550103636447,Tango Montréal,https://www.facebook.com/groups/1933550103636447/,0,2,2,2026-05-13T23:00:00.000Z,0,2026-04-17 01:44:30,0,unknown,normal,"low productivity, low recency"
+NO,1.83,1637390556624436,Tampa Bay Tango Calendar,https://www.facebook.com/groups/1637390556624436/,0,2,0,2026-04-19T20:00:00.000Z,5,2026-04-16 21:58:31,0,medium,normal,"low productivity, low recency"
+NO,1.83,1448656085376909,TANGO IN SAN DIEGO,https://www.facebook.com/groups/1448656085376909/,0,2,0,2026-04-19T03:00:00.000Z,5,2026-04-16 22:22:44,0,active,normal,"low productivity, low recency"
+NO,1.83,133299226717357,Nashville Tango Club,https://www.facebook.com/groups/133299226717357/,0,2,0,2026-04-19T02:00:00.000Z,5,2026-04-16 22:24:52,0,active,normal,"low productivity, low recency"
+NO,1.83,tangokyiv,Танго в Києві (tango in Kyiv),https://www.facebook.com/groups/tangokyiv/,0,2,0,2026-04-19T15:00:00.000Z,5,2026-04-17 01:56:55,0,unknown,normal,"low productivity, low recency"
+NO,1.80,17860360806,FB Group 17860360806,https://www.facebook.com/groups/17860360806/,0,2,0,2026-04-18T19:00:00.000Z,6,2026-04-16 23:15:45,0,unknown,dormant,"low productivity, low recency"
+NO,1.80,437000329737440,Grupo de Tango 2.0 (Eventos en España),https://www.facebook.com/groups/437000329737440/,0,2,0,2026-04-18T18:00:00.000Z,6,2026-04-17 00:07:17,0,unknown,normal,"low productivity, low recency"
+NO,1.80,USATango,Tango USA,https://www.facebook.com/groups/USATango/,0,2,0,2026-04-17T23:00:00.000Z,6,2026-04-16 22:54:11,0,active,normal,"low productivity, low recency"
+NO,1.77,brujasmaglio,Tango-Milonga-Eventi: Milano & Provincia,https://www.facebook.com/groups/brujasmaglio/,0,2,0,2026-04-17T19:30:00.000Z,7,2026-04-17 00:15:58,0,unknown,high,"low productivity, low recency"
+NO,1.77,europeanTango,Tango Europe,https://www.facebook.com/groups/europeanTango/,0,2,0,2026-04-17T12:00:00.000Z,7,2026-04-16 22:06:00,0,medium,normal,"low productivity, low recency"
+NO,1.00,842625380676472,FB Group 842625380676472,https://www.facebook.com/groups/842625380676472/,0,1,1,2026-08-24T14:00:00.000Z,0,2026-04-16 23:14:55,0,unknown,dormant,"low productivity, low recency"
+NO,1.00,shanghaitango,Shanghai Tango,https://www.facebook.com/groups/shanghaitango/,0,1,1,2026-04-27T09:00:00.000Z,0,2026-04-16 23:20:56,0,unknown,dormant,"low productivity, low recency"
+NO,1.00,dfwtangueros,DFW Tangueros,https://www.facebook.com/groups/dfwtangueros/,0,1,1,2026-04-25T01:30:00.000Z,0,2026-04-16 21:45:52,0,high,high,"low productivity, low recency"
+NO,1.00,queertangotlv,Queer Tango TLV,https://www.facebook.com/groups/queertangotlv/,0,1,1,2027-02-06T15:00:00.000Z,0,2026-04-17 01:48:10,0,unknown,high,"low productivity, low recency"
+NO,1.00,1269597307760781,El Gordo Tango Marathon Warsaw,https://www.facebook.com/groups/1269597307760781/,0,1,1,2026-10-09T14:00:00.000Z,0,2026-04-17 00:53:38,0,unknown,high,"low productivity, low recency"
+NO,1.00,88504309052,Queer Tango San Francisco Bay Area,https://www.facebook.com/groups/88504309052/,0,1,1,2026-09-11T19:00:00.000Z,0,2026-04-16 23:46:34,0,unknown,normal,"low productivity, low recency"
+NO,1.00,200116800098011,Tango Argentino Club in Michigan,https://www.facebook.com/groups/200116800098011/,0,1,1,2027-07-11T12:00:00.000Z,0,2026-04-17 00:04:02,0,unknown,normal,"low productivity, low recency"
+NO,1.00,sanantoniotango,San Antonio Tango (Tangueros),https://www.facebook.com/groups/sanantoniotango/,0,1,1,2026-09-05T00:00:00.000Z,0,2026-04-16 21:46:38,0,medium,normal,"low productivity, low recency"
+NO,1.00,162318243891285,Cleveland Argentine Tango Community,https://www.facebook.com/groups/162318243891285/,0,1,1,2026-05-06T23:00:00.000Z,0,2026-04-16 22:33:16,0,active,normal,"low productivity, low recency"
+NO,1.00,1198316623531204,Where do I dance Tango tonight in Ann Arbor?,https://www.facebook.com/groups/1198316623531204/,0,1,1,2026-04-26T18:00:00.000Z,0,2026-04-16 22:43:32,0,active,normal,"low productivity, low recency"
+NO,1.00,148739595138437,Embrace Tango Western Mass (formerly Northampton Tango),https://www.facebook.com/groups/148739595138437/,0,1,1,2026-06-14T13:00:00.000Z,0,2026-04-16 22:47:28,0,moderate,normal,"low productivity, low recency"
+NO,1.00,TangoLou,Louisville Argentine Tango Society,https://www.facebook.com/groups/TangoLou/,0,1,1,2026-05-02T23:00:00.000Z,0,2026-04-16 22:49:51,0,active,normal,"low productivity, low recency"
+NO,1.00,115408145174568,Tango Birmingham,https://www.facebook.com/groups/115408145174568/,0,1,1,2026-05-09T22:00:00.000Z,0,2026-04-16 22:50:43,0,active,normal,"low productivity, low recency"
+NO,1.00,455298564534844,Milongas in Stockholm,https://www.facebook.com/groups/455298564534844/,0,1,1,2026-05-08T16:00:00.000Z,0,2026-04-17 00:43:34,0,unknown,normal,"low productivity, low recency"
+NO,1.00,37589618639,Copenhagen Tango Intermezzo,https://www.facebook.com/groups/37589618639/,0,1,1,2026-05-14T19:00:00.000Z,0,2026-04-17 00:45:19,0,unknown,normal,"low productivity, low recency"
+NO,1.00,525722897638299,TANGO in Lisbon- Portugal,https://www.facebook.com/groups/525722897638299/,0,1,1,2026-04-30T10:00:00.000Z,0,2026-04-17 00:49:41,0,unknown,normal,"low productivity, low recency"
+NO,1.00,593120727462887,Thailand Tangoargentino,https://www.facebook.com/groups/593120727462887/,0,1,1,2026-11-06T18:00:00.000Z,0,2026-04-17 01:32:10,0,unknown,normal,"low productivity, low recency"
+NO,1.00,TangoVanIsle,Tango Vancouver Island,https://www.facebook.com/groups/TangoVanIsle/,0,1,1,2026-05-03T20:00:00.000Z,0,2026-04-17 01:41:19,0,unknown,normal,"low productivity, low recency"
+NO,1.00,tangoindubai,Tango Dubai,https://www.facebook.com/groups/tangoindubai/,0,1,1,2026-04-25T14:00:00.000Z,0,2026-04-17 01:49:50,0,unknown,normal,"low productivity, low recency"
+NO,1.00,tangojhb,Tango in Johannesburg,https://www.facebook.com/groups/tangojhb/,0,1,1,2026-05-08T16:00:00.000Z,0,2026-04-17 01:51:15,0,unknown,normal,"low productivity, low recency"
+NO,1.00,tesoromiotango,TESOROMÍO TANGO MARATHON KYIV,https://www.facebook.com/groups/tesoromiotango/,0,1,1,2026-05-15T14:00:00.000Z,0,2026-04-17 01:56:02,0,unknown,normal,"low productivity, low recency"
+NO,1.00,601878750175203,Tango Bucharest,https://www.facebook.com/groups/601878750175203/,0,1,1,2026-05-22T16:00:00.000Z,0,2026-04-17 01:57:53,0,unknown,normal,"low productivity, low recency"
+NO,1.00,263815425189232,milonga Marseille,https://www.facebook.com/groups/263815425189232/,0,1,1,2026-05-23T18:00:00.000Z,0,2026-04-17 02:06:10,0,unknown,normal,"low productivity, low recency"
+NO,1.00,tangoencordoba,TANGO EN CORDOBA,https://www.facebook.com/groups/tangoencordoba/,0,1,1,2026-09-11T14:00:00.000Z,0,2026-04-17 02:28:57,0,unknown,normal,"low productivity, low recency"
+NO,1.00,530808790312906,Vietnam Tango Friends,https://www.facebook.com/groups/530808790312906/,0,1,1,2026-12-03T01:00:00.000Z,0,2026-04-17 02:33:09,0,unknown,normal,"low productivity, low recency"
+NO,1.00,1434007586818773,Saigon Tango Community,https://www.facebook.com/groups/1434007586818773/,0,1,1,2026-08-27T17:00:00.000Z,0,2026-04-17 02:34:22,0,unknown,normal,"low productivity, low recency"
+NO,1.00,959759624114376,The Tango Club (Gold Coast),https://www.facebook.com/groups/959759624114376/,0,1,1,2026-04-24T08:00:00.000Z,0,2026-04-17 02:36:27,0,unknown,normal,"low productivity, low recency"
+NO,1.00,tangomissoula,Missoula Tango Community,https://www.facebook.com/groups/tangomissoula/,0,1,1,2026-04-25T18:30:00.000Z,0,2026-04-17 02:43:59,0,unknown,normal,"low productivity, low recency"
+NO,0.97,tangoinnorthlondon,Tango in North London,https://www.facebook.com/groups/tangoinnorthlondon/,0,1,0,2026-04-23T20:00:00.000Z,1,2026-04-16 23:35:31,0,unknown,normal,"low productivity, low recency"
+NO,0.83,486701171714398,Tango In Munich - Community,https://www.facebook.com/groups/486701171714398/,0,1,0,2026-04-19T16:00:00.000Z,5,2026-04-17 00:31:43,0,unknown,high,"low productivity, low recency"
+NO,0.83,frankfurttangosociety,Frankfurt Tango Society e.V.,https://www.facebook.com/groups/frankfurttangosociety/,0,1,0,2026-04-19T13:00:00.000Z,5,2026-04-17 02:09:36,0,unknown,high,"low productivity, low recency"
+NO,0.83,tangosanfrancisco,Tango San Francisco,https://www.facebook.com/groups/tangosanfrancisco/,0,1,0,2026-04-19T21:00:00.000Z,5,2026-04-16 23:44:59,0,unknown,normal,"low productivity, low recency"
+NO,0.83,ProvidenceTango,Providence Tango,https://www.facebook.com/groups/ProvidenceTango/,0,1,0,2026-04-19T19:00:00.000Z,5,2026-04-16 22:46:03,0,active,normal,"low productivity, low recency"
+NO,0.83,PerthTangoClub,Perth Tango Club,https://www.facebook.com/groups/PerthTangoClub/,0,1,0,2026-04-19T06:30:00.000Z,5,2026-04-17 02:37:25,0,unknown,normal,"low productivity, low recency"
+NO,0.83,maltatango,Malta Argentine Tango Association,https://www.facebook.com/groups/maltatango/,0,1,0,2026-04-19T18:00:00.000Z,5,2026-04-17 02:46:28,0,unknown,normal,"low productivity, low recency"
+NO,0.80,142536825892881,TANGO IN GERMANY,https://www.facebook.com/groups/142536825892881/,0,1,0,2026-04-18T18:00:00.000Z,6,2026-04-17 02:52:05,0,unknown,high,"low productivity, low recency"
+NO,0.80,lincolnargentinetango,Argentine Tango of Nebraska,https://www.facebook.com/groups/lincolnargentinetango/,0,1,0,2026-04-18T00:00:00.000Z,6,2026-04-16 22:48:18,0,active,normal,"low productivity, low recency"
+NO,0.80,clasesdetangorosario,CLASES DE TANGO ROSARIO,https://www.facebook.com/groups/clasesdetangorosario/,0,1,0,2026-04-17T23:30:00.000Z,6,2026-04-17 02:31:29,0,unknown,normal,"low productivity, low recency"
+NO,0.77,tangoargentinofestivals,"Tango Festivals, Marathons, Meetings, Days",https://www.facebook.com/groups/tangoargentinofestivals/,0,1,0,2026-04-17T18:00:00.000Z,7,2026-04-16 23:31:05,0,unknown,normal,"low productivity, low recency"
+NO,0.77,1477192729202416,TANGO EVENTS & INFO FOR THE SAN FRANCISCO BAY,https://www.facebook.com/groups/1477192729202416/,0,1,0,2026-04-17T02:00:00.000Z,7,2026-04-16 23:43:59,0,unknown,normal,"low productivity, low recency"
+NO,0.77,822410074481007,"Where do you dance Tango tonight, in Bucharest?",https://www.facebook.com/groups/822410074481007/,0,1,0,2026-04-17T17:00:00.000Z,7,2026-04-17 01:58:44,0,unknown,normal,"low productivity, low recency"
+NO,0.00,tangomilongasunitedstates,Tango Milongas United States,https://www.facebook.com/groups/tangomilongasunitedstates/,0,2,2,2026-05-17T21:00:00.000Z,0,2026-04-16 21:38:58,1,low,normal,"low productivity, low recency"
+NO,-0.17,charlottetango,Charlotte Tango,https://www.facebook.com/groups/charlottetango/,0,2,0,2026-04-19T00:00:00.000Z,5,2026-04-16 21:54:32,1,high,high,"low productivity, low recency"
+NO,-0.53,386587434854525,MILONGA TAIWAN,https://www.facebook.com/groups/386587434854525/,0,2,0,2026-04-08T11:00:00.000Z,16,2026-04-16 23:02:59,1,medium,high,"low productivity, low recency"
+NO,-0.63,8812028532,New York Tango,https://www.facebook.com/groups/8812028532/,0,2,0,2026-04-05T00:00:00.000Z,19,2026-04-16 22:14:00,1,low,high,"low productivity, low recency"
+NO,-1.00,389259707845555,Savannah Argentine Tango,https://www.facebook.com/groups/389259707845555/,0,1,1,2026-05-22T23:00:00.000Z,0,2026-04-16 22:37:38,1,moderate,high,"low productivity, low recency"
+NO,-1.20,220751691420839,Queer Tango PDX,https://www.facebook.com/groups/220751691420839/,0,1,0,2026-04-18T01:30:00.000Z,6,2026-04-16 22:20:10,1,moderate,high,"low productivity, low recency"
+NO,-1.40,Allnightmilonga,NYC All Night Milonga,https://www.facebook.com/groups/Allnightmilonga/,0,1,0,2026-04-12T01:00:00.000Z,12,2026-04-16 21:42:24,1,high,high,"low productivity, low recency"
+NO,-1.40,berlin.tango,Berlin Tango Social,https://www.facebook.com/groups/berlin.tango,0,1,0,2026-04-12T00:30:00.000Z,12,2026-04-16 23:26:33,1,unknown,normal,"low productivity, low recency"
+NO,-32.30,curita.trondheim,CUrITa Norway (Argentinsk Tango),https://www.facebook.com/groups/curita.trondheim/,0,1,0,,,2026-04-17 01:01:30,0,unknown,normal,"low productivity, low recency"
+NO,-33.30,allseattletangoannouncements,All Seattle Tango: Local Events,https://www.facebook.com/groups/allseattletangoannouncements/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,1394067850716751,Milonga Buenos Aires ATLANTA,https://www.facebook.com/groups/1394067850716751/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,785402654887760,Miami Tango Club Milonga,https://www.facebook.com/groups/785402654887760/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,DALLASTANGOTexasArgentineTangoMilongasAndClasses,"Dallas Tango, Argentine Tango in Dallas Texas",https://www.facebook.com/groups/DALLASTANGOTexasArgentineTangoMilongasAndClasses/,0,0,0,,,,0,unknown,high,never scraped
+NO,-33.30,122428374626593,Eastern Market Tango Club,https://www.facebook.com/groups/122428374626593/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,285617888603314,Milonga Maleva D.C.,https://www.facebook.com/groups/285617888603314,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,326443066052,Tango Classes & Milongas in London,https://www.facebook.com/groups/326443066052/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,243498226063157,Sans Souci Milonga London,https://www.facebook.com/groups/243498226063157/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,273014339380053,TANGO TERRA @ COVENT GARDEN,https://www.facebook.com/groups/273014339380053/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,427474711724772,MACADAM TANGO PARIS,https://www.facebook.com/groups/427474711724772/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,166301693740616,Tango Argentino - France,https://www.facebook.com/groups/166301693740616/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,tangomilongasbuenosaires,tango milongas Buenos Aires,https://www.facebook.com/groups/tangomilongasbuenosaires/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,GRUPODETANGO,TANGO y MILONGA - ZONA SUR,https://www.facebook.com/groups/GRUPODETANGO/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,1510097965906426,Tango events in Japan,https://www.facebook.com/groups/1510097965906426/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,107260253013056,Nuevo Tango Practica Tokyo,https://www.facebook.com/groups/107260253013056/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,TheTorontoTangoClub,Toronto Tango Club,https://www.facebook.com/groups/TheTorontoTangoClub/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,753056754810832,MALEVA Milonga in Toronto,https://www.facebook.com/groups/753056754810832/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,465986205126362,Milonga El Camino,https://www.facebook.com/groups/465986205126362/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,tangoinspain,tango milongas Spain,https://www.facebook.com/groups/tangoinspain/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,1782396342070365,MILONGAS EN ESPAÑA,https://www.facebook.com/groups/1782396342070365/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,110350309081096,LAS MILONGAS de MÉXICO,https://www.facebook.com/groups/110350309081096/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,2248359305530087,Mexico City tango community,https://www.facebook.com/groups/2248359305530087/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,189820067795103,MILONGA PARQUE MEXICO CONDESA,https://www.facebook.com/groups/189820067795103/,0,0,0,,,2026-04-17 01:26:12,0,unknown,high,scraped but 0 events produced ever
+NO,-33.30,1428420777264397,Tango CDMX,https://www.facebook.com/groups/1428420777264397/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,evening.tea.milonga,Evening Tea Milonga,https://www.facebook.com/groups/evening.tea.milonga/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,242833006140226,Busan Tango Marathon,https://www.facebook.com/groups/242833006140226/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,2282127425441458,香港探戈活動Tango in Hong Kong,https://www.facebook.com/groups/2282127425441458/,0,0,0,,,2026-04-17 01:26:56,0,unknown,high,scraped but 0 events produced ever
+NO,-33.30,russiantangoclub,Russian Tango Club,https://www.facebook.com/groups/russiantangoclub/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,istanbul.milongateam,istanbul milonga team,https://www.facebook.com/groups/istanbul.milongateam/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,1643259365920170,Istanbul Tango Events,https://www.facebook.com/groups/1643259365920170/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,316341615453372,Hoy Milonga Turkey,https://www.facebook.com/groups/316341615453372/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,sultanstango,Sultans of İstanbul Tango Marathon & Festival,https://www.facebook.com/groups/sultanstango/,0,0,0,,,2026-04-17 01:15:14,0,unknown,high,scraped but 0 events produced ever
+NO,-33.30,231658050293337,TANGO IN TURKEY,https://www.facebook.com/groups/231658050293337/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,istanbultango,istanbul TANGO,https://www.facebook.com/groups/istanbultango/,0,0,0,,,2026-04-17 01:15:59,0,unknown,high,scraped but 0 events produced ever
+NO,-33.30,isratango,Isra Tango,https://www.facebook.com/groups/isratango/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,2588519941488416,Milonga Tango Libre Warsaw,https://www.facebook.com/groups/2588519941488416/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,tangomilongasgermany,tango milongas Germany,https://www.facebook.com/groups/tangomilongasgermany/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,tangomilongasathens,tango milongas Athens,https://www.facebook.com/groups/tangomilongasathens/,0,0,0,,,2026-04-17 01:06:15,0,unknown,high,scraped but 0 events produced ever
+NO,-33.30,qtbrazil,Queer Tango Brazil,https://www.facebook.com/groups/qtbrazil/,0,0,0,,,,0,medium,high,never scraped
+NO,-33.30,tangoinfofestivals,tango.info/festivals,https://www.facebook.com/groups/tangoinfofestivals/,0,0,0,,,,0,low,normal,never scraped
+NO,-33.30,tangoinla,Tango in LA,https://www.facebook.com/groups/tangoinla/,0,0,0,,,,0,unknown,normal,never scraped
+NO,-33.30,365572112012363,Munich Tango Weekend,https://www.facebook.com/groups/365572112012363/,0,0,0,,,,0,unknown,normal,never scraped
+NO,-33.30,118387944555,Tango Budapest,https://www.facebook.com/groups/118387944555/,0,0,0,,,,0,unknown,normal,never scraped
+NO,-33.30,954201021312694,Tango Argentino In Helsinki,https://www.facebook.com/groups/954201021312694/,0,0,0,,,2026-04-17 01:02:36,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,1069897033717773,Argentine Tango Helsinki,https://www.facebook.com/groups/1069897033717773/,0,0,0,,,2026-04-17 01:03:50,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,5555248820,Finland Tango Community,https://www.facebook.com/groups/5555248820/,0,0,0,,,2026-04-17 01:04:38,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,athenstangueros,Athens' Tangueros,https://www.facebook.com/groups/athenstangueros,0,0,0,,,2026-04-17 01:07:27,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,371771409502112,Milongas in Athens,https://www.facebook.com/groups/371771409502112/,0,0,0,,,2026-04-17 01:08:23,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangoinathens,TANGO ATHENS,https://www.facebook.com/groups/tangoinathens/,0,0,0,,,2026-04-17 01:09:52,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,1074110826343811,Tango Argentino Greece,https://www.facebook.com/groups/1074110826343811/,0,0,0,,,2026-04-17 01:11:19,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangogr,TANGO IN GREECE,https://www.facebook.com/groups/tangogr/,0,0,0,,,2026-04-17 01:12:44,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangotoistanbul,tanGO TO istanbul,https://www.facebook.com/groups/tangotoistanbul/,0,0,0,,,2026-04-17 01:14:26,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,278268625860133,CARTELERA DEL TANGO DE URUGUAY,https://www.facebook.com/groups/278268625860133/,0,0,0,,,2026-04-17 01:16:50,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangomontevideo,Tango en Montevideo,https://www.facebook.com/groups/tangomontevideo/,0,0,0,,,2026-04-17 01:17:37,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,245796619344376,Milongas en Montevideo / Uruguay,https://www.facebook.com/groups/245796619344376/,0,0,0,,,2026-04-17 01:18:27,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangoenChile,Tango en Chile,https://www.facebook.com/groups/tangoenChile/,0,0,0,,,2026-04-17 01:19:12,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,185481568168783,Tango en Santiago de Chile,https://www.facebook.com/groups/185481568168783/,0,0,0,,,2026-04-17 01:19:57,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,1383637665220701,La RUTA del TANGO,https://www.facebook.com/groups/1383637665220701/,0,0,0,,,2026-04-17 01:20:51,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,IBTANGO,TANGO BAILES RIO DE JANEIRO,https://www.facebook.com/groups/IBTANGO/,0,0,0,,,2026-04-17 01:21:36,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangoenperu,Tango en Lima Perú,https://www.facebook.com/groups/tangoenperu/,0,0,0,,,2026-04-17 01:22:23,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,263642447176521,MIS AMIGOS DEL TANGO EN LIMA PERU,https://www.facebook.com/groups/263642447176521/,0,0,0,,,2026-04-17 01:23:14,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,166823696705869,Festival Internacional Perú Tango,https://www.facebook.com/groups/166823696705869/,0,0,0,,,2026-04-17 01:23:57,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,544697026104820,la casa del Tango en Bogotá,https://www.facebook.com/groups/544697026104820/,0,0,0,,,2026-04-17 01:24:42,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,146573493580854,Colombia Tango Queer,https://www.facebook.com/groups/146573493580854/,0,0,0,,,2026-04-17 01:25:27,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,281946035237957,Tango tanzen und lernen in und um Stuttgart,https://www.facebook.com/groups/281946035237957/,0,0,0,,,2026-04-17 02:20:04,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,TANGOOCHO,TANGO OCHO STUTTGART,https://www.facebook.com/groups/TANGOOCHO/,0,0,0,,,2026-04-17 02:21:01,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,tangodraussen,tango draussen - Stuttgart,https://www.facebook.com/groups/tangodraussen/,0,0,0,,,2026-04-17 02:21:46,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,665492613612181,Salida Tango Stuttgart,https://www.facebook.com/groups/665492613612181/,0,0,0,,,2026-04-17 02:22:39,0,unknown,normal,scraped but 0 events produced ever
+NO,-33.30,1754072954899159,Sarasota Tango Community,https://www.facebook.com/groups/1754072954899159/,0,0,0,,,2026-04-17 02:44:59,0,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,329010210960182,阿根廷探戈在台灣 Argentine tango in Taiwan,https://www.facebook.com/groups/329010210960182/,0,0,0,,,2026-04-16 23:03:35,1,medium,high,scraped but 0 events produced ever
+NO,-35.30,343777704846643,Chattanooga Tango,https://www.facebook.com/groups/343777704846643/,0,0,0,,,2026-04-16 23:10:28,1,medium,high,scraped but 0 events produced ever
+NO,-35.30,835858866809797,Tango Housing/Hosting,https://www.facebook.com/groups/835858866809797/,0,0,0,,,2026-04-16 23:11:46,1,low,dormant,scraped but 0 events produced ever
+NO,-35.30,1214075590163711,FB Group 1214075590163711,https://www.facebook.com/groups/1214075590163711/,0,0,0,,,2026-04-16 23:12:28,1,medium,dormant,scraped but 0 events produced ever
+NO,-35.30,2487840574947604,FB Group 2487840574947604,https://www.facebook.com/groups/2487840574947604/,0,0,0,,,2026-04-16 23:13:08,1,low,dormant,scraped but 0 events produced ever
+NO,-35.30,TangoinPoland,Tango in Poland,https://www.facebook.com/groups/TangoinPoland/,0,0,0,,,2026-04-16 23:14:16,1,low,dormant,scraped but 0 events produced ever
+NO,-35.30,275166282588468,FB Group 275166282588468,https://www.facebook.com/groups/275166282588468/,0,0,0,,,2026-04-16 23:20:13,1,unknown,dormant,scraped but 0 events produced ever
+NO,-35.30,811530215594629,FB Group 811530215594629,https://www.facebook.com/groups/811530215594629/,0,0,0,,,2026-04-16 23:21:41,1,unknown,dormant,scraped but 0 events produced ever
+NO,-35.30,636059826419536,TANGOSPHAERE/Argentine Tango In Berlin,https://www.facebook.com/groups/636059826419536/,0,0,0,,,2026-04-16 23:23:51,1,unknown,dormant,scraped but 0 events produced ever
+NO,-35.30,milonga.villakreuzberg,milonga.villakreuzberg,https://www.facebook.com/groups/milonga.villakreuzberg/,0,0,0,,,2026-04-16 23:26:58,1,unknown,dormant,scraped but 0 events produced ever
+NO,-35.30,LaVidaTango,Argentine Tango on Eastside Seattle,https://www.facebook.com/groups/LaVidaTango/,0,0,0,,,2026-04-16 23:52:20,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,floridatangocommunity,Miami | Florida Tango Community,https://www.facebook.com/groups/floridatangocommunity/,0,0,0,,,2026-04-16 22:40:32,1,active,high,scraped but 0 events produced ever
+NO,-35.30,47769243908,Capital Tangueros,https://www.facebook.com/groups/47769243908/,0,0,0,,,2026-04-16 21:51:52,1,high,high,scraped but 0 events produced ever
+NO,-35.30,1929796427313873,DC Queer Tango Collective,https://www.facebook.com/groups/1929796427313873,0,0,0,,,2026-04-16 23:59:50,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,tango.in.orange,Texas Argentine Tango -UT Austin,https://www.facebook.com/groups/tango.in.orange/,0,0,0,,,2026-04-16 23:57:47,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,247366451555906,Where to dance Tango in Paris Tonight?,https://www.facebook.com/groups/247366451555906/,0,0,0,,,2026-04-16 23:38:36,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,tangoloungeba,"Dancers, Expats, Travellers, & Tourists in Buenos Aires",https://www.facebook.com/groups/tangoloungeba/,0,0,0,,,2026-04-16 23:30:14,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,montrealtango,Montréal Tango,https://www.facebook.com/groups/montrealtango/,0,0,0,,,2026-04-17 01:43:52,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,1086602248041186,La Yumba Milonga - Amsterdam,https://www.facebook.com/groups/1086602248041186/,0,0,0,,,2026-04-17 00:23:36,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,1389373581296479,Tango Argentino danced in Amsterdam,https://www.facebook.com/groups/1389373581296479/,0,0,0,,,2026-04-17 00:22:59,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,milongasbarcelona,Milongas en Barcelona,https://www.facebook.com/groups/milongasbarcelona/,0,0,0,,,2026-04-17 00:12:14,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,barcelonatangomarathon,Barcelona Tango Marathon,https://www.facebook.com/groups/barcelonatangomarathon/,0,0,0,,,2026-04-17 00:11:49,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,seoultangofestival,"2026 Seoul Tango Festival, April 30-May 4",https://www.facebook.com/groups/seoultangofestival/,0,0,0,,,2026-04-16 23:01:01,1,medium,high,scraped but 0 events produced ever
+NO,-35.30,milongueronightsmoscow,Milonguero Nights Tango Festival in Moscow,https://www.facebook.com/groups/milongueronightsmoscow/,0,0,0,,,2026-04-17 01:52:52,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,165913640209469,Planetango Moscow Tango Festival,https://www.facebook.com/groups/165913640209469/,0,0,0,,,2026-04-17 01:52:07,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,tangoinVienna,Tango-Vienna - Wien,https://www.facebook.com/groups/tangoinVienna/,0,0,0,,,2026-04-17 00:25:28,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,viennacallingtangomarathon,Vienna Calling Tango Marathon,https://www.facebook.com/groups/viennacallingtangomarathon/,0,0,0,,,2026-04-17 00:31:04,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,333330753744938,Tango y Milongas en Italia,https://www.facebook.com/groups/333330753744938/,0,0,0,,,2026-04-17 00:20:30,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,13416565187,Prague Tango Society,https://www.facebook.com/groups/13416565187/,0,0,0,,,2026-04-17 00:39:40,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,444389532276997,Prague Tango Marathon,https://www.facebook.com/groups/444389532276997/,0,0,0,,,2026-04-17 00:40:05,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,133822497286643,Israel Tango,https://www.facebook.com/groups/133822497286643/,0,0,0,,,2026-04-17 01:49:05,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,16981152308,Argentine Tango in Israel,https://www.facebook.com/groups/16981152308/,0,0,0,,,2026-04-17 01:47:45,1,medium,high,scraped but 0 events produced ever
+NO,-35.30,1070959857605810,Tango milongas and workshops in Warsaw,https://www.facebook.com/groups/1070959857605810/,0,0,0,,,2026-04-17 00:52:59,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,551652912825787,Warsaw Tango Wave,https://www.facebook.com/groups/551652912825787/,0,0,0,,,2026-04-17 00:52:19,1,unknown,high,scraped but 0 events produced ever
+NO,-35.30,441845562522805,BERLIN TANGO PARTNER POOL,https://www.facebook.com/groups/441845562522805/,0,0,0,,,2026-04-16 23:27:38,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1369034623163306,Tango Festival en Tokyo,https://www.facebook.com/groups/1369034623163306/,0,0,0,,,2026-04-16 23:28:18,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,centralparktango,Central Park Tango,https://www.facebook.com/groups/centralparktango/,0,0,0,,,2026-04-16 23:32:02,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,822648081189281,Argentine Tango in Westchester,https://www.facebook.com/groups/822648081189281/,0,0,0,,,2026-04-16 23:32:48,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,754661114560785,Argentine Tango in New Jersey,https://www.facebook.com/groups/754661114560785/,0,0,0,,,2026-04-16 23:33:29,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,NewYorkTango,Tango NYC & NYS,https://www.facebook.com/groups/NewYorkTango/,0,0,0,,,2026-04-16 23:34:09,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,LeandroPalouTangoAcademy,London Tango Academy,https://www.facebook.com/groups/LeandroPalouTangoAcademy/,0,0,0,,,2026-04-16 23:34:47,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,616847508438699,tango argentin à Paris bals milonga,https://www.facebook.com/groups/616847508438699/,0,0,0,,,2026-04-16 23:37:55,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,134112799960763,Tango Argentin Queer à Paris,https://www.facebook.com/groups/134112799960763/,0,0,0,,,2026-04-16 23:39:19,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,797120440317612,Partenaire Tango Paris,https://www.facebook.com/groups/797120440317612/,0,0,0,,,2026-04-16 23:43:13,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1594536430808752,OC - LA Tango,https://www.facebook.com/groups/1594536430808752/,0,0,0,,,2026-04-16 23:48:06,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,64821716179,Orange County Tango community,https://www.facebook.com/groups/64821716179/,0,0,0,,,2026-04-16 23:48:49,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,42208194152,University of Chicago Argentine Tango Club,https://www.facebook.com/groups/42208194152/,0,0,0,,,2026-04-16 23:49:27,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,179251142619451,All Seattle Tango Announcements,https://www.facebook.com/groups/179251142619451/,0,0,0,,,2026-04-16 23:53:04,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,532229563557506,Seattle Tango Magic Festival,https://www.facebook.com/groups/532229563557506/,0,0,0,,,2026-04-16 23:55:17,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,135170723480826,TangoAffair Argentine Tango in Boston,https://www.facebook.com/groups/135170723480826/,0,0,0,,,2026-04-16 23:55:57,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1776008539136058,Tango Denver,https://www.facebook.com/groups/1776008539136058/,0,0,0,,,2026-04-16 23:56:33,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,austintangolab,Austin Tango Lab,https://www.facebook.com/groups/austintangolab/,0,0,0,,,2026-04-16 23:57:11,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,queertangopdx,Queer Tango PDX,https://www.facebook.com/groups/queertangopdx/,0,0,0,,,2026-04-16 23:59:10,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,TangoPhiladelphia,Tango Philadelphia,https://www.facebook.com/groups/TangoPhiladelphia/,0,0,0,,,2026-04-17 00:00:32,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,138608140034966,Philadelphia Tango Nomads,https://www.facebook.com/groups/138608140034966/,0,0,0,,,2026-04-17 00:01:07,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,utangoclub,"UTango, University of Minnesota Argentine Tango Club",https://www.facebook.com/groups/utangoclub/,0,0,0,,,2026-04-17 00:02:14,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,106334836733117,Plataforma Abierta de Tango en Madrid,https://www.facebook.com/groups/106334836733117/,0,0,0,,,2026-04-17 00:04:54,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tanGOTORome,tanGO TO Rome,https://www.facebook.com/groups/tanGOTORome/,0,0,0,,,2026-04-17 00:14:36,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,spqrtangomarathon,SPQR Tango Marathon Roma,https://www.facebook.com/groups/spqrtangomarathon/,0,0,0,,,2026-04-17 00:15:15,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,920089188640469,Eh! Milano Tango Fest,https://www.facebook.com/groups/920089188640469/,0,0,0,,,2026-04-17 00:17:03,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,thetangoroom,El Encuentro at The Tango Room,https://www.facebook.com/groups/thetangoroom/,0,0,0,,,2026-04-16 21:43:37,1,high,normal,scraped but 0 events produced ever
+NO,-35.30,argentinetangodetroit,Argentine Tango Detroit,https://www.facebook.com/groups/argentinetangodetroit/,0,0,0,,,2026-04-16 21:48:47,1,high,normal,scraped but 0 events produced ever
+NO,-35.30,tangoosu,Argentine Tango in Columbus (TangoOSU),https://www.facebook.com/groups/tangoosu/,0,0,0,,,2026-04-16 21:55:29,1,high,normal,scraped but 0 events produced ever
+NO,-35.30,136756563074821,Milwaukee Tango Community,https://www.facebook.com/groups/136756563074821/,0,0,0,,,2026-04-16 21:57:54,1,high,normal,scraped but 0 events produced ever
+NO,-35.30,468526566081701,Istanbul Tango Community,https://www.facebook.com/groups/468526566081701/,0,0,0,,,2026-04-16 22:08:41,1,low,normal,scraped but 0 events produced ever
+NO,-35.30,seattletangosocial,Seattle Tango Social,https://www.facebook.com/groups/seattletangosocial/,0,0,0,,,2026-04-16 22:10:50,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,AlbuquerqueTangoFestival,Albuquerque Tango Festival,https://www.facebook.com/groups/AlbuquerqueTangoFestival/,0,0,0,,,2026-04-16 22:12:57,1,low,normal,scraped but 0 events produced ever
+NO,-35.30,philadelphiatangoschool,Philadelphia Argentine Tango School,https://www.facebook.com/groups/philadelphiatangoschool/,0,0,0,,,2026-04-16 22:13:22,1,low,normal,scraped but 0 events produced ever
+NO,-35.30,325614957522254,Portland Tango,https://www.facebook.com/groups/325614957522254/,0,0,0,,,2026-04-16 22:19:45,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,Argentinetangosandiego,Argentine Tango in San Diego,https://www.facebook.com/groups/Argentinetangosandiego/,0,0,0,,,2026-04-16 22:21:26,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,sandiegoargentinetango,San Diego Argentine Tango,https://www.facebook.com/groups/sandiegoargentinetango/,0,0,0,,,2026-04-16 22:22:02,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,935634376521763,Tango Indy; Argentine Tango In Indianapolis,https://www.facebook.com/groups/935634376521763/,0,0,0,,,2026-04-16 22:27:17,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,TangoBaltimore,Tango Baltimore,https://www.facebook.com/groups/TangoBaltimore/,0,0,0,,,2026-04-16 22:31:48,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,206635092720542,Tango Cincinnati,https://www.facebook.com/groups/206635092720542/,0,0,0,,,2026-04-16 22:34:03,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,albanytango,Albany Tango Society,https://www.facebook.com/groups/albanytango/,0,0,0,,,2026-04-16 22:34:42,1,moderate,normal,scraped but 0 events produced ever
+NO,-35.30,154611381241218,Buffalo Tango Orkestra,https://www.facebook.com/groups/154611381241218/,0,0,0,,,2026-04-16 22:35:50,1,low,normal,scraped but 0 events produced ever
+NO,-35.30,379178922979635,Honolulu Tango Ohana,https://www.facebook.com/groups/379178922979635/,0,0,0,,,2026-04-16 22:39:53,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,westernmatango,Western MA Tango,https://www.facebook.com/groups/westernmatango/,0,0,0,,,2026-04-16 22:46:49,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,1057887670965028,Tango School of Memphis,https://www.facebook.com/groups/1057887670965028/,0,0,0,,,2026-04-16 22:49:10,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,tangoboise,Tango Boise,https://www.facebook.com/groups/tangoboise/,0,0,0,,,2026-04-16 22:51:36,1,moderate,normal,scraped but 0 events produced ever
+NO,-35.30,milonganueva,Milonga NUEVA,https://www.facebook.com/groups/milonganueva/,0,0,0,,,2026-04-16 22:53:22,1,active,normal,scraped but 0 events produced ever
+NO,-35.30,eltangocafe,Seoul Tango - El Tango Cafe,https://www.facebook.com/groups/eltangocafe/,0,0,0,,,2026-04-16 23:00:25,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,TangoThisWeekSingapore,Tango-This Week in Singapore,https://www.facebook.com/groups/TangoThisWeekSingapore/,0,0,0,,,2026-04-16 23:02:20,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,180512225409300,THAI TANGO/Milonga BKK,https://www.facebook.com/groups/180512225409300/,0,0,0,,,2026-04-16 23:05:07,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,tangochiangmai,Tango Chiang Mai,https://www.facebook.com/groups/tangochiangmai/,0,0,0,,,2026-04-16 23:05:47,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,melbournesocialtango,Melbourne Social Tango,https://www.facebook.com/groups/melbournesocialtango/,0,0,0,,,2026-04-16 23:07:04,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,298005871143044,Gotanz Connect Australian and New Zealand Tango Directory,https://www.facebook.com/groups/298005871143044/,0,0,0,,,2026-04-16 23:08:28,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,1970104613087725,TANGO EVENTS IN ASIA,https://www.facebook.com/groups/1970104613087725/,0,0,0,,,2026-04-16 23:09:45,1,medium,normal,scraped but 0 events produced ever
+NO,-35.30,1429094763992399,SAN FRANCISCO BAY AREA TANGO,https://www.facebook.com/groups/1429094763992399/,0,0,0,,,2026-04-16 23:46:09,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,156101394477882,MILONGUEANDO Barcelona,https://www.facebook.com/groups/156101394477882/,0,0,0,,,2026-04-17 00:08:38,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,brusselstangopartnersearch,Brussels Tango Partner Search,https://www.facebook.com/groups/brusselstangopartnersearch/,0,0,0,,,2026-04-17 00:37:35,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,stockholmtangomarathon,Stockholm Tango Marathon & Events,https://www.facebook.com/groups/stockholmtangomarathon/,0,0,0,,,2026-04-17 00:44:24,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,lusitango,LISBON INTERNATIONAL TANGO FESTIVAL,https://www.facebook.com/groups/lusitango/,0,0,0,,,2026-04-17 00:46:12,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,552640704759837,Lisbon TUGA TANGO Marathon,https://www.facebook.com/groups/552640704759837/,0,0,0,,,2026-04-17 00:48:37,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tangolibrebudapest,Tango Libre Budapest,https://www.facebook.com/groups/tangolibrebudapest/,0,0,0,,,2026-04-17 00:55:03,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,TangoDublinSchool,Dublin Tango School Dancers,https://www.facebook.com/groups/TangoDublinSchool,0,0,0,,,2026-04-17 00:55:42,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,469694036531295,Bray Argentine Tango Society - BATS,https://www.facebook.com/groups/469694036531295/,0,0,0,,,2026-04-17 00:56:22,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,283648775124912,IRISH TANGO,https://www.facebook.com/groups/283648775124912/,0,0,0,,,2026-04-17 00:57:01,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tangoeventsinswitzerland,TANGO EVENTS IN SWITZERLAND,https://www.facebook.com/groups/tangoeventsinswitzerland/,0,0,0,,,2026-04-17 00:58:20,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,251896038218742,Kaohsiung Tango Club,https://www.facebook.com/groups/251896038218742/,0,0,0,,,2026-04-17 01:29:13,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,twtangomarathon,Taiwan Tango Marathon,https://www.facebook.com/groups/twtangomarathon/,0,0,0,,,2026-04-17 01:29:54,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,348395265271004,Tango Bangkok Thailand,https://www.facebook.com/groups/348395265271004/,0,0,0,,,2026-04-17 01:31:33,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1563135257271497,Argentine Tango Penang @ PAT,https://www.facebook.com/groups/1563135257271497/,0,0,0,,,2026-04-17 01:33:43,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,201761873189511,Manila Argentine Tango Society,https://www.facebook.com/groups/201761873189511/,0,0,0,,,2026-04-17 01:34:25,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1986740268225457,The Manila Tango Marathon,https://www.facebook.com/groups/1986740268225457/,0,0,0,,,2026-04-17 01:35:06,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,820185474854194,Tango Melbourne Community Group,https://www.facebook.com/groups/820185474854194/,0,0,0,,,2026-04-17 01:35:45,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tangotoronto,Tango Toronto,https://www.facebook.com/groups/tangotoronto/,0,0,0,,,2026-04-17 01:38:58,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,ArgentineTangoTorontoElAbrazo,Argentine Tango Toronto El Abrazo,https://www.facebook.com/groups/ArgentineTangoTorontoElAbrazo/,0,0,0,,,2026-04-17 01:39:41,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,10430038225,Tango Vancouver,https://www.facebook.com/groups/10430038225/,0,0,0,,,2026-04-17 01:40:38,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,180504178641634,Queer Tango Montreal,https://www.facebook.com/groups/180504178641634/,0,0,0,,,2026-04-17 01:45:27,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,107857822580692,Mumbai Tango Milonga,https://www.facebook.com/groups/107857822580692/,0,0,0,,,2026-04-17 01:46:04,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,BangaloreArgentineTango,Bangalore Argentine Tango,https://www.facebook.com/groups/BangaloreArgentineTango/,0,0,0,,,2026-04-17 01:46:47,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,adtango,ABU DHABI TANGO,https://www.facebook.com/groups/adtango/,0,0,0,,,2026-04-17 01:50:38,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,WhiteNightsTangoFestival,White Nights Tango Festival in St.Petersburg,https://www.facebook.com/groups/WhiteNightsTangoFestival/,0,0,0,,,2026-04-17 01:53:59,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,603053939799591,St. Petersburg Tango Marathon,https://www.facebook.com/groups/603053939799591/,0,0,0,,,2026-04-17 01:55:20,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,474614025900252,Bucharest Tango Marathon Group,https://www.facebook.com/groups/474614025900252/,0,0,0,,,2026-04-17 02:00:14,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,bucharest.tango.society,Bucharest Tango Society,https://www.facebook.com/groups/bucharest.tango.society/,0,0,0,,,2026-04-17 02:01:08,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tsibelle,Té Sibelle: tout le tango argentin à Lyon,https://www.facebook.com/groups/tsibelle/,0,0,0,,,2026-04-17 02:01:48,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,NeoTangoLyon,Festival Neo Tango LYON,https://www.facebook.com/groups/NeoTangoLyon/,0,0,0,,,2026-04-17 02:04:08,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tango.tanzpartner.hamburg,Tango Tanzpartner Hamburg,https://www.facebook.com/groups/tango.tanzpartner.hamburg/,0,0,0,,,2026-04-17 02:08:54,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,119153464782521,Academia de Tango in Frankfurt,https://www.facebook.com/groups/119153464782521/,0,0,0,,,2026-04-17 02:11:07,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,edinburghtango,Edinburgh Tango Society,https://www.facebook.com/groups/edinburghtango/,0,0,0,,,2026-04-17 02:12:22,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,eutangosociety,Edinburgh University Tango Society,https://www.facebook.com/groups/eutangosociety/,0,0,0,,,2026-04-17 02:13:01,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tangoinmanchester,Tango in Manchester!,https://www.facebook.com/groups/tangoinmanchester/,0,0,0,,,2026-04-17 02:13:42,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1437724943126740,Tango Manchester,https://www.facebook.com/groups/1437724943126740/,0,0,0,,,2026-04-17 02:15:50,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,BirminghamTango,Sandra and Loyd - Puro Traditional Tango Birmingham,https://www.facebook.com/groups/BirminghamTango/,0,0,0,,,2026-04-17 02:16:31,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,1385186225134286,Tango Firenze,https://www.facebook.com/groups/1385186225134286/,0,0,0,,,2026-04-17 02:23:24,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,113786392441949,Naples Argentine Tango By Pablo Repun,https://www.facebook.com/groups/113786392441949/,0,0,0,,,2026-04-17 02:24:07,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,145789128778513,Bravo Tango - Kraków,https://www.facebook.com/groups/145789128778513/,0,0,0,,,2026-04-17 02:28:14,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,377620298978045,Tango en Córdoba,https://www.facebook.com/groups/377620298978045/,0,0,0,,,2026-04-17 02:30:14,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,2595763767315679,Tango y Milongas en Córdoba,https://www.facebook.com/groups/2595763767315679/,0,0,0,,,2026-04-17 02:30:50,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,59340204764,Tango Lovers Jakarta,https://www.facebook.com/groups/59340204764/,0,0,0,,,2026-04-17 02:32:26,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,377049705705310,Tangonut Events Brisbane,https://www.facebook.com/groups/377049705705310/,0,0,0,,,2026-04-17 02:35:45,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,TangoCollabWellington,Tango Collab Wellington Group,https://www.facebook.com/groups/TangoCollabWellington/,0,0,0,,,2026-04-17 02:39:07,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,165522303652907,New Orleans Tango Festival,https://www.facebook.com/groups/165522303652907/,0,0,0,,,2026-04-17 02:40:19,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,littlerocktango,Little Rock Tango,https://www.facebook.com/groups/littlerocktango/,0,0,0,,,2026-04-17 02:43:13,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,tangopulse,Western MA Tango,https://www.facebook.com/groups/tangopulse/,0,0,0,,,2026-04-17 02:45:50,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,argentinetangoinbrighton,Argentine Tango in Brighton,https://www.facebook.com/groups/argentinetangoinbrighton/,0,0,0,,,2026-04-17 02:47:26,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,Dartmouth.Argentine.Tango.Society,Dartmouth Argentine Tango Society,https://www.facebook.com/groups/Dartmouth.Argentine.Tango.Society/,0,0,0,,,2026-04-17 02:48:11,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,448838755191343,TANGO EVENTS IN EUROPE,https://www.facebook.com/groups/448838755191343/,0,0,0,,,2026-04-17 02:49:03,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,partenairetango,Trouver son partenaire de Tango Argentin,https://www.facebook.com/groups/partenairetango/,0,0,0,,,2026-04-17 02:49:44,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,282972171856,Argentine Tango Club,https://www.facebook.com/groups/282972171856/,0,0,0,,,2026-04-17 02:50:34,1,unknown,normal,scraped but 0 events produced ever
+NO,-35.30,143412406102628,FRANCE TANGO ARGENTINO,https://www.facebook.com/groups/143412406102628/,0,0,0,,,2026-04-17 02:51:16,1,unknown,normal,scraped but 0 events produced ever
+NO,-37.30,466828892314068,Tango in Korea,https://www.facebook.com/groups/466828892314068/,0,0,0,,,2026-04-17 01:28:16,2,medium,high,scraped but 0 events produced ever
+NO,-37.30,35516277516,Milonga Nuevo Hong Kong,https://www.facebook.com/groups/35516277516/,0,0,0,,,2026-04-17 01:27:52,2,medium,high,scraped but 0 events produced ever
+NO,-37.30,831329108689011,Moscow/Russia Tango Community,https://www.facebook.com/groups/831329108689011/,0,0,0,,,2026-04-17 01:53:34,2,medium,high,scraped but 0 events produced ever
