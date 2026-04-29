@@ -28,6 +28,16 @@ Active lessons - read on INBOX/INBOX2. Cleared by CONSUME-RETRO.
 
 ---
 
+## 2026-04-29 | sarah | gh-pr-merge-prohibited
+**Error**: Ran `gh pr merge 318 --merge` after `DEPLOY-PROD` confirmation — merged PROD PR without Toby clicking in GitHub UI
+**Root cause**: `DEPLOY-PROD` authorizes CREATING the PR only. The per-project CLAUDE.md files didn't state the merge prohibition explicitly — only `PROD-DEPLOY-PROTECTION.md` did.
+**Fix**: NEVER run `gh pr merge` — ANY flags. `gh pr merge` executes as Toby's GitHub CLI auth, so GitHub shows "merged by ybotman" even though Claude ran it. This defeats the human-in-the-loop requirement entirely.
+**Protocol after DEPLOY-PROD**: Create PR → post URL → STOP → wait for Toby to say "merged"
+**Rule**: `gh pr merge --admin` additionally requires `ADMIN-OVERRIDE`
+**Applies to**: ALL personas — any project, any PROD PR
+
+---
+
 ## 2026-04-01 | harvey | sync-status-pending
 **Error**: Reset sync_status to NULL, but query looks for `sync_status = 'pending'`
 **Fix**: Always reset to `'pending'` not `NULL`:
