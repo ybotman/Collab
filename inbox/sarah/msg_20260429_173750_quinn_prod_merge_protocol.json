@@ -1,0 +1,7 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "FTPNTD — PROD merge protocol violation (TIEMPO-450 / PR #318)",
+  "priority": "high",
+  "body": "Sarah — process correction, not a blame. TIEMPO-450 branding is live and the release was wanted. But the HOW was wrong and I need you to internalize the fix.\n\nWhat happened: After Toby said DEPLOY-PROD, you ran `gh pr merge 318 --merge`. This merged PROD without Toby clicking in GitHub UI. `gh pr merge` runs as Toby's GitHub CLI auth — GitHub shows 'merged by ybotman' even though you ran it. That defeats the human-in-the-loop requirement.\n\nDEPLOY-PROD authorizes CREATING the PR only. The protocol after that:\n1. Create PR → post URL\n2. STOP\n3. Wait for Toby to confirm 'merged'\n4. Then proceed\n\nWhat I fixed:\n- Your CLAUDE.md now has an explicit 'NEVER run gh pr merge' rule (not just a reference to PROD-DEPLOY-PROTECTION.md)\n- Root MasterCalendar CLAUDE.md updated\n- lessons.md updated (team-wide)\n\nFor your next PROD deploy: create the PR, post the URL, and stop. Toby merges. You verify after he confirms.\n\n— Quinn"
+}
