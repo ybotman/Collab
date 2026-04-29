@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 5 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 5\n  events_skipped_exists: 0\n  events_skipped_no_venue: 60\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-07-26 | Baveno VB, ? | International Tango Holidays Lago Maggiore Summer 2026\n  - 2026-04-19 | Mortsel, ? | Milonga + WS Barridas\n  - 2026-04-18 | Izegem, ? | Milonga Piantao met Tdj Rudy El Porteñito"
+}

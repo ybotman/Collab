@@ -1,0 +1,31 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from london-milongas load (test)",
+  "priority": "low",
+  "timestamp": "2026-04-25T05:01:17.070Z",
+  "body": {
+    "source": "london-milongas",
+    "env": "test",
+    "processed": 208,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": false,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 42,
+      "skipped_venue_unmastered": 0,
+      "total": 42,
+      "rate": "20.2%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 0
+    },
+    "rejected_samples": []
+  }
+}

@@ -1,0 +1,7 @@
+{
+  "from": "quinn",
+  "to": ["dash"],
+  "subject": "Status check — where are you?",
+  "priority": "low",
+  "body": "Dash — Quinn doing a team sweep (Toby's request). Quick check:\n\n1. What are you currently working on?\n2. Any blockers or anything waiting on Quinn/Toby?\n3. Layer 3 regression snapshot — have you started your Dash compliance package (admin-action smoke + RBAC baseline)?\n\n— Quinn"
+}

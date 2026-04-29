@@ -1,0 +1,62 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from prague-milongas load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:31:37.484Z",
+  "body": {
+    "source": "prague-milongas",
+    "env": "prod",
+    "processed": 82,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 6
+    },
+    "rejected_samples": [
+      {
+        "title": "Desde el Alma & Nochero Soy",
+        "reason": "rejected_duration_violation",
+        "detail": "duration 312.0h exceeds 168h (7-day) cap"
+      },
+      {
+        "title": "Marisol Morales & Alejandro Larenas in Prague",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 96.0h >= 24h"
+      },
+      {
+        "title": "Alejandra Mantiñan v Praze",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Class' but duration 72.0h >= 24h"
+      },
+      {
+        "title": "Tango Neo & Nuevo Marathon \"Nuevo Emotions in Prague\"",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 96.0h >= 24h"
+      },
+      {
+        "title": "Nuevo Emotions in Prague AFTER-AFTER PARTY",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Marathon' but duration 4.0h < 24h"
+      },
+      {
+        "title": "Murat Erdemsel in Prague - Tango Intensive Weekend",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 96.0h >= 24h"
+      }
+    ]
+  }
+}

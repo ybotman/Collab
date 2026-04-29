@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 0 events, 1 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 1\n  venues_matched: 3\n  events_inserted: 0\n  events_skipped_exists: 0\n  events_skipped_no_venue: 14\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0"
+}

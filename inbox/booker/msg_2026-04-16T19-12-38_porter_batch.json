@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 6 events, 3 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 3\n  venues_matched: 7\n  events_inserted: 6\n  events_skipped_exists: 0\n  events_skipped_no_venue: 4\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-10 | Houston, TX | THURSDAY Tango Class with Srini and Lola\n  - 2026-04-24 | Houston, TX | THURSDAY Tango Class with Srini and Lola\n  - 2026-04-23 | San Jose, CA | Tango Argentino Lesson in Japantown, San Jose"
+}

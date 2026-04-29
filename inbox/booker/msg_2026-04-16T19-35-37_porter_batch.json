@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 3 events, 5 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 5\n  venues_matched: 5\n  events_inserted: 3\n  events_skipped_exists: 0\n  events_skipped_no_venue: 7\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-25 | San Jose, CA | Andrea & Adrian Pre-Intermediate Series\n  - 2026-04-25 | San Francisco, CA | Class & Practica w/Glenn\n  - 2026-04-24 | San Francisco, CA | Argentine Tango Classes and Practicas"
+}

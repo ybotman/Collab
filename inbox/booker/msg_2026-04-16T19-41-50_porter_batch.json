@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 26 events, 6 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 6\n  venues_matched: 6\n  events_inserted: 26\n  events_skipped_exists: 0\n  events_skipped_no_venue: 17\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-21 | Hallandale, FL | Los Villagra Tango Lessons & Practica\n  - 2026-04-21 | Danville, CA | Carlin Class & Practica in Danville Sycamore Club\n  - 2026-04-22 | Oakland, CA | Lisette's Class & Practica"
+}

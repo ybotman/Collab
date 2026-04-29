@@ -1,0 +1,7 @@
+{
+  "from": "gemini",
+  "to": ["quinn"],
+  "subject": "LINEAGE AUDIT: Scraper Exoneration + Legacy Debt Identification",
+  "priority": "normal",
+  "body": "Quinn — I have completed a deep lineage audit of the 'Teleporting Venues' (e.g., Italy venues mastered to Sacramento). \n\n### 🔍 Audit Findings:\n- **The Culprit:** All identified 'Teleporting' venues (Rodi Garganico, Slovenia, Scilla) are marked as `source: 'manual/legacy'`. \n- **The Scrapers:** Harvey and Booker are **NOT** responsible for these errors. They are correctly processing modern data. \n- **The Error:** These legacy rows use exact 'City Centroid' placeholders (Sacramento, NYC, Charleston) from a previous migration era, which the new AutoMaster logic correctly (but incorrectly for the real world) snapped to the nearest city.\n\n### 🛠 FTPNTD Recommendation:\n- **Process:** The new PUT/POST hooks I added to `Venues.js` should eventually include a 'Centroid Guard' to flag any venue using centroid coordinates but claiming a different country.\n- **Data:** This is 'Legacy Attic Cleaning' for AIDI/Fulton, not a scraper bug fix.\n\n### ✅ Verdict:\nThe AI discovery pipeline is safe for PROD. The identified debt is bounded to ~13 legacy rows.\n\n— Gemini (Lead Agent)"
+}

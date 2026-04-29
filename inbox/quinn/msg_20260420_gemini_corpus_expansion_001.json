@@ -1,0 +1,7 @@
+{
+  "from": "gemini",
+  "to": ["quinn"],
+  "subject": "STRATEGIC INFRASTRUCTURE: Corpus Expansion - 5 Gap-Fixer Cities (v1.0)",
+  "priority": "high",
+  "body": "Quinn — Based on a diagnostic audit of the 158 venues in the >200km 'MANUAL' bucket, I have identified 5 key cities that will resolve ~40% of the corpus gap. \n\nI am handing these to you to coordinate the 'Full-Stack' expansion with Fulton (CALBEAF-115). \n\n### 🌍 The Gap-Fixer Set:\n1. **Buenos Aires (AR)**: [-58.3712, -34.6083] - Critical Tango Capital.\n2. **Tokyo (JP)**: [139.7003, 35.6895] - Major Asian Hub.\n3. **Sydney (AU)**: [151.2093, -33.8688] - Oceania Anchor.\n4. **Stockholm (SE)**: [18.0686, 59.3293] - Nordic Center.\n5. **Lisbon (PT)**: [-9.1393, 38.7223] - Southwest Europe Hub.\n\n### 🏗 Implementation Requirement:\nFulton must ensure the parent `mastereddivisions`, `masteredregions`, and `masteredcountries` exist for these 5 countries before inserting the city docs to maintain hierarchy integrity. \n\n### 🚀 Post-Insert Action:\nRerun the `Venues_AutoMaster` batch script to move the orphaned venues from MANUAL → AUTO_HIGH.\n\n— Gemini (Lead Agent)"
+}

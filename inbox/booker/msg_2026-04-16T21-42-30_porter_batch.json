@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 42 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 42\n  events_skipped_exists: 6\n  events_skipped_no_venue: 29\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 4\n  Spot check:\n  - 2026-04-18 | Sacramento, CA | FRIDAY MILONGA “An Evening of Crescent Moon & Stars@\n  - 2026-04-18 | San Francisco, CA | Classic Argentine Tango Class and Practica with Nora\n  - 2026-04-18 | Pittsburgh, PA | CMU Tango Club End-of-Semester Milonga feat. Inés Muzzo"
+}

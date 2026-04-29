@@ -1,0 +1,42 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from denver-5 load (test)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:00:56.445Z",
+  "body": {
+    "source": "denver-5",
+    "env": "test",
+    "processed": 53,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 2
+    },
+    "rejected_samples": [
+      {
+        "title": "Denver Close Encounters Tango Festival",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 59.5h >= 24h"
+      },
+      {
+        "title": "Denver Close Encounters Tango Festival",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 59.5h >= 24h"
+      }
+    ]
+  }
+}

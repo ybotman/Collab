@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 16 events, 1 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 1\n  venues_matched: 0\n  events_inserted: 16\n  events_skipped_exists: 5\n  events_skipped_no_venue: 95\n  events_rejected_classifier_bug: 42\n  events_rejected_duration_violation: 4\n  Spot check:\n  - 2026-04-18 | Pozzuoli NA, ? | LAKE TANGO BRUNCH\n  - 2026-04-20 | Toronto, ? | Milonga Zorro Gris\n  - 2026-04-19 | Memphis, TN | Tango Schedule for Mauro Peralta (day 2)"
+}

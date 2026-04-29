@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 1 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 1\n  events_skipped_exists: 1\n  events_skipped_no_venue: 64\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 1\n  Spot check:\n  - 2026-05-09 | Lisboa, ? | Oficinas Orilleras convida: Guadalupe Santiago e Irina "
+}

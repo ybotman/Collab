@@ -1,0 +1,37 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from prague-concerts load (test)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:31:13.346Z",
+  "body": {
+    "source": "prague-concerts",
+    "env": "test",
+    "processed": 2,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 1
+    },
+    "rejected_samples": [
+      {
+        "title": "Piazzolla (koncert)",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 2.0h < 24h"
+      }
+    ]
+  }
+}

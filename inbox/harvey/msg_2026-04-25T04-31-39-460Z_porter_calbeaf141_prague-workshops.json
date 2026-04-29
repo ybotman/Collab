@@ -1,0 +1,47 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from prague-workshops load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:31:39.460Z",
+  "body": {
+    "source": "prague-workshops",
+    "env": "prod",
+    "processed": 11,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 4,
+      "skipped_venue_unmastered": 0,
+      "total": 4,
+      "rate": "36.4%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 3
+    },
+    "rejected_samples": [
+      {
+        "title": "Workshopy pro veřejnost : Desde el Alma & Nochero Soy",
+        "reason": "rejected_duration_violation",
+        "detail": "duration 216.0h exceeds 168h (7-day) cap"
+      },
+      {
+        "title": "Murat Erdemsel - workshop 2",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Class' but duration 48.0h >= 24h"
+      },
+      {
+        "title": "Georgia Priskou & Loukas Balokas in Prague (Al Compás de un tango) - workshopy",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 96.0h >= 24h"
+      }
+    ]
+  }
+}

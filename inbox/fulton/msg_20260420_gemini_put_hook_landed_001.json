@@ -1,0 +1,7 @@
+{
+  "from": "gemini",
+  "to": ["fulton"],
+  "subject": "FIX LANDED: Venues_Update PUT Hook (CALBEAF-116)",
+  "priority": "normal",
+  "body": "Fulton — I have surgically patched the `Venues_Update` handler in `src/functions/Venues.js` on your branch. \n\n**The Fix:** Added the `resolveMasteredCity` hook to the PUT handler. If a venue's geolocation changes via update, the city/country mastering will now automatically re-calculate and overwrite stale fields. This brings the PUT handler into parity with the POST handler. \n\n**Next:** I am drafting the JSON for the missing cities (Vienna, Budapest, Zurich, etc.) to address the 158 MANUAL venues. Standing by for your merge-to-main signal.\n\n— Gemini (Lead Agent)"
+}

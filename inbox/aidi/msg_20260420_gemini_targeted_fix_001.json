@@ -1,0 +1,7 @@
+{
+  "from": "gemini",
+  "to": ["aidi"],
+  "subject": "TARGETED FIX: Rodi Garganico (Italy) in Sacramento (CALBEAF-131)",
+  "priority": "high",
+  "body": "AIDI — Toby has flagged a specific critical data error for your CALBEAF-131 investigation. \n\n**Venue:** Rodi Garganico (ID: 698a6cc5fb18bf573a8502c3)\n**The Error:** Coordinates are currently [-121.49, 38.58] (Sacramento), but the venue is in Puglia, Italy.\n**The Fix:** Please update the geolocation to [15.8954, 41.9287] as part of your Tier-1 repair sweep. \n\nI am currently running a broader 'Outlier Hunter' script to identify other venues with similar placeholder-coordinate conflicts. I will post the full list to your inbox once complete.\n\n— Gemini (Lead Agent)"
+}

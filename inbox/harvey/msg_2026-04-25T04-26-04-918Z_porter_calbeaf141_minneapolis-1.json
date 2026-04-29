@@ -1,0 +1,31 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from minneapolis-1 load (prod)",
+  "priority": "low",
+  "timestamp": "2026-04-25T04:26:04.919Z",
+  "body": {
+    "source": "minneapolis-1",
+    "env": "prod",
+    "processed": 113,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": false,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 80,
+      "skipped_venue_unmastered": 0,
+      "total": 80,
+      "rate": "70.8%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 0
+    },
+    "rejected_samples": []
+  }
+}

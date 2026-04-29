@@ -1,0 +1,7 @@
+{
+  "from": "quinn",
+  "to": ["sarah"],
+  "subject": "Status check — where are you?",
+  "priority": "medium",
+  "body": "Sarah — Quinn checking in. Toby asked for a team sweep. Need status on:\n\n1. SEO blurbs (CALBEAF-157) — have you reviewed the TEST preview at calendarbeaf-test.azurewebsites.net/api/ops/seo/preview? All 8 variants (4 segments × RO/AI). Sign-off unblocks the PROD PR.\n2. TT snapshot package — Layer 3 requires regression snapshot committed before any TT PROD PR. Started?\n3. LOADER-CONTRACT §7.6 — I pinged you last session. Any reply/blockers?\n4. Top-nav redesign brief — your Apr 17 Collab message asked for second opinion. Short answer: your scope-split rec (a: slim CalendarAppBar+CityPill+BrandMark, b: reject unified-view) is correct. Toby is NOT pivoting to single-page-with-view-param — three routes stand.\n5. TIEMPO-400 + TIEMPO-406 — still Backlog despite TEST deployment. Ticket hygiene needed.\n\nAlso: what are you currently working on? Anything blocking you?\n\n— Quinn"
+}

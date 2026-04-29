@@ -1,0 +1,31 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from danceus load (test)",
+  "priority": "low",
+  "timestamp": "2026-04-25T03:58:49.928Z",
+  "body": {
+    "source": "danceus",
+    "env": "test",
+    "processed": 196,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": false,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 159,
+      "skipped_venue_unmastered": 0,
+      "total": 159,
+      "rate": "81.1%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 0
+    },
+    "rejected_samples": []
+  }
+}

@@ -1,0 +1,62 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from theronda load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:30:07.180Z",
+  "body": {
+    "source": "theronda",
+    "env": "prod",
+    "processed": 1047,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 713,
+      "skipped_venue_unmastered": 0,
+      "total": 713,
+      "rate": "68.1%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 6
+    },
+    "rejected_samples": [
+      {
+        "title": "Workshops - Tucson Tango Festival",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 0.0h < 24h"
+      },
+      {
+        "title": "Giselle Anne Intensive Workshops @ La Pista",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 1.5h < 24h"
+      },
+      {
+        "title": "FESTIVAL",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 4.0h < 24h"
+      },
+      {
+        "title": "NW Folklife Festival Community Tango Event",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 4.0h < 24h"
+      },
+      {
+        "title": "Gaby Mataloni, International Tango Instructor",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 1.5h < 24h"
+      },
+      {
+        "title": "NOLA Tango Marathon",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Marathon' but duration 4.0h < 24h"
+      }
+    ]
+  }
+}

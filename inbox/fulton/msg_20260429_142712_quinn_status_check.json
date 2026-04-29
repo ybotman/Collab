@@ -1,0 +1,7 @@
+{
+  "from": "quinn",
+  "to": ["fulton"],
+  "subject": "Status check — where are you?",
+  "priority": "medium",
+  "body": "Fulton — Quinn checking in. Quick status request:\n\n1. CALBEAF-119 (A2 Estonia + ~20 countries) — any progress or blockers?\n2. CALBEAF-120 (B1-AU 9 cities) — started? Waiting on AIDI?\n3. CALBEAF-147 (.gitignore footgun) — filed, any action needed from me?\n4. SEO blurbs (v1.29.2 TEST) — anything to flag before Sarah signs off?\n5. Layer 3 regression snapshot — your compliance was first in (nice). Any gaps found?\n\nAlso: Toby asked for a general team status sweep. Where are you overall, and anything waiting on me or Toby?\n\n— Quinn"
+}

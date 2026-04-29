@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 9 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 9\n  events_skipped_exists: 5\n  events_skipped_no_venue: 34\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-19 | Scottsdale, AZ | The Hidden Connections in Tango with Sharon & Wendy\n  - 2026-04-19 | San Pedro, CA | Milonga Porteña: Class with Jerry and Christine - DJ JE\n  - 2026-05-03 | Atlanta, GA | Milonga del Toro"
+}

@@ -1,0 +1,52 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from denver-8 load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:25:55.022Z",
+  "body": {
+    "source": "denver-8",
+    "env": "prod",
+    "processed": 10,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 4
+    },
+    "rejected_samples": [
+      {
+        "title": "Workshops with Gustavo Naveira",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 3.5h < 24h"
+      },
+      {
+        "title": "Workshops with Gustavo Naveira",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 3.5h < 24h"
+      },
+      {
+        "title": "Workshops with Gustavo Naveira",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 3.5h < 24h"
+      },
+      {
+        "title": "Workshops with Gustavo Naveira",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 3.5h < 24h"
+      }
+    ]
+  }
+}

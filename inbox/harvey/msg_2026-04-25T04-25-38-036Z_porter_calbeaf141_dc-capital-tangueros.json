@@ -1,0 +1,72 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from dc-capital-tangueros load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:25:38.042Z",
+  "body": {
+    "source": "dc-capital-tangueros",
+    "env": "prod",
+    "processed": 719,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 8
+    },
+    "rejected_samples": [
+      {
+        "title": "Fábrica Tango Severna Park - Advanced Workshop with Aja Fenn and Gabriel Medeiros",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 1.5h < 24h"
+      },
+      {
+        "title": "Extravaganza Tango Weekend May 1-3, 2026",
+        "reason": "rejected_duration_violation",
+        "detail": "SHORT category 'Milonga' but duration 96.0h >= 24h"
+      },
+      {
+        "title": "Fábrica Tango Severna Park - Advanced Workshop with Aja and Phil",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 1.5h < 24h"
+      },
+      {
+        "title": "39th Argentine Festival USA",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 7.5h < 24h"
+      },
+      {
+        "title": "Vienna Tango School - Workshop I with Murat Erdemsel (Dancing to Canaro)",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Vienna Tango School - Workshop II with Murat Erdemsel (Dancing to DiSarli)",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Vienna Tango School - Workshop III with Murat Erdemsel (Dancing to D’Arienzo & Biagi)",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Vienna Tango School - Workshop IV with Murat Erdemsel (Dancing to Pugliese)",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      }
+    ]
+  }
+}

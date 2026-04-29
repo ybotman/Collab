@@ -1,0 +1,31 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from theronda load (test)",
+  "priority": "low",
+  "timestamp": "2026-04-25T04:05:09.527Z",
+  "body": {
+    "source": "theronda",
+    "env": "test",
+    "processed": 1026,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": false,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 713,
+      "skipped_venue_unmastered": 0,
+      "total": 713,
+      "rate": "69.5%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 0
+    },
+    "rejected_samples": []
+  }
+}

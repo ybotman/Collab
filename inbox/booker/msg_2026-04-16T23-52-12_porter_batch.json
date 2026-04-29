@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 3 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 3\n  events_skipped_exists: 2\n  events_skipped_no_venue: 49\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-17 | Seattle, WA | Tango Shoes Exchange @ Thursday Night Practica!\n  - 2026-04-19 | Kirkland, WA | Training for Followers in Tango (Kirkland, WA)\n  - 2026-04-18 | Port Townsend, WA | Milonga Chinook"
+}

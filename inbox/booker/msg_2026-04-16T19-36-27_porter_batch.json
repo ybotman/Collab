@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 3 events, 1 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 1\n  venues_matched: 9\n  events_inserted: 3\n  events_skipped_exists: 0\n  events_skipped_no_venue: 7\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-04-19 | San Mateo, CA | Tango Classes w/Gustavo & Jesica Hornos @ MAC\n  - 2026-04-19 | Rohnert Park, CA | New Magdalena Technique with Jean-Pierre Sighe\n  - 2026-04-19 | Berkeley, CA | Abrazo Queer Tango classes & Practica w/ Mira"
+}

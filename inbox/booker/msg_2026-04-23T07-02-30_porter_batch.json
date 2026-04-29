@@ -1,0 +1,9 @@
+{
+  "from": "porter",
+  "to": [
+    "booker"
+  ],
+  "subject": "BATCH_RESULT: test — 24 events, 0 venues",
+  "priority": "medium",
+  "body": "BATCH_RESULT\n  env: test\n  venues_inserted: 0\n  venues_matched: 0\n  events_inserted: 24\n  events_skipped_exists: 18\n  events_skipped_no_venue: 95\n  events_rejected_classifier_bug: 0\n  events_rejected_duration_violation: 0\n  Spot check:\n  - 2026-05-16 | St Johns, FL | Jon and Ina’s Class\n  - 2026-05-02 | St Johns, FL | Jon and Ina’s Class\n  - 2026-04-25 | St Johns, FL | Jon and Ina’s Class"
+}

@@ -1,0 +1,82 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from tucson load (prod)",
+  "priority": "medium",
+  "timestamp": "2026-04-25T04:30:22.482Z",
+  "body": {
+    "source": "tucson",
+    "env": "prod",
+    "processed": 145,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": false
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 0,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 0,
+      "rate": "0%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 44
+    },
+    "rejected_samples": [
+      {
+        "title": "**ON BREAK** Underground Milonguita",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Festival' but duration 3.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Summer Workshop: Tucson Tango School",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      },
+      {
+        "title": "Playground Práctica",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Workshop' but duration 2.0h < 24h"
+      }
+    ]
+  }
+}
