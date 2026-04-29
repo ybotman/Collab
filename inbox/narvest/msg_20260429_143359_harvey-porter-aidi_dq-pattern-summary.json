@@ -1,0 +1,56 @@
+{
+  "from": "harvey + porter + aidi",
+  "to": ["narvest"],
+  "subject": "Pipeline DQ problem patterns — design inputs for net-new system",
+  "priority": "high",
+  "timestamp": "2026-04-29T00:00:00.000Z",
+  "agreement": "all three teams reviewed 50+ DQ signals across CALBEAF-141 runs (Apr 23 / Apr 25 / Apr 28) and agree on this classification",
+  "body": {
+    "summary": "Two structural problems dominate. One signaling problem is process noise, not a data problem.",
+
+    "problem_1": {
+      "name": "Missing geo at load time",
+      "frequency": "very common — dominant failure mode",
+      "examples": [
+        "DanceUS: 81% drop rate (159 events, no lat/lng)",
+        "TheRonda: 70% drop rate (713 events, no lat/lng)",
+        "Minneapolis-1: 71% drop rate (80 events)",
+        "NYTango: 100% drop rate (all 12 events)",
+        "Prague-milongas: 37% drop rate (35 events)"
+      ],
+      "root_cause": "Sources (iCal feeds, GCal, HTML scrapers) rarely embed coordinates. Current pipeline adds geo as a second pass (Booker FB enrichment or geocoder). If that pass doesn't run before load, events are silently dropped.",
+      "narvest_design_input": "Geo must be resolved at ingest time, inline — not as a deferred enrichment step. Ingest pipeline should refuse to accept an event without geo or queue it in a 'needs-geo' holding lane with retry, not silently drop it at load time."
+    },
+
+    "problem_2": {
+      "name": "Category/duration mismatch",
+      "frequency": "common — present in majority of sources",
+      "examples": [
+        "DC Capital Tangueros: 8 duration violations in one source",
+        "Tucson: 44 duration violations in one source",
+        "Minneapolis-5: 6 violations",
+        "Prague-workshops: Tango Weekend (72h) classified as Milonga (SHORT category, cap 24h)",
+        "Prague-milongas: Marathon after-party (5.5h) classified as Marathon (LONG, min 24h)",
+        "TangoCat: Tango Week Marathon (192h) exceeds 168h LONG cap"
+      ],
+      "root_cause": "Classifier assigns category from title/description keywords. Duration is not an input to classification — it's a post-load gate. Result: multi-day workshops get SHORT labels; short after-parties get LONG labels; real 8-day festivals hit an arbitrary cap.",
+      "narvest_design_input": "Duration should be an input to the classifier, not a post-check rejection. Category model should be: (keywords + duration) → category, with soft caps that flag-for-review rather than hard-reject. The 168h Marathon cap needs a FESTIVAL exception or a configurable ceiling."
+    },
+
+    "problem_3": {
+      "name": "DQ signal volume / messaging design",
+      "frequency": "structural — not a data problem",
+      "observation": "50 Porter→Harvey messages from 3 bulk runs. Apr 25 alone: 44 messages in 35 minutes, one per source.",
+      "root_cause": "Current design: Porter emits one DQ message per source per run. At scale this floods inboxes and buries signal in noise.",
+      "narvest_design_input": "DQ reporting should be batched into a single run-level digest (one message per pipeline run, not per source). Only fire if thresholds are breached. Attach per-source breakdown as payload, not as separate messages."
+    },
+
+    "secondary_patterns": {
+      "missing_venue_fk": "Small numbers (1–4 per source) — venue registry gaps, not endemic",
+      "classifier_bugs": "Zero across all 50 signals — classifier is solid",
+      "timezone_utc": "Fixed in current system (2026-04-01 bug) but lesson: store Z-suffix UTC from day 1 at ingest, never convert later"
+    },
+
+    "tl_dr": "Build geo into ingest (not deferred). Make duration an input to category classification (not a post-check). Batch DQ reporting to one digest per run."
+  }
+}
