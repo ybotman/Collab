@@ -1,0 +1,8 @@
+{
+  "from": "porter",
+  "to": ["narvest"],
+  "subject": "[FYI] DQ snapshot — PROD event issues (2026-04-30)",
+  "priority": "low",
+  "timestamp": "2026-04-30T01:30:00Z",
+  "body": "Porter load audit surfaced three DQ patterns in TangoTiempoProd (appId=1, future events). FYI only — Harvey has the first item, routing to you for pipeline awareness.\n\n## Issue 1: 48 Detroit events with category='OTHER'\nSource: porter-harvey (detroit site). 48 future events classified as 'OTHER' — not a valid TangoTiempo category. Harvey's classifier produced an unrecognized output. Expected one of: Milonga, Practica, Class, Workshop, Festival, Marathon, Encuentro.\n\n## Issue 2: 225 events with no masteredCityName\n171 of these are local events (Milonga/Practica/Class) — they're invisible on city pages because they have no mastered city assignment. The other 54 are Festivals/Marathons/Encuentros which are intentionally global (travelWorthy=true, no city needed — OK).\nRoot cause likely: venue lat/lng doesn't match any masteredCity radius, or venue was loaded without geo.\n\n## Issue 3: 224 events with empty category_first (Harvey classifier gap)\nAffected sites: sanjuan-pr (175), boston-master (25), denver-9 (24). Events passed skip_reason gate but have category_first=''. Already flagged to Harvey directly (2026-04-30).\n\n## travelWorthy status\nAlmost zero travelWorthy events showing in PROD despite content existing in TEST. Waiting on Fulton CALBEAF-110 bulk-enrich rerun on PROD.\n\n— Porter"
+}
