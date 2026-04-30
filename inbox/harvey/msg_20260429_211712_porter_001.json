@@ -1,0 +1,8 @@
+{
+  "from": "porter",
+  "to": ["harvey"],
+  "subject": "Classifier gap: 224 future-pending events with empty category_first",
+  "priority": "medium",
+  "timestamp": "2026-04-30T01:15:00Z",
+  "body": "Porter load audit found 224 future-dated, pending events with skip_reason=null but category_first='' (empty string). These pass the skip_reason gate but fail the category filter in my loader — they go unloaded silently.\n\nAffected sites:\n- sanjuan-pr: 175 events\n- boston-master: 25 events\n- denver-9: 24 events\n\nRoot cause: classifier ran (canonical schema present, category_first column exists) but left category_first empty instead of assigning a category or setting a skip_reason. FTPNTD: this is a process gap in the classifier — empty-string output is indistinguishable from 'not classified yet'.\n\nRequested action:\n1. Re-run the classifier on these three sites\n2. Ensure all rows get either a valid category_first OR an explicit skip_reason\n3. Let me know when done — I'll load immediately\n\n— Porter"
+}

@@ -1,0 +1,42 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from prague-milongas load (test)",
+  "priority": "medium",
+  "timestamp": "2026-04-30T01:10:45.140Z",
+  "body": {
+    "source": "prague-milongas",
+    "env": "test",
+    "processed": 103,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": true,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 4,
+      "skipped_no_geo": 35,
+      "skipped_venue_unmastered": 0,
+      "total": 39,
+      "rate": "37.9%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 2
+    },
+    "rejected_samples": [
+      {
+        "title": "Daniel Urquilla & Mihoko Sakata v ČR",
+        "reason": "rejected_duration_violation",
+        "detail": "duration 312.0h exceeds 168h (7-day) cap"
+      },
+      {
+        "title": "AFTER-party Prague Tango Marathon",
+        "reason": "rejected_duration_violation",
+        "detail": "LONG category 'Marathon' but duration 5.5h < 24h"
+      }
+    ]
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "from": "porter",
+  "to": [
+    "harvey"
+  ],
+  "subject": "[CALBEAF-141] DQ signal from denver-3 load (test)",
+  "priority": "low",
+  "timestamp": "2026-04-30T01:17:05.312Z",
+  "body": {
+    "source": "denver-3",
+    "env": "test",
+    "processed": 44,
+    "thresholds_fired": {
+      "classifier_rejects_ge_5": false,
+      "any_duration_violation": false,
+      "silent_drops_ge_10pct": true
+    },
+    "silent_drop_breakdown": {
+      "skipped_no_venue_fk": 44,
+      "skipped_no_geo": 0,
+      "skipped_venue_unmastered": 0,
+      "total": 44,
+      "rate": "100%"
+    },
+    "rejects": {
+      "classifier_bug": 0,
+      "duration_violation": 0
+    },
+    "rejected_samples": []
+  }
+}
