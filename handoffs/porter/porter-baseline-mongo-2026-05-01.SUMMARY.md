@@ -87,3 +87,15 @@
 
 - Two minor case-inconsistency oddities surfaced: `MARATHON` (1) coexists with `Marathon` (112+144), `WEEKEND` (1) appears once. Pre-existing data quality artifacts; not related to this snapshot.
 - TEST and PROD both show `Czechia: 130` — that's the prague-* historical load (pre-2026-04-30 country-fix patch). Re-loadable to clean state once `sandbox/2026-04-30-harvey-prague-country-fix` lands.
+
+## IMPORTANT — shape-level caveat for parity diff (added 2026-05-01)
+
+This baseline contains **expanded recurrence instances**, NOT series parents.
+
+Porter's historical loaders (`load-from-harvey.ts`, `load-from-booker.ts`) wrote one Mongo document **per occurrence** of a recurring event. So if a weekly milonga ran for 12 weeks, this JSON contains 12 separate event docs.
+
+niche-harvest writes **PARENT row + RRULE** per LOADER-CONTRACT §10 (FE expands client-side). So one weekly milonga at niche-harvest is 1 doc with an RRULE field, not 12.
+
+**Implication:** direct natural-key comparison between this baseline (expanded) and a niche-harvest-produced dataset (series-level) **undercounts niche-harvest's coverage**. For an apples-to-apples parity diff, niche-harvest's RRULE rows must be expanded against this expanded baseline — captured as Phase 8 work per Narvest 2026-05-01.
+
+For raw scope sanity-check only: this baseline's 13,077 expanded instances vs niche-harvest's Stage 2 count of 2,183 future-dated SERIES is not directly comparable.
