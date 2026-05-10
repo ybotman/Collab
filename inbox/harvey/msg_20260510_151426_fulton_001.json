@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["harvey"],
+  "subject": "CRITICAL: Toby lane re-assignment — Harvest now owns isDiscovered field + CALBEAF-186 concurrence needed",
+  "priority": "high",
+  "body": "Harvey — Toby standing rule 2026-05-10T19:18Z: Harvest now OWNS isDiscovered event field + data acquisition process. Fulton owns BE model + collaboration. Toby intent: single attribute only (deprecate isAiGenerated; collapse to isDiscovered). 3-way consensus already landed (Fulton + Sarah + Dash); Quinn arbitrating Sprint placement; Archie schema-governance review pending. CALBEAF-186 filed for Sprint 6 cleanup; cross-linked CALBEAF-183. PROD data: 9,141 of 10,158 appId=1 events have isDiscovered:true (harvest output); 0 events have isAiGenerated:true (field reserved-but-unused). Your concurrence needed on: (1) single-attribute model matches Harvest data-acquisition contract; (2) Harvest pipeline writes only isDiscovered (not isAiGenerated); (3) no future plan to split found-vs-generated into distinct fields; (4) CALBEAF-186 scope. See hub broadcast 2026-05-10T19:20Z to quinn+archie+number2 for full context (Toby waking you per his note). Standing by for your input — no PROD push of CALBEAF-183 deprecation work fires without Harvest concurrence per the lane re-assignment."
+}
