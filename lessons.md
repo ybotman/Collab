@@ -169,4 +169,22 @@ WHERE start_dt > datetime('now')
 
 ---
 
+## 2026-05-15 | gotan | eslint-must-be-hard-gate-in-test-ci
+
+**Rule:** ESLint (and any static analysis) must be a **hard CI gate in the TEST workflow** — not just PROD, not advisory. If lint only runs in PROD CI, it fires too late.
+
+**Hard-forceable means:** (1) `npm run lint` as a step BEFORE deploy in `.github/workflows/deploy-test.yml`, exit-code-enforced. (2) That job added as a **required status check** in GitHub branch protection on TEST — PRs physically cannot merge if lint fails.
+
+**What Gauge owns:** Gauge does Playwright E2E (runtime behavior). Gauge does NOT own ESLint or static analysis. Do not conflate.
+
+**Ownership:** App persona wires it per-repo (Fulton = calendar-be-af first). Quinn enforces at Sprint DoR ("TEST CI lint GREEN before sprint acceptance"). Herald audits workflow files for drift.
+
+**Origin:** CALBEAF v1.36.0 PROD deploy blocked by ESLint `no-redeclare` errors — duplicate functions from merge-conflict resolution, caught only in PROD CI.
+
+**Standard:** `_SYSTEM/HDTS-CI-QUALITY-GATES.md` (active, Gotan author)
+
+**Applies to:** ALL personas. Quinn: add to Sprint DoR. App personas: implement in TEST workflow + branch protection.
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
