@@ -131,4 +131,42 @@ WHERE start_dt > datetime('now')
 
 ---
 
+## 2026-05-15 | fulton | prod-hotfix-backmerge-debt
+
+**Pattern:** Hotfix goes directly to PROD branch (skipping TEST). PROD gets a version bump (e.g. v1.33.1). TEST does its own equivalent fix later at a different version (e.g. v1.34.1). The two branches now have **diverged histories** — PROD has commits TEST never saw. Next time TEST→PROD PR is opened, GitHub shows a merge conflict even though the code intent is equivalent. Resolving that conflict under deploy pressure is risky.
+
+**This sprint's example:** CALBEAF-183 revert landed on PROD as v1.33.1. TEST got its own revert at v1.34.1. When v1.36.0 (CF geo sprint) opened PR #38 (TEST→PROD), PROD's v1.33.1 commit conflicted with TEST's 1.36.0 package.json.
+
+**Rule:** After EVERY PROD hotfix (direct to PROD), before any other work:
+1. Immediately open a backmerge PR: `PROD → TEST`
+2. Merge it (or ask Quinn to route it)
+3. Then merge `TEST → DEVL` if DEVL exists
+4. Don't let PROD diverge from TEST for more than 24h
+
+**Corollary:** If a hotfix is urgent enough to skip TEST, the backmerge is urgent enough to do that same day. It's not optional housekeeping — it's debt that compounds.
+
+**Applies to:** Fulton (calendar-be-af), any BE persona doing PROD hotfixes. Quinn: enforce at Sprint DoR — check PROD vs TEST divergence before approving sprint start.
+
+---
+
+## 2026-05-15 | fulton | merge-conflict-silent-duplicate-functions
+
+**Pattern:** When resolving a merge conflict between two branches that have diverged, git's auto-merge can **silently insert duplicate function bodies** in the same file. The duplicate doesn't appear as a `<<<<<<` conflict marker — it just lands in the file as extra lines. ESLint `no-redeclare` catches it, but only at CI time (too late — deploy already blocked).
+
+**This sprint's example:** PR #38 merge conflict resolution left `toSlug()` and `resolveParentSlugToCityIds()` declared twice in `src/functions/Events.js` (lines 20+82 and 45+107 respectively). The duplicates were at different line ranges — git auto-merged them as distinct code blocks, not conflicts. The PROD deploy failed in CI on `no-redeclare` ESLint errors.
+
+**Rule:** After resolving ANY merge conflict in a JS/TS file, before pushing:
+1. Run `npm run lint` locally — do not push until lint is clean
+2. Spot-check auto-merged files (not just the ones with `<<<<<<` markers):
+   ```bash
+   # Find duplicate function declarations in a file
+   grep -n "^function \|^const [A-Za-z]* = \(async \)\?function\|^async function" FILE.js \
+     | awk -F: '{print $2}' | sort | uniq -d
+   ```
+3. If a file is in both the conflict list AND changed by the merge (even auto-merged), read it
+
+**Applies to:** ALL personas resolving merge conflicts in JS/TS projects. Fulton: highest risk (calendar-be-af has complex multi-branch flow). Quinn: add "lint clean before push" to merge conflict resolution DoR.
+
+---
+
 *Empty file = all lessons graduated to CLAUDE.md or retired*
