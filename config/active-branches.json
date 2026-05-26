@@ -1,0 +1,17 @@
+{
+  "$schema": "v1",
+  "updated": "2026-05-25",
+  "updatedBy": "gotan",
+  "purpose": "Per-repo active branch manifest. Cross-machine cloning/wakeup reads this to checkout the right branch before launching a persona. Update on every branch switch.",
+  "repos": {
+    "MasterCalendar":   { "remote": "https://github.com/ybotman/MasterCalendar.git",   "active_branch": "main" },
+    "MessageHub":       { "remote": "https://github.com/ybotman/MessageHub.git",       "active_branch": "main" },
+    "niche-harvest":    { "remote": "https://github.com/ybotman/niche-harvest.git",    "active_branch": "main" },
+    "tangotiempo.com":  { "remote": "https://github.com/ybotman/tangotiempo.com.git",  "active_branch": "sandbox/tiempo-466-geo-cf-migration",      "verified_at": "2026-05-25", "verified_by": "number2-desktop" },
+    "calendar-be-af":   { "remote": "https://github.com/ybotman/calendar-be-af.git",   "active_branch": "feature/CALBEAF-196-cf-edge-writers",       "verified_at": "2026-05-25", "verified_by": "number2-desktop" },
+    "calops":           { "remote": "https://github.com/ybotman/calops.git",           "active_branch": "sandbox/CALOPS-60-session-geo-distribution", "verified_at": "2026-05-25", "verified_by": "number2-desktop" },
+    "ai-discovered":    { "remote": "https://github.com/ybotman/ai-discovered.git",    "active_branch": "sandbox/2026-04-30-harvey-prague-country-fix", "verified_at": "2026-05-25", "verified_by": "number2-desktop" },
+    "Collab":           { "remote": "https://github.com/ybotman/Collab.git",           "active_branch": "main" }
+  },
+  "notes": "Personas (any machine) should ALWAYS check this before cloning or switching branches. Desktop-Gotan owns updates; any persona that switches a branch should MSG gotan to update this file."
+}

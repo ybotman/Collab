@@ -188,3 +188,33 @@ WHERE start_dt > datetime('now')
 ---
 
 *Empty file = all lessons graduated to CLAUDE.md or retired*
+
+## 2026-05-25 | gotan | chrome-quarantine-on-drive-zip
+**Error**: Persona scripts (wakeup, start-team.sh, persona-colors.sh) downloaded to a new Mac via Chrome from a Google Drive zip export have `com.apple.quarantine` xattr set, which blocks execution with `zsh: permission denied: ./wakeup` even though `chmod +x` is set and `ls -l` shows `-rwxr-xr-x@`. The `@` suffix is the tell.
+**Fix**: After extracting a Drive zip on a new machine, strip recursively:
+```
+xattr -dr com.apple.quarantine ~/MyDocs/scripts/ ~/MyDocs/ClaudeTeam/
+```
+**Applies to**: Anyone bootstrapping the team on a new Mac from Google Drive exports. Persona definitions get the same xattr but it doesn't block reading.
+
+---
+
+## 2026-05-25 | gotan | stubs-vs-fresh-clone
+**Error**: A prior Claude session, lacking real `hub.ts` / `channel.ts`, wrote stub implementations into `~/MyDocs/AppDev/MasterCalendar/channels/` to unblock wakeup. Later cloning MasterCalendar fresh from GitHub would either conflict with stubs or silently overwrite them.
+**Fix**: On bootstrap, BEFORE `git clone` into a directory that already has ad-hoc files (like stubs from a previous unblocking session), back up the existing dir to `<name>.STUB-BACKUP-<date>/` and clone fresh. Don't try to merge stubs into a fresh clone.
+**Applies to**: Anyone setting up the team for the first time on a machine where prior sessions wrote interim files.
+
+---
+
+## 2026-05-25 | gotan | active-branch-manifest-needed
+**Error**: 4 of 7 cloneable team repos (tangotiempo.com, calendar-be-af, calops, ai-discovered) are on non-main feature/sandbox branches with WIP tied to JIRA tickets. A naive `git clone <url> <path>` on a second machine lands on `main`, so the second-machine persona starts work on the wrong branch → forked commits, painful merge.
+**Fix**: Maintain a per-repo active-branch manifest at `Collab/config/active-branches.json` (scaffolded by this commit, populated as branches change). Cross-machine clone tooling reads it and `git checkout <active>` before launching the persona.
+**Applies to**: ALL personas with repo-backed apps when working across machines. Quinn: candidate enforcement point at Sprint DoR. Gotan: owns the manifest schema.
+
+---
+
+## 2026-05-25 | gotan | persona-memory-is-per-machine
+**Note**: Persona memory in `~/.claude/projects/<cwd-slug>/memory/` is maintained by the Claude Code harness per-machine. It does NOT sync across machines. Desktop-Gotan and laptop-Gotan have independent memory files.
+**Implication**: A fact taught to Gotan on desktop will not be known by Gotan on laptop, and vice versa. This is by design (per Toby's stated preference) but easy to forget.
+**Workaround**: For per-persona facts that need cross-machine continuity: either re-teach on each machine, or for team-portable lessons use RETRO to `Collab/lessons.md` (which IS git-tracked and IS cross-machine).
+**Applies to**: ALL personas when working across machines.
