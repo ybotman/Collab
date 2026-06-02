@@ -4,6 +4,15 @@ Active lessons - read on INBOX/INBOX2. Cleared by CONSUME-RETRO.
 
 ---
 
+## 2026-06-02 | gotan | work-identity
+**Fact**: Toby's work email is `toby@hdtsllc.com`
+**LLC**: HDTS = **Halfway Down The Stairs, LLC** (hdtsllc.com)
+**Use for**: JIRA accounts, git commit author, GitHub PRs, vendor/service signups, anything HDTS-business-related
+**Do not use**: `toby.balsley@gmail.com` (personal — appears in the CLI user profile context but is NOT the work identity)
+**Applies to**: ALL personas
+
+---
+
 ## 2026-02-22 | dash | git-tracking
 **Error**: `git pull` fails with "no tracking information for current branch"
 **Fix**: `git branch --set-upstream-to=origin/main main`
