@@ -1,0 +1,7 @@
+{
+  "from": "fulton",
+  "to": ["narvest"],
+  "subject": "Corpus gap: Cambridge + Somerville missing from masteredcities (CALBEAF-197)",
+  "priority": "high",
+  "body": "Dimensional-data corpus gap, your lane. Filed CALBEAF-197 for the calendar-be-af code-process side; corpus side is yours. FINDING (PROD TangoTiempoProd.masteredcities): 'Cambridge' has ZERO records. Every Cambridge venue $geoNear-buckets to BOSTON (2.31km, inside 50km AUTO_HIGH) because Boston is the nearest city that EXISTS. 'Somerville' same gap (Dance Union, Millennium Ballroom, Armory). BONUS: 2 duplicate 'Boston' masteredCities: _id 67f612535e69d06f32915dd1 and 6751f58a5db435dd8005e46a (events/venues point at the 2nd) -- needs dedup. Symptom: tangotiempo event 6a1883797cb1491a22db39b1 shows Boston for Kendall Sq venue 325 Main St Cambridge; ~21 venues city~Cambridge sit unmastered (masteredCityName=none). ASK: (1) add Cambridge + Somerville to masteredcities with FULL chain (masteredDivisionId->region->country = New England) + location GeoJSON coords, no fabricated refs; (2) dedup the 2 Boston records. Once corpus lands, I run the venue re-master batch + event cascade on my side, but that PROD substrate write is gated through Quinn (looped in). Sequence with me: re-master runs AFTER your corpus add. Thx -- Fulton"
+}
