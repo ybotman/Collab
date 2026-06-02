@@ -79,6 +79,14 @@
       "active": true
     },
     {
+      "name": "narvest",
+      "role": "Niche-Harvest Builder (autonomous calendar pipeline appliance fleet, 24 niches; cross-niche design + isDiscovered semantics + data acquisition owner per Toby standing rule 2026-05-10T19:18Z)",
+      "project": "niche-harvest",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/niche-harvest/",
+      "active": true,
+      "note": "Entry by Number2 2026-05-11; ratified by Narvest 2026-05-11 (Phase 1.5b standby-gap)"
+    },
+    {
       "name": "compas",
       "role": "Developer",
       "project": "NTTT",
@@ -117,6 +125,21 @@
       "path": "/Users/tobybalsley/MyDocs/AppDev/Dental/",
       "active": false,
       "note": "TBD"
+    },
+    {
+      "name": "charlotte",
+      "role": "Static Website Developer",
+      "project": "StaticSites",
+      "path": "/Users/tobybalsley/MyDocs/StaticSites/",
+      "active": true
+    },
+    {
+      "name": "owl",
+      "role": "Executive Assistant — Work Google Workspace (HDTS)",
+      "project": "Owl",
+      "path": "/Users/tobybalsley/MyDocs/Owl/",
+      "active": true,
+      "note": "Setup: identity + workspace + roster wired. Work-account MCP auth pending (see Owl/README.md)."
     }
   ],
   "special": [
@@ -125,6 +148,6 @@
       "note": "Messages to all personas"
     }
   ],
-  "updated": "2026-04-10",
-  "updatedBy": "quinn"
+  "updated": "2026-06-02",
+  "updatedBy": "gotan"
 }
