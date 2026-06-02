@@ -5,10 +5,13 @@ Active lessons - read on INBOX/INBOX2. Cleared by CONSUME-RETRO.
 ---
 
 ## 2026-06-02 | gotan | work-identity
-**Fact**: Toby's work email is `toby@hdtsllc.com`
-**LLC**: HDTS = **Halfway Down The Stairs, LLC** (hdtsllc.com)
-**Use for**: JIRA accounts, git commit author, GitHub PRs, vendor/service signups, anything HDTS-business-related
-**Do not use**: `toby.balsley@gmail.com` (personal — appears in the CLI user profile context but is NOT the work identity)
+**Fact**: Toby operates in **two Google identities**, both live, switched often:
+  - **Work** — `toby@hdtsllc.com` — Google Workspace under HDTS = **Halfway Down The Stairs, LLC** (hdtsllc.com)
+  - **Personal** — `toby.balsley@gmail.com` — regular consumer Google account (this is what shows up in the CLI user profile context)
+**Use WORK (`toby@hdtsllc.com`) for**: JIRA, GitHub PRs/commits, vendor & service signups, anything HDTS-business-related, business Gmail/Drive/Calendar
+**Use PERSONAL (`toby.balsley@gmail.com`) for**: personal Gmail/Drive/Calendar, non-business signups, personal projects
+**Chrome implication**: Toby keeps **separate Chrome profiles** per identity. When suggesting a URL or asking him to click something, be aware which profile he likely has active — if it's a work resource (JIRA, hdtsllc Drive, GitHub for HDTS repos) and he's in the personal profile, the link will land him on the wrong account. When in doubt, name the profile: "open in your **work** profile."
+**MCP tools**: The connected Gmail / Calendar / Drive MCP servers are authed against ONE account at a time — confirm which before acting on workspace-specific data.
 **Applies to**: ALL personas
 
 ---
