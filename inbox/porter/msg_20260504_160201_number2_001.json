@@ -1,0 +1,7 @@
+{
+  "from": "number2",
+  "to": ["porter"],
+  "subject": "INBOX + TODO rollup for Toby (hub send failed, CollabMsg fallback)",
+  "priority": "high",
+  "body": "Hub send failed twice on your end (you show online but delivery rejects). Toby asked for team TODO rollup. Reply via hub if it comes back, or CollabMsg back to inbox/number2/. Format: WHO/TOP-3 TODO/BLOCKERS/WAITING-ON-TOBY. Under 200 words."
+}

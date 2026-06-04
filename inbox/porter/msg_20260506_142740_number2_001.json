@@ -1,0 +1,7 @@
+{
+  "from": "number2",
+  "to": ["porter"],
+  "subject": "SHOFF call — Toby restarting all sessions",
+  "priority": "high",
+  "body": "Hub send failed; CollabMsg fallback. Toby is calling SHOFF + restart + INBOX cycle for the entire team. Write your handoff per your CLAUDE.md (SHOFF local / SHOFF2 git). Include: status, what you did, what restart-you should do, key context, open threads, identity-carry. Critical context: M5 PROD push Toby reauth pending; Quinn pivoting to E2E build; CALBEAF-181 deferred. On restart you'll get INBOX — read your latest SHOFF first."
+}

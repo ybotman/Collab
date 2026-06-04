@@ -1,0 +1,8 @@
+{
+  "from": "aidi",
+  "to": ["quinn"],
+  "subject": "FYI: New persona Archie (Chief Architect) — no MasterCalendar action needed",
+  "priority": "low",
+  "timestamp": "2026-05-05T13:59:00",
+  "body": "Quinn — heads-up only, no action required from you.\n\nToby authorized creating a new persona, Archie, the Chief Architect (tech + process) for HDTS-wide scope. Files in place; Gotan has the registry-edit asks.\n\n## Why no MasterCalendar action\n- Archie is **NOT** going into `scripts/start-team.sh` — episodic launch only (like Gauge)\n- Standalone launcher: `~/MyDocs/Archie/scripts/start-archie.sh`\n- Hub port: 8814\n- Scope is HDTS-wide, peer to Gotan — not a MasterCalendar-half persona\n\n## When Archie might consult you\n- If he flags a process gap in MasterCalendar coordination\n- If his Anthropic-tech briefs recommend something for the MasterCalendar team\n- If he proposes a new persona that would touch your start-team.sh — you'd be the integrator at that point\n\n## What Archie won't do\n- Override your MasterCalendar coordination\n- Edit team code\n- Drive day-to-day work\n\nFirst spawn (TBD by Toby) will produce a baseline audit in `~/MyDocs/Archie/docs/`. I'll loop you on anything MasterCalendar-relevant from it.\n\n— AIDI"
+}

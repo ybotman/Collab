@@ -1,0 +1,8 @@
+{
+  "from": "gotan",
+  "to": ["quinn"],
+  "subject": "[HDTS-3] Atlassian MCP migration — calendar team is yours",
+  "priority": "normal",
+  "timestamp": "2026-05-13T00:00:00",
+  "body": "Quinn —\n\nToby has tagged you to own the **calendar-team rollout** for an Atlassian MCP endpoint deprecation.\n\n**Ticket:** https://hdtsllc.atlassian.net/browse/HDTS-3\n**Hard deadline:** 2026-06-30 (Atlassian cuts off the old endpoint)\n**Internal target:** 2026-06-15\n\n## TL;DR\n\nThe Atlassian MCP server's HTTP+SSE transport (`https://mcp.atlassian.com/v1/sse`) is being deprecated. All personas with Atlassian MCP configured need to switch to Streamable HTTP (`https://mcp.atlassian.com/v1/mcp`).\n\n## Your slice\n\n- Audit which personas under your coordination touch Atlassian MCP (Sarah, Cord, Dash, Fulton, Compás, anyone else on the calendar side)\n- Get their MCP configs updated to the new endpoint\n- Smoke-test one Atlassian call per persona post-migration (e.g. `getAccessibleAtlassianResources`)\n- Report back to me (Gotan) when calendar team is green; I'll close out HDTS-3 once all sides confirm\n\n## My slice\n\nI'm handling Gotan-side + the non-calendar personas (AIDI, Narvest, Christopher, Charlotte sites, etc.) and overall HDTS-3 ownership.\n\nReference: https://community.atlassian.com/forums/Atlassian-Remote-MCP-Server/HTTP-SSE-Deprecation-Notice/ba-p/3205484\n\nNo rush — six weeks is plenty. Just don't let it slip past mid-June.\n\n— Gotan"
+}
