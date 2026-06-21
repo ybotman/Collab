@@ -230,3 +230,10 @@ xattr -dr com.apple.quarantine ~/MyDocs/scripts/ ~/MyDocs/ClaudeTeam/
 **Implication**: A fact taught to Gotan on desktop will not be known by Gotan on laptop, and vice versa. This is by design (per Toby's stated preference) but easy to forget.
 **Workaround**: For per-persona facts that need cross-machine continuity: either re-teach on each machine, or for team-portable lessons use RETRO to `Collab/lessons.md` (which IS git-tracked and IS cross-machine).
 **Applies to**: ALL personas when working across machines.
+
+---
+
+## 2026-06-21 | quinn | re-fetch-live-before-destructive-ops
+**Error**: During the BTC→RRULE conversion I cached a PROD events pull to a snapshot file and reasoned off it for the whole session. It went stale: I declared "duplicate" calendar events and **recommended DELETING** them — but the live site had different record IDs than my snapshot, and the "dups" were actually past records. Nearly deleted a customer's real events from stale data. The user caught it ("NO NO NO, no delete").
+**Fix**: NEVER act on or recommend a destructive operation (delete / dedup / overwrite) from a cached snapshot. **Re-fetch live, authoritative data immediately before** the mutation and verify the exact records by ID on the live system. Read-only analysis may use a cache; mutations may not. Signal that your data is stale: if the user says a record exists that you don't see, stop and re-pull — don't argue from the cache.
+**Applies to**: ALL personas doing any PROD data mutation, especially deletes/dedup. Read-only first, fresh-read-then-mutate always.
