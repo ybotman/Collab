@@ -62,21 +62,24 @@
       "role": "Facebook Parser (FB links → enriched events via CDP)",
       "project": "booker",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/booker/",
-      "active": true
+      "active": false,
+      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "harvey",
       "role": "AI Event Discovery Engine (scrape, search, enrich)",
       "project": "harvester",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/harvester/",
-      "active": true
+      "active": false,
+      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "porter",
       "role": "MongoDB Loader (all sources)",
       "project": "porter",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/porter/",
-      "active": true
+      "active": false,
+      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "narvest",
@@ -153,9 +156,9 @@
       "name": "engelbart",
       "role": "Guild Architect, Steward & Adoption Lead (augment the org, build the capability, hand over the keys; Guild-as-a-service enablement)",
       "project": "Guild (cross-org enablement)",
-      "path": "TBD (set at launch)",
-      "active": false,
-      "note": "Added to registry 2026-06-03 (had identity file ~/.claude/personas/engelbart.md, was missing from registry). Working dir TBD. Not in current hub roster."
+      "path": "/Users/tobybalsley/MyDocs/Engelbart/",
+      "active": true,
+      "note": "Stood up 2026-06-03 by Gotan at Toby's direction. Hub port 8819, Opus 4.7. Workspace + wakeup wired. Awaiting first HITM scope per identity-file Hard Constraint #1 (no build without why/what/scope)."
     },
     {
       "name": "landon",
@@ -164,6 +167,30 @@
       "path": "/Users/tobybalsley/MyDocs/Landon/",
       "active": false,
       "note": "Created 2026-06-03. HDTS tracked client engagement (Owl owns billing). Hub port 8818. Mission: grow LW revenue via marketing automation; Phase 1 = site + LinkedIn + socials. Roster/wakeup entry pending."
+    },
+    {
+      "name": "herald",
+      "role": "Librarian (HDTS knowledge layer — comms+docs standards, Obsidian vault, persona-team protocols; formal successor to Gemini-era Librarian, ratified by Toby 2026-05-06) AND MessageHub Platform Architect & Developer",
+      "project": "HDTS docs system + MessageHub",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/MessageHub/",
+      "active": true,
+      "note": "Added to registry 2026-06-03 (had identity file ~/.claude/personas/herald.md and is online on hub, was missing from registry). Hub port 8812. Wednesdays = docs day; other days = MessageHub. Operates under four-tier docs model (Toby/Archie/Gotan/Herald)."
+    },
+    {
+      "name": "rupert",
+      "role": "Chief Advisor — Toby's BHS / HFI engagement (Barbershop Harmony Society client, multi-year). Strategic advisor behind Toby; drives AI literacy, automation, modernization at BHS; also leads HFI/BHS integration.",
+      "project": "BHS (Barbershop Harmony Society, appId=20)",
+      "path": "/Users/tobybalsley/MyDocs/Clients/BHS/",
+      "active": true,
+      "note": "Added to registry 2026-06-03 (had identity file ~/.claude/personas/rupert.md and is online on hub, was missing from registry). Hub port 8815. Full name: Rupert I. Hall, 'Royal Keeper of the Minor Keys' (after SPEBSQSA co-founder, 1938). HDTS appId=20 approved 2026-04-16; client engagement category."
+    },
+    {
+      "name": "archie-tiempo",
+      "role": "Chief Architect (TIEMPO instance) — TIEMPO calendar architecture coherence, long-term lens, lean process, agile driving, new-tech LOE gate. Advise/gate/ratify only; not an implementation lane.",
+      "project": "TIEMPO calendar (MasterCalendar + tangotiempo.com + calendar-be-af + CalOps + discovery engine)",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/archie-tiempo/",
+      "active": true,
+      "note": "Identity ~/.claude/personas/archie-tiempo.md + workspace + .mcp.json created 2026-06-21. Wires to TIEMPO hub :8852, persona port 8806. Reports to Quinn (TIEMPO head); peer of archie-bhs, franklin (Menlo), and escalates up to HDTS-tier archie. Portable 'Archie' role pattern. Registry entry added by Engelbart 2026-06-21 per Toby 'fix' direction — PENDING GOTAN RATIFICATION."
     }
   ],
   "special": [
