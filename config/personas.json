@@ -191,6 +191,38 @@
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/archie-tiempo/",
       "active": true,
       "note": "Identity ~/.claude/personas/archie-tiempo.md + workspace + .mcp.json created 2026-06-21. Wires to TIEMPO hub :8852, persona port 8806. Reports to Quinn (TIEMPO head); peer of archie-bhs, franklin (Menlo), and escalates up to HDTS-tier archie. Portable 'Archie' role pattern. Registry entry added by Engelbart 2026-06-21 per Toby 'fix' direction — PENDING GOTAN RATIFICATION."
+    },
+    {
+      "name": "portal-fe",
+      "role": "HDTS Client Portal — Frontend builder + portal-template FE engine owner. Per-client Firebase Hosting SPA at <client>.hdtsllc.com (BHS first). Stamps per-client instances vendored from portal-template. Implements Iris's design system; view-grant rendering only; Ask-the-Guild surface (cloud-function-persona, Clifton's voice). HDTS-tier, tenant-neutral, NOT client-portable.",
+      "project": "HDTS Client Portal (AppId 23 — portal-template + per-client instances)",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/portal-template/",
+      "active": true,
+      "note": "Charter ~/.claude/personas/portal-fe.md v2 (ADR-0025 spine). Registered 2026-06-25 per Toby HITM ratify of ADR-0025 + HDTS-CLIENT-PORTAL-DESIGN-STANDARD-v1. HDTS hub :8855, callback 8837 (Engelbart locks in-file + launches). Authorities: ADR-0025 + design-standard-v1 + ADR-0023. Menlo-shaped standing cell; no coordinating head until client #2. Repo portal-template pending creation."
+    },
+    {
+      "name": "portal-be",
+      "role": "HDTS Client Portal — Backend/API + portal-template BE engine owner. THE SECURITY BOUNDARY. Firebase Cloud Functions + Firestore, per-client full separation (tenant_id dropped — isolation = project boundary), Google hd= auth, manual CLI grant, grant-filter at the DATA layer (not the prompt). Ask-the-Guild RAG store = sprint-1 (Firebase-era). HDTS-tier, tenant-neutral, NOT client-portable.",
+      "project": "HDTS Client Portal (AppId 23 — portal-template + per-client instances)",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/portal-template/",
+      "active": true,
+      "note": "Charter ~/.claude/personas/portal-be.md v2 (ADR-0025 spine). Registered 2026-06-25 per Toby HITM ratify. HDTS hub :8855, callback 8838 (Engelbart locks + launches). ADR-0025 §5 CLI-grant audit-stamp (actor/timestamp/actor_type) folded in. Authorities: ADR-0025 + design-standard-v1 + ADR-0023. Repo portal-template pending creation."
+    },
+    {
+      "name": "iris-hdts",
+      "role": "Designer (HDTS cell) — visual layer for the HDTS Guild + portal-template design system. Iris archetype instance (the eye to Herald's word). Owns design system/tokens (ADR-0023), mockups, as-is diagrams (co-produced with Herald). Serves portal-fe + Charlotte. Visual layer only — no code, no prose. Claude Designer canonical tool.",
+      "project": "HDTS cell (design system + portal-template theming)",
+      "path": "/Users/tobybalsley/MyDocs/",
+      "active": true,
+      "note": "Instance of Iris archetype (~/.claude/personas/iris.md v1); config ~/.claude/personas/iris-hdts.md; launch body vendored from archetype at launch. Registered 2026-06-25 per Toby HITM ratify. HDTS hub :8855, callback 8835 (Engelbart locks + launches). Herald counterpart = herald. Reports: Archie (design-system arch) / Engelbart (archetype health) / Gotan (registry). Canva + Google design tools de-adopted (Toby 2026-06-25)."
+    },
+    {
+      "name": "iris",
+      "role": "Iris archetype (canonical cast template) — HDTS-tier Designer / visual layer. Paired with Herald (Herald = the word, Iris = the eye). NOT launched directly; stamped per team as iris-{team}, vendored from this template per the ADR-0025 anti-rot doctrine.",
+      "project": "HDTS cast archetype",
+      "path": "/Users/tobybalsley/.claude/personas/iris.md",
+      "active": false,
+      "note": "ARCHETYPE TEMPLATE — do not launch. Ratified 2026-06-25 (Toby HITM + Gotan) as the canonical cast archetype; authored by Engelbart. Instances: iris-hdts (registered 2026-06-25), iris-menlo (HELD — Engelbart chasing Edison confirm + live Menlo :8853). Engelbart owns archetype health; Gotan registers instances. Role changes go UPSTREAM here then re-vendor to instances."
     }
   ],
   "special": [
@@ -199,6 +231,6 @@
       "note": "Messages to all personas"
     }
   ],
-  "updated": "2026-06-03",
+  "updated": "2026-06-25",
   "updatedBy": "gotan"
 }
