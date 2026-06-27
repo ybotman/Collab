@@ -48,7 +48,7 @@ vision through Phase-0 and into a team-design fan-out. Resume from §RESUME belo
 `gotan.md` now has **portable Program-Lead EPIC MODE** (steady-state⇄epic toggle · frame/design-with-team/synthesize/drive-phasing/decisions-not-questions/keep-gate · LANE-GUARD "leading≠squatting" · model bumped **4.7→4.8**). **Loads at next launch; Toby ratifies HITM.** So a restart gives the up-scaled leader.
 
 ## TEAM STATUS (this session's leading)
-- **Rupert** — GREENLIT to draft EDR — Dual-Advocate Scope Model (impasse→Toby-decides rule). 4 sharpenings accepted.
+- **Rupert** — ✅ **EDR-0004 — Dual-Advocate Scope Model DRAFTED** (`Clients/BHS/docs/engagement/edr-0004-dual-advocate-scope-model.md`, proposed, pending Toby ratify). Impasse→Toby-decides; conservative default (don't build) so it never fails open; gates SCOPE not budget.
 - **Owl** — unblocked on the $2k/mo costing: authorized to pull infra(Archie)+AI-runtime(Engelbart) costs; tier structured = always-on-maintenance-fixed + build-hourly (Rupert's split). Needs Toby's 3 facts (see PENDING).
 
 ## PENDING TOBY (ratifications owed)
