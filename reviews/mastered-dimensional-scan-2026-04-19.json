@@ -1,0 +1,1786 @@
+{
+  "meta": {
+    "generatedAt": "2026-04-19T20:45:13.257Z",
+    "script": "scripts/analyze-mastered-dimensional.js",
+    "mode": "READ_ONLY",
+    "environment": "TangoTiempoTest",
+    "quinnRatified": "2026-04-19T20:42:58Z",
+    "ratifyRefinements": [
+      "Clean sandbox branch (sandbox/2026-04-19-fulton-dimensional-scan)",
+      "Section 7 = free-text city null (NOT masteredCityId null)",
+      "Sections 6+9 cross-ref 158 corpus-gap-review bucket explicitly"
+    ],
+    "completedAt": "2026-04-19T20:45:16.206Z",
+    "durationMs": 2949
+  },
+  "section1_counts": {
+    "masteredcities": 215,
+    "mastereddivisions": 67,
+    "masteredregions": 38,
+    "masteredcountries": 51,
+    "venues_total": 1573,
+    "events_total": 5881
+  },
+  "section2_missingFields": {
+    "masteredcities": {
+      "missing_cityName": 0,
+      "missing_location": 3,
+      "missing_masteredDivisionId": 0,
+      "missing_isActive": 0
+    },
+    "mastereddivisions": {
+      "missing_divisionName": 0,
+      "missing_masteredRegionId": 0
+    },
+    "masteredregions": {
+      "missing_regionName": 0,
+      "missing_masteredCountryId": 1
+    },
+    "masteredcountries": {
+      "missing_countryName": 0
+    }
+  },
+  "section2_samples": {
+    "regionsMissingCountry": [
+      {
+        "_id": "698a5379fa4266bff71a0202",
+        "regionName": "Europe"
+      }
+    ]
+  },
+  "section3_hierarchyWalk": {
+    "breakdown": {
+      "cities_full_chain_ok": 208,
+      "cities_missing_division_ref_on_city": 0,
+      "cities_division_ref_not_found": 0,
+      "cities_division_missing_region_ref": 0,
+      "cities_region_ref_not_found": 0,
+      "cities_region_missing_country_ref": 7,
+      "cities_country_ref_not_found": 0,
+      "cities_total": 215
+    },
+    "samples": {
+      "cities_region_missing_country_ref": [
+        {
+          "_id": "6984c43b1360acd655892779",
+          "cityName": "Berlin",
+          "divisionName": "Germany",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "6984c43b1360acd655892780",
+          "cityName": "Rome",
+          "divisionName": "Italy",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "6984c43b1360acd655892781",
+          "cityName": "Milan",
+          "divisionName": "Italy",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "6984c43c1360acd655892785",
+          "cityName": "Helsinki",
+          "divisionName": "Finland",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "698a537afa4266bff71a0209",
+          "cityName": "Oslo",
+          "divisionName": "Norway",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "698a537afa4266bff71a020a",
+          "cityName": "Basel",
+          "divisionName": "Switzerland",
+          "regionName": "Europe"
+        },
+        {
+          "_id": "698a537afa4266bff71a020b",
+          "cityName": "Budapest",
+          "divisionName": "Hungary",
+          "regionName": "Europe"
+        }
+      ],
+      "cities_division_missing_region_ref": [],
+      "cities_missing_division_ref_on_city": [],
+      "cities_division_ref_not_found": [],
+      "cities_region_ref_not_found": [],
+      "cities_country_ref_not_found": []
+    }
+  },
+  "section3_porterImpact": {
+    "cities_full_chain_ok": "Porter lookupMasteredLocation returns full chain — no silent {} paths",
+    "cities_missing_division_ref_on_city": "Porter walks city.masteredDivisionId → null → partial chain (city only)",
+    "cities_division_ref_not_found": "Porter walks dangling div ID → findOne returns null → partial chain",
+    "cities_division_missing_region_ref": "Porter walks division.masteredRegionId → null → partial chain (city+division)",
+    "cities_region_ref_not_found": "Porter walks dangling region ID → findOne returns null → partial chain",
+    "cities_region_missing_country_ref": "Porter walks region.masteredCountryId → null → partial chain (NO country) ← Europe-class break",
+    "cities_country_ref_not_found": "Porter walks dangling country ID → findOne returns null → partial chain (NO country)"
+  },
+  "section4_orphans": {
+    "orphanDivisions_count": 10,
+    "orphanRegions_count": 0,
+    "orphanCountries_count": 23,
+    "samples": {
+      "orphanDivisions": [
+        {
+          "_id": "67f6123c2bbba9c1dd731ebc",
+          "divisionName": "Middle Atlantic"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ebe",
+          "divisionName": "West North Central"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ec0",
+          "divisionName": "East South Central"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ec2",
+          "divisionName": "East North Central"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ec4",
+          "divisionName": "South Atlantic"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ec6",
+          "divisionName": "Pacific"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ec8",
+          "divisionName": "West South Central"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731eca",
+          "divisionName": "Mountain"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ecc",
+          "divisionName": "New England"
+        },
+        {
+          "_id": "6984c4371360acd65589274c",
+          "divisionName": "Finland"
+        }
+      ],
+      "orphanRegions": [],
+      "orphanCountries": [
+        {
+          "_id": "67f6123b2bbba9c1dd731e9c",
+          "countryName": "Spain"
+        },
+        {
+          "_id": "67f6123b2bbba9c1dd731e9e",
+          "countryName": "United Kingdom"
+        },
+        {
+          "_id": "67f6123b2bbba9c1dd731ea0",
+          "countryName": "Australia"
+        },
+        {
+          "_id": "67f6123b2bbba9c1dd731ea2",
+          "countryName": "Argentina"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ea4",
+          "countryName": "Canada"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ea6",
+          "countryName": "Germany"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731ea8",
+          "countryName": "France"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731eaa",
+          "countryName": "Brazil"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731eac",
+          "countryName": "Italy"
+        },
+        {
+          "_id": "67f6123c2bbba9c1dd731eb0",
+          "countryName": "New Zealand"
+        },
+        {
+          "_id": "67f612505e69d06f32915d54",
+          "countryName": "Spain"
+        },
+        {
+          "_id": "67f612505e69d06f32915d56",
+          "countryName": "United Kingdom"
+        },
+        {
+          "_id": "67f612505e69d06f32915d58",
+          "countryName": "Australia"
+        },
+        {
+          "_id": "67f612505e69d06f32915d5a",
+          "countryName": "Argentina"
+        },
+        {
+          "_id": "67f612505e69d06f32915d5c",
+          "countryName": "Canada"
+        },
+        {
+          "_id": "67f612505e69d06f32915d5e",
+          "countryName": "Germany"
+        },
+        {
+          "_id": "67f612505e69d06f32915d60",
+          "countryName": "France"
+        },
+        {
+          "_id": "67f612505e69d06f32915d62",
+          "countryName": "Brazil"
+        },
+        {
+          "_id": "67f612505e69d06f32915d64",
+          "countryName": "Italy"
+        },
+        {
+          "_id": "67f612505e69d06f32915d68",
+          "countryName": "New Zealand"
+        }
+      ]
+    }
+  },
+  "section5_danglingRefs": {
+    "citiesWithDanglingDivisionId": 0,
+    "divisionsWithDanglingRegionId": 0,
+    "regionsWithDanglingCountryId": 0,
+    "note": "Counts reflect downstream impact (cities whose chain is affected). See §3 samples for specific dangling IDs."
+  },
+  "section6_gapAnalysis": {
+    "venueCountryTotalDistinct": 76,
+    "venueCountryMatchedInCorpus": 17,
+    "venueCountryUnmatched": [
+      {
+        "venueCountry": "US",
+        "count": 892
+      },
+      {
+        "venueCountry": "USA",
+        "count": 73
+      },
+      {
+        "venueCountry": "IT",
+        "count": 40
+      },
+      {
+        "venueCountry": "AU",
+        "count": 22
+      },
+      {
+        "venueCountry": "DE",
+        "count": 16
+      },
+      {
+        "venueCountry": "FR",
+        "count": 15
+      },
+      {
+        "venueCountry": "GB",
+        "count": 15
+      },
+      {
+        "venueCountry": "CA",
+        "count": 12
+      },
+      {
+        "venueCountry": "ES",
+        "count": 11
+      },
+      {
+        "venueCountry": "PT",
+        "count": 8
+      },
+      {
+        "venueCountry": "SE",
+        "count": 8
+      },
+      {
+        "venueCountry": "AR",
+        "count": 6
+      },
+      {
+        "venueCountry": "GR",
+        "count": 6
+      },
+      {
+        "venueCountry": "JP",
+        "count": 5
+      },
+      {
+        "venueCountry": "UK",
+        "count": 5
+      },
+      {
+        "venueCountry": "AT",
+        "count": 4
+      },
+      {
+        "venueCountry": "SI",
+        "count": 4
+      },
+      {
+        "venueCountry": "NO",
+        "count": 3
+      },
+      {
+        "venueCountry": "FI",
+        "count": 3
+      },
+      {
+        "venueCountry": "HU",
+        "count": 3
+      },
+      {
+        "venueCountry": "PL",
+        "count": 3
+      },
+      {
+        "venueCountry": "Serbia",
+        "count": 2
+      },
+      {
+        "venueCountry": "Vietnam",
+        "count": 2
+      },
+      {
+        "venueCountry": "NZ",
+        "count": 2
+      },
+      {
+        "venueCountry": "RO",
+        "count": 2
+      },
+      {
+        "venueCountry": "Romania",
+        "count": 2
+      },
+      {
+        "venueCountry": "CH",
+        "count": 2
+      },
+      {
+        "venueCountry": "Austria",
+        "count": 2
+      },
+      {
+        "venueCountry": "Greece",
+        "count": 2
+      },
+      {
+        "venueCountry": "Slovenia",
+        "count": 1
+      },
+      {
+        "venueCountry": "ID",
+        "count": 1
+      },
+      {
+        "venueCountry": "Cyprus",
+        "count": 1
+      },
+      {
+        "venueCountry": "TH",
+        "count": 1
+      },
+      {
+        "venueCountry": "DC 20003",
+        "count": 1
+      },
+      {
+        "venueCountry": "SG",
+        "count": 1
+      },
+      {
+        "venueCountry": "Puerto Rico",
+        "count": 1
+      },
+      {
+        "venueCountry": "AZ 85711",
+        "count": 1
+      },
+      {
+        "venueCountry": "IE",
+        "count": 1
+      },
+      {
+        "venueCountry": "NL",
+        "count": 1
+      },
+      {
+        "venueCountry": "MX",
+        "count": 1
+      },
+      {
+        "venueCountry": "MD 20678",
+        "count": 1
+      },
+      {
+        "venueCountry": "Czech Republic",
+        "count": 1
+      },
+      {
+        "venueCountry": "WA 98034",
+        "count": 1
+      },
+      {
+        "venueCountry": "Latvia",
+        "count": 1
+      },
+      {
+        "venueCountry": "00907",
+        "count": 1
+      },
+      {
+        "venueCountry": "CL",
+        "count": 1
+      },
+      {
+        "venueCountry": "Croatia",
+        "count": 1
+      },
+      {
+        "venueCountry": "Netherlands",
+        "count": 1
+      },
+      {
+        "venueCountry": "DK",
+        "count": 1
+      },
+      {
+        "venueCountry": "TR",
+        "count": 1
+      },
+      {
+        "venueCountry": "Belgium",
+        "count": 1
+      },
+      {
+        "venueCountry": "Hong Kong",
+        "count": 1
+      },
+      {
+        "venueCountry": "TW",
+        "count": 1
+      },
+      {
+        "venueCountry": "Denmark",
+        "count": 1
+      },
+      {
+        "venueCountry": "Lebanon",
+        "count": 1
+      },
+      {
+        "venueCountry": "MD 20910",
+        "count": 1
+      },
+      {
+        "venueCountry": "India",
+        "count": 1
+      },
+      {
+        "venueCountry": "Malaysia",
+        "count": 1
+      },
+      {
+        "venueCountry": "Lithuania",
+        "count": 1
+      }
+    ],
+    "residualBucketCountryDistribution": [
+      {
+        "venueCountry": "US",
+        "count": 98,
+        "matched": false,
+        "norm": "us"
+      },
+      {
+        "venueCountry": "Australia",
+        "count": 89,
+        "matched": true,
+        "norm": "australia"
+      },
+      {
+        "venueCountry": "IT",
+        "count": 13,
+        "matched": false,
+        "norm": "it"
+      },
+      {
+        "venueCountry": "France",
+        "count": 9,
+        "matched": true,
+        "norm": "france"
+      },
+      {
+        "venueCountry": "Spain",
+        "count": 7,
+        "matched": true,
+        "norm": "spain"
+      },
+      {
+        "venueCountry": "Italy",
+        "count": 6,
+        "matched": true,
+        "norm": "italy"
+      },
+      {
+        "venueCountry": "AT",
+        "count": 4,
+        "matched": false,
+        "norm": "at"
+      },
+      {
+        "venueCountry": "Hungary",
+        "count": 4,
+        "matched": true,
+        "norm": "hungary"
+      },
+      {
+        "venueCountry": "Switzerland",
+        "count": 4,
+        "matched": true,
+        "norm": "switzerland"
+      },
+      {
+        "venueCountry": "Sweden",
+        "count": 3,
+        "matched": true,
+        "norm": "sweden"
+      },
+      {
+        "venueCountry": "USA",
+        "count": 3,
+        "matched": false,
+        "norm": "usa"
+      },
+      {
+        "venueCountry": "AU",
+        "count": 3,
+        "matched": false,
+        "norm": "au"
+      },
+      {
+        "venueCountry": "Romania",
+        "count": 2,
+        "matched": false,
+        "norm": "romania"
+      },
+      {
+        "venueCountry": "SI",
+        "count": 2,
+        "matched": false,
+        "norm": "si"
+      },
+      {
+        "venueCountry": "DE",
+        "count": 2,
+        "matched": false,
+        "norm": "de"
+      },
+      {
+        "venueCountry": "Serbia",
+        "count": 2,
+        "matched": false,
+        "norm": "serbia"
+      },
+      {
+        "venueCountry": "GB",
+        "count": 2,
+        "matched": false,
+        "norm": "gb"
+      },
+      {
+        "venueCountry": "HU",
+        "count": 2,
+        "matched": false,
+        "norm": "hu"
+      },
+      {
+        "venueCountry": "Greece",
+        "count": 2,
+        "matched": false,
+        "norm": "greece"
+      },
+      {
+        "venueCountry": "Norway",
+        "count": 2,
+        "matched": true,
+        "norm": "norway"
+      },
+      {
+        "venueCountry": "ES",
+        "count": 2,
+        "matched": false,
+        "norm": "es"
+      },
+      {
+        "venueCountry": "Austria",
+        "count": 2,
+        "matched": false,
+        "norm": "austria"
+      },
+      {
+        "venueCountry": "FR",
+        "count": 2,
+        "matched": false,
+        "norm": "fr"
+      },
+      {
+        "venueCountry": "Vietnam",
+        "count": 2,
+        "matched": false,
+        "norm": "vietnam"
+      },
+      {
+        "venueCountry": "GR",
+        "count": 2,
+        "matched": false,
+        "norm": "gr"
+      },
+      {
+        "venueCountry": "Poland",
+        "count": 2,
+        "matched": true,
+        "norm": "poland"
+      },
+      {
+        "venueCountry": "CA",
+        "count": 2,
+        "matched": false,
+        "norm": "ca"
+      },
+      {
+        "venueCountry": "United Kingdom",
+        "count": 2,
+        "matched": true,
+        "norm": "united kingdom"
+      },
+      {
+        "venueCountry": "Germany",
+        "count": 2,
+        "matched": true,
+        "norm": "germany"
+      },
+      {
+        "venueCountry": "UK",
+        "count": 2,
+        "matched": false,
+        "norm": "uk"
+      },
+      {
+        "venueCountry": "NL",
+        "count": 1,
+        "matched": false,
+        "norm": "nl"
+      },
+      {
+        "venueCountry": "Canada",
+        "count": 1,
+        "matched": true,
+        "norm": "canada"
+      },
+      {
+        "venueCountry": "IE",
+        "count": 1,
+        "matched": false,
+        "norm": "ie"
+      },
+      {
+        "venueCountry": "Cyprus",
+        "count": 1,
+        "matched": false,
+        "norm": "cyprus"
+      },
+      {
+        "venueCountry": "Netherlands",
+        "count": 1,
+        "matched": false,
+        "norm": "netherlands"
+      },
+      {
+        "venueCountry": "Croatia",
+        "count": 1,
+        "matched": false,
+        "norm": "croatia"
+      },
+      {
+        "venueCountry": "Turkey",
+        "count": 1,
+        "matched": true,
+        "norm": "turkey"
+      },
+      {
+        "venueCountry": "MD 20678",
+        "count": 1,
+        "matched": false,
+        "norm": "md 20678"
+      },
+      {
+        "venueCountry": "Puerto Rico",
+        "count": 1,
+        "matched": false,
+        "norm": "puerto rico"
+      },
+      {
+        "venueCountry": "India",
+        "count": 1,
+        "matched": false,
+        "norm": "india"
+      },
+      {
+        "venueCountry": "United States",
+        "count": 1,
+        "matched": true,
+        "norm": "united states"
+      },
+      {
+        "venueCountry": "Belgium",
+        "count": 1,
+        "matched": false,
+        "norm": "belgium"
+      },
+      {
+        "venueCountry": "Lithuania",
+        "count": 1,
+        "matched": false,
+        "norm": "lithuania"
+      },
+      {
+        "venueCountry": "DK",
+        "count": 1,
+        "matched": false,
+        "norm": "dk"
+      },
+      {
+        "venueCountry": "PL",
+        "count": 1,
+        "matched": false,
+        "norm": "pl"
+      },
+      {
+        "venueCountry": "Malaysia",
+        "count": 1,
+        "matched": false,
+        "norm": "malaysia"
+      },
+      {
+        "venueCountry": "00907",
+        "count": 1,
+        "matched": false,
+        "norm": "00907"
+      },
+      {
+        "venueCountry": "RO",
+        "count": 1,
+        "matched": false,
+        "norm": "ro"
+      },
+      {
+        "venueCountry": "Latvia",
+        "count": 1,
+        "matched": false,
+        "norm": "latvia"
+      },
+      {
+        "venueCountry": "TH",
+        "count": 1,
+        "matched": false,
+        "norm": "th"
+      },
+      {
+        "venueCountry": "Slovenia",
+        "count": 1,
+        "matched": false,
+        "norm": "slovenia"
+      },
+      {
+        "venueCountry": "Portugal",
+        "count": 1,
+        "matched": true,
+        "norm": "portugal"
+      },
+      {
+        "venueCountry": "PT",
+        "count": 1,
+        "matched": false,
+        "norm": "pt"
+      },
+      {
+        "venueCountry": "Russia",
+        "count": 1,
+        "matched": true,
+        "norm": "russia"
+      },
+      {
+        "venueCountry": "Denmark",
+        "count": 1,
+        "matched": false,
+        "norm": "denmark"
+      },
+      {
+        "venueCountry": "Lebanon",
+        "count": 1,
+        "matched": false,
+        "norm": "lebanon"
+      },
+      {
+        "venueCountry": "Czech Republic",
+        "count": 1,
+        "matched": false,
+        "norm": "czech republic"
+      }
+    ],
+    "residualBucketVenueCount_total": 306,
+    "masteredcountriesNames": [
+      "argentina",
+      "australia",
+      "brazil",
+      "canada",
+      "chile",
+      "china",
+      "colombia",
+      "finland",
+      "france",
+      "germany",
+      "hungary",
+      "italy",
+      "japan",
+      "mexico",
+      "new zealand",
+      "norway",
+      "peru",
+      "poland",
+      "portugal",
+      "russia",
+      "singapore",
+      "south korea",
+      "spain",
+      "sweden",
+      "switzerland",
+      "taiwan",
+      "turkey",
+      "united kingdom",
+      "united states"
+    ],
+    "note": "residualBucketVenueCount_total = venues in Phase 1a corpus-gap-review + country_only_by_automaster combined (Quinn ratify §6+9 cross-ref)"
+  },
+  "section7_nullFreeTextCity": {
+    "note": "venue.city (free-text, user-entered/import) is null. INDEPENDENT of masteredCityId which is 80.5%-covered post-Phase-1a.",
+    "total": 134,
+    "byAppId": [
+      {
+        "_id": "1",
+        "count": 134
+      }
+    ],
+    "samples": [
+      {
+        "_id": "69cca05130dda862a0c899fc",
+        "appId": "1",
+        "name": "First Presbyterian Church of New Orleans",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -90.10985,
+            29.94225
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e49c",
+        "masteredCityName": "New Orleans"
+      },
+      {
+        "_id": "69cca05130dda862a0c899fd",
+        "appId": "1",
+        "name": "Arts Council of Greater Baton Rouge",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -91.186424195766,
+            30.445112690619
+          ]
+        },
+        "masteringStatus": "country_only_by_automaster"
+      },
+      {
+        "_id": "69cca05130dda862a0c899fe",
+        "appId": "1",
+        "name": "Sazon Dance Events - Sea",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -122.34468,
+            47.61578
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e4a9",
+        "masteredCityName": "Seattle"
+      },
+      {
+        "_id": "69cca05230dda862a0c899ff",
+        "appId": "1",
+        "name": "Altstadt (Plauen)",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            12.1358,
+            50.4938
+          ]
+        },
+        "masteringStatus": "corpus-gap-review"
+      },
+      {
+        "_id": "69cca05230dda862a0c89a00",
+        "appId": "1",
+        "name": "3221 Houston Ave, Houston, TX",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -95.37253,
+            29.78747
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e49a",
+        "masteredCityName": "Houston"
+      },
+      {
+        "_id": "69cca05230dda862a0c89a01",
+        "appId": "1",
+        "name": "The Trump Kennedy Center",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -77.055624174008,
+            38.895940779361
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e48e",
+        "masteredCityName": "Washington, D.C."
+      },
+      {
+        "_id": "69cca05230dda862a0c89a02",
+        "appId": "1",
+        "name": "VOGTLAND RADIO",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            12.13093,
+            50.51613
+          ]
+        },
+        "masteringStatus": "corpus-gap-review"
+      },
+      {
+        "_id": "69cca05230dda862a0c89a03",
+        "appId": "1",
+        "name": "Cafe Muse",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -83.14698,
+            42.48679
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e479",
+        "masteredCityName": "Detroit"
+      },
+      {
+        "_id": "69cca05230dda862a0c89a04",
+        "appId": "1",
+        "name": "Dance Studio Lioudmila",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -77.08115,
+            38.80691
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6751f58a5db435dd8005e48e",
+        "masteredCityName": "Washington, D.C."
+      },
+      {
+        "_id": "69cca05230dda862a0c89a05",
+        "appId": "1",
+        "name": "Century Dancesport",
+        "state": "",
+        "country": "US",
+        "geolocation": {
+          "type": "Point",
+          "coordinates": [
+            -117.82614076125,
+            33.721531208197
+          ]
+        },
+        "masteringStatus": "mastered_by_automaster",
+        "masteredCityId": "6984c4391360acd655892763",
+        "masteredCityName": "Orange County"
+      }
+    ]
+  },
+  "section8_knownCases": {
+    "tobyBudapestEvent": {
+      "eventTitle": "14th Primavera Budapest Tango Marathon 14-18 May 2026",
+      "event_masteredCityId": null,
+      "event_masteredCountryName": null,
+      "venue_name": "Magdolna utca 5, Budapest 1086, Magyarország",
+      "venue_city_text": "Budapest",
+      "venue_country_text": "HU",
+      "venue_masteringStatus": "corpus-gap-review",
+      "venue_masteringDistanceKm": 293.571,
+      "venue_masteredCityName": null,
+      "venue_masteredCountryName": null
+    },
+    "tobyEstoniaEvent": {
+      "eventTitle": "FESTIVAL TANGO ELEGANTE-ESTONIA MAY 29-31",
+      "event_masteredCityId": null,
+      "event_masteredCountryName": null,
+      "venue_name": "Pärnu maantee 160, Kesklinn, Tallinn, 11317 Harju Maakond, Eesti",
+      "venue_city_text": "Harju Maakond",
+      "venue_country_text": "US",
+      "venue_masteringStatus": "country_only_by_automaster",
+      "venue_masteringDistanceKm": 84.257,
+      "venue_masteredCityName": null,
+      "venue_masteredCountryName": null
+    },
+    "tobyRomeEvent": {
+      "eventTitle": "2° VINILO Roma ENCUENTRO Milonguero 2026/09/4-6",
+      "event_masteredCityId": "6984c43b1360acd655892780",
+      "event_masteredCountryName": null,
+      "venue_name": "Hotel Roma Aurelia Antica",
+      "venue_city_text": "Roma",
+      "venue_country_text": "IT",
+      "venue_masteringStatus": "mastered_by_automaster",
+      "venue_masteringDistanceKm": 7.962,
+      "venue_masteredCityName": "Rome",
+      "venue_masteredCountryName": null
+    },
+    "porter58RowCityNames": {
+      "Seoul": {
+        "inCorpus": true,
+        "_id": "6984c43d1360acd655892797",
+        "masteredDivisionId": "6984c4381360acd655892755"
+      },
+      "Warsaw": {
+        "inCorpus": true,
+        "_id": "6984c43c1360acd655892786",
+        "masteredDivisionId": "6984c4371360acd65589274d"
+      },
+      "Amsterdam": {
+        "inCorpus": false
+      },
+      "Crete": {
+        "inCorpus": false
+      },
+      "Auckland": {
+        "inCorpus": true,
+        "_id": "6984c43f1360acd6558927ac",
+        "masteredDivisionId": "6984c4391360acd655892761"
+      },
+      "Naples": {
+        "inCorpus": false
+      },
+      "Buenos Aires": {
+        "inCorpus": true,
+        "_id": "6984c43e1360acd65589279e",
+        "masteredDivisionId": "6984c4381360acd65589275a"
+      }
+    },
+    "estoniaCountry": {
+      "inCorpus": false,
+      "note": "Estonia NOT in masteredcountries — Toby 20:35Z load-bearing case"
+    },
+    "fultonManualNames": {
+      "Oslo Konserthus": {
+        "_id": "69c7312ad750241c728415e0",
+        "name": "Oslo Konserthus",
+        "city": "Oslo",
+        "country": "Norway",
+        "masteringStatus": "corpus-gap-review",
+        "masteringDistanceKm": 255.735,
+        "masteredCityName": null,
+        "masteredCountryName": null
+      },
+      "Altstadt (Plauen)": {
+        "_id": "69cca05230dda862a0c899ff",
+        "name": "Altstadt (Plauen)",
+        "city": "",
+        "country": "US",
+        "masteringStatus": "corpus-gap-review",
+        "masteringDistanceKm": 242.081,
+        "masteredCityName": null,
+        "masteredCountryName": null
+      },
+      "VOGTLAND RADIO": {
+        "_id": "69cca05230dda862a0c89a02",
+        "name": "VOGTLAND RADIO",
+        "city": "",
+        "country": "US",
+        "masteringStatus": "corpus-gap-review",
+        "masteringDistanceKm": 239.883,
+        "masteredCityName": null,
+        "masteredCountryName": null
+      },
+      "Candance studios, Isolatorweg 28, Amster": {
+        "_id": "69cca05630dda862a0c89a21",
+        "name": "Candance studios, Isolatorweg 28, Amsterdam",
+        "city": "",
+        "country": "US",
+        "masteringStatus": "corpus-gap-review",
+        "masteringDistanceKm": 355.442,
+        "masteredCityName": null,
+        "masteredCountryName": null
+      }
+    }
+  },
+  "section9_residualDensity": {
+    "note": "Cross-ref with §6 residual bucket. Tier-1 corpus expansion = cities with highest venue count + lowest current corpus representation.",
+    "regionSummary": [
+      {
+        "_id": "6751f58a5db435dd8005e45d",
+        "regionName": "South",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "cityCount": 26,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6751f58a5db435dd8005e45c",
+        "regionName": "Midwest",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "cityCount": 21,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f612515e69d06f32915d6d",
+        "regionName": "South",
+        "masteredCountryId": "67f612505e69d06f32915d66",
+        "cityCount": 21,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f612515e69d06f32915d6b",
+        "regionName": "Midwest",
+        "masteredCountryId": "67f612505e69d06f32915d66",
+        "cityCount": 20,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6751f58a5db435dd8005e45e",
+        "regionName": "West",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "cityCount": 17,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6751f58a5db435dd8005e45b",
+        "regionName": "Northeast",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "cityCount": 16,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f612515e69d06f32915d71",
+        "regionName": "Northeast",
+        "masteredCountryId": "67f612505e69d06f32915d66",
+        "cityCount": 14,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f612515e69d06f32915d6f",
+        "regionName": "West",
+        "masteredCountryId": "67f612505e69d06f32915d66",
+        "cityCount": 13,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "698a5379fa4266bff71a0202",
+        "regionName": "Europe",
+        "masteredCountryId": null,
+        "cityCount": 7,
+        "hasCountryLink": false
+      },
+      {
+        "_id": "6984c4341360acd655892733",
+        "regionName": "East Asia",
+        "masteredCountryId": "6984c4311360acd655892718",
+        "cityCount": 6,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd655892727",
+        "regionName": "Canada",
+        "masteredCountryId": "6751f57e2e74d97609e7dca1",
+        "cityCount": 5,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892738",
+        "regionName": "Mexico & Central America",
+        "masteredCountryId": "6984c4321360acd65589271f",
+        "cityCount": 4,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4351360acd65589273e",
+        "regionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "cityCount": 4,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd655892728",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6751f57e2e74d97609e7dca8",
+        "cityCount": 3,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd655892729",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6751f57e2e74d97609e7dca7",
+        "cityCount": 3,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892735",
+        "regionName": "East Asia",
+        "masteredCountryId": "6984c4331360acd655892725",
+        "cityCount": 3,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892739",
+        "regionName": "South America",
+        "masteredCountryId": "6751f57e2e74d97609e7dca5",
+        "cityCount": 3,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272a",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6751f57e2e74d97609e7dca6",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272b",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6751f57e2e74d97609e7dcaa",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272c",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6984c4321360acd655892723",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272e",
+        "regionName": "Northern Europe",
+        "masteredCountryId": "6984c4321360acd65589271d",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd655892730",
+        "regionName": "Northern Europe",
+        "masteredCountryId": "6984c4321360acd65589271c",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892731",
+        "regionName": "Eastern Europe",
+        "masteredCountryId": "6984c4321360acd65589271b",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892732",
+        "regionName": "Eastern Europe",
+        "masteredCountryId": "6984c4321360acd655892724",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892734",
+        "regionName": "East Asia",
+        "masteredCountryId": "6984c4321360acd655892719",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892736",
+        "regionName": "East Asia",
+        "masteredCountryId": "6984c4331360acd655892726",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd65589273a",
+        "regionName": "South America",
+        "masteredCountryId": "6751f57e2e74d97609e7dca4",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd65589273c",
+        "regionName": "South America",
+        "masteredCountryId": "6984c4321360acd655892721",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4351360acd65589273d",
+        "regionName": "South America",
+        "masteredCountryId": "6984c4321360acd655892722",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4351360acd65589273f",
+        "regionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca3",
+        "cityCount": 2,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272d",
+        "regionName": "Western Europe",
+        "masteredCountryId": "6751f57e2e74d97609e7dca9",
+        "cityCount": 1,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd655892737",
+        "regionName": "Southeast Asia",
+        "masteredCountryId": "6984c4321360acd65589271a",
+        "cityCount": 1,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4341360acd65589273b",
+        "regionName": "South America",
+        "masteredCountryId": "6984c4321360acd655892720",
+        "cityCount": 1,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f6123c2bbba9c1dd731eb3",
+        "regionName": "Midwest",
+        "masteredCountryId": "67f6123c2bbba9c1dd731eae",
+        "cityCount": 0,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f6123c2bbba9c1dd731eb5",
+        "regionName": "South",
+        "masteredCountryId": "67f6123c2bbba9c1dd731eae",
+        "cityCount": 0,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f6123c2bbba9c1dd731eb7",
+        "regionName": "West",
+        "masteredCountryId": "67f6123c2bbba9c1dd731eae",
+        "cityCount": 0,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "67f6123c2bbba9c1dd731eb9",
+        "regionName": "Northeast",
+        "masteredCountryId": "67f6123c2bbba9c1dd731eae",
+        "cityCount": 0,
+        "hasCountryLink": true
+      },
+      {
+        "_id": "6984c4331360acd65589272f",
+        "regionName": "Northern Europe",
+        "masteredCountryId": "6984c4321360acd65589271e",
+        "cityCount": 0,
+        "hasCountryLink": true
+      }
+    ],
+    "regionsWithoutCountryLink": [
+      {
+        "_id": "698a5379fa4266bff71a0202",
+        "regionName": "Europe",
+        "masteredCountryId": null,
+        "cityCount": 7,
+        "hasCountryLink": false
+      }
+    ],
+    "tier1CorpusExpansionCandidates": [
+      {
+        "_id": {
+          "city": "",
+          "country": "US"
+        },
+        "count": 39,
+        "avgDistanceKm": 472.02210256410257,
+        "statuses": [
+          "country_only_by_automaster",
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Rohnert Park",
+          "country": "US"
+        },
+        "count": 5,
+        "avgDistanceKm": 70.1436,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Wien",
+          "country": "AT"
+        },
+        "count": 4,
+        "avgDistanceKm": 332.572,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Byron Bay",
+          "country": "Australia"
+        },
+        "count": 4,
+        "avgDistanceKm": 142.44825,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Adelaide",
+          "country": "Australia"
+        },
+        "count": 4,
+        "avgDistanceKm": 654.43125,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Southport",
+          "country": "Australia"
+        },
+        "count": 3,
+        "avgDistanceKm": 66.77466666666668,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Santa Barbara",
+          "country": "US"
+        },
+        "count": 3,
+        "avgDistanceKm": 168.302,
+        "statuses": [
+          "corpus-gap-review",
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Hobart",
+          "country": "Australia"
+        },
+        "count": 3,
+        "avgDistanceKm": 598.8886666666666,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Roma",
+          "country": "IT"
+        },
+        "count": 3,
+        "avgDistanceKm": 102.60633333333334,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "North Hobart",
+          "country": "Australia"
+        },
+        "count": 3,
+        "avgDistanceKm": 597.5506666666666,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Adamstown",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 114.7125,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Fort Myers",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 158.9785,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Coconut Grove",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 2662.6825,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Pacific Grove",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 80.057,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Rodi Garganico FG",
+          "country": "IT"
+        },
+        "count": 2,
+        "avgDistanceKm": 280.9315,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "North Adelaide",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 655.9925000000001,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Cairns City",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 1391.078,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Budapest",
+          "country": "Hungary"
+        },
+        "count": 2,
+        "avgDistanceKm": 292.08349999999996,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Maroochydore",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 90.775,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Richmond",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 319.46299999999997,
+        "statuses": [
+          "corpus-gap-review",
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Deerfield Beach",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 62.424499999999995,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Pompano Beach",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 53.2665,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Budapest",
+          "country": "HU"
+        },
+        "count": 2,
+        "avgDistanceKm": 293.52700000000004,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Wollongong",
+          "country": "Australia"
+        },
+        "count": 2,
+        "avgDistanceKm": 68.6425,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Allentown",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 75.366,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Delray Beach",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 78.6045,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Princeton",
+          "country": "US"
+        },
+        "count": 2,
+        "avgDistanceKm": 59.8275,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Forrest",
+          "country": "Australia"
+        },
+        "count": 1,
+        "avgDistanceKm": 249.57,
+        "statuses": [
+          "corpus-gap-review"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Châteldon",
+          "country": "France"
+        },
+        "count": 1,
+        "avgDistanceKm": 104.79,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      },
+      {
+        "_id": {
+          "city": "Reggio nell'Emilia",
+          "country": "Italy"
+        },
+        "count": 1,
+        "avgDistanceKm": 116.256,
+        "statuses": [
+          "country_only_by_automaster"
+        ]
+      }
+    ]
+  }
+}

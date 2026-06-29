@@ -25,7 +25,7 @@ Full sync: pull from Collab, check handoffs, messages, lessons, then local.
 
 ```bash
 # 1. Pull latest
-cd /Users/tobybalsley/MyDocs/Collab && git pull
+git -C /Users/tobybalsley/MyDocs/Collab pull
 
 # 2. Read lessons (fresh)
 cat /Users/tobybalsley/MyDocs/Collab/lessons.md

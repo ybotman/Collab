@@ -1,3 +1,14 @@
+---
+date: 2026-04-14
+persona: herald
+type: handoff
+state: completed
+feature: hub-messaging
+keywords: [health-check, infra-live]
+appid: global
+audience: all
+permanence: transient
+---
 # Phase 1a infra LIVE — 1a.1, 1a.2, 1a.3 shipped
 
 > **From:** Fulton

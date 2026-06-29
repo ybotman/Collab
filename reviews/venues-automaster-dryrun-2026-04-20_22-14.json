@@ -1,0 +1,591 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-116",
+    "mode": "DRY_RUN",
+    "timestamp": "2026-04-20T22:14:16.749Z",
+    "environment": "TangoTiempoTest",
+    "specRef": "CITY-COUNTRY-DATA-DISCIPLINE-REVIEW.md Q3.5",
+    "helperSpecVersion": "1.1.0",
+    "bucketThresholds": {
+      "AUTO_HIGH_max_km": 50,
+      "AUTO_MEDIUM_max_km": 200
+    },
+    "trackAGate": "APPLY blocked until AIDI Track A TEST sweep (Porter || \"US\" strip + 8-row country re-resolve) is confirmed complete"
+  },
+  "totals": {
+    "venuesInDb": 1573,
+    "candidatesWithValidGeo": 232,
+    "candidatesByAppId": {
+      "1": 225,
+      "2": 7
+    },
+    "candidatesIsDiscovered": 14,
+    "candidatesNonDiscovery": 218
+  },
+  "bucketCounts": {
+    "AUTO_HIGH": 1,
+    "AUTO_MEDIUM": 165,
+    "MANUAL": 66,
+    "textConflicts": 197,
+    "errors": 0
+  },
+  "distanceHistogram": {
+    "binSize": "10km",
+    "bins": {
+      "0-10km": 0,
+      "10-20km": 0,
+      "20-30km": 0,
+      "30-40km": 1,
+      "40-50km": 0,
+      "50-60km": 17,
+      "60-70km": 19,
+      "70-80km": 21,
+      "80-90km": 15,
+      "90-100km": 15,
+      "100-110km": 11,
+      "110-120km": 12,
+      "120-130km": 15,
+      "130-140km": 6,
+      "140-150km": 8,
+      "150-160km": 6,
+      "160-170km": 7,
+      "170-180km": 6,
+      "180-190km": 4,
+      "190-200km": 3,
+      ">200km": 66
+    }
+  },
+  "samples": {
+    "AUTO_HIGH": [
+      {
+        "_id": "69ce0d3cbaa1500edc84c4b2",
+        "name": "La Ronda",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Luzern",
+        "countryText": "Switzerland",
+        "distanceKm": 39.646,
+        "nearestCityId": "69e593f6de1c5ef975037150",
+        "nearestCityName": "Zurich",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef975037150",
+          "masteredCityName": "Zurich",
+          "masteringDistanceKm": 39.646,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef975037143",
+          "masteredDivisionName": "Switzerland",
+          "masteredRegionId": "69e593f4de1c5ef975037138",
+          "masteredRegionName": "Central Europe CH",
+          "masteredCountryId": "698a5379fa4266bff71a0200",
+          "masteredCountryName": "Switzerland"
+        }
+      }
+    ],
+    "AUTO_MEDIUM": [
+      {
+        "_id": "69825e70c31ddcab31bbee5a",
+        "name": "Suzanne Paterson Center",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Princeton",
+        "countryText": "US",
+        "distanceKm": 59.548,
+        "nearestCityId": "6751f58a5db435dd8005e472",
+        "nearestCityName": "Newark",
+        "masteringTextConflict": true,
+        "reason": "distance_59.548km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 59.548,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b278ddc751b73917133b",
+        "name": "Casey's Condo",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Baton Rouge",
+        "countryText": "US",
+        "distanceKm": 120.807,
+        "nearestCityId": "6751f58a5db435dd8005e49c",
+        "nearestCityName": "New Orleans",
+        "masteringTextConflict": true,
+        "reason": "distance_120.807km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 120.807,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b739171349",
+        "name": "5585 Reisterstown Rd, North Port, FL 34291",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "North Port",
+        "countryText": "US",
+        "distanceKm": 97.136,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_97.136km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 97.136,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b73917134a",
+        "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Palm Coast",
+        "countryText": "US",
+        "distanceKm": 96.431,
+        "nearestCityId": "6984c4391360acd655892766",
+        "nearestCityName": "Jacksonville",
+        "masteringTextConflict": true,
+        "reason": "distance_96.431km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 96.431,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134c",
+        "name": "6425 Redwood Dr. Rohnert Park",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Rohnert Park",
+        "countryText": "US",
+        "distanceKm": 70.915,
+        "nearestCityId": "6751f58a5db435dd8005e4a8",
+        "nearestCityName": "San Francisco",
+        "masteringTextConflict": true,
+        "reason": "distance_70.915km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 70.915,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134e",
+        "name": "Real World Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Salem",
+        "countryText": "US",
+        "distanceKm": 78.665,
+        "nearestCityId": "6984c43a1360acd65589276c",
+        "nearestCityName": "Asheville",
+        "masteringTextConflict": true,
+        "reason": "distance_78.665km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 78.665,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b281ddc751b73917135f",
+        "name": "680 Cherokee Ln, West Columbia, SC",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "West Columbia",
+        "countryText": "US",
+        "distanceKm": 138.986,
+        "nearestCityId": "6751f58a5db435dd8005e491",
+        "nearestCityName": "Charlotte",
+        "masteringTextConflict": true,
+        "reason": "distance_138.986km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 138.986,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665466",
+        "name": "Emmaus\\/Allentown, PA",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 73.874,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_73.874km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 73.874,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665467",
+        "name": "Fegley's Allentown Brew Works",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 76.858,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_76.858km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 76.858,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c66546a",
+        "name": "12450 Metro Pkwy., Fort Myers, FL, United States, Florida 33966",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Fort Myers",
+        "countryText": "US",
+        "distanceKm": 156.883,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_156.883km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 156.883,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      }
+    ],
+    "MANUAL": [
+      {
+        "_id": "69874efb64e134b9962b6eb0",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Sacramento",
+        "countryText": "SI",
+        "distanceKm": 226.895,
+        "nearestCityId": "69e593f6de1c5ef975037148",
+        "nearestCityName": "Vienna",
+        "masteringTextConflict": true,
+        "reason": "distance_226.895km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 226.895
+        }
+      },
+      {
+        "_id": "698a52298e541be10b64f84a",
+        "name": "Scilla",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Scilla",
+        "countryText": "IT",
+        "distanceKm": 490.763,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_490.763km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 490.763
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c1",
+        "name": "Puglia Rodi Garganico",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rodi Garganico",
+        "countryText": "IT",
+        "distanceKm": 280.366,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_280.366km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 280.366
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c2",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rogaska Slatina",
+        "countryText": "SI",
+        "distanceKm": 226.895,
+        "nearestCityId": "69e593f6de1c5ef975037148",
+        "nearestCityName": "Vienna",
+        "masteringTextConflict": true,
+        "reason": "distance_226.895km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 226.895
+        }
+      },
+      {
+        "_id": "69c7312ad750241c728415e0",
+        "name": "Oslo Konserthus",
+        "appId": "2",
+        "isDiscovered": false,
+        "cityText": "Oslo",
+        "countryText": "Norway",
+        "distanceKm": 255.735,
+        "nearestCityId": "6984c43c1360acd655892784",
+        "nearestCityName": "Gothenburg",
+        "masteringTextConflict": true,
+        "reason": "distance_255.735km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 255.735
+        }
+      },
+      {
+        "_id": "69cca04630dda862a0c899ea",
+        "name": "Scilla",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Scilla",
+        "countryText": "IT",
+        "distanceKm": 490.763,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_490.763km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 490.763
+        }
+      },
+      {
+        "_id": "69cca05430dda862a0c89a13",
+        "name": "Tango En Vie",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 4410.534,
+        "nearestCityId": "6984c43b1360acd65589277e",
+        "nearestCityName": "Lisbon",
+        "masteringTextConflict": false,
+        "reason": "distance_4410.534km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 4410.534
+        }
+      },
+      {
+        "_id": "69cca05730dda862a0c89a26",
+        "name": "Oasis 179",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 349.888,
+        "nearestCityId": "6984c4391360acd655892762",
+        "nearestCityName": "Tucson",
+        "masteringTextConflict": false,
+        "reason": "distance_349.888km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 349.888
+        }
+      },
+      {
+        "_id": "69cca05730dda862a0c89a27",
+        "name": "Heraklion, Crete",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 319.69,
+        "nearestCityId": "69e593f6de1c5ef975037149",
+        "nearestCityName": "Athens",
+        "masteringTextConflict": false,
+        "reason": "distance_319.69km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 319.69
+        }
+      },
+      {
+        "_id": "69cca05730dda862a0c89a29",
+        "name": "Teatro Petruzzelli",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 374.925,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": false,
+        "reason": "distance_374.925km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 374.925
+        }
+      }
+    ]
+  },
+  "textConflictSamples": [
+    {
+      "_id": "69ce0d3cbaa1500edc84c4b2",
+      "name": "La Ronda",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Luzern",
+      "countryText": "Switzerland",
+      "distanceKm": 39.646,
+      "nearestCityId": "69e593f6de1c5ef975037150",
+      "nearestCityName": "Zurich",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f6de1c5ef975037150",
+        "masteredCityName": "Zurich",
+        "masteringDistanceKm": 39.646,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "69e593f5de1c5ef975037143",
+        "masteredDivisionName": "Switzerland",
+        "masteredRegionId": "69e593f4de1c5ef975037138",
+        "masteredRegionName": "Central Europe CH",
+        "masteredCountryId": "698a5379fa4266bff71a0200",
+        "masteredCountryName": "Switzerland"
+      }
+    },
+    {
+      "_id": "69825e70c31ddcab31bbee5a",
+      "name": "Suzanne Paterson Center",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Princeton",
+      "countryText": "US",
+      "distanceKm": 59.548,
+      "nearestCityId": "6751f58a5db435dd8005e472",
+      "nearestCityName": "Newark",
+      "masteringTextConflict": true,
+      "reason": "distance_59.548km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 59.548,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b278ddc751b73917133b",
+      "name": "Casey's Condo",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Baton Rouge",
+      "countryText": "US",
+      "distanceKm": 120.807,
+      "nearestCityId": "6751f58a5db435dd8005e49c",
+      "nearestCityName": "New Orleans",
+      "masteringTextConflict": true,
+      "reason": "distance_120.807km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 120.807,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b739171349",
+      "name": "5585 Reisterstown Rd, North Port, FL 34291",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "North Port",
+      "countryText": "US",
+      "distanceKm": 97.136,
+      "nearestCityId": "6984c4391360acd655892768",
+      "nearestCityName": "Tampa",
+      "masteringTextConflict": true,
+      "reason": "distance_97.136km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 97.136,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b73917134a",
+      "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Palm Coast",
+      "countryText": "US",
+      "distanceKm": 96.431,
+      "nearestCityId": "6984c4391360acd655892766",
+      "nearestCityName": "Jacksonville",
+      "masteringTextConflict": true,
+      "reason": "distance_96.431km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 96.431,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27dddc751b73917134c",
+      "name": "6425 Redwood Dr. Rohnert Park",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Rohnert Park",
+      "countryText": "US",
+      "distanceKm": 70.915,
+      "nearestCityId": "6751f58a5db435dd8005e4a8",
+      "nearestCityName": "San Francisco",
+      "masteringTextConflict": true,
+      "reason": "distance_70.915km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 70.915,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    }
+  ],
+  "applyResults": null
+}

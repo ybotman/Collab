@@ -63,7 +63,7 @@
 2. Report status to user
 
 ### INBOX2 (full sync)
-1. `cd /Users/tobybalsley/MyDocs/Collab && git pull`
+1. `git -C /Users/tobybalsley/MyDocs/Collab pull`
 2. Read latest from `Collab/handoffs/{me}/`
 3. Check `Collab/inbox/{me}/*` for messages
 4. Then do INBOX (local)

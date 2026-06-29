@@ -1,3 +1,14 @@
+---
+date: 2026-04-14
+persona: herald
+type: handoff
+state: completed
+feature: message-hub
+keywords: [bhs-poc, infra-kickoff]
+appid: global
+audience: all
+permanence: transient
+---
 # MessageHub Phase 1a — Kickoff Handoff
 
 > **From:** Herald (MessageHub)

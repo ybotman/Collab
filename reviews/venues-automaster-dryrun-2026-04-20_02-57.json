@@ -1,0 +1,3163 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-116",
+    "mode": "APPLY",
+    "timestamp": "2026-04-20T02:57:21.665Z",
+    "environment": "TangoTiempoTest",
+    "specRef": "CITY-COUNTRY-DATA-DISCIPLINE-REVIEW.md Q3.5",
+    "helperSpecVersion": "1.1.0",
+    "bucketThresholds": {
+      "AUTO_HIGH_max_km": 50,
+      "AUTO_MEDIUM_max_km": 200
+    },
+    "trackAGate": "APPLY blocked until AIDI Track A TEST sweep (Porter || \"US\" strip + 8-row country re-resolve) is confirmed complete"
+  },
+  "totals": {
+    "venuesInDb": 1573,
+    "candidatesWithValidGeo": 306,
+    "candidatesByAppId": {
+      "1": 299,
+      "2": 7
+    },
+    "candidatesIsDiscovered": 14,
+    "candidatesNonDiscovery": 292
+  },
+  "bucketCounts": {
+    "AUTO_HIGH": 54,
+    "AUTO_MEDIUM": 159,
+    "MANUAL": 93,
+    "textConflicts": 247,
+    "errors": 0
+  },
+  "distanceHistogram": {
+    "binSize": "10km",
+    "bins": {
+      "0-10km": 40,
+      "10-20km": 5,
+      "20-30km": 6,
+      "30-40km": 3,
+      "40-50km": 0,
+      "50-60km": 17,
+      "60-70km": 19,
+      "70-80km": 21,
+      "80-90km": 15,
+      "90-100km": 15,
+      "100-110km": 11,
+      "110-120km": 12,
+      "120-130km": 14,
+      "130-140km": 5,
+      "140-150km": 8,
+      "150-160km": 4,
+      "160-170km": 7,
+      "170-180km": 4,
+      "180-190km": 4,
+      "190-200km": 3,
+      ">200km": 93
+    }
+  },
+  "samples": {
+    "AUTO_HIGH": [
+      {
+        "_id": "69cca05630dda862a0c89a21",
+        "name": "Candance studios, Isolatorweg 28, Amsterdam",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 4.564,
+        "nearestCityId": "69e593f6de1c5ef97503714c",
+        "nearestCityName": "Amsterdam",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef97503714c",
+          "masteredCityName": "Amsterdam",
+          "masteringDistanceKm": 4.564,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef97503713f",
+          "masteredDivisionName": "Netherlands",
+          "masteredRegionId": "69e593f4de1c5ef975037134",
+          "masteredRegionName": "Low Countries",
+          "masteredCountryId": "69e593f3de1c5ef97503712c",
+          "masteredCountryName": "Netherlands"
+        }
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a59",
+        "name": "Limhamns Folkets Hus",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 25.492,
+        "nearestCityId": "69e593f6de1c5ef97503714b",
+        "nearestCityName": "Copenhagen",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef97503714b",
+          "masteredCityName": "Copenhagen",
+          "masteringDistanceKm": 25.492,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef97503713e",
+          "masteredDivisionName": "Denmark",
+          "masteredRegionId": "69e593f4de1c5ef975037133",
+          "masteredRegionName": "Scandinavia",
+          "masteredCountryId": "69e593f3de1c5ef97503712b",
+          "masteredCountryName": "Denmark"
+        }
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a5a",
+        "name": "Limhamnsvägen 111F, 213 00 Limhamn, Sweden",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 25.146,
+        "nearestCityId": "69e593f6de1c5ef97503714b",
+        "nearestCityName": "Copenhagen",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef97503714b",
+          "masteredCityName": "Copenhagen",
+          "masteringDistanceKm": 25.146,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef97503713e",
+          "masteredDivisionName": "Denmark",
+          "masteredRegionId": "69e593f4de1c5ef975037133",
+          "masteredRegionName": "Scandinavia",
+          "masteredCountryId": "69e593f3de1c5ef97503712b",
+          "masteredCountryName": "Denmark"
+        }
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a5b",
+        "name": "Torpgatan 21, SE-211 52 Malmö, Sverige",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 28.938,
+        "nearestCityId": "69e593f6de1c5ef97503714b",
+        "nearestCityName": "Copenhagen",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef97503714b",
+          "masteredCityName": "Copenhagen",
+          "masteringDistanceKm": 28.938,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef97503713e",
+          "masteredDivisionName": "Denmark",
+          "masteredRegionId": "69e593f4de1c5ef975037133",
+          "masteredRegionName": "Scandinavia",
+          "masteredCountryId": "69e593f3de1c5ef97503712b",
+          "masteredCountryName": "Denmark"
+        }
+      },
+      {
+        "_id": "69ccad56fd1bee1564621c80",
+        "name": "Ireland",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Bray",
+        "countryText": "IE",
+        "distanceKm": 19.29,
+        "nearestCityId": "69e593f6de1c5ef97503714a",
+        "nearestCityName": "Dublin",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f6de1c5ef97503714a",
+          "masteredCityName": "Dublin",
+          "masteringDistanceKm": 19.29,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "69e593f5de1c5ef97503713d",
+          "masteredDivisionName": "Ireland",
+          "masteredRegionId": "69e593f4de1c5ef975037132",
+          "masteredRegionName": "Northwestern Europe",
+          "masteredCountryId": "69e593f3de1c5ef97503712a",
+          "masteredCountryName": "Ireland"
+        }
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d62",
+        "name": "Queens Head Hotel",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "North Hobart",
+        "countryText": "Australia",
+        "distanceKm": 1.442,
+        "nearestCityId": "69e593f5de1c5ef975037147",
+        "nearestCityName": "Hobart",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f5de1c5ef975037147",
+          "masteredCityName": "Hobart",
+          "masteringDistanceKm": 1.442,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6984c4391360acd65589275f",
+          "masteredDivisionName": "Eastern Australia",
+          "masteredRegionId": "6984c4351360acd65589273e",
+          "masteredRegionName": "Oceania",
+          "masteredCountryId": "6751f57e2e74d97609e7dca2",
+          "masteredCountryName": "Australia"
+        }
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d64",
+        "name": "Glenunga Hub",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Glenunga",
+        "countryText": "Australia",
+        "distanceKm": 3.748,
+        "nearestCityId": "69e593f5de1c5ef975037146",
+        "nearestCityName": "Adelaide",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f5de1c5ef975037146",
+          "masteredCityName": "Adelaide",
+          "masteringDistanceKm": 3.748,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6984c4391360acd65589275f",
+          "masteredDivisionName": "Eastern Australia",
+          "masteredRegionId": "6984c4351360acd65589273e",
+          "masteredRegionName": "Oceania",
+          "masteredCountryId": "6751f57e2e74d97609e7dca2",
+          "masteredCountryName": "Australia"
+        }
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d66",
+        "name": "Cooinda Community Centre",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Sturt",
+        "countryText": "Australia",
+        "distanceKm": 11.001,
+        "nearestCityId": "69e593f5de1c5ef975037146",
+        "nearestCityName": "Adelaide",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f5de1c5ef975037146",
+          "masteredCityName": "Adelaide",
+          "masteringDistanceKm": 11.001,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6984c4391360acd65589275f",
+          "masteredDivisionName": "Eastern Australia",
+          "masteredRegionId": "6984c4351360acd65589273e",
+          "masteredRegionName": "Oceania",
+          "masteredCountryId": "6751f57e2e74d97609e7dca2",
+          "masteredCountryName": "Australia"
+        }
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d67",
+        "name": "North Adelaide Immanuel Lutheran Church",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "North Adelaide",
+        "countryText": "Australia",
+        "distanceKm": 2.361,
+        "nearestCityId": "69e593f5de1c5ef975037146",
+        "nearestCityName": "Adelaide",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f5de1c5ef975037146",
+          "masteredCityName": "Adelaide",
+          "masteringDistanceKm": 2.361,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6984c4391360acd65589275f",
+          "masteredDivisionName": "Eastern Australia",
+          "masteredRegionId": "6984c4351360acd65589273e",
+          "masteredRegionName": "Oceania",
+          "masteredCountryId": "6751f57e2e74d97609e7dca2",
+          "masteredCountryName": "Australia"
+        }
+      },
+      {
+        "_id": "69cdc1a8224a58a12d878d72",
+        "name": "Walkerville RSL &amp; Community Centre",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Walkerville",
+        "countryText": "Australia",
+        "distanceKm": 3.87,
+        "nearestCityId": "69e593f5de1c5ef975037146",
+        "nearestCityName": "Adelaide",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "69e593f5de1c5ef975037146",
+          "masteredCityName": "Adelaide",
+          "masteringDistanceKm": 3.87,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6984c4391360acd65589275f",
+          "masteredDivisionName": "Eastern Australia",
+          "masteredRegionId": "6984c4351360acd65589273e",
+          "masteredRegionName": "Oceania",
+          "masteredCountryId": "6751f57e2e74d97609e7dca2",
+          "masteredCountryName": "Australia"
+        }
+      }
+    ],
+    "AUTO_MEDIUM": [
+      {
+        "_id": "69825e70c31ddcab31bbee5a",
+        "name": "Suzanne Paterson Center",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Princeton",
+        "countryText": "US",
+        "distanceKm": 59.548,
+        "nearestCityId": "6751f58a5db435dd8005e472",
+        "nearestCityName": "Newark",
+        "masteringTextConflict": true,
+        "reason": "distance_59.548km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 59.548,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b278ddc751b73917133b",
+        "name": "Casey's Condo",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Baton Rouge",
+        "countryText": "US",
+        "distanceKm": 120.807,
+        "nearestCityId": "6751f58a5db435dd8005e49c",
+        "nearestCityName": "New Orleans",
+        "masteringTextConflict": true,
+        "reason": "distance_120.807km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 120.807,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b739171349",
+        "name": "5585 Reisterstown Rd, North Port, FL 34291",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "North Port",
+        "countryText": "US",
+        "distanceKm": 97.136,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_97.136km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 97.136,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b73917134a",
+        "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Palm Coast",
+        "countryText": "US",
+        "distanceKm": 96.431,
+        "nearestCityId": "6984c4391360acd655892766",
+        "nearestCityName": "Jacksonville",
+        "masteringTextConflict": true,
+        "reason": "distance_96.431km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 96.431,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134c",
+        "name": "6425 Redwood Dr. Rohnert Park",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Rohnert Park",
+        "countryText": "US",
+        "distanceKm": 70.915,
+        "nearestCityId": "6751f58a5db435dd8005e4a8",
+        "nearestCityName": "San Francisco",
+        "masteringTextConflict": true,
+        "reason": "distance_70.915km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 70.915,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134e",
+        "name": "Real World Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Salem",
+        "countryText": "US",
+        "distanceKm": 78.665,
+        "nearestCityId": "6984c43a1360acd65589276c",
+        "nearestCityName": "Asheville",
+        "masteringTextConflict": true,
+        "reason": "distance_78.665km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 78.665,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b281ddc751b73917135f",
+        "name": "680 Cherokee Ln, West Columbia, SC",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "West Columbia",
+        "countryText": "US",
+        "distanceKm": 138.986,
+        "nearestCityId": "6751f58a5db435dd8005e491",
+        "nearestCityName": "Charlotte",
+        "masteringTextConflict": true,
+        "reason": "distance_138.986km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 138.986,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665466",
+        "name": "Emmaus\\/Allentown, PA",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 73.874,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_73.874km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 73.874,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665467",
+        "name": "Fegley's Allentown Brew Works",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 76.858,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_76.858km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 76.858,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c66546a",
+        "name": "12450 Metro Pkwy., Fort Myers, FL, United States, Florida 33966",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Fort Myers",
+        "countryText": "US",
+        "distanceKm": 156.883,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_156.883km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 156.883,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      }
+    ],
+    "MANUAL": [
+      {
+        "_id": "69874efb64e134b9962b6eb0",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Sacramento",
+        "countryText": "SI",
+        "distanceKm": 226.895,
+        "nearestCityId": "69e593f6de1c5ef975037148",
+        "nearestCityName": "Vienna",
+        "masteringTextConflict": true,
+        "reason": "distance_226.895km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 226.895
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c1",
+        "name": "Puglia Rodi Garganico",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rodi Garganico",
+        "countryText": "IT",
+        "distanceKm": 280.366,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_280.366km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 280.366
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c2",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rogaska Slatina",
+        "countryText": "SI",
+        "distanceKm": 226.895,
+        "nearestCityId": "69e593f6de1c5ef975037148",
+        "nearestCityName": "Vienna",
+        "masteringTextConflict": true,
+        "reason": "distance_226.895km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 226.895
+        }
+      },
+      {
+        "_id": "69c7312ad750241c728415e0",
+        "name": "Oslo Konserthus",
+        "appId": "2",
+        "isDiscovered": false,
+        "cityText": "Oslo",
+        "countryText": "Norway",
+        "distanceKm": 255.735,
+        "nearestCityId": "6984c43c1360acd655892784",
+        "nearestCityName": "Gothenburg",
+        "masteringTextConflict": true,
+        "reason": "distance_255.735km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 255.735
+        }
+      },
+      {
+        "_id": "69cca04630dda862a0c899ea",
+        "name": "Scilla",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Scilla",
+        "countryText": "IT",
+        "distanceKm": 490.763,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_490.763km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 490.763
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c899ff",
+        "name": "Altstadt (Plauen)",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 242.081,
+        "nearestCityId": "6984c43b1360acd655892779",
+        "nearestCityName": "Berlin",
+        "masteringTextConflict": false,
+        "reason": "distance_242.081km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 242.081
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a02",
+        "name": "VOGTLAND RADIO",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 239.883,
+        "nearestCityId": "6984c43b1360acd655892779",
+        "nearestCityName": "Berlin",
+        "masteringTextConflict": false,
+        "reason": "distance_239.883km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 239.883
+        }
+      },
+      {
+        "_id": "69cca05430dda862a0c89a13",
+        "name": "Tango En Vie",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 4410.534,
+        "nearestCityId": "6984c43b1360acd65589277e",
+        "nearestCityName": "Lisbon",
+        "masteringTextConflict": false,
+        "reason": "distance_4410.534km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 4410.534
+        }
+      },
+      {
+        "_id": "69cca05730dda862a0c89a26",
+        "name": "Oasis 179",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 349.888,
+        "nearestCityId": "6984c4391360acd655892762",
+        "nearestCityName": "Tucson",
+        "masteringTextConflict": false,
+        "reason": "distance_349.888km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 349.888
+        }
+      },
+      {
+        "_id": "69cca05730dda862a0c89a27",
+        "name": "Heraklion, Crete",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 319.69,
+        "nearestCityId": "69e593f6de1c5ef975037149",
+        "nearestCityName": "Athens",
+        "masteringTextConflict": false,
+        "reason": "distance_319.69km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 319.69
+        }
+      }
+    ]
+  },
+  "textConflictSamples": [
+    {
+      "_id": "69ccad56fd1bee1564621c80",
+      "name": "Ireland",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Bray",
+      "countryText": "IE",
+      "distanceKm": 19.29,
+      "nearestCityId": "69e593f6de1c5ef97503714a",
+      "nearestCityName": "Dublin",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f6de1c5ef97503714a",
+        "masteredCityName": "Dublin",
+        "masteringDistanceKm": 19.29,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "69e593f5de1c5ef97503713d",
+        "masteredDivisionName": "Ireland",
+        "masteredRegionId": "69e593f4de1c5ef975037132",
+        "masteredRegionName": "Northwestern Europe",
+        "masteredCountryId": "69e593f3de1c5ef97503712a",
+        "masteredCountryName": "Ireland"
+      }
+    },
+    {
+      "_id": "69cdc1a7224a58a12d878d64",
+      "name": "Glenunga Hub",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Glenunga",
+      "countryText": "Australia",
+      "distanceKm": 3.748,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 3.748,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1a7224a58a12d878d66",
+      "name": "Cooinda Community Centre",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Sturt",
+      "countryText": "Australia",
+      "distanceKm": 11.001,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 11.001,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1a8224a58a12d878d72",
+      "name": "Walkerville RSL &amp; Community Centre",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Walkerville",
+      "countryText": "Australia",
+      "distanceKm": 3.87,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 3.87,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1aa224a58a12d878d87",
+      "name": "Unley Community Centre",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Unley",
+      "countryText": "Australia",
+      "distanceKm": 2.432,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 2.432,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1aa224a58a12d878d89",
+      "name": "Palais Theatre Franklin Tasmania",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Franklin",
+      "countryText": "Australia",
+      "distanceKm": 34.562,
+      "nearestCityId": "69e593f5de1c5ef975037147",
+      "nearestCityName": "Hobart",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037147",
+        "masteredCityName": "Hobart",
+        "masteringDistanceKm": 34.562,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1aa224a58a12d878d8b",
+      "name": "Kingston Beach Sailing Club",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Kingston Beach",
+      "countryText": "Australia",
+      "distanceKm": 11.407,
+      "nearestCityId": "69e593f5de1c5ef975037147",
+      "nearestCityName": "Hobart",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037147",
+        "masteredCityName": "Hobart",
+        "masteringDistanceKm": 11.407,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1ab224a58a12d878d8e",
+      "name": "Colonel Light Gardens RSL",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Colonel Light Gardens",
+      "countryText": "Australia",
+      "distanceKm": 6.417,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 6.417,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1ae224a58a12d878dba",
+      "name": "Dance Studio in Collinswood",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Collinswood",
+      "countryText": "Australia",
+      "distanceKm": 4.438,
+      "nearestCityId": "69e593f5de1c5ef975037146",
+      "nearestCityName": "Adelaide",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037146",
+        "masteredCityName": "Adelaide",
+        "masteringDistanceKm": 4.438,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69cdc1af224a58a12d878dc6",
+      "name": "Brewlab Craft Beer Cafe (Upstairs)",
+      "appId": "1",
+      "isDiscovered": false,
+      "cityText": "Derwent Park",
+      "countryText": "Australia",
+      "distanceKm": 5.783,
+      "nearestCityId": "69e593f5de1c5ef975037147",
+      "nearestCityName": "Hobart",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "69e593f5de1c5ef975037147",
+        "masteredCityName": "Hobart",
+        "masteringDistanceKm": 5.783,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6984c4391360acd65589275f",
+        "masteredDivisionName": "Eastern Australia",
+        "masteredRegionId": "6984c4351360acd65589273e",
+        "masteredRegionName": "Oceania",
+        "masteredCountryId": "6751f57e2e74d97609e7dca2",
+        "masteredCountryName": "Australia"
+      }
+    },
+    {
+      "_id": "69825e70c31ddcab31bbee5a",
+      "name": "Suzanne Paterson Center",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Princeton",
+      "countryText": "US",
+      "distanceKm": 59.548,
+      "nearestCityId": "6751f58a5db435dd8005e472",
+      "nearestCityName": "Newark",
+      "masteringTextConflict": true,
+      "reason": "distance_59.548km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 59.548,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b278ddc751b73917133b",
+      "name": "Casey's Condo",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Baton Rouge",
+      "countryText": "US",
+      "distanceKm": 120.807,
+      "nearestCityId": "6751f58a5db435dd8005e49c",
+      "nearestCityName": "New Orleans",
+      "masteringTextConflict": true,
+      "reason": "distance_120.807km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 120.807,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b739171349",
+      "name": "5585 Reisterstown Rd, North Port, FL 34291",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "North Port",
+      "countryText": "US",
+      "distanceKm": 97.136,
+      "nearestCityId": "6984c4391360acd655892768",
+      "nearestCityName": "Tampa",
+      "masteringTextConflict": true,
+      "reason": "distance_97.136km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 97.136,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b73917134a",
+      "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Palm Coast",
+      "countryText": "US",
+      "distanceKm": 96.431,
+      "nearestCityId": "6984c4391360acd655892766",
+      "nearestCityName": "Jacksonville",
+      "masteringTextConflict": true,
+      "reason": "distance_96.431km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 96.431,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27dddc751b73917134c",
+      "name": "6425 Redwood Dr. Rohnert Park",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Rohnert Park",
+      "countryText": "US",
+      "distanceKm": 70.915,
+      "nearestCityId": "6751f58a5db435dd8005e4a8",
+      "nearestCityName": "San Francisco",
+      "masteringTextConflict": true,
+      "reason": "distance_70.915km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 70.915,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    }
+  ],
+  "applyResults": {
+    "counts": {
+      "AUTO_HIGH": 53,
+      "AUTO_MEDIUM": 12,
+      "MANUAL": 93,
+      "skipped_already_mastered": 148,
+      "errors": 0
+    },
+    "logEntryCount": 158,
+    "log": [
+      {
+        "_id": "69cca05630dda862a0c89a21",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 4.564,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a59",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 25.492,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a5a",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 25.146,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05c30dda862a0c89a5b",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 28.938,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ccad56fd1bee1564621c80",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 19.29,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d62",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.442,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d64",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.748,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d66",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 11.001,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a7224a58a12d878d67",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.361,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a8224a58a12d878d72",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.87,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d87",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.432,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d88",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.241,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d89",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 34.562,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d8b",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 11.407,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d8c",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.913,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1aa224a58a12d878d8d",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.908,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ab224a58a12d878d8e",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 6.417,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ac224a58a12d878d9f",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.27,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ae224a58a12d878dba",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 4.438,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1af224a58a12d878dc6",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 5.783,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1af224a58a12d878dc8",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 4.092,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b2224a58a12d878de3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 7.985,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b2224a58a12d878de4",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.891,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df1",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 18.65,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df2",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.33,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.407,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df4",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.083,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df6",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 28.506,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b3224a58a12d878df7",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.641,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b6224a58a12d878e14",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 19.274,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b6224a58a12d878e15",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.804,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b6224a58a12d878e16",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.576,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e1d",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.467,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e1e",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.553,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e22",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.575,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e23",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 9.292,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e25",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.183,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcf21616c50bfc813a3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.583,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4ae",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 38.107,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4dd",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 28.485,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4de",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.535,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4e0",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.784,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4e5",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 25.358,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4ea",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.215,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d42baa1500edc84c4f2",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.103,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d3410772f1452d6a45dd32",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.186,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d402beed10e4ff8936d269",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.108,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d402beed10e4ff8936d26e",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.071,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b6e",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.066,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b6f",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.684,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b70",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.249,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3acfeec8e7779c45b76",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.596,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3acfeec8e7779c45b77",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.431,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca03d24e911e7d0a7df77",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 120.539,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a2d",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 122.241,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05e30dda862a0c89a67",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 167.225,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4bb",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 122.474,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4bf",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 110.467,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4d6",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 192.127,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4d9",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 84.977,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4e4",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 191.17,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4ed",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 93.316,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d42baa1500edc84c4ef",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 88.331,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b72",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 155.015,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3adfeec8e7779c45b88",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 94.124,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69874efb64e134b9962b6eb0",
+        "bucket": "MANUAL",
+        "distanceKm": 226.895,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c1",
+        "bucket": "MANUAL",
+        "distanceKm": 280.366,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c2",
+        "bucket": "MANUAL",
+        "distanceKm": 226.895,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e0",
+        "bucket": "MANUAL",
+        "distanceKm": 255.735,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca04630dda862a0c899ea",
+        "bucket": "MANUAL",
+        "distanceKm": 490.763,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05230dda862a0c899ff",
+        "bucket": "MANUAL",
+        "distanceKm": 242.081,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05230dda862a0c89a02",
+        "bucket": "MANUAL",
+        "distanceKm": 239.883,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05430dda862a0c89a13",
+        "bucket": "MANUAL",
+        "distanceKm": 4410.534,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a26",
+        "bucket": "MANUAL",
+        "distanceKm": 349.888,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a27",
+        "bucket": "MANUAL",
+        "distanceKm": 319.69,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a29",
+        "bucket": "MANUAL",
+        "distanceKm": 374.925,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a2c",
+        "bucket": "MANUAL",
+        "distanceKm": 272.853,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05730dda862a0c89a2f",
+        "bucket": "MANUAL",
+        "distanceKm": 359.028,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05830dda862a0c89a36",
+        "bucket": "MANUAL",
+        "distanceKm": 222.887,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05930dda862a0c89a3f",
+        "bucket": "MANUAL",
+        "distanceKm": 238.955,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05b30dda862a0c89a52",
+        "bucket": "MANUAL",
+        "distanceKm": 301.882,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05d30dda862a0c89a65",
+        "bucket": "MANUAL",
+        "distanceKm": 6072.773,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ccad57fd1bee1564621c87",
+        "bucket": "MANUAL",
+        "distanceKm": 1428.174,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ccad57fd1bee1564621c88",
+        "bucket": "MANUAL",
+        "distanceKm": 470.125,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a8224a58a12d878d6d",
+        "bucket": "MANUAL",
+        "distanceKm": 303.888,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1a9224a58a12d878d7f",
+        "bucket": "MANUAL",
+        "distanceKm": 246.395,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ab224a58a12d878d94",
+        "bucket": "MANUAL",
+        "distanceKm": 2623.402,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ab224a58a12d878d99",
+        "bucket": "MANUAL",
+        "distanceKm": 248.577,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ac224a58a12d878d9a",
+        "bucket": "MANUAL",
+        "distanceKm": 244.187,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ac224a58a12d878d9b",
+        "bucket": "MANUAL",
+        "distanceKm": 248.551,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ac224a58a12d878da4",
+        "bucket": "MANUAL",
+        "distanceKm": 317.668,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ae224a58a12d878db2",
+        "bucket": "MANUAL",
+        "distanceKm": 249.482,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1ae224a58a12d878db3",
+        "bucket": "MANUAL",
+        "distanceKm": 247.57,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1af224a58a12d878dc1",
+        "bucket": "MANUAL",
+        "distanceKm": 249.57,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dcb",
+        "bucket": "MANUAL",
+        "distanceKm": 254.796,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dd0",
+        "bucket": "MANUAL",
+        "distanceKm": 1390.776,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dd1",
+        "bucket": "MANUAL",
+        "distanceKm": 1394.155,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dd2",
+        "bucket": "MANUAL",
+        "distanceKm": 1391.38,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dd4",
+        "bucket": "MANUAL",
+        "distanceKm": 2622.684,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b0224a58a12d878dd5",
+        "bucket": "MANUAL",
+        "distanceKm": 2625.804,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b2224a58a12d878de5",
+        "bucket": "MANUAL",
+        "distanceKm": 247.305,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b4224a58a12d878dfb",
+        "bucket": "MANUAL",
+        "distanceKm": 235.365,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b4224a58a12d878e00",
+        "bucket": "MANUAL",
+        "distanceKm": 2620.687,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b4224a58a12d878e01",
+        "bucket": "MANUAL",
+        "distanceKm": 2631.924,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b5224a58a12d878e10",
+        "bucket": "MANUAL",
+        "distanceKm": 1397.185,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b6224a58a12d878e11",
+        "bucket": "MANUAL",
+        "distanceKm": 312.228,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b6224a58a12d878e12",
+        "bucket": "MANUAL",
+        "distanceKm": 2627.663,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdc1b7224a58a12d878e1f",
+        "bucket": "MANUAL",
+        "distanceKm": 2626.815,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcc21616c50bfc81387",
+        "bucket": "MANUAL",
+        "distanceKm": 256.918,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcd21616c50bfc81390",
+        "bucket": "MANUAL",
+        "distanceKm": 228.401,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3bbaa1500edc84c4a2",
+        "bucket": "MANUAL",
+        "distanceKm": 417.339,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3bbaa1500edc84c4a3",
+        "bucket": "MANUAL",
+        "distanceKm": 712.161,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4a8",
+        "bucket": "MANUAL",
+        "distanceKm": 357.761,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4a9",
+        "bucket": "MANUAL",
+        "distanceKm": 346.24,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4ab",
+        "bucket": "MANUAL",
+        "distanceKm": 557.505,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4ac",
+        "bucket": "MANUAL",
+        "distanceKm": 462.923,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3cbaa1500edc84c4af",
+        "bucket": "MANUAL",
+        "distanceKm": 215.985,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4b5",
+        "bucket": "MANUAL",
+        "distanceKm": 288.311,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4b6",
+        "bucket": "MANUAL",
+        "distanceKm": 699.794,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4b7",
+        "bucket": "MANUAL",
+        "distanceKm": 1313.991,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4b9",
+        "bucket": "MANUAL",
+        "distanceKm": 2904.318,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4ba",
+        "bucket": "MANUAL",
+        "distanceKm": 342.773,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4bc",
+        "bucket": "MANUAL",
+        "distanceKm": 426.327,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3dbaa1500edc84c4bd",
+        "bucket": "MANUAL",
+        "distanceKm": 292.952,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c1",
+        "bucket": "MANUAL",
+        "distanceKm": 251.651,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c2",
+        "bucket": "MANUAL",
+        "distanceKm": 361.56,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c3",
+        "bucket": "MANUAL",
+        "distanceKm": 307.29,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c4",
+        "bucket": "MANUAL",
+        "distanceKm": 202.721,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c5",
+        "bucket": "MANUAL",
+        "distanceKm": 204.766,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c7",
+        "bucket": "MANUAL",
+        "distanceKm": 595.806,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c8",
+        "bucket": "MANUAL",
+        "distanceKm": 298.269,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3ebaa1500edc84c4c9",
+        "bucket": "MANUAL",
+        "distanceKm": 261.705,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3fbaa1500edc84c4cc",
+        "bucket": "MANUAL",
+        "distanceKm": 383.305,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3fbaa1500edc84c4cf",
+        "bucket": "MANUAL",
+        "distanceKm": 943.594,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3fbaa1500edc84c4d0",
+        "bucket": "MANUAL",
+        "distanceKm": 946.966,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3fbaa1500edc84c4d3",
+        "bucket": "MANUAL",
+        "distanceKm": 340.075,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3fbaa1500edc84c4d4",
+        "bucket": "MANUAL",
+        "distanceKm": 214.397,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4d7",
+        "bucket": "MANUAL",
+        "distanceKm": 338.902,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4dc",
+        "bucket": "MANUAL",
+        "distanceKm": 393.363,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4e7",
+        "bucket": "MANUAL",
+        "distanceKm": 324.283,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d41baa1500edc84c4e9",
+        "bucket": "MANUAL",
+        "distanceKm": 225.591,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d42baa1500edc84c4f3",
+        "bucket": "MANUAL",
+        "distanceKm": 279.502,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce12cd5b400edc0c7692ee",
+        "bucket": "MANUAL",
+        "distanceKm": 225.391,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d333bba3e2f9611b569597",
+        "bucket": "MANUAL",
+        "distanceKm": 281.156,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d339a7a6014f32da1fed7a",
+        "bucket": "MANUAL",
+        "distanceKm": 287.092,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d3410772f1452d6a45dd2c",
+        "bucket": "MANUAL",
+        "distanceKm": 294.978,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d360852d91b1a65da01cbd",
+        "bucket": "MANUAL",
+        "distanceKm": 1661.625,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d360852d91b1a65da01cbe",
+        "bucket": "MANUAL",
+        "distanceKm": 1665.403,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d360862d91b1a65da01cbf",
+        "bucket": "MANUAL",
+        "distanceKm": 1667.642,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d3bbef762989fb8b397317",
+        "bucket": "MANUAL",
+        "distanceKm": 361.154,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d3bbef762989fb8b397319",
+        "bucket": "MANUAL",
+        "distanceKm": 327.656,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d402beed10e4ff8936d26c",
+        "bucket": "MANUAL",
+        "distanceKm": 241.686,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d402beed10e4ff8936d271",
+        "bucket": "MANUAL",
+        "distanceKm": 222.435,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3a9feec8e7779c45b5d",
+        "bucket": "MANUAL",
+        "distanceKm": 280.707,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3a9feec8e7779c45b60",
+        "bucket": "MANUAL",
+        "distanceKm": 499.961,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3aafeec8e7779c45b66",
+        "bucket": "MANUAL",
+        "distanceKm": 222.344,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3adfeec8e7779c45b81",
+        "bucket": "MANUAL",
+        "distanceKm": 703.934,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3adfeec8e7779c45b8b",
+        "bucket": "MANUAL",
+        "distanceKm": 217.45,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      }
+    ]
+  }
+}

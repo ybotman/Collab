@@ -1,3 +1,14 @@
+---
+date: 2026-04-18
+persona: fulton
+type: handoff
+state: completed
+feature: beginner-mode
+keywords: [classification, spec-v3]
+appid: 1
+audience: all
+permanence: transient
+---
 # Handover: Beginner Class Classification — Fulton → Quinn
 
 **Date:** 2026-04-18

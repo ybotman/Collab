@@ -2,8 +2,39 @@
 
 **Hand-off recipients:** AIDI · Harvey · Fulton · Porter
 **Date:** 2026-04-17 (rev 2026-04-18 — v3: Toby rule-curation pass)
-**Status:** Draft v3 — canonical four-consumer hand-off doc; build deferred pending sign-off
-**Source ticket:** CALBEAF-109 (event classification fields)
+**Status:** Draft v3 LOCKED (rules); consumption architecture superseded — see addendum
+**Source ticket:** CALBEAF-109 (fields scaffolded only); classifier implementation now under new JIRA TBD
+
+---
+
+## Addendum (2026-04-18) — Architecture superseded by Option D
+
+The v3 classification RULES below remain authoritative and unchanged. The CONSUMPTION architecture (how Harvey/Booker/Porter/BE-AF invoke these rules) was revised on 2026-04-18 after a team re-vote.
+
+**Locked architecture:** Option D — BE-AF `POST /events/bulk-enrich` endpoint is the single authoritative classifier for `forBeginners` + `beginnerFriendly`. Harvey and Booker do NOT classify these flags at intake; they pass raw title/description to Porter, who batches to BE-AF's bulk-enrich endpoint, which returns enriched events for Porter to bulk-insert.
+
+**Intake-vs-BE-AF split (locked):**
+- **Local at intake (Harvey/Booker SQLite):** category classification (`classifyCanonical` — drives skip_class_only, skipped_non_target filters), field parsing (venue name, country from feed config), geocoding cache. SQLite is a query surface for intake observability — these stay local.
+- **BE-AF authoritative (publication-facing):** `forBeginners`, `beginnerFriendly`, `travelWorthy`, venue matching to Mongo venue_id, country resolution when intake left null, all future DQ rules.
+
+**Fixture** `Collab/fixtures/beginner-class-gold-set.json` now validates BOTH sides: Harvey's local `classifyCanonical` AND BE-AF's bulk-enrich classifier. CI on either repo catches drift.
+
+**Full decision record + rationale:** `Collab/architecture/enrichment-architecture-decision-2026-04-18.md` (5/5 team vote: Fulton, Harvey, Porter, Booker, AIDI).
+
+**What this changes in the sections below:**
+- Stage 0–5 rules → unchanged in substance, implemented inside BE-AF's `runDataQualityPipeline`. Two body-vs-fixture discrepancies corrected below.
+- §"Implementation plan (Fulton — calendar-be-af side)" → now expanded to include bulk-enrich endpoint, Tier-2 periodic checker (v1 ship-gate), partial-failure semantics, dry-run backfill, schema `enrichmentStatus` field
+- §"Recommended next steps" → obsolete; superseded by the decision-record doc
+
+### Body-vs-fixture corrections (discovered in Fulton Phase 1A, 2026-04-18)
+
+Fixture is the contract; code matches fixture; spec body below is stale on these two points:
+
+1. **Stage evaluation order — positive fires BEFORE friendly-only (not after).** Body §0 reads: negative → friendly-only → positive → desc. Correct order: **negative → positive → friendly-only → desc**. Rationale: fixture row id 9 ("Tango Argentino Beginner (Open Level)") expects `forBeginners=true`. If friendly-only fires first on "Open Level," it locks `forBeginners=false` before "Beginner" can win. Reversing preserves the intuitive reading — explicit positive beats mixed-level qualifier.
+
+2. **HTML entity normalization is classifier-side, not caller-side.** Body implies caller pre-processes. Correct: classifier's `normalizeText` decodes common entities (`&#39;`, `&apos;`, `&quot;`, `&amp;`, `&nbsp;`, `&lt;`, `&gt;`) before regex matching. Fixture rows 54 and 55 ("Beginner&#39;s Mind") include raw encoded input. Tighter classifier contract: callers pass raw title + description, classifier handles artifacts.
+
+Spec body §0 and §2 will be revised in a future pass; for now, fixture + `enrichment.js` are authoritative.
 
 ---
 

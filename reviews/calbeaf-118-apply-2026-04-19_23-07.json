@@ -1,0 +1,572 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-118",
+    "mode": "APPLY",
+    "timestamp": "2026-04-19T23:07:40.563Z",
+    "environment": "TangoTiempoTest",
+    "specRef": "MASTERED-DIMENSIONAL-DATA-SCAN-2026-04-19.md §10 A1 option d",
+    "quinnRatified": "2026-04-19T22:45Z"
+  },
+  "canonicalPicks": [
+    {
+      "divisionName": "Italy",
+      "divisionId": "6984c4371360acd65589274a",
+      "countryId": "6751f57e2e74d97609e7dca9",
+      "countryName": "Italy"
+    },
+    {
+      "divisionName": "Germany",
+      "divisionId": "6984c4371360acd655892747",
+      "countryId": "6751f57e2e74d97609e7dca6",
+      "countryName": "Germany"
+    },
+    {
+      "divisionName": "Finland",
+      "divisionId": "6984c4371360acd65589274c",
+      "countryId": "6984c4321360acd65589271e",
+      "countryName": "Finland"
+    }
+  ],
+  "alreadyWired": [
+    {
+      "divisionName": "Norway",
+      "divisionId": "698a5379fa4266bff71a0204",
+      "countryId": "698a5379fa4266bff71a01ff",
+      "countryName": "Norway"
+    },
+    {
+      "divisionName": "Switzerland",
+      "divisionId": "698a5379fa4266bff71a0205",
+      "countryId": "698a5379fa4266bff71a0200",
+      "countryName": "Switzerland"
+    },
+    {
+      "divisionName": "Hungary",
+      "divisionId": "698a5379fa4266bff71a0206",
+      "countryId": "698a5379fa4266bff71a0201",
+      "countryName": "Hungary"
+    }
+  ],
+  "canonicalVerification": [
+    {
+      "divisionName": "Italy",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    },
+    {
+      "divisionName": "Germany",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    },
+    {
+      "divisionName": "Finland",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    }
+  ],
+  "cityResolutions": [
+    {
+      "cityName": "Berlin",
+      "expectedCountry": "Germany",
+      "chainFromCity_country": "Germany",
+      "chainMatch": true,
+      "resolveMasteredCity_country": "Germany",
+      "resolveMasteredCity_bucket": "AUTO_HIGH",
+      "resolveMasteredCity_distanceKm": 0,
+      "resolveMasteredCity_note": null
+    },
+    {
+      "cityName": "Rome",
+      "expectedCountry": "Italy",
+      "chainFromCity_country": "Italy",
+      "chainMatch": true,
+      "resolveMasteredCity_country": "Italy",
+      "resolveMasteredCity_bucket": "AUTO_HIGH",
+      "resolveMasteredCity_distanceKm": 0,
+      "resolveMasteredCity_note": null
+    },
+    {
+      "cityName": "Milan",
+      "expectedCountry": "Italy",
+      "chainFromCity_country": "Italy",
+      "chainMatch": true,
+      "resolveMasteredCity_country": "Italy",
+      "resolveMasteredCity_bucket": "AUTO_HIGH",
+      "resolveMasteredCity_distanceKm": 0,
+      "resolveMasteredCity_note": null
+    },
+    {
+      "cityName": "Helsinki",
+      "expectedCountry": "Finland",
+      "chainFromCity_country": "Finland",
+      "chainMatch": true,
+      "resolveMasteredCity_country": "Finland",
+      "resolveMasteredCity_bucket": "AUTO_HIGH",
+      "resolveMasteredCity_distanceKm": 0,
+      "resolveMasteredCity_note": null
+    },
+    {
+      "cityName": "Oslo",
+      "expectedCountry": "Norway",
+      "chainFromCity_country": "Norway",
+      "chainMatch": true,
+      "resolveMasteredCity_country": null,
+      "resolveMasteredCity_bucket": null,
+      "resolveMasteredCity_distanceKm": null,
+      "resolveMasteredCity_note": "city.location missing (A4 scope — broken masteredcities doc)"
+    },
+    {
+      "cityName": "Basel",
+      "expectedCountry": "Switzerland",
+      "chainFromCity_country": "Switzerland",
+      "chainMatch": true,
+      "resolveMasteredCity_country": null,
+      "resolveMasteredCity_bucket": null,
+      "resolveMasteredCity_distanceKm": null,
+      "resolveMasteredCity_note": "city.location missing (A4 scope — broken masteredcities doc)"
+    },
+    {
+      "cityName": "Budapest",
+      "expectedCountry": "Hungary",
+      "chainFromCity_country": "Hungary",
+      "chainMatch": true,
+      "resolveMasteredCity_country": null,
+      "resolveMasteredCity_bucket": null,
+      "resolveMasteredCity_distanceKm": null,
+      "resolveMasteredCity_note": "city.location missing (A4 scope — broken masteredcities doc)"
+    }
+  ],
+  "downstreamImpact": {
+    "venues_with_masteredCity_in_7europe": 38,
+    "events_with_masteredCity_in_7europe": 21,
+    "venues_null_country": 22,
+    "events_null_country": 21,
+    "note": "These are the venues + events that will get masteredCountry* filled post-A1 apply + Tier-3 re-run."
+  },
+  "applyLog": {
+    "venues": [
+      {
+        "_id": "6982b278ddc751b73917133e",
+        "name": "Cinecitta Lounge Bar",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "6986cbfd76e3f514f175ff2d",
+        "name": "Verdi Budapest Aquincum",
+        "masteredCountryName": "Hungary",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName"
+        ]
+      },
+      {
+        "_id": "698a31a616f848e158104383",
+        "name": "Le Quai Centre Social et culturel du Sablon",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "698a6cb4fb18bf573a85028a",
+        "name": "Kuortaneenkatu 13, 00520 Helsinki, Finland",
+        "masteredCountryName": "Finland",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName"
+        ]
+      },
+      {
+        "_id": "698a6cb5fb18bf573a85028c",
+        "name": "Ischia S.Angelo",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName"
+        ]
+      },
+      {
+        "_id": "698a6cc3fb18bf573a8502be",
+        "name": "Sentrum, Oslo",
+        "masteredCountryName": "Norway",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "69cca05830dda862a0c89a34",
+        "name": "Scilla",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05b30dda862a0c89a4d",
+        "name": "Pistoriusstraße 23, 13088 Berlin, Germany",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05f30dda862a0c89a6e",
+        "name": "Tangofficina",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cca05f30dda862a0c89a6f",
+        "name": "via Giacomo Watt, 5, Milano, Lombardia",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69ccad57fd1bee1564621c89",
+        "name": "Hotel Roma Aurelia Antica",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcf21616c50bfc8139d",
+        "name": "Prinzenallee 33, Berlín, Germany, 13359",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcf21616c50bfc8139e",
+        "name": "Haus der Sinne",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcf21616c50bfc8139f",
+        "name": "Tanzschule Maxixe",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69cdcdcf21616c50bfc813a2",
+        "name": "Mercure Roma West (Viale degli Eroi di Cefalonia 301, Roma, Lazio)",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d3bbaa1500edc84c4a6",
+        "name": "Cristallo Palace Hotel",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69ce0d40baa1500edc84c4df",
+        "name": "Berlin",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "69d3bbef762989fb8b397316",
+        "name": "Riva Marconi",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69d3bbef762989fb8b39731c",
+        "name": "La Berlinesa",
+        "masteredCountryName": "Germany",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt"
+        ]
+      },
+      {
+        "_id": "69d5e3aafeec8e7779c45b69",
+        "name": "KAMA Productions",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b6d",
+        "name": "Spazio Tango",
+        "masteredCountryName": "Italy",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      },
+      {
+        "_id": "69d5e3abfeec8e7779c45b73",
+        "name": "Tango Argentino Helsinki Pasional",
+        "masteredCountryName": "Finland",
+        "fieldsSet": [
+          "masteredCountryId",
+          "masteredCountryName",
+          "calbeaf118AppliedAt",
+          "masteredCityName",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName"
+        ]
+      }
+    ],
+    "events": [
+      {
+        "_id": "69ccad5dfd1bee1564621ccc",
+        "title": "2° VINILO Roma ENCUENTRO Milonguero 2026/09/4-6",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69cdbdea3b2fa401014a4dad",
+        "title": "ISCHIA S.ANGELO(Campania - Na) 12-19 Luglio 2026 TAnGO al mare!",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69cdbdeb3b2fa401014a4db4",
+        "title": "International Corfu Tango Marathon vol 2 2026",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69ce0d43baa1500edc84c4fb",
+        "title": "„Osito Milonguero“ - Encuentro Milonguero in Berlin",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf048b2c7926d4db001",
+        "title": "BERLiN Tango ViBE x Greece | April 2–6, 2026 | \"Berliner Edition\"",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf048b2c7926d4db002",
+        "title": "Tangokonzert mit & Milonga",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf048b2c7926d4db004",
+        "title": "OSTERseminar mit Malachai Payne",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf048b2c7926d4db005",
+        "title": "Milonga Pista Doble mit Gast-DJ Jean-Marc Vandel aus Lausanne (Neo) und Michael Rühl (traditional)",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf148b2c7926d4db006",
+        "title": "Tango-Café im Maxixe",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69ceadf148b2c7926d4db008",
+        "title": "SPQR Tango Marathon Roma 2026",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69d315a052ae12534c4ae14b",
+        "title": "LA MILONGA VILLA KREUZBERG",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69d34486cf0346bec69c48e6",
+        "title": "LA MILONGA VILLA KREUZBERG",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69d3bbf0762989fb8b397321",
+        "title": "🌟𝐍𝐎𝐓𝐓𝐄 𝐃𝐈 𝐓𝐀𝐍𝐆𝐎 𝐀 𝐑𝐈𝐕𝐀 𝐌𝐀𝐑𝐂𝐎𝐍𝐈 - 🎧 𝐃𝐉. 𝐑𝐀𝐌𝐎𝐍𝐀 𝐅𝐈𝐎𝐑𝐀𝐍𝐓𝐄 !",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69d402bfed10e4ff8936d273",
+        "title": "🐰🪺 Ostermontag Milonga | La Berlinesa Berlin | 06.04.2026 ab 19 Uhr🐣",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69d402bfed10e4ff8936d274",
+        "title": "Sentidos – der entspannte Tango-Start in die Woche (Neo-trad-Mix)",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69d5e3b4feec8e7779c45bad",
+        "title": "Tangonacht im Roten Salon der Volksbühne Berlin am Dienstag den 07.04.2026",
+        "masteredCountryName": "Germany"
+      },
+      {
+        "_id": "69d5e3b6feec8e7779c45bb3",
+        "title": "Marinera_El Peor Dj",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69d5e3b6feec8e7779c45bb7",
+        "title": "Il Martedì del Bellezza! Milonga con Dj Ale Mazza",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69d5e3b6feec8e7779c45bb8",
+        "title": "🎉 IL TANGO TRADICIONAL DEL CAFFE' CARIBE @ Zotto Academy 🎉 TDJ GIANCARLO PASTONCHI",
+        "masteredCountryName": "Italy"
+      },
+      {
+        "_id": "69d5e3b7feec8e7779c45bbe",
+        "title": "Milonga Pasional",
+        "masteredCountryName": "Finland"
+      },
+      {
+        "_id": "69d5e3b8feec8e7779c45bbf",
+        "title": "MILONGA TRADITIONAL ELEGANTE-SHOW ROCIO & DARIO",
+        "masteredCountryName": "Finland"
+      }
+    ]
+  },
+  "postApplyCoverage": {
+    "venues_null_country_before": 22,
+    "venues_null_country_after": 0,
+    "events_null_country_before": 21,
+    "events_null_country_after": 0
+  },
+  "postPatchVerification": [
+    {
+      "cityName": "Berlin",
+      "expectedCountry": "Germany",
+      "resolvedCountry_postA1": "Germany",
+      "match": true
+    },
+    {
+      "cityName": "Rome",
+      "expectedCountry": "Italy",
+      "resolvedCountry_postA1": "Italy",
+      "match": true
+    },
+    {
+      "cityName": "Milan",
+      "expectedCountry": "Italy",
+      "resolvedCountry_postA1": "Italy",
+      "match": true
+    },
+    {
+      "cityName": "Helsinki",
+      "expectedCountry": "Finland",
+      "resolvedCountry_postA1": "Finland",
+      "match": true
+    }
+  ],
+  "applyMeta": {
+    "applyStartTime": "2026-04-19T23:07:43.232Z",
+    "applyEndTime": "2026-04-19T23:07:54.053Z",
+    "durationMs": 10821,
+    "counts": {
+      "venues_filled": 22,
+      "venues_already_correct": 0,
+      "venues_errors": 0,
+      "events_filled": 21,
+      "events_already_correct": 0,
+      "events_errors": 0
+    }
+  }
+}

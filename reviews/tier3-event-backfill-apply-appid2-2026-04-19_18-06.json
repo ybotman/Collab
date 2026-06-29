@@ -1,0 +1,732 @@
+{
+  "meta": {
+    "mode": "APPLY",
+    "appId": "2",
+    "timestamp": "2026-04-19T18:06:59.363Z",
+    "processed": 133,
+    "wouldChange": 133,
+    "pipelineErrors": 0
+  },
+  "fieldChangeCounts": {
+    "forBeginners": 0,
+    "beginnerFriendly": 0,
+    "travelWorthy": 133,
+    "masteredCityId": 74,
+    "masteredCityName": 0,
+    "masteredCountryId": 92,
+    "masteredCountryName": 92,
+    "venueGeolocation": 0,
+    "venueCityName": 72,
+    "venueTimezone": 13,
+    "enrichmentStatus": 133,
+    "masteringStatus": 10
+  },
+  "perCategoryCounts": {
+    "Convention": {
+      "total": 7,
+      "changed": 7
+    },
+    "International Contest": {
+      "total": 12,
+      "changed": 12
+    },
+    "Chapter Show": {
+      "total": 30,
+      "changed": 30
+    },
+    "Regional Contest": {
+      "total": 25,
+      "changed": 25
+    },
+    "Schools & University": {
+      "total": 3,
+      "changed": 3
+    },
+    "Quartet Show": {
+      "total": 6,
+      "changed": 6
+    },
+    "Chapter Meeting": {
+      "total": 50,
+      "changed": 50
+    }
+  },
+  "sampleDiffs": [
+    {
+      "eventId": "6966a059247d5f8eb450fce3",
+      "title": "BABS Sing2025 Convention",
+      "category": "Convention",
+      "startDate": "2025-05-23T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a058247d5f8eb450fcdf",
+      "title": "77th Sweet Adelines International Convention",
+      "category": "International Contest",
+      "startDate": "2025-10-20T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce8",
+      "title": "Vocal Majority Annual Show",
+      "category": "Chapter Show",
+      "startDate": "2026-03-21T23:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": false
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce5",
+      "title": "LABBS Convention 2025",
+      "category": "Convention",
+      "startDate": "2025-10-31T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce9",
+      "title": "Westminster Chorus Spring Show",
+      "category": "Chapter Show",
+      "startDate": "2026-04-18T23:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": false
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a058247d5f8eb450fcdc",
+      "title": "2026 BHS Midwinter Convention",
+      "category": "Convention",
+      "startDate": "2026-01-13T14:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fcea",
+      "title": "Ambassadors of Harmony Presents: Harmony Celebration",
+      "category": "Chapter Show",
+      "startDate": "2026-05-09T23:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": false
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966e83809f9ece050de25ed",
+      "title": "wer",
+      "category": "Chapter Show",
+      "startDate": "2026-01-16T01:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": false
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce4",
+      "title": "BABS Sing2026 Convention",
+      "category": "Convention",
+      "startDate": "2026-05-23T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce7",
+      "title": "Barbershop Harmony NZ Convention 2026",
+      "category": "Convention",
+      "startDate": "2026-06-12T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a058247d5f8eb450fcdd",
+      "title": "2026 BHS International Convention - St. Louis",
+      "category": "International Contest",
+      "startDate": "2026-06-28T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce0",
+      "title": "78th Sweet Adelines International Convention",
+      "category": "International Contest",
+      "startDate": "2026-10-26T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce6",
+      "title": "LABBS 50th Anniversary Convention",
+      "category": "Convention",
+      "startDate": "2026-10-30T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce1",
+      "title": "Harmony Inc. International Convention 2026",
+      "category": "International Contest",
+      "startDate": "2026-11-11T14:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a058247d5f8eb450fcde",
+      "title": "2027 BHS International Convention",
+      "category": "International Contest",
+      "startDate": "2027-07-04T13:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "67f612505e69d06f32915d66"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "6966a059247d5f8eb450fce2",
+      "title": "Harmony Inc. International Convention 2027",
+      "category": "International Contest",
+      "startDate": "2027-11-10T14:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415f3",
+      "title": "BHS Northeastern District (NED) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-05-01T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c72841605",
+      "title": "BABS Harmony College 2026",
+      "category": "Schools & University",
+      "startDate": "2026-09-05T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c72841606",
+      "title": "BHA National Festival 2026",
+      "category": "International Contest",
+      "startDate": "2026-10-21T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6984c43f1360acd6558927a8"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca2"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "Australia"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Sydney"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415f5",
+      "title": "BHS Pioneer District (PIO) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-04-24T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e479"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Detroit"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415f9",
+      "title": "BHS Southwestern District (SWD) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-05-08T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e49b"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Dallas"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c72841602",
+      "title": "HI Area 2 Contest 2026",
+      "category": "Regional Contest",
+      "startDate": "2026-05-22T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6984c43a1360acd65589276e"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca1"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "Canada"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Toronto"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415e9",
+      "title": "BHS Midwinter Convention 2027",
+      "category": "Convention",
+      "startDate": "2027-01-13T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Los Angeles"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        },
+        "masteringStatus": {
+          "before": null,
+          "after": "name-conflict-review"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415f0",
+      "title": "BHS Johnny Appleseed District (JAD) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-05-08T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e47b"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueTimezone": {
+          "before": null,
+          "after": "America/New_York"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415f7",
+      "title": "BHS Seneca Land District (SLD) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-05-15T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c72841604",
+      "title": "Sing2026 - BABS Convention",
+      "category": "International Contest",
+      "startDate": "2026-05-23T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "venueTimezone": {
+          "before": null,
+          "after": "Europe/London"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415ec",
+      "title": "BHS Dixie District (DIX) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-04-17T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e48c"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "Atlanta"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415ee",
+      "title": "BHS Far Western District (FWD) Convention",
+      "category": "Regional Contest",
+      "startDate": "2026-05-01T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415fb",
+      "title": "SAI Region 5 Competition 2026",
+      "category": "Regional Contest",
+      "startDate": "2026-04-23T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    },
+    {
+      "eventId": "69c7312ad750241c728415e8",
+      "title": "BHS International Convention 2026",
+      "category": "International Contest",
+      "startDate": "2026-06-28T09:00:00.000Z",
+      "changes": {
+        "travelWorthy": {
+          "before": null,
+          "after": true
+        },
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e484"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        },
+        "venueCityName": {
+          "before": null,
+          "after": "St. Louis"
+        },
+        "enrichmentStatus": {
+          "before": null,
+          "after": "complete"
+        }
+      }
+    }
+  ]
+}

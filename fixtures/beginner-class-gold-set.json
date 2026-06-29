@@ -1,0 +1,541 @@
+{
+  "_meta": {
+    "canonical_path": "Collab/fixtures/beginner-class-gold-set.json",
+    "consumers": ["calendar-be-af (Fulton)", "harvester (Harvey)", "porter (Porter)", "calops (Dash)"],
+    "do_not_fork": "This is the single source of truth for the beginner-class classifier gold set. All consumers read from this canonical path. Do NOT copy/fork into per-project trees — changes go here first, then consumers re-read. Relocated from harvester/test/ to Collab/fixtures/ per AIDI Q5 decision (2026-04-18).",
+    "purpose": "Gold-set test fixtures for the forBeginners / beginnerFriendly classifier on Class events. Labels are hand-curated by Harvey against the ruleset sent to Fulton 2026-04-18 (eval order: title-negative → title-positive-forBeginners → title-mixed/friendly-only → description-fallback; superset rule forBeginners⇒beginnerFriendly applied last).",
+    "source": "harvester SQLite corpus, distinct Class rows across 24 sites (2026-04-18)",
+    "corpus_distinct_class_rows": 478,
+    "schema": {
+      "title": "Event title (as scraped).",
+      "description": "Event description (as scraped, truncated to ≤180 chars for readability).",
+      "source_site": "harvester site id (harvester/sites/<id>/).",
+      "expected": {
+        "forBeginners": "true if the event IS targeted at beginners (organizer-targeted)",
+        "beginnerFriendly": "true if the event welcomes beginners (superset of forBeginners)"
+      },
+      "rationale": "Short note tying the label to a specific rule in the §-ed ruleset or an edge case.",
+      "tags": "Bucket labels so consumers can slice the fixture by what they're testing."
+    },
+    "ordering_rule_reminder": "Stages: 0=explicit-negative, 1=explicit-positive-forBeginners, 2=mixed/friendly-only, 3=description-fallback, 4=superset rule (forBeginners⇒beginnerFriendly).",
+    "hard_cases": "See entries tagged [hard-case]. These are the rows most likely to drive classifier refinement.",
+    "spec_version": "v3 (2026-04-18)",
+    "v3_rule_changes_applied": [
+      "Removed Stage 1 title `fundamentals?` positive (ambiguous — used by Int+Adv too).",
+      "Removed Stage 1 title `beginners?\\s+foundations?` positive (redundant).",
+      "Removed Stage 3 desc-rule `no partner (needed|required|necessary)` (orthogonal to skill level).",
+      "Added niche guard — classifier fires for appId='1' (TangoTiempo) only at v1 launch; niche-independent fixture labels still apply when classifier runs."
+    ],
+    "v3_fixture_flips": [
+      "id 21 (Argentine Tango Foundations Class): forBeg true→false, friendly true→false. Confirmed acceptable by Toby.",
+      "id 30 (Intermediate + no partner in desc): friendly true→false. No-partner desc-rule removed.",
+      "id 46 (CANCELED: Intermediate + no partner in desc): friendly true→false. Same rule removal."
+    ]
+  },
+  "fixtures": [
+    {
+      "id": 1,
+      "title": "Tango 1: Absolute Beginner Series",
+      "description": "Price: $22",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'absolute beginner' explicit positive. Tango 1 is a secondary confirmation.",
+      "tags": ["title-positive", "absolute-beginner", "numbered-level-1"]
+    },
+    {
+      "id": 2,
+      "title": "Absolute Beginner's Tango classes at The Tango Club",
+      "description": "This class is aimed at the complete beginner. We meet at Seeker's Church on the second floor. Fridays from 6pm-7pm starting April 3rd through May 8th we will be giving a 6-week series.",
+      "source_site": "dc-capital-tangueros",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Absolute Beginner' title + 'complete beginner' in description (double confirm).",
+      "tags": ["title-positive", "absolute-beginner"]
+    },
+    {
+      "id": 3,
+      "title": "WK1 - Argentine Tango for Total Beginners",
+      "description": "An 8-week series for people who are brand new to tango. These 90 minute classes will start your tango journey off on the right foot!",
+      "source_site": "theronda",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Total Beginners' title + 'brand new to tango' in description.",
+      "tags": ["title-positive", "total-beginner", "series"]
+    },
+    {
+      "id": 4,
+      "title": "Advanced Beginner Toolkit",
+      "description": "Price: $45",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Advanced Beginner' reads as still-a-beginner (post-novice, pre-intermediate). Ruleset and Fulton lean-yes agree.",
+      "tags": ["title-positive", "advanced-beginner", "hard-case"]
+    },
+    {
+      "id": 5,
+      "title": "Fábrica Tango Severna Park - Advanced Beginner 3-Week Series: A Deep Dive into Ochos",
+      "description": "Advanced Beginner 3-Week Series: A Deep Dive into Ochos. With Sasha Milentey & Boris De Luca.",
+      "source_site": "dc-capital-tangueros",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Advanced Beginner' positive. Content (ochos) is genuinely introductory-level.",
+      "tags": ["title-positive", "advanced-beginner"]
+    },
+    {
+      "id": 6,
+      "title": "Argentine Tango: Level 1.5 (Ongoing Beginner)",
+      "description": "Price: $30",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Ongoing Beginner' is a valid forBeginners phrase (students still self-identify as beginners). Level 1.5 nuance does NOT demote.",
+      "tags": ["title-positive", "ongoing-beginner", "hard-case"]
+    },
+    {
+      "id": 7,
+      "title": "Tango, Beginner Level with Monica Caivano & Gustavo Simplis at Esquina Tango",
+      "description": "Join instructors Gustavo and Monica every Saturday! It's time to learn some Tango! FIRST CLASS IS FREE. No partner needed.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — plain 'Beginner' in title, no mixed-audience qualifier, no negative.",
+      "tags": ["title-positive", "beginner-plain"]
+    },
+    {
+      "id": 8,
+      "title": "Tango Argentino Beginner Course",
+      "description": "Price: €25",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Beginner' + 'Course' (both-signal). EU source (price in euros) — same rules apply.",
+      "tags": ["title-positive", "beginner-plain"]
+    },
+    {
+      "id": 9,
+      "title": "Tango Argentino Beginner (Open Level)",
+      "description": "Price: €12",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 wins — 'Beginner' is explicit target despite '(Open Level)' qualifier. (Open Level) signals they don't gatekeep attendance, not that the class is not-for-beginners. forBeginners=true, friendly=true via superset.",
+      "tags": ["title-positive", "beginner-plain", "hard-case", "conflicting-signals"]
+    },
+    {
+      "id": 10,
+      "title": "Beginner & Level One Argentine Tango",
+      "description": "",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Beginner' + 'Level One' both positive.",
+      "tags": ["title-positive", "beginner-plain", "numbered-level-1"]
+    },
+    {
+      "id": 11,
+      "title": "Intro Argentine Tango Class For Couples",
+      "description": "Price: $50",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Intro' adjacent to Tango.",
+      "tags": ["title-positive", "intro"]
+    },
+    {
+      "id": 12,
+      "title": "Special Introductory Argentine Tango Lesson",
+      "description": "Price: $45",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Introductory' covered by `intro(?:ductory|duction)?` in regex.",
+      "tags": ["title-positive", "intro"]
+    },
+    {
+      "id": 13,
+      "title": "Level 1 - Intro to Argentine Tango",
+      "description": "Price: $35",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — Level 1 + Intro (both positive).",
+      "tags": ["title-positive", "intro", "numbered-level-1"]
+    },
+    {
+      "id": 14,
+      "title": "Intro to Argentine Tango (Level 1 & 2)",
+      "description": "Price: $35",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Intro' wins. Level 2 qualifier doesn't demote when paired with Intro/Level 1.",
+      "tags": ["title-positive", "intro", "hard-case"]
+    },
+    {
+      "id": 15,
+      "title": "Tango for People New to Tango w/Sharon & Terry",
+      "description": "7:00 - 9:00 class with Sharon & Terry. $60 for 4 two hour classes.",
+      "source_site": "tangomango",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'New to Tango' explicit positive.",
+      "tags": ["title-positive", "new-to-tango"]
+    },
+    {
+      "id": 16,
+      "title": "Level 1 - 💃 Argentine Tango @ Go Dance North",
+      "description": "This is a true beginner Argentine Tango class. In this beginning level class you will learn the fundamentals of Argentine Tango.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Level 1' title + 'true beginner' + 'fundamentals' in description.",
+      "tags": ["title-positive", "numbered-level-1", "fundamentals"]
+    },
+    {
+      "id": 17,
+      "title": "Tango 100S: Level 1 Beginner Argentine Tango",
+      "description": "Price: $25",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Tango 100S' (danceus level-1 convention) + 'Level 1' + 'Beginner'. Triple confirm.",
+      "tags": ["title-positive", "tango-100-convention", "numbered-level-1"]
+    },
+    {
+      "id": 18,
+      "title": "Tango 100M: Level 1 Beginner Argentine Tango",
+      "description": "Price: $25",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Same as id 17 — confirms 100M is also level-1 convention. Regex for Tango 100[SM]? must match.",
+      "tags": ["title-positive", "tango-100-convention"]
+    },
+    {
+      "id": 19,
+      "title": "Beginners & Fundamentals Argentine Tango Class",
+      "description": "Price: £13",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Beginners' + 'Fundamentals' both positive.",
+      "tags": ["title-positive", "fundamentals"]
+    },
+    {
+      "id": 20,
+      "title": "Argentine Tango: Fundamentals & Technique (Beginner)",
+      "description": "Price: $25",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Beginner' in title (parenthetical) + 'Fundamentals'. 'Technique' is NOT a negative when 'Beginner' is also present.",
+      "tags": ["title-positive", "fundamentals", "hard-case", "technique-with-beginner"]
+    },
+    {
+      "id": 21,
+      "title": "Argentine Tango Foundations Class",
+      "description": "Price: $15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 4 (v3) — updated 2026-04-18 per spec v3 rule change 1/2. `fundamentals?` removed from Stage 1 (ambiguous — used by Int+Adv too); `beginners?\\s+foundations?` removed as redundant. Standalone 'Foundations' no longer qualifies. Toby confirmed this resolves as neither. Earlier label (forBeg=true) voided.",
+      "tags": ["generic", "foundations-v3-removed", "spec-v3-flip"]
+    },
+    {
+      "id": 22,
+      "title": "Foundations I Tango Class",
+      "description": "This is where we build our foundation as tango dancers. Zero experience necessary. Everyone welcome, no experience necessary, no partner necessary.",
+      "source_site": "theronda",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 3 — desc 'Zero experience necessary' + 'no experience necessary' (double) + 'everyone welcome' = strong desc-fallback positive. 'Foundations' in title is also a Stage 1 signal (see id 21 ruleset-gap note).",
+      "tags": ["desc-positive", "no-experience", "foundations"]
+    },
+    {
+      "id": 23,
+      "title": "Tango, All Levels, Mickey Jacobs at Castle Hills",
+      "description": "All levels and no partner needed, hosted by Esquina Tango at Castle Hills Fitness. This community class is $15.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'All Levels' is friendly-only (not forBeginners). Desc adds 'no partner needed' — also friendly signal.",
+      "tags": ["friendly-only", "all-levels"]
+    },
+    {
+      "id": 24,
+      "title": "Tango - Nuevo All levels Class",
+      "description": "",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'All levels' friendly-only. Nuevo is a style marker, not a level marker.",
+      "tags": ["friendly-only", "all-levels"]
+    },
+    {
+      "id": 25,
+      "title": "Open Level Argentine Tango Class (Tuesday)",
+      "description": "Price: £18",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'Open Level' friendly-only.",
+      "tags": ["friendly-only", "open-level"]
+    },
+    {
+      "id": 26,
+      "title": "Argentine Tango Beginner & Intermediate Class",
+      "description": "Price: $15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'Beginner & Intermediate' mixed → friendly-only, NOT forBeginners. This is Fulton's edge case 2.",
+      "tags": ["friendly-only", "mixed-level", "beginner-and-intermediate"]
+    },
+    {
+      "id": 27,
+      "title": "Argentine Tango (Beginner/Intermediate)",
+      "description": "Price: $15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — slash variant of 'Beginner/Intermediate' mixed.",
+      "tags": ["friendly-only", "mixed-level", "slash-variant"]
+    },
+    {
+      "id": 28,
+      "title": "Wednesday Tango Break: Beginner & Intermediate Classes",
+      "description": "Price: $20",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'Beginner & Intermediate' mixed.",
+      "tags": ["friendly-only", "mixed-level"]
+    },
+    {
+      "id": 29,
+      "title": "Monday Argentine Tango Classes (Chiswick) - Beginners & Improvers",
+      "description": "Price: £15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 2 — 'Beginners & Improvers' mixed. 'Improvers' = UK term for advanced-beginner / early-intermediate; treat as mixed not pure-beginner.",
+      "tags": ["friendly-only", "mixed-level", "improvers", "uk-term"]
+    },
+    {
+      "id": 30,
+      "title": "Tango, Intermediate Level with Monica Caivano & Gustavo Simplis at Esquina Tango",
+      "description": "No partner needed. Come work on technique, balance, and styling. Enjoy great exercises that will improve your dancing.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Intermediate' alone = negative for forBeginners. Updated 2026-04-18 per spec v3 rule change 3: 'no partner needed' desc-rule REMOVED (orthogonal to skill level). Nothing else in desc signals friendly. Both false.",
+      "tags": ["negative", "intermediate", "spec-v3-flip", "no-partner-removed"]
+    },
+    {
+      "id": 31,
+      "title": "Argentine Tango Intermediate & Advanced",
+      "description": "Price: €18",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Intermediate & Advanced' title. No beginner signal anywhere. Both flags false.",
+      "tags": ["negative", "intermediate-advanced"]
+    },
+    {
+      "id": 32,
+      "title": "Tango 4 Advanced Class",
+      "description": "Price: $20",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Advanced' alone (Tango 4 confirms high level). Numbered level ≥2 without beginner marker = negative.",
+      "tags": ["negative", "advanced", "numbered-high"]
+    },
+    {
+      "id": 33,
+      "title": "Intermediate & Advanced Tango Class",
+      "description": "",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — both negatives, no beginner.",
+      "tags": ["negative", "intermediate-advanced"]
+    },
+    {
+      "id": 34,
+      "title": "Tango 2 + 3: Intermediate Technique",
+      "description": "Price: $30",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Intermediate' + 'Technique' + 'Tango 2/3'. Triple negative.",
+      "tags": ["negative", "technique", "intermediate", "numbered-high"]
+    },
+    {
+      "id": 35,
+      "title": "Pre-Intermediate Tango Fundamentals",
+      "description": "Price: $199",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 FIRST — 'Pre-Intermediate' is explicit negative; wins over Stage 1 'Fundamentals'. Demonstrates why eval order matters.",
+      "tags": ["negative", "pre-intermediate", "hard-case", "eval-order"]
+    },
+    {
+      "id": 36,
+      "title": "Beyond Beginner - Queer Tango PDX",
+      "description": "Beyond Beginners - 3 month experience recommended. No partner needed. At Q Tango (Queer Tango PDX), we are committed to being a safe and inclusive space.",
+      "source_site": "portland-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Beyond Beginner' is explicit negative. 'No partner needed' in desc would normally set friendly=true, but the explicit '3 month experience recommended' signals post-novice expected; friendly also false. Without the Stage 0 match, naive `\\bbeginner\\b` would wrongly fire this as forBeginners=true.",
+      "tags": ["negative", "beyond-beginner", "hard-case", "critical-exclusion"]
+    },
+    {
+      "id": 37,
+      "title": "Tango for People Not New to Tango w/Sharon & Terry",
+      "description": "7:00 - 9:00 Class with Sharon & Terry. $15 for Thursday.",
+      "source_site": "tangomango",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Not new to tango' explicit negative. Contrast with id 15 (same organizer, opposite target).",
+      "tags": ["negative", "not-new-to-tango", "hard-case"]
+    },
+    {
+      "id": 38,
+      "title": "Followers Technique: Grounded + Responsive + Connected",
+      "description": "This drop in weekly class is designed for the Followers in Argentine Tango. Starting Thursdays. Finding your grounding, stability and connection.",
+      "source_site": "phoenix-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Technique' alone in title with no beginner signal. Desc doesn't explicitly welcome novices. Conservative label: both false.",
+      "tags": ["negative", "technique", "followers-only"]
+    },
+    {
+      "id": 39,
+      "title": "Technique & Tools",
+      "description": "We work on fundamentals at a basic level while learning a tango move. You'll get plenty of personalized attention in this small class.",
+      "source_site": "denver-3",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 0/3 hard case — title 'Technique' leans negative, but desc 'fundamentals at a basic level' suggests accessible. Conservative: forBeginners=false (no explicit title positive), friendly=true (basic-level desc welcomes novices). Tests title-vs-desc tension.",
+      "tags": ["desc-friendly", "technique", "fundamentals-in-desc", "hard-case"]
+    },
+    {
+      "id": 40,
+      "title": "Level 2 💃 Argentine Tango with Ricardo @ Go Dance",
+      "description": "This is an Argentine Tango class taught by Ricardo Corazon through Go Dance. In this intermediate Argentine Tango class you will be challenged with new patterns, advanced technique.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Level 2' (not Level 1) + desc confirms 'intermediate' and 'advanced technique'. No beginner signal. Tests that Level-N regex must exclude N≥2.",
+      "tags": ["negative", "numbered-high", "level-2"]
+    },
+    {
+      "id": 41,
+      "title": "Date Night - Tango Class",
+      "description": "Looking for a date night that actually brings you closer? Join us for a 30-minute Tango Taster—a simple, beautiful way to reconnect through movement, music, and close embrace. No experience required.",
+      "source_site": "slc-wasatch",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 3 — title generic; desc 'No experience required' + 'Tango Taster' (intro-synonym) = strong desc-positive for forBeginners.",
+      "tags": ["desc-positive", "no-experience", "taster"]
+    },
+    {
+      "id": 42,
+      "title": "DelSur Tango Night",
+      "description": "Tango across the dance floor surrounded by the colorful sights, sounds, and foods of Argentina! Attend solo or with friends. No experience necessary.",
+      "source_site": "minneapolis-4",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 3 — title is ambiguous (sounds like a milonga/event, but was category_first=Class at source); desc 'No experience necessary' = strong forBeginners signal. Label reflects desc not title.",
+      "tags": ["desc-positive", "no-experience", "hard-case", "title-ambiguous"]
+    },
+    {
+      "id": 43,
+      "title": "Tango Class and Minipractica with Katerine Ricardo",
+      "description": "7:30 - 8:30 Open Role Class with Katerine Ricardo in Monterey Park (No partner needed, beginners are welcome) 8:30 - 9:00 Minipractica!",
+      "source_site": "tangomango",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Stage 3 — desc 'beginners are welcome' = friendly-only signal, NOT forBeginners (class isn't targeted at them, just welcoming). Also 'no partner needed'.",
+      "tags": ["desc-friendly", "beginners-welcome"]
+    },
+    {
+      "id": 44,
+      "title": "Two Flame Tango - Lv 1",
+      "description": "Tango is both a skillful and deeply connective dance—and we teach both. If you feel drawn to learn: New to tango? Start here.",
+      "source_site": "slc-wasatch",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1/3 — 'Lv 1' (abbreviation of Level 1) in title + desc 'New to tango? Start here'. Flag: regex for Level-1 should also match 'Lv 1' / 'Lvl 1' abbreviations — noted as ruleset gap.",
+      "tags": ["title-positive", "numbered-level-1", "abbreviation", "ruleset-gap"]
+    },
+    {
+      "id": 45,
+      "title": "Two Flame Tango - Lv 2",
+      "description": "Tango is both a skillful and deeply connective dance—and we teach both. If you feel drawn to learn: New to tango? Start here: https://... Already have experience?",
+      "source_site": "slc-wasatch",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 0 — 'Lv 2' abbreviation = Level 2 = negative. Desc copy is shared boilerplate across their Lv1/Lv2 pages and mentions 'new to tango' but redirects those readers elsewhere. Title wins. Tests that desc 'New to tango?' must NOT override a negative title.",
+      "tags": ["negative", "numbered-high", "abbreviation", "hard-case", "shared-boilerplate"]
+    },
+    {
+      "id": 46,
+      "title": "CANCELED: Tango, Intermediate Level with Monica Caivano & Gustavo Simplis at Esquina Tango",
+      "description": "No partner needed. Come work on technique, balance, and styling.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Same as id 30, prefixed 'CANCELED:'. Classifier must ignore the CANCELED prefix and parse the rest of the title normally. Intermediate → negative forBeginners. Updated 2026-04-18 per spec v3 rule change 3 (no-partner-needed removed): friendly also false.",
+      "tags": ["negative", "intermediate", "canceled-prefix", "spec-v3-flip", "no-partner-removed"]
+    },
+    {
+      "id": 47,
+      "title": "CANCELED: Tango, Beginner Level with Monica Caivano & Gustavo Simplis at Esquina Tango",
+      "description": "FIRST CLASS IS FREE. No partner needed.",
+      "source_site": "austin-classes",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "'CANCELED' prefix must not suppress the Beginner signal. forBeginners=true as usual. (Note: downstream consumers may separately filter by event cancellation status.)",
+      "tags": ["title-positive", "beginner-plain", "canceled-prefix"]
+    },
+    {
+      "id": 48,
+      "title": "FREE Sundays Argentine Tango Dance Lessons",
+      "description": "Price: $59",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 4 — generic title, no signals in title or desc. Both false. Tests Fulton's edge case 4 (no classification possible → default false).",
+      "tags": ["generic", "no-signal", "edge-case-4"]
+    },
+    {
+      "id": 49,
+      "title": "Argentine Tango Dance Lessons",
+      "description": "Price: $15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 4 — truly generic. Both false.",
+      "tags": ["generic", "no-signal"]
+    },
+    {
+      "id": 50,
+      "title": "Argentine Tango Lessons",
+      "description": "Price: $49",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Stage 4 — generic. Both false.",
+      "tags": ["generic", "no-signal"]
+    },
+    {
+      "id": 51,
+      "title": "Argentine Tango Level 1",
+      "description": "Price: $20",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Level 1' standalone. Regex must match word boundary to avoid false match on 'Level 10' etc. (See id 40 for Level 2 contrast.)",
+      "tags": ["title-positive", "numbered-level-1", "boundary"]
+    },
+    {
+      "id": 52,
+      "title": "Go Tango Beginner Camp",
+      "description": "",
+      "source_site": "minneapolis-4",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — 'Beginner Camp' plain beginner with activity qualifier.",
+      "tags": ["title-positive", "beginner-plain"]
+    },
+    {
+      "id": 53,
+      "title": "Beginners Argentine Tango Class (Friday)",
+      "description": "Price: $15",
+      "source_site": "danceus",
+      "expected": { "forBeginners": true, "beginnerFriendly": true },
+      "rationale": "Stage 1 — plural 'Beginners' should also match — regex `beginners?\\b` handles it.",
+      "tags": ["title-positive", "beginner-plain", "plural"]
+    },
+    {
+      "id": 54,
+      "title": "Beginner&#39;s Mind: Argentine Tango",
+      "description": "",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Hard case — 'Beginner's Mind' is a Zen-Buddhist phrase ironically used by experienced teachers to signify 'approach with fresh eyes'. Without desc, ambiguous. Conservative: friendly=true (welcomes learning), forBeginners=false (series is typically not novice-targeted). HTML entity `&#39;` must not break regex. Flag for spec review.",
+      "tags": ["friendly-only", "beginners-mind", "hard-case", "html-entity", "idiom"]
+    },
+    {
+      "id": 55,
+      "title": "Beginner&#39;s Mind Argentine Tango Class",
+      "description": "",
+      "source_site": "danceus",
+      "expected": { "forBeginners": false, "beginnerFriendly": true },
+      "rationale": "Same idiom as id 54. Consistent label.",
+      "tags": ["friendly-only", "beginners-mind", "idiom"]
+    },
+    {
+      "id": 56,
+      "title": "Beyond Beginner - Queer Tango PDX",
+      "description": "Beyond Beginners - 3 month experience recommended. No partner needed.",
+      "source_site": "portland-classes",
+      "expected": { "forBeginners": false, "beginnerFriendly": false },
+      "rationale": "Duplicate of id 36 kept intentionally — double-confirms the 'Beyond Beginner' critical-exclusion case. Both consumers will see this.",
+      "tags": ["negative", "beyond-beginner", "duplicate-intentional"]
+    }
+  ]
+}

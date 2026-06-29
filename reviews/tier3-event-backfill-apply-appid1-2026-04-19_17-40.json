@@ -1,0 +1,628 @@
+{
+  "meta": {
+    "mode": "APPLY",
+    "appId": "1",
+    "timestamp": "2026-04-19T18:05:58.281Z",
+    "processed": 5748,
+    "wouldChange": 3697,
+    "pipelineErrors": 0
+  },
+  "fieldChangeCounts": {
+    "forBeginners": 0,
+    "beginnerFriendly": 0,
+    "travelWorthy": 0,
+    "masteredCityId": 3697,
+    "masteredCityName": 0,
+    "masteredCountryId": 3688,
+    "masteredCountryName": 160,
+    "venueGeolocation": 0,
+    "venueCityName": 36,
+    "venueTimezone": 0,
+    "enrichmentStatus": 0,
+    "masteringStatus": 0
+  },
+  "perCategoryCounts": {
+    "Class": {
+      "total": 409,
+      "changed": 13
+    },
+    "Milonga": {
+      "total": 2863,
+      "changed": 2086
+    },
+    "Practica": {
+      "total": 2164,
+      "changed": 1459
+    },
+    "Other": {
+      "total": 13,
+      "changed": 0
+    },
+    "Workshop": {
+      "total": 120,
+      "changed": 106
+    },
+    "(unknown)": {
+      "total": 8,
+      "changed": 0
+    },
+    "Festival": {
+      "total": 33,
+      "changed": 7
+    },
+    "Encuentro": {
+      "total": 2,
+      "changed": 1
+    },
+    "Marathon": {
+      "total": 11,
+      "changed": 4
+    },
+    "Performance": {
+      "total": 5,
+      "changed": 4
+    },
+    "UNKNOWN": {
+      "total": 40,
+      "changed": 15
+    },
+    "Trip": {
+      "total": 9,
+      "changed": 1
+    },
+    "WEEKEND": {
+      "total": 1,
+      "changed": 0
+    },
+    "SEMINAR": {
+      "total": 1,
+      "changed": 0
+    },
+    "OTHER": {
+      "total": 68,
+      "changed": 0
+    },
+    "MARATHON": {
+      "total": 1,
+      "changed": 1
+    }
+  },
+  "sampleDiffs": [
+    {
+      "eventId": "69cca261523536d64ae94526",
+      "title": "Tango Cafe",
+      "category": "Milonga",
+      "startDate": "2026-04-02T00:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae94527",
+      "title": "Noches de Tango",
+      "category": "Class",
+      "startDate": "2026-04-02T00:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae94528",
+      "title": "🌟 Milonga Pizpireta 🌟",
+      "category": "Milonga",
+      "startDate": "2026-04-02T06:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e478"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae94529",
+      "title": "Barrilito",
+      "category": "Practica",
+      "startDate": "2026-04-02T23:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae9452a",
+      "title": "Tango la Nacional",
+      "category": "Milonga",
+      "startDate": "2026-04-03T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae9452c",
+      "title": "Milonga La Bohema",
+      "category": "Milonga",
+      "startDate": "2026-04-03T22:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca261523536d64ae9452d",
+      "title": "Victoria's Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-03T23:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae9452e",
+      "title": "Esa! Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-04T01:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e475"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae9452f",
+      "title": "Mariela's Practica",
+      "category": "Practica",
+      "startDate": "2026-04-04T15:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94530",
+      "title": "Victoria's Practica",
+      "category": "Practica",
+      "startDate": "2026-04-04T19:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94531",
+      "title": "Mala Leche",
+      "category": "Milonga",
+      "startDate": "2026-04-05T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94532",
+      "title": "El TangYorker",
+      "category": "Practica",
+      "startDate": "2026-04-05T17:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94533",
+      "title": "Milonga de la Tarde",
+      "category": "Milonga",
+      "startDate": "2026-04-05T21:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94534",
+      "title": "El Destino",
+      "category": "Milonga",
+      "startDate": "2026-04-05T22:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94535",
+      "title": "Jean's Funtango",
+      "category": "Practica",
+      "startDate": "2026-04-06T20:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94536",
+      "title": "Esa! Practica",
+      "category": "Practica",
+      "startDate": "2026-04-06T22:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94537",
+      "title": "Milonga Bienvenida",
+      "category": "Milonga",
+      "startDate": "2026-04-07T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e475"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94538",
+      "title": "Mondays Milongueros",
+      "category": "Practica",
+      "startDate": "2026-04-07T00:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca262523536d64ae94539",
+      "title": "Salmagundi Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-07T22:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453a",
+      "title": "Tuesday Practica",
+      "category": "Practica",
+      "startDate": "2026-04-07T22:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453b",
+      "title": "Los Tres Amigos Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-07T22:45:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453c",
+      "title": "Milonga Para Todos",
+      "category": "Milonga",
+      "startDate": "2026-04-08T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453d",
+      "title": "Shonsky's Tuesday Practica",
+      "category": "Practica",
+      "startDate": "2026-04-08T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453e",
+      "title": "Tango Cafe",
+      "category": "Milonga",
+      "startDate": "2026-04-09T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae9453f",
+      "title": "Milonga Umbral",
+      "category": "Milonga",
+      "startDate": "2026-04-09T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae94540",
+      "title": "Noches de Tango",
+      "category": "Class",
+      "startDate": "2026-04-09T00:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae94541",
+      "title": "Barrilito",
+      "category": "Practica",
+      "startDate": "2026-04-09T23:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae94542",
+      "title": "Tango la Nacional",
+      "category": "Milonga",
+      "startDate": "2026-04-10T00:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae94544",
+      "title": "Victoria's Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-10T23:30:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e470"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        }
+      }
+    },
+    {
+      "eventId": "69cca263523536d64ae94545",
+      "title": "Esa! Milonga",
+      "category": "Milonga",
+      "startDate": "2026-04-11T01:00:00.000Z",
+      "changes": {
+        "masteredCityId": {
+          "before": null,
+          "after": "6751f58a5db435dd8005e475"
+        },
+        "masteredCountryId": {
+          "before": null,
+          "after": "6751f57e2e74d97609e7dca0"
+        },
+        "masteredCountryName": {
+          "before": null,
+          "after": "United States"
+        }
+      }
+    }
+  ]
+}

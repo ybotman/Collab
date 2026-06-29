@@ -1,0 +1,140 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-118",
+    "mode": "DRY_RUN",
+    "timestamp": "2026-04-19T22:48:58.177Z",
+    "environment": "TangoTiempoTest",
+    "specRef": "MASTERED-DIMENSIONAL-DATA-SCAN-2026-04-19.md §10 A1 option d",
+    "quinnRatified": "2026-04-19T22:45Z"
+  },
+  "canonicalPicks": [
+    {
+      "divisionName": "Italy",
+      "divisionId": "6984c4371360acd65589274a",
+      "countryId": "6751f57e2e74d97609e7dca9",
+      "countryName": "Italy"
+    },
+    {
+      "divisionName": "Germany",
+      "divisionId": "6984c4371360acd655892747",
+      "countryId": "6751f57e2e74d97609e7dca6",
+      "countryName": "Germany"
+    },
+    {
+      "divisionName": "Finland",
+      "divisionId": "6984c4371360acd65589274c",
+      "countryId": "6984c4321360acd65589271e",
+      "countryName": "Finland"
+    }
+  ],
+  "alreadyWired": [
+    {
+      "divisionName": "Norway",
+      "divisionId": "698a5379fa4266bff71a0204",
+      "countryId": "698a5379fa4266bff71a01ff",
+      "countryName": "Norway"
+    },
+    {
+      "divisionName": "Switzerland",
+      "divisionId": "698a5379fa4266bff71a0205",
+      "countryId": "698a5379fa4266bff71a0200",
+      "countryName": "Switzerland"
+    },
+    {
+      "divisionName": "Hungary",
+      "divisionId": "698a5379fa4266bff71a0206",
+      "countryId": "698a5379fa4266bff71a0201",
+      "countryName": "Hungary"
+    }
+  ],
+  "canonicalVerification": [
+    {
+      "divisionName": "Italy",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    },
+    {
+      "divisionName": "Germany",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    },
+    {
+      "divisionName": "Finland",
+      "divisionFound": true,
+      "countryDocFound": true,
+      "countryReferencedByRegions": 1,
+      "isCanonical": true,
+      "existingDivisionCountryId": null,
+      "patchNeeded": true
+    }
+  ],
+  "cityResolutions": [
+    {
+      "cityName": "Berlin",
+      "expectedCountry": "Germany",
+      "bucket": "AUTO_HIGH",
+      "distanceKm": 0,
+      "nearestCity": "Berlin",
+      "resolvedCountry_preA1": "Germany",
+      "resolvedCountryId_preA1": "67f6123c2bbba9c1dd731ea6",
+      "countryMatch_preA1": true
+    },
+    {
+      "cityName": "Rome",
+      "expectedCountry": "Italy",
+      "bucket": "AUTO_HIGH",
+      "distanceKm": 0,
+      "nearestCity": "Rome",
+      "resolvedCountry_preA1": "Italy",
+      "resolvedCountryId_preA1": "6751f57e2e74d97609e7dca9",
+      "countryMatch_preA1": true
+    },
+    {
+      "cityName": "Milan",
+      "expectedCountry": "Italy",
+      "bucket": "AUTO_HIGH",
+      "distanceKm": 0,
+      "nearestCity": "Milan",
+      "resolvedCountry_preA1": "Italy",
+      "resolvedCountryId_preA1": "6751f57e2e74d97609e7dca9",
+      "countryMatch_preA1": true
+    },
+    {
+      "cityName": "Helsinki",
+      "expectedCountry": "Finland",
+      "bucket": "AUTO_HIGH",
+      "distanceKm": 0,
+      "nearestCity": "Helsinki",
+      "resolvedCountry_preA1": "Finland",
+      "resolvedCountryId_preA1": "6984c4321360acd65589271e",
+      "countryMatch_preA1": true
+    },
+    {
+      "cityName": "Oslo",
+      "error": "city or location missing"
+    },
+    {
+      "cityName": "Basel",
+      "error": "city or location missing"
+    },
+    {
+      "cityName": "Budapest",
+      "error": "city or location missing"
+    }
+  ],
+  "downstreamImpact": {
+    "venues_with_masteredCity_in_7europe": 38,
+    "events_with_masteredCity_in_7europe": 21,
+    "venues_null_country": 22,
+    "events_null_country": 21,
+    "note": "These are the venues + events that will get masteredCountry* filled post-A1 apply + Tier-3 re-run."
+  }
+}

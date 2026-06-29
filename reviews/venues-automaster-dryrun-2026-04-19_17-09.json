@@ -1,0 +1,1804 @@
+{
+  "meta": {
+    "ticket": "CALBEAF-116",
+    "mode": "APPLY",
+    "timestamp": "2026-04-19T17:09:10.525Z",
+    "environment": "TangoTiempoTest",
+    "specRef": "CITY-COUNTRY-DATA-DISCIPLINE-REVIEW.md Q3.5",
+    "helperSpecVersion": "1.0.0",
+    "bucketThresholds": {
+      "AUTO_HIGH_max_km": 50,
+      "AUTO_MEDIUM_max_km": 200
+    },
+    "trackAGate": "APPLY blocked until AIDI Track A TEST sweep (Porter || \"US\" strip + 8-row country re-resolve) is confirmed complete"
+  },
+  "totals": {
+    "venuesInDb": 1573,
+    "candidatesWithValidGeo": 1052,
+    "candidatesByAppId": {
+      "1": 1011,
+      "2": 41
+    },
+    "candidatesIsDiscovered": 116,
+    "candidatesNonDiscovery": 936
+  },
+  "bucketCounts": {
+    "AUTO_HIGH": 746,
+    "AUTO_MEDIUM": 148,
+    "MANUAL": 158,
+    "textConflicts": 624,
+    "errors": 0
+  },
+  "distanceHistogram": {
+    "binSize": "10km",
+    "bins": {
+      "0-10km": 456,
+      "10-20km": 152,
+      "20-30km": 79,
+      "30-40km": 45,
+      "40-50km": 14,
+      "50-60km": 17,
+      "60-70km": 19,
+      "70-80km": 21,
+      "80-90km": 13,
+      "90-100km": 13,
+      "100-110km": 11,
+      "110-120km": 11,
+      "120-130km": 11,
+      "130-140km": 5,
+      "140-150km": 7,
+      "150-160km": 3,
+      "160-170km": 5,
+      "170-180km": 5,
+      "180-190km": 6,
+      "190-200km": 1,
+      ">200km": 158
+    }
+  },
+  "samples": {
+    "AUTO_HIGH": [
+      {
+        "_id": "6979c198e40b4c44e09c6073",
+        "name": "You Should Be Dancing...!",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "New York",
+        "countryText": "US",
+        "distanceKm": 3.748,
+        "nearestCityId": "6751f58a5db435dd8005e470",
+        "nearestCityName": "New York City",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e470",
+          "masteredCityName": "New York City",
+          "masteringDistanceKm": 3.748,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e461",
+          "masteredDivisionName": "Middle Atlantic",
+          "masteredRegionId": "6751f58a5db435dd8005e45b",
+          "masteredRegionName": "Northeast",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6cc31ddcab31bbee45",
+        "name": "Pivot Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Ardmore",
+        "countryText": "US",
+        "distanceKm": 13.055,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e471",
+          "masteredCityName": "Philadelphia",
+          "masteringDistanceKm": 13.055,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e461",
+          "masteredDivisionName": "Middle Atlantic",
+          "masteredRegionId": "6751f58a5db435dd8005e45b",
+          "masteredRegionName": "Northeast",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6cc31ddcab31bbee46",
+        "name": "Pivot Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Ardmore",
+        "countryText": "US",
+        "distanceKm": 11.964,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e471",
+          "masteredCityName": "Philadelphia",
+          "masteringDistanceKm": 11.964,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e461",
+          "masteredDivisionName": "Middle Atlantic",
+          "masteredRegionId": "6751f58a5db435dd8005e45b",
+          "masteredRegionName": "Northeast",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee47",
+        "name": "Austin Uptown Dance",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Austin",
+        "countryText": "US",
+        "distanceKm": 0.441,
+        "nearestCityId": "6751f58a5db435dd8005e4a0",
+        "nearestCityName": "Austin",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a0",
+          "masteredCityName": "Austin",
+          "masteringDistanceKm": 0.441,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e466",
+          "masteredDivisionName": "West South Central",
+          "masteredRegionId": "6751f58a5db435dd8005e45d",
+          "masteredRegionName": "South",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee48",
+        "name": "Esquina Tango",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Austin",
+        "countryText": "US",
+        "distanceKm": 2.915,
+        "nearestCityId": "6751f58a5db435dd8005e4a0",
+        "nearestCityName": "Austin",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a0",
+          "masteredCityName": "Austin",
+          "masteringDistanceKm": 2.915,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e466",
+          "masteredDivisionName": "West South Central",
+          "masteredRegionId": "6751f58a5db435dd8005e45d",
+          "masteredRegionName": "South",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee49",
+        "name": "Vic Mathias Shores",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Austin",
+        "countryText": "US",
+        "distanceKm": 0.878,
+        "nearestCityId": "6751f58a5db435dd8005e4a0",
+        "nearestCityName": "Austin",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a0",
+          "masteredCityName": "Austin",
+          "masteringDistanceKm": 0.878,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e466",
+          "masteredDivisionName": "West South Central",
+          "masteredRegionId": "6751f58a5db435dd8005e45d",
+          "masteredRegionName": "South",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4a",
+        "name": "Avalon Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Boulder",
+        "countryText": "US",
+        "distanceKm": 36.001,
+        "nearestCityId": "6751f58a5db435dd8005e4a1",
+        "nearestCityName": "Denver",
+        "masteringTextConflict": true,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a1",
+          "masteredCityName": "Denver",
+          "masteringDistanceKm": 36.001,
+          "masteringTextConflict": true,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e467",
+          "masteredDivisionName": "Mountain",
+          "masteredRegionId": "6751f58a5db435dd8005e45e",
+          "masteredRegionName": "West",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4b",
+        "name": "2560 Blake St #303",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Denver",
+        "countryText": "US",
+        "distanceKm": 2.284,
+        "nearestCityId": "6751f58a5db435dd8005e4a1",
+        "nearestCityName": "Denver",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a1",
+          "masteredCityName": "Denver",
+          "masteringDistanceKm": 2.284,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e467",
+          "masteredDivisionName": "Mountain",
+          "masteredRegionId": "6751f58a5db435dd8005e45e",
+          "masteredRegionName": "West",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6dc31ddcab31bbee4c",
+        "name": "Denver Turnverein",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Denver",
+        "countryText": "US",
+        "distanceKm": 1.149,
+        "nearestCityId": "6751f58a5db435dd8005e4a1",
+        "nearestCityName": "Denver",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a1",
+          "masteredCityName": "Denver",
+          "masteringDistanceKm": 1.149,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e467",
+          "masteredDivisionName": "Mountain",
+          "masteredRegionId": "6751f58a5db435dd8005e45e",
+          "masteredRegionName": "West",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69825e6ec31ddcab31bbee4d",
+        "name": "Denver Turnverein",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Denver",
+        "countryText": "US",
+        "distanceKm": 7.366,
+        "nearestCityId": "6751f58a5db435dd8005e4a1",
+        "nearestCityName": "Denver",
+        "masteringTextConflict": false,
+        "reason": "within_50km_auto_high",
+        "_applyFields": {
+          "masteredCityId": "6751f58a5db435dd8005e4a1",
+          "masteredCityName": "Denver",
+          "masteringDistanceKm": 7.366,
+          "masteringTextConflict": false,
+          "masteringStatus": "mastered_by_automaster",
+          "masteredDivisionId": "6751f58a5db435dd8005e467",
+          "masteredDivisionName": "Mountain",
+          "masteredRegionId": "6751f58a5db435dd8005e45e",
+          "masteredRegionName": "West",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      }
+    ],
+    "AUTO_MEDIUM": [
+      {
+        "_id": "69825e70c31ddcab31bbee5a",
+        "name": "Suzanne Paterson Center",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Princeton",
+        "countryText": "US",
+        "distanceKm": 59.548,
+        "nearestCityId": "6751f58a5db435dd8005e472",
+        "nearestCityName": "Newark",
+        "masteringTextConflict": true,
+        "reason": "distance_59.548km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 59.548,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b278ddc751b73917133b",
+        "name": "Casey's Condo",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Baton Rouge",
+        "countryText": "US",
+        "distanceKm": 120.807,
+        "nearestCityId": "6751f58a5db435dd8005e49c",
+        "nearestCityName": "New Orleans",
+        "masteringTextConflict": true,
+        "reason": "distance_120.807km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 120.807,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b739171349",
+        "name": "5585 Reisterstown Rd, North Port, FL 34291",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "North Port",
+        "countryText": "US",
+        "distanceKm": 97.136,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_97.136km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 97.136,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27cddc751b73917134a",
+        "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Palm Coast",
+        "countryText": "US",
+        "distanceKm": 96.431,
+        "nearestCityId": "6984c4391360acd655892766",
+        "nearestCityName": "Jacksonville",
+        "masteringTextConflict": true,
+        "reason": "distance_96.431km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 96.431,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134c",
+        "name": "6425 Redwood Dr. Rohnert Park",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Rohnert Park",
+        "countryText": "US",
+        "distanceKm": 70.915,
+        "nearestCityId": "6751f58a5db435dd8005e4a8",
+        "nearestCityName": "San Francisco",
+        "masteringTextConflict": true,
+        "reason": "distance_70.915km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 70.915,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b27dddc751b73917134e",
+        "name": "Real World Ballroom",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Salem",
+        "countryText": "US",
+        "distanceKm": 78.665,
+        "nearestCityId": "6984c43a1360acd65589276c",
+        "nearestCityName": "Asheville",
+        "masteringTextConflict": true,
+        "reason": "distance_78.665km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 78.665,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "6982b281ddc751b73917135f",
+        "name": "680 Cherokee Ln, West Columbia, SC",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "West Columbia",
+        "countryText": "US",
+        "distanceKm": 138.986,
+        "nearestCityId": "6751f58a5db435dd8005e491",
+        "nearestCityName": "Charlotte",
+        "masteringTextConflict": true,
+        "reason": "distance_138.986km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 138.986,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665466",
+        "name": "Emmaus\\/Allentown, PA",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 73.874,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_73.874km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 73.874,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c665467",
+        "name": "Fegley's Allentown Brew Works",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Allentown",
+        "countryText": "US",
+        "distanceKm": 76.858,
+        "nearestCityId": "6751f58a5db435dd8005e471",
+        "nearestCityName": "Philadelphia",
+        "masteringTextConflict": true,
+        "reason": "distance_76.858km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 76.858,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      },
+      {
+        "_id": "69834bbde19dbcd58c66546a",
+        "name": "12450 Metro Pkwy., Fort Myers, FL, United States, Florida 33966",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Fort Myers",
+        "countryText": "US",
+        "distanceKm": 156.883,
+        "nearestCityId": "6984c4391360acd655892768",
+        "nearestCityName": "Tampa",
+        "masteringTextConflict": true,
+        "reason": "distance_156.883km_country_only",
+        "_applyFields": {
+          "masteringDistanceKm": 156.883,
+          "masteringTextConflict": true,
+          "masteringStatus": "country_only_by_automaster",
+          "masteredCountryId": "6751f57e2e74d97609e7dca0",
+          "masteredCountryName": "United States"
+        }
+      }
+    ],
+    "MANUAL": [
+      {
+        "_id": "69874efb64e134b9962b6eb0",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": true,
+        "cityText": "Sacramento",
+        "countryText": "SI",
+        "distanceKm": 372.775,
+        "nearestCityId": "6984c43b1360acd65589277a",
+        "nearestCityName": "Munich",
+        "masteringTextConflict": true,
+        "reason": "distance_372.775km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 372.775
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c1",
+        "name": "Puglia Rodi Garganico",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rodi Garganico",
+        "countryText": "IT",
+        "distanceKm": 280.366,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_280.366km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 280.366
+        }
+      },
+      {
+        "_id": "698a6cc5fb18bf573a8502c2",
+        "name": "Slovenia - Rogaska",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Rogaska Slatina",
+        "countryText": "SI",
+        "distanceKm": 372.775,
+        "nearestCityId": "6984c43b1360acd65589277a",
+        "nearestCityName": "Munich",
+        "masteringTextConflict": true,
+        "reason": "distance_372.775km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 372.775
+        }
+      },
+      {
+        "_id": "69c7312ad750241c728415e0",
+        "name": "Oslo Konserthus",
+        "appId": "2",
+        "isDiscovered": false,
+        "cityText": "Oslo",
+        "countryText": "Norway",
+        "distanceKm": 255.735,
+        "nearestCityId": "6984c43c1360acd655892784",
+        "nearestCityName": "Gothenburg",
+        "masteringTextConflict": true,
+        "reason": "distance_255.735km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 255.735
+        }
+      },
+      {
+        "_id": "69cca03d24e911e7d0a7df77",
+        "name": "Restaurant Harmonia",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Timișoara",
+        "countryText": "RO",
+        "distanceKm": 489.283,
+        "nearestCityId": "6984c43c1360acd655892787",
+        "nearestCityName": "Krakow",
+        "masteringTextConflict": true,
+        "reason": "distance_489.283km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 489.283
+        }
+      },
+      {
+        "_id": "69cca04630dda862a0c899ea",
+        "name": "Scilla",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": "Scilla",
+        "countryText": "IT",
+        "distanceKm": 490.763,
+        "nearestCityId": "6984c43b1360acd655892780",
+        "nearestCityName": "Rome",
+        "masteringTextConflict": true,
+        "reason": "distance_490.763km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 490.763
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c899ff",
+        "name": "Altstadt (Plauen)",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 242.081,
+        "nearestCityId": "6984c43b1360acd655892779",
+        "nearestCityName": "Berlin",
+        "masteringTextConflict": false,
+        "reason": "distance_242.081km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 242.081
+        }
+      },
+      {
+        "_id": "69cca05230dda862a0c89a02",
+        "name": "VOGTLAND RADIO",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 239.883,
+        "nearestCityId": "6984c43b1360acd655892779",
+        "nearestCityName": "Berlin",
+        "masteringTextConflict": false,
+        "reason": "distance_239.883km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 239.883
+        }
+      },
+      {
+        "_id": "69cca05430dda862a0c89a13",
+        "name": "Tango En Vie",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 4410.534,
+        "nearestCityId": "6984c43b1360acd65589277e",
+        "nearestCityName": "Lisbon",
+        "masteringTextConflict": false,
+        "reason": "distance_4410.534km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 4410.534
+        }
+      },
+      {
+        "_id": "69cca05630dda862a0c89a21",
+        "name": "Candance studios, Isolatorweg 28, Amsterdam",
+        "appId": "1",
+        "isDiscovered": false,
+        "cityText": null,
+        "countryText": "US",
+        "distanceKm": 355.442,
+        "nearestCityId": "6984c43a1360acd655892773",
+        "nearestCityName": "London",
+        "masteringTextConflict": false,
+        "reason": "distance_355.442km_exceeds_200km_max",
+        "_applyFields": {
+          "masteringStatus": "corpus-gap-review",
+          "masteringDistanceKm": 355.442
+        }
+      }
+    ]
+  },
+  "textConflictSamples": [
+    {
+      "_id": "69825e6cc31ddcab31bbee45",
+      "name": "Pivot Ballroom",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Ardmore",
+      "countryText": "US",
+      "distanceKm": 13.055,
+      "nearestCityId": "6751f58a5db435dd8005e471",
+      "nearestCityName": "Philadelphia",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e471",
+        "masteredCityName": "Philadelphia",
+        "masteringDistanceKm": 13.055,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e461",
+        "masteredDivisionName": "Middle Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45b",
+        "masteredRegionName": "Northeast",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69825e6cc31ddcab31bbee46",
+      "name": "Pivot Ballroom",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Ardmore",
+      "countryText": "US",
+      "distanceKm": 11.964,
+      "nearestCityId": "6751f58a5db435dd8005e471",
+      "nearestCityName": "Philadelphia",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e471",
+        "masteredCityName": "Philadelphia",
+        "masteringDistanceKm": 11.964,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e461",
+        "masteredDivisionName": "Middle Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45b",
+        "masteredRegionName": "Northeast",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69825e6dc31ddcab31bbee4a",
+      "name": "Avalon Ballroom",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Boulder",
+      "countryText": "US",
+      "distanceKm": 36.001,
+      "nearestCityId": "6751f58a5db435dd8005e4a1",
+      "nearestCityName": "Denver",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e4a1",
+        "masteredCityName": "Denver",
+        "masteringDistanceKm": 36.001,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e467",
+        "masteredDivisionName": "Mountain",
+        "masteredRegionId": "6751f58a5db435dd8005e45e",
+        "masteredRegionName": "West",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69825e6fc31ddcab31bbee55",
+      "name": "SPRFC",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Millersville",
+      "countryText": "US",
+      "distanceKm": 21.507,
+      "nearestCityId": "6751f58a5db435dd8005e490",
+      "nearestCityName": "Baltimore",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e490",
+        "masteredCityName": "Baltimore",
+        "masteringDistanceKm": 21.507,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e464",
+        "masteredDivisionName": "South Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45d",
+        "masteredRegionName": "South",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69825e70c31ddcab31bbee5b",
+      "name": "Sunny Isles Beach, FL",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Sunny Isles Beach",
+      "countryText": "US",
+      "distanceKm": 20.044,
+      "nearestCityId": "6751f58a5db435dd8005e48d",
+      "nearestCityName": "Miami",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e48d",
+        "masteredCityName": "Miami",
+        "masteringDistanceKm": 20.044,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e464",
+        "masteredDivisionName": "South Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45d",
+        "masteredRegionName": "South",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69826043d250dcc9d00e1d17",
+      "name": "Pearl Studios",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "th ave",
+      "countryText": "US",
+      "distanceKm": 4.633,
+      "nearestCityId": "6751f58a5db435dd8005e470",
+      "nearestCityName": "New York City",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e470",
+        "masteredCityName": "New York City",
+        "masteringDistanceKm": 4.633,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e461",
+        "masteredDivisionName": "Middle Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45b",
+        "masteredRegionName": "Northeast",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b278ddc751b73917133c",
+      "name": "2286 Cedar St, Berkeley, CA",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Berkeley",
+      "countryText": "US",
+      "distanceKm": 17.837,
+      "nearestCityId": "6751f58a5db435dd8005e4a8",
+      "nearestCityName": "San Francisco",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e4a8",
+        "masteredCityName": "San Francisco",
+        "masteringDistanceKm": 17.837,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e468",
+        "masteredDivisionName": "Pacific",
+        "masteredRegionId": "6751f58a5db435dd8005e45e",
+        "masteredRegionName": "West",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b278ddc751b73917133d",
+      "name": "2315 Durant Ave., Berkeley, CA",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Berkeley",
+      "countryText": "US",
+      "distanceKm": 17.207,
+      "nearestCityId": "6751f58a5db435dd8005e4a8",
+      "nearestCityName": "San Francisco",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6751f58a5db435dd8005e4a8",
+        "masteredCityName": "San Francisco",
+        "masteringDistanceKm": 17.207,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e468",
+        "masteredDivisionName": "Pacific",
+        "masteredRegionId": "6751f58a5db435dd8005e45e",
+        "masteredRegionName": "West",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b279ddc751b73917133f",
+      "name": "Rhythm & Smooth Event Venue",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Casselberry",
+      "countryText": "US",
+      "distanceKm": 15.356,
+      "nearestCityId": "6984c4391360acd655892767",
+      "nearestCityName": "Orlando",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6984c4391360acd655892767",
+        "masteredCityName": "Orlando",
+        "masteringDistanceKm": 15.356,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e464",
+        "masteredDivisionName": "South Atlantic",
+        "masteredRegionId": "6751f58a5db435dd8005e45d",
+        "masteredRegionName": "South",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27addc751b739171341",
+      "name": "OC Dancing Ballroom Dance Studio",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Irvine",
+      "countryText": "US",
+      "distanceKm": 3.584,
+      "nearestCityId": "6984c4391360acd655892763",
+      "nearestCityName": "Orange County",
+      "masteringTextConflict": true,
+      "reason": "within_50km_auto_high",
+      "_applyFields": {
+        "masteredCityId": "6984c4391360acd655892763",
+        "masteredCityName": "Orange County",
+        "masteringDistanceKm": 3.584,
+        "masteringTextConflict": true,
+        "masteringStatus": "mastered_by_automaster",
+        "masteredDivisionId": "6751f58a5db435dd8005e468",
+        "masteredDivisionName": "Pacific",
+        "masteredRegionId": "6751f58a5db435dd8005e45e",
+        "masteredRegionName": "West",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "69825e70c31ddcab31bbee5a",
+      "name": "Suzanne Paterson Center",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Princeton",
+      "countryText": "US",
+      "distanceKm": 59.548,
+      "nearestCityId": "6751f58a5db435dd8005e472",
+      "nearestCityName": "Newark",
+      "masteringTextConflict": true,
+      "reason": "distance_59.548km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 59.548,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b278ddc751b73917133b",
+      "name": "Casey's Condo",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Baton Rouge",
+      "countryText": "US",
+      "distanceKm": 120.807,
+      "nearestCityId": "6751f58a5db435dd8005e49c",
+      "nearestCityName": "New Orleans",
+      "masteringTextConflict": true,
+      "reason": "distance_120.807km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 120.807,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b739171349",
+      "name": "5585 Reisterstown Rd, North Port, FL 34291",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "North Port",
+      "countryText": "US",
+      "distanceKm": 97.136,
+      "nearestCityId": "6984c4391360acd655892768",
+      "nearestCityName": "Tampa",
+      "masteringTextConflict": true,
+      "reason": "distance_97.136km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 97.136,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27cddc751b73917134a",
+      "name": "160 Cypress Point Parkway, Palm Coast FL 32164",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Palm Coast",
+      "countryText": "US",
+      "distanceKm": 96.431,
+      "nearestCityId": "6984c4391360acd655892766",
+      "nearestCityName": "Jacksonville",
+      "masteringTextConflict": true,
+      "reason": "distance_96.431km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 96.431,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    },
+    {
+      "_id": "6982b27dddc751b73917134c",
+      "name": "6425 Redwood Dr. Rohnert Park",
+      "appId": "1",
+      "isDiscovered": true,
+      "cityText": "Rohnert Park",
+      "countryText": "US",
+      "distanceKm": 70.915,
+      "nearestCityId": "6751f58a5db435dd8005e4a8",
+      "nearestCityName": "San Francisco",
+      "masteringTextConflict": true,
+      "reason": "distance_70.915km_country_only",
+      "_applyFields": {
+        "masteringDistanceKm": 70.915,
+        "masteringTextConflict": true,
+        "masteringStatus": "country_only_by_automaster",
+        "masteredCountryId": "6751f57e2e74d97609e7dca0",
+        "masteredCountryName": "United States"
+      }
+    }
+  ],
+  "applyResults": {
+    "counts": {
+      "AUTO_HIGH": 34,
+      "AUTO_MEDIUM": 6,
+      "MANUAL": 1,
+      "skipped_already_mastered": 1011,
+      "errors": 0
+    },
+    "logEntryCount": 41,
+    "log": [
+      {
+        "_id": "69c7312ad750241c728415d2",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.323,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e2",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.625,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d0",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 25.647,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415dd",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.751,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415bf",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.162,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415cb",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 5.2,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d5",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.264,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c0",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 13.963,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d1",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.724,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d6",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.771,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415cc",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.962,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c1",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 7.558,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c6",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 3.354,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c9",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 14.21,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415cf",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.145,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.169,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e4",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.078,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415db",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.135,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415ca",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.474,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d4",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.562,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415da",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.589,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c7",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 15.569,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e6",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.605,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415dc",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.991,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.347,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c8",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.364,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415ce",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.701,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415df",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.759,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e1",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.459,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415cd",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 1.055,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415de",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.136,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c3",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 14.178,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d9",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 2.741,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e5",
+        "bucket": "AUTO_HIGH",
+        "distanceKm": 0.978,
+        "fieldsSet": [
+          "masteredCityId",
+          "masteredCityName",
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredDivisionId",
+          "masteredDivisionName",
+          "masteredRegionId",
+          "masteredRegionName",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c2",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 63.674,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d7",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 171.27,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e7",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 51.261,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c5",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 168.285,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415d8",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 57.983,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415c4",
+        "bucket": "AUTO_MEDIUM",
+        "distanceKm": 73.412,
+        "fieldsSet": [
+          "masteringDistanceKm",
+          "masteringTextConflict",
+          "masteringStatus",
+          "masteredCountryId",
+          "masteredCountryName",
+          "masteringAppliedAt"
+        ]
+      },
+      {
+        "_id": "69c7312ad750241c728415e0",
+        "bucket": "MANUAL",
+        "distanceKm": 255.735,
+        "fieldsSet": [
+          "masteringStatus",
+          "masteringDistanceKm",
+          "masteringAppliedAt"
+        ]
+      }
+    ]
+  }
+}
