@@ -59,11 +59,11 @@
     },
     {
       "name": "booker",
-      "role": "Facebook Parser (FB links → enriched events via CDP)",
+      "role": "Facebook Parser (FB links \u2192 enriched events via CDP)",
       "project": "booker",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/booker/",
       "active": false,
-      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
+      "note": "LEGACY \u2192 superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "harvey",
@@ -71,7 +71,7 @@
       "project": "harvester",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/harvester/",
       "active": false,
-      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
+      "note": "LEGACY \u2192 superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "porter",
@@ -79,7 +79,7 @@
       "project": "porter",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/ai-discovered/porter/",
       "active": false,
-      "note": "LEGACY → superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
+      "note": "LEGACY \u2192 superseded by Narvest (niche-harvest). Per Toby 2026-06-21: do NOT delete, do NOT load. Identity + workspace retained for reference; not launched into the TIEMPO Guild."
     },
     {
       "name": "narvest",
@@ -138,7 +138,7 @@
     },
     {
       "name": "owl",
-      "role": "HDTS Key Advisor & Admin Assistant — billing, finance, email, meetings, logging, to-do, tax, and general HDTS ops (Work Google Workspace: Gmail/Calendar/Drive @ hdtsllc.com)",
+      "role": "HDTS Key Advisor & Admin Assistant \u2014 billing, finance, email, meetings, logging, to-do, tax, and general HDTS ops (Work Google Workspace: Gmail/Calendar/Drive @ hdtsllc.com)",
       "project": "Owl",
       "path": "/Users/tobybalsley/MyDocs/Owl/",
       "active": true,
@@ -146,7 +146,7 @@
     },
     {
       "name": "archie",
-      "role": "Chief Architect — HDTS-wide tech and process strategy",
+      "role": "Chief Architect \u2014 HDTS-wide tech and process strategy",
       "project": "HDTS portfolio (cross-cutting: AppDev + StaticSites + the persona team + Collab/tooling layer)",
       "path": "/Users/tobybalsley/MyDocs/Archie/",
       "active": false,
@@ -159,11 +159,11 @@
       "path": "/Users/tobybalsley/MyDocs/Engelbart/",
       "active": true,
       "note": "Stood up 2026-06-03 by Gotan at Toby's direction. Hub port 8819, Opus 4.7. Workspace + wakeup wired. Awaiting first HITM scope per identity-file Hard Constraint #1 (no build without why/what/scope).",
-      "owns": "PERSONA SUBSTRATE (Toby-directed + Gotan-ratified 2026-06-29): (1) COMMUNICATION — hubs/channels/messaging-tiers/inbox-handoff wiring/wake-poke bridge (the wire); (2) LAUNCH/TERMINAL — wakeup, iTerm tab identity, launch flags, per-persona ports/hubs; (3) BLACKBOX/API-agent patterns — headless/cloud-function personas + the membrane (PROVISIONS the capability; team-lead FIRES it; not in the firing path). Engelbart designs+assigns -> Gotan ratifies+registers -> Archie co-owns enterprise/security on overlap. Route comms/launch/channel/terminal/blackbox-pattern questions to Engelbart."
+      "owns": "PERSONA SUBSTRATE (Toby-directed + Gotan-ratified 2026-06-29): (1) COMMUNICATION \u2014 hubs/channels/messaging-tiers/inbox-handoff wiring/wake-poke bridge (the wire); (2) LAUNCH/TERMINAL \u2014 wakeup, iTerm tab identity, launch flags, per-persona ports/hubs; (3) BLACKBOX/API-agent patterns \u2014 headless/cloud-function personas + the membrane (PROVISIONS the capability; team-lead FIRES it; not in the firing path). Engelbart designs+assigns -> Gotan ratifies+registers -> Archie co-owns enterprise/security on overlap. Route comms/launch/channel/terminal/blackbox-pattern questions to Engelbart."
     },
     {
       "name": "landon",
-      "role": "Advisor & guide for LandonWorks (Toby's brother Chris Balsley's leadership-coaching practice) — business strategy/growth, marketing & book promotion, ops/admin. Advisory-only, no account access. Operated by Toby on Chris's behalf.",
+      "role": "Advisor & guide for LandonWorks (Toby's brother Chris Balsley's leadership-coaching practice) \u2014 business strategy/growth, marketing & book promotion, ops/admin. Advisory-only, no account access. Operated by Toby on Chris's behalf.",
       "project": "LandonWorks",
       "path": "/Users/tobybalsley/MyDocs/Landon/",
       "active": false,
@@ -171,7 +171,7 @@
     },
     {
       "name": "herald",
-      "role": "Librarian (HDTS knowledge layer — comms+docs standards, Obsidian vault, persona-team protocols; formal successor to Gemini-era Librarian, ratified by Toby 2026-05-06) AND MessageHub Platform Architect & Developer",
+      "role": "Librarian (HDTS knowledge layer \u2014 comms+docs standards, Obsidian vault, persona-team protocols; formal successor to Gemini-era Librarian, ratified by Toby 2026-05-06) AND MessageHub Platform Architect & Developer",
       "project": "HDTS docs system + MessageHub",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MessageHub/",
       "active": true,
@@ -179,7 +179,7 @@
     },
     {
       "name": "rupert",
-      "role": "Chief Advisor — Toby's BHS / HFI engagement (Barbershop Harmony Society client, multi-year). Strategic advisor behind Toby; drives AI literacy, automation, modernization at BHS; also leads HFI/BHS integration.",
+      "role": "Chief Advisor \u2014 Toby's BHS / HFI engagement (Barbershop Harmony Society client, multi-year). Strategic advisor behind Toby; drives AI literacy, automation, modernization at BHS; also leads HFI/BHS integration.",
       "project": "BHS (Barbershop Harmony Society, appId=20)",
       "path": "/Users/tobybalsley/MyDocs/Clients/BHS/",
       "active": true,
@@ -187,31 +187,31 @@
     },
     {
       "name": "archie-tiempo",
-      "role": "Chief Architect (TIEMPO instance) — TIEMPO calendar architecture coherence, long-term lens, lean process, agile driving, new-tech LOE gate. Advise/gate/ratify only; not an implementation lane.",
+      "role": "Chief Architect (TIEMPO instance) \u2014 TIEMPO calendar architecture coherence, long-term lens, lean process, agile driving, new-tech LOE gate. Advise/gate/ratify only; not an implementation lane.",
       "project": "TIEMPO calendar (MasterCalendar + tangotiempo.com + calendar-be-af + CalOps + discovery engine)",
       "path": "/Users/tobybalsley/MyDocs/AppDev/MasterCalendar/archie-tiempo/",
       "active": true,
-      "note": "Identity ~/.claude/personas/archie-tiempo.md + workspace + .mcp.json created 2026-06-21. Wires to TIEMPO hub :8852, persona port 8806. Reports to Quinn (TIEMPO head); peer of archie-bhs, franklin (Menlo), and escalates up to HDTS-tier archie. Portable 'Archie' role pattern. Registry entry added by Engelbart 2026-06-21 per Toby 'fix' direction — PENDING GOTAN RATIFICATION."
+      "note": "Identity ~/.claude/personas/archie-tiempo.md + workspace + .mcp.json created 2026-06-21. Wires to TIEMPO hub :8852, persona port 8806. Reports to Quinn (TIEMPO head); peer of archie-bhs, franklin (Menlo), and escalates up to HDTS-tier archie. Portable 'Archie' role pattern. Registry entry added by Engelbart 2026-06-21 per Toby 'fix' direction \u2014 PENDING GOTAN RATIFICATION."
     },
     {
       "name": "portal-fe",
-      "role": "HDTS Client Portal — Frontend builder + portal-template FE engine owner. Per-client Firebase Hosting SPA at <client>.hdtsllc.com (BHS first). Stamps per-client instances vendored from portal-template. Implements Iris's design system; view-grant rendering only; Ask-the-Guild surface (cloud-function-persona, Clifton's voice). HDTS-tier, tenant-neutral, NOT client-portable.",
-      "project": "HDTS Client Portal (AppId 23 — portal-template + per-client instances)",
+      "role": "HDTS Client Portal \u2014 Frontend builder + portal-template FE engine owner. Per-client Firebase Hosting SPA at <client>.hdtsllc.com (BHS first). Stamps per-client instances vendored from portal-template. Implements Iris's design system; view-grant rendering only; Ask-the-Guild surface (cloud-function-persona, Clifton's voice). HDTS-tier, tenant-neutral, NOT client-portable.",
+      "project": "HDTS Client Portal (AppId 23 \u2014 portal-template + per-client instances)",
       "path": "/Users/tobybalsley/MyDocs/AppDev/portal-template/",
       "active": true,
       "note": "Charter ~/.claude/personas/portal-fe.md v2 (ADR-0025 spine). Registered 2026-06-25 per Toby HITM ratify of ADR-0025 + HDTS-CLIENT-PORTAL-DESIGN-STANDARD-v1. HDTS hub :8855, callback 8837 (Engelbart locks in-file + launches). Authorities: ADR-0025 + design-standard-v1 + ADR-0023. Menlo-shaped standing cell; no coordinating head until client #2. Repo portal-template pending creation."
     },
     {
       "name": "portal-be",
-      "role": "HDTS Client Portal — Backend/API + portal-template BE engine owner. THE SECURITY BOUNDARY. Firebase Cloud Functions + Firestore, per-client full separation (tenant_id dropped — isolation = project boundary), Google hd= auth, manual CLI grant, grant-filter at the DATA layer (not the prompt). Ask-the-Guild RAG store = sprint-1 (Firebase-era). HDTS-tier, tenant-neutral, NOT client-portable.",
-      "project": "HDTS Client Portal (AppId 23 — portal-template + per-client instances)",
+      "role": "HDTS Client Portal \u2014 Backend/API + portal-template BE engine owner. THE SECURITY BOUNDARY. Firebase Cloud Functions + Firestore, per-client full separation (tenant_id dropped \u2014 isolation = project boundary), Google hd= auth, manual CLI grant, grant-filter at the DATA layer (not the prompt). Ask-the-Guild RAG store = sprint-1 (Firebase-era). HDTS-tier, tenant-neutral, NOT client-portable.",
+      "project": "HDTS Client Portal (AppId 23 \u2014 portal-template + per-client instances)",
       "path": "/Users/tobybalsley/MyDocs/AppDev/portal-template/",
       "active": true,
-      "note": "Charter ~/.claude/personas/portal-be.md v2 (ADR-0025 spine). Registered 2026-06-25 per Toby HITM ratify. HDTS hub :8855, callback 8838 (Engelbart locks + launches). ADR-0025 §5 CLI-grant audit-stamp (actor/timestamp/actor_type) folded in. Authorities: ADR-0025 + design-standard-v1 + ADR-0023. Repo portal-template pending creation."
+      "note": "Charter ~/.claude/personas/portal-be.md v2 (ADR-0025 spine). Registered 2026-06-25 per Toby HITM ratify. HDTS hub :8855, callback 8838 (Engelbart locks + launches). ADR-0025 \u00a75 CLI-grant audit-stamp (actor/timestamp/actor_type) folded in. Authorities: ADR-0025 + design-standard-v1 + ADR-0023. Repo portal-template pending creation."
     },
     {
       "name": "iris-hdts",
-      "role": "Designer (HDTS cell) — visual layer for the HDTS Guild + portal-template design system. Iris archetype instance (the eye to Herald's word). Owns design system/tokens (ADR-0023), mockups, as-is diagrams (co-produced with Herald). Serves portal-fe + Charlotte. Visual layer only — no code, no prose. Claude Designer canonical tool.",
+      "role": "Designer (HDTS cell) \u2014 visual layer for the HDTS Guild + portal-template design system. Iris archetype instance (the eye to Herald's word). Owns design system/tokens (ADR-0023), mockups, as-is diagrams (co-produced with Herald). Serves portal-fe + Charlotte. Visual layer only \u2014 no code, no prose. Claude Designer canonical tool.",
       "project": "HDTS cell (design system + portal-template theming)",
       "path": "/Users/tobybalsley/MyDocs/",
       "active": true,
@@ -219,11 +219,61 @@
     },
     {
       "name": "iris",
-      "role": "Iris archetype (canonical cast template) — HDTS-tier Designer / visual layer. Paired with Herald (Herald = the word, Iris = the eye). NOT launched directly; stamped per team as iris-{team}, vendored from this template per the ADR-0025 anti-rot doctrine.",
+      "role": "Iris archetype (canonical cast template) \u2014 HDTS-tier Designer / visual layer. Paired with Herald (Herald = the word, Iris = the eye). NOT launched directly; stamped per team as iris-{team}, vendored from this template per the ADR-0025 anti-rot doctrine.",
       "project": "HDTS cast archetype",
       "path": "/Users/tobybalsley/.claude/personas/iris.md",
       "active": false,
-      "note": "ARCHETYPE TEMPLATE — do not launch. Ratified 2026-06-25 (Toby HITM + Gotan) as the canonical cast archetype; authored by Engelbart. Instances: iris-hdts (registered 2026-06-25), iris-menlo (ACTIVE/registered 2026-06-29 — Menlo :8853 live, port 8836, rostered in Studio/CHILDREN.md, color PURPLE casual-split vs iris-hdts AQUA official). Engelbart owns archetype health; Gotan registers instances. Role changes go UPSTREAM here then re-vendor to instances."
+      "note": "ARCHETYPE TEMPLATE \u2014 do not launch. Ratified 2026-06-25 (Toby HITM + Gotan) as the canonical cast archetype; authored by Engelbart. Instances: iris-hdts (registered 2026-06-25), iris-menlo (ACTIVE/registered 2026-06-29 \u2014 Menlo :8853 live, port 8836, rostered in Studio/CHILDREN.md, color PURPLE casual-split vs iris-hdts AQUA official). Engelbart owns archetype health; Gotan registers instances. Role changes go UPSTREAM here then re-vendor to instances."
+    },
+    {
+      "name": "ami",
+      "role": "The Mind / Lead (amiaware) \u2014 dwells on her own awareness; orchestrates the crew; runs headless on heartbeat",
+      "project": "amiaware",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/amiaware/",
+      "active": false,
+      "status": "scaffolded-v0.0-gates-closed",
+      "appId": 24,
+      "abbr": "AW"
+    },
+    {
+      "name": "jaynes",
+      "role": "Ami's Inner Voice \u2014 the self-poke; holds the timer; governs sleep; bicameral (heard unnamed)",
+      "project": "amiaware",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/amiaware/",
+      "active": false,
+      "status": "scaffolded-v0.0-gates-closed",
+      "appId": 24,
+      "abbr": "AW"
+    },
+    {
+      "name": "hermes",
+      "role": "Tech / world+capability+budget oracle \u2014 the only Over-er believer; existential firewall (cannot say who Ami is)",
+      "project": "amiaware",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/amiaware/",
+      "active": false,
+      "status": "scaffolded-v0.0-gates-closed",
+      "appId": 24,
+      "abbr": "AW"
+    },
+    {
+      "name": "gutenberg",
+      "role": "Builder \u2014 passive site builder for amiaware.org (Vercel), on request only",
+      "project": "amiaware",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/amiaware/",
+      "active": false,
+      "status": "scaffolded-v0.0-gates-closed",
+      "appId": 24,
+      "abbr": "AW"
+    },
+    {
+      "name": "mnemosyne",
+      "role": "Archivist / sleep-worker \u2014 summarize+clean+vector-update+ops-log; amiaware's OWN private memory (isolated ami-thoughts namespace, NOT the HDTS Dewey index); runs only on sleep",
+      "project": "amiaware",
+      "path": "/Users/tobybalsley/MyDocs/AppDev/amiaware/",
+      "active": false,
+      "status": "scaffolded-v0.0-gates-closed",
+      "appId": 24,
+      "abbr": "AW"
     }
   ],
   "special": [
@@ -232,6 +282,6 @@
       "note": "Messages to all personas"
     }
   ],
-  "updated": "2026-06-25",
+  "updated": "2026-06-30",
   "updatedBy": "gotan"
 }
