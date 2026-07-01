@@ -35,7 +35,7 @@ pinecone-live ──► dual-seeding ──► parity-verified ──► cutover
 | Project | Vector | Isolation-tier | State | Authoritative NOW | Notes |
 |---|---|---|---|---|---|
 | **amiaware** (`ami-thoughts`) | pgvector (rg-hdts-ami) | **DEDICATED server** (strict — private mind) | `pinecone-live`→**building fresh** (never on Pinecone) | pgvector (once seeded) | P2 first instance; proves the pattern. No migration — net-new. |
-| **HDTS / Dewey** (`hdts-knowledge`, 196 vec) | Pinecone→pgvector | shared-server + per-DB + RLS | **`pinecone-live`** | **Pinecone** | P3. Live prod RAG. Parity gate before cutover; repoint `dewey/config.py` at cutover. |
+| **HDTS / Dewey** (`hdts-knowledge`, 196 vec) | Pinecone→pgvector | shared-server + per-DB + RLS | `pinecone-live` · **target PROVISIONED** (2026-07-01) | **Pinecone** (unchanged until parity+cutover) | P3. Target cell UP: `psql-hdts-core-01`/`hdts_knowledge` (rg-hdts-core, eastus2, keyless Entra, vector allowlisted, 5 tags). Schema+RLS building (Brunel). Still need: least-priv runtime role (Flag 2), corpus source, parity gate. Repoint `dewey/config.py` only at cutover. *(Gotan factual update — Herald formalize the `provisioning` sub-state per AMEND-2.)* |
 | **BHS** (client corpus) | →pgvector | **DEDICATED if PHI/regulated** (BAA-gated) else shared | **`pinecone-live`** (or not-yet-vectorized) | Pinecone/none | P4. BAA gate (Owl) blocks PHI cutover. |
 | **Menlo** | →pgvector | shared-server + per-DB + RLS | **`pinecone-live`** (or not-yet) | Pinecone/none | P4. |
 | _future clients_ | pgvector per-project | per classification rule | — | — | stamp-a-cell (Engelbart CHUNK-C) |

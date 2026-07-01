@@ -280,8 +280,8 @@
       "role": "HDTS Cloud-Persona Cell BUILDER (Isambard Kingdom Brunel — builds the durable infrastructure everything else runs on). Builds cloud-persona cells to spec, per-cell, across the portfolio (amiaware, Dewey, BHS, Menlo, every future cell): pgvector schema + embed/seed + Dewey re-index + loop-runtime wiring (Azure Functions). INTERACTIVE tier (Gotan-invoked) — builds the autonomous cells, is NOT one, so OUT of ADR-0028 autonomous scope; builds TO it. Enforces RETRIEVAL-STRATA firewall at build (fail-closed seed, strata tags, server-set context, keyless runtime).",
       "project": "HDTS cloud-infra (cross-cell builder)",
       "path": "/Users/tobybalsley/MyDocs/",
-      "active": false,
-      "note": "Ratified by Gotan at Toby HITM go 2026-07-01 (renamed Mercator→Brunel: Archie+Engelbart converged — Mercator collides w/ Dewey RETIRED name in-domain + role builds whole cell not just vector projection). Engelbart persona-def; Archie-confirmed scope/tier/archetype. Charter = Archie 3 build-specs (REFERENCE-PGVECTOR-CELL-CONFIG-v1 + P3-BUILD-SPEC-amiaware-separated-tech + BUILD-SPEC-ami-thoughts-RAG). Reports Gotan; reviewed Archie (§9 fidelity); provisioned+gated Gotan. ONE HDTS-tier builder for all cloud cells, archetype-capable (brunel-{client}) later. active:false pending Engelbart placing ~/.claude/personas/brunel.md + launch wiring → Toby launch. First job: finish amiaware pgvector seed (Stratum-1 only) from inside the VNet."
+      "active": true,
+      "note": "Ratified by Gotan at Toby HITM go 2026-07-01 (renamed Mercator→Brunel: Archie+Engelbart converged — Mercator collides w/ Dewey RETIRED name in-domain + role builds whole cell not just vector projection). Engelbart persona-def; Archie-confirmed scope/tier/archetype. Charter = Archie 3 build-specs (REFERENCE-PGVECTOR-CELL-CONFIG-v1 + P3-BUILD-SPEC-amiaware-separated-tech + BUILD-SPEC-ami-thoughts-RAG). Reports Gotan; reviewed Archie (§9 fidelity); provisioned+gated Gotan. ONE HDTS-tier builder for all cloud cells, archetype-capable (brunel-{client}) later. ACTIVE 2026-07-01 (Engelbart placed ~/.claude/personas/brunel.md + wired HDTS :8855 cb 8839). Was: pending Engelbart placing ~/.claude/personas/brunel.md + launch wiring → Toby launch. First job: finish amiaware pgvector seed (Stratum-1 only) from inside the VNet."
     }
   ],
   "special": [
@@ -291,5 +291,5 @@
     }
   ],
   "updated": "2026-07-01",
-  "updatedBy": "gotan (ratify Brunel per Toby HITM go)"
+  "updatedBy": "gotan (flip brunel active:true — Engelbart launch-wired)"
 }
