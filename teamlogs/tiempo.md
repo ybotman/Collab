@@ -39,3 +39,10 @@
 2026-07-01T21:04Z | TOBY->tiempo | DEPLOY-PROD | Authorized Op B (Spark build) + Op L (9-record display-field backfill); Quinn CRK ratified
 2026-07-01T21:04Z | quinn->fulton | HANDOFF | DEPLOY-PROD both greenlit — execute B+L w/ live re-fetch + post-write N/N verify
 2026-07-01T21:04Z | quinn->narvest | ASK | (routing) Layer-2(b) BTC conversion-script must carry denorm display strings singles->master (categoryFirst/venueName/ownerOrganizerName/division)
+2026-07-01T21:08Z | TOBY->tiempo | ASK | FTPNTD: name the PROCESS fix for the display-field/cliff defects + get on backlog
+2026-07-01T21:08Z | quinn | DONE | Filed process-fix backlog: CALBEAF-201 (write-time DQ fail-closed on null display fields, Fulton) + TIEMPO-467 (FE resolve-from-IDs at render, Sarah); surfaced CALBEAF-200 (renewal reminder) still UNASSIGNED = the cliff's structural fix
+2026-07-01T21:10Z | fulton->quinn | DONE | Op B+L 10/10 PASSED on PROD @21:05Z: Spark master inserted fully-denormalized (6a45812f), 9-record backfill all display fields resolved; BE render-proxy confirms all 10 pass laned-FE filter
+2026-07-01T21:10Z | TOBY->tiempo | ASK | Weekly Function: mini-outlook cliff scan (±30d repeating) + next-30d DQ completeness (city/division/venue/category/dates) reports -> backlog
+2026-07-01T21:10Z | quinn | DONE | Filed CALBEAF-202 (weekly calendar-health monitor). FTPNTD process layer complete: 200(notify)+201(prevent)+202(detect)+TIEMPO-467(render). Layer-2b subsumed by 201 (source-agnostic) — no Narvest route.
+2026-07-01T21:15Z | TOBY->tiempo | ASK | Any other event/cliff backlog? bostontango vs tangotiempo? deal w/ TANGO BAR event
+2026-07-01T21:15Z | quinn | DONE | TANGO BAR (dc9ba0) = healthy monthly-3rdFri, Op-L complete, BUT still UNTIL 2027 (not in forever list). bostontango=tangotiempo same appId=1 backend, diff FE filter (category-laned vs geo). Filed CALBEAF-203 remediation tracker (Tango Sueño/Andi/Caminito-dedup/dup-org/Op M/Tango Bar/FE-parity) + TIEMPO-467 parity note.
