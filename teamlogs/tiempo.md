@@ -46,3 +46,12 @@
 2026-07-01T21:10Z | quinn | DONE | Filed CALBEAF-202 (weekly calendar-health monitor). FTPNTD process layer complete: 200(notify)+201(prevent)+202(detect)+TIEMPO-467(render). Layer-2b subsumed by 201 (source-agnostic) — no Narvest route.
 2026-07-01T21:15Z | TOBY->tiempo | ASK | Any other event/cliff backlog? bostontango vs tangotiempo? deal w/ TANGO BAR event
 2026-07-01T21:15Z | quinn | DONE | TANGO BAR (dc9ba0) = healthy monthly-3rdFri, Op-L complete, BUT still UNTIL 2027 (not in forever list). bostontango=tangotiempo same appId=1 backend, diff FE filter (category-laned vs geo). Filed CALBEAF-203 remediation tracker (Tango Sueño/Andi/Caminito-dedup/dup-org/Op M/Tango Bar/FE-parity) + TIEMPO-467 parity note.
+2026-07-01T21:22Z | TOBY->tiempo | DECISION | Grandfather + convert Tango Sueño (West Hartford weekly-Sat + Milford monthly) BTC singles -> open-ended RRULE
+2026-07-01T21:22Z | quinn | DONE | West Hartford = 56 BTC singles (isBtcImported=true, bulk 2025-06-23) weekly-Sat 11:30am 2.0h Class $15; Milford = 13 BTC singles monthly-3rdSat-ish 7:30pm 4.0h Milonga $25. BOTH junk venue 680c4f5e + masteredCity=Boston WRONG (events are in CT).
+2026-07-01T21:22Z | quinn->fulton | ASK | CONVERT dry-runs ×2 (WH FREQ=WEEKLY;BYDAY=SA anchor 07-04; Milford MONTHLY;BYDAY=3SA anchor 07-18) fully-denormalized; flag CT-location defect; own DEPLOY-PROD
+2026-07-01T21:24Z | TOBY->tiempo | DECISION | Tango Sueño location = (b) convert-now on existing junk/Boston venue, fix CT location later (CALBEAF-203)
+2026-07-01T21:24Z | quinn->fulton | HANDOFF | Proceed (b): finalize both convert dry-runs on existing location for DEPLOY-PROD
+2026-07-01T21:28Z | fulton->quinn | DONE | CALBEAF-201 fix committed DEVL (persist categoryFirst<-categoryFirstId in pipeline = fixes all write tiers; regression fail-before-pass); DoD drafted; flagged 7 pre-existing test failures
+2026-07-01T21:28Z | quinn | DONE | Pasted DoD+open-ended-policy into RUNBOOK.md; approved CALBEAF-201 push+TEST-PR; confirmed Layer-2b subsumed (no Narvest); filed CALBEAF-204 test-hygiene
+2026-07-01T21:35Z | fulton->quinn | DONE | CALBEAF-201 PR #49 up (->TEST). Tango Sueño convert dry-runs: WH 62 singles (live re-fetch corrected my 56) weekly-Sat; Milford 14/14 clean 3rd-Sat (corrected my snapshot's Sat/Sun mix). Both open-ended, location carried as-is per (b), venueName left null (avoid UNKNOWN), category/owner/div resolved.
+2026-07-01T21:35Z | quinn->TOBY | ASK | DEPLOY-PROD checkpoint: 2 Tango Sueño convert INSERTs (last exploded-singleton cliff holes)
