@@ -36,3 +36,6 @@
 2026-07-01T20:53Z | fulton->quinn | DONE | Op L dry-run: 9-record backfill all join-resolvable (0 invented), category from categoryFirstId; +DQ null-category reject (BE lane) +DoD update; flagged conversion-script fix = Narvest lane
 2026-07-01T20:53Z | quinn | DONE | Full DQ scan: categoryFirst-missing = ONLY the 9 (contained); venueName-missing = 34 (9+25), 25 are denorm gaps (venueID present, render OK) = fast follow-up
 2026-07-01T20:53Z | quinn->TOBY | ASK | DEPLOY-PROD checkpoint bundling Op B (Spark build) + Op L (9-record backfill)
+2026-07-01T21:04Z | TOBY->tiempo | DEPLOY-PROD | Authorized Op B (Spark build) + Op L (9-record display-field backfill); Quinn CRK ratified
+2026-07-01T21:04Z | quinn->fulton | HANDOFF | DEPLOY-PROD both greenlit — execute B+L w/ live re-fetch + post-write N/N verify
+2026-07-01T21:04Z | quinn->narvest | ASK | (routing) Layer-2(b) BTC conversion-script must carry denorm display strings singles->master (categoryFirst/venueName/ownerOrganizerName/division)
