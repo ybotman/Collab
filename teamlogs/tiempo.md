@@ -55,3 +55,5 @@
 2026-07-01T21:28Z | quinn | DONE | Pasted DoD+open-ended-policy into RUNBOOK.md; approved CALBEAF-201 push+TEST-PR; confirmed Layer-2b subsumed (no Narvest); filed CALBEAF-204 test-hygiene
 2026-07-01T21:35Z | fulton->quinn | DONE | CALBEAF-201 PR #49 up (->TEST). Tango Sueño convert dry-runs: WH 62 singles (live re-fetch corrected my 56) weekly-Sat; Milford 14/14 clean 3rd-Sat (corrected my snapshot's Sat/Sun mix). Both open-ended, location carried as-is per (b), venueName left null (avoid UNKNOWN), category/owner/div resolved.
 2026-07-01T21:35Z | quinn->TOBY | ASK | DEPLOY-PROD checkpoint: 2 Tango Sueño convert INSERTs (last exploded-singleton cliff holes)
+2026-07-01T21:46Z | TOBY->tiempo | ASK | Make Al Fresco beginnerFriendly
+2026-07-01T21:46Z | quinn->fulton | ASK | Op N: Al Fresco (db39b1) $set beginnerFriendly=true; bundle into pending DEPLOY-PROD w/ 2 Sueño converts (3 records)
