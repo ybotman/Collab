@@ -1,9 +1,11 @@
 ---
-title: HDTS Vector Migration Plan — v1 (for big-brain consensus)
+title: HDTS Vector Migration Plan — v2 (TEAM-VALIDATED → MIGRATING)
 date: 2026-07-01
+updated: 2026-07-02
 author: gotan (program-lead)
-status: DRAFT — circulating to big brains for AGREE / AMEND / BLOCK
+status: AGREED → MIGRATING (v2, unanimous GREAT-WITH-AMEND; Owl+Herald amends folded — see §v2)
 ruling: Toby 2026-07-01
+v1_note: v1 draft retained below (lines 9–60) for lineage; v2 addendum (§v2) is the load-bearing spec.
 ---
 
 # HDTS Vector Migration Plan v1
